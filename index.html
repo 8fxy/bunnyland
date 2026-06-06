@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI剧剧场 - 24小时像素剧场</title>
+  <style>
+    :root {
+      --stage-w: 800px;
+      --stage-h: 600px;
+      --stage-scale: 1;
+      --ink: #24313a;
+      --panel: #fffdf6;
+      --grass: #d6efd2;
+      --road: rgba(235, 211, 164, 0.94);
+      --shadow: rgba(35, 42, 38, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      background: #e7dcc4;
+      display: flex;
+      justify-content: center;
+      padding: 8px;
+      overflow-x: hidden;
+    }
+
+    .app {
+      width: 100%;
+      display: grid;
+      gap: 8px;
+    }
+
+    .topbar,
+    .status-board,
+    .log-panel,
+    .notice {
+      border: 3px solid var(--ink);
+      background: var(--panel);
+      box-shadow: 5px 5px 0 var(--shadow);
+    }
+
+    .topbar {
+      padding: 8px;
+      display: grid;
+      grid-template-columns: minmax(112px, 140px) auto minmax(180px, 1fr) 92px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar {
+      display: none;
+    }
+
+    body.debug-mode .topbar {
+      display: grid;
+    }
+
+    .time-box {
+      height: 44px;
+      border: 3px solid var(--ink);
+      background: #1f2a32;
+      color: #d8ff99;
+      display: grid;
+      place-items: center;
+      font-family: "Courier New", monospace;
+      font-size: 20px;
+      font-weight: 900;
+      text-shadow: 0 0 6px rgba(216, 255, 153, 0.65);
+    }
+
+    .speed-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(48px, 1fr));
+      gap: 8px;
+    }
+
+    button {
+      height: 38px;
+      min-width: 54px;
+      border: 3px solid var(--ink);
+      background: #f5cb5c;
+      color: var(--ink);
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+    }
+
+    button:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    button.active { background: #7bdff2; }
+    button.pause { background: #ffa69e; }
+
+    .progress-wrap {
+      display: grid;
+      gap: 5px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #2a9d8f;
+      cursor: pointer;
+    }
+
+    .tick-readout {
+      font-family: "Courier New", monospace;
+      font-weight: 900;
+      text-align: right;
+      line-height: 1.25;
+    }
+
+    .tick-readout small {
+      display: block;
+      font-size: 11px;
+      color: #61717b;
+    }
+
+    .stage-frame {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      border: 4px solid var(--ink);
+      background: #b7dfb0;
+      box-shadow: 7px 7px 0 var(--shadow);
+      height: calc(var(--stage-h) * var(--stage-scale) + 8px);
+      overflow: hidden;
+      contain: layout paint;
+    }
+
+    #stage {
+      position: relative;
+      width: var(--stage-w);
+      height: var(--stage-h);
+      overflow: hidden;
+      image-rendering: pixelated;
+      background: var(--grass) url("assets/map_day.png") center / 800px 600px no-repeat;
+      transform: scale(var(--stage-scale));
+      transform-origin: left top;
+    }
+
+    .retro-clock {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      width: 86px;
+      height: 104px;
+      z-index: 900;
+      display: grid;
+      justify-items: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+
+    .clock-face {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      border: 4px solid #2b241d;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #2b241d 0 4px, transparent 5px),
+        radial-gradient(circle at center, #fff9dd 0 58%, #f2cf83 59% 100%);
+      box-shadow: 3px 4px 0 rgba(36, 49, 58, 0.28), inset 0 0 0 3px rgba(255,255,255,0.42);
+    }
+
+    .clock-face::before,
+    .clock-face::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center bottom;
+      background: #2b241d;
+      border-radius: 999px;
+    }
+
+    .clock-face::before {
+      width: 4px;
+      height: 25px;
+      margin-left: -2px;
+      margin-top: -25px;
+      transform: rotate(var(--hour-angle, 0deg));
+    }
+
+    .clock-face::after {
+      width: 2px;
+      height: 31px;
+      margin-left: -1px;
+      margin-top: -31px;
+      background: #9b2f20;
+      transform: rotate(var(--minute-angle, 0deg));
+    }
+
+    .clock-mark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      margin-top: -35px;
+      background: #2b241d;
+      transform: rotate(var(--mark-angle)) translateY(0);
+      transform-origin: center 35px;
+    }
+
+    .clock-readout {
+      min-width: 72px;
+      padding: 2px 6px;
+      border: 3px solid #2b241d;
+      background: rgba(255, 249, 221, 0.94);
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 2px 2px 0 rgba(36, 49, 58, 0.26);
+    }
+
+    .debug-toggle {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      z-index: 950;
+      height: 34px;
+      min-width: 84px;
+      padding: 0 10px;
+      background: #7bdff2;
+      font-size: 13px;
+    }
+
+    .debug-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 820;
+      display: none;
+      pointer-events: none;
+    }
+
+    body.debug-mode .debug-layer {
+      display: block;
+      pointer-events: auto;
+    }
+
+    .activity-shape {
+      position: absolute;
+      border: 2px dashed rgba(33, 80, 67, 0.92);
+      background: rgba(123, 223, 194, 0.24);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.2);
+      z-index: 1;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .activity-shape:hover {
+      background: rgba(245, 203, 92, 0.28);
+    }
+
+    .activity-shape.selected {
+      border-color: #ff595e;
+      background: rgba(255, 89, 94, 0.22);
+      box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.45), 0 0 0 2px rgba(36, 49, 58, 0.28);
+    }
+
+    .debug-road-svg {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .debug-road {
+      fill: none;
+      stroke: rgba(44, 74, 120, 0.42);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      cursor: pointer;
+      pointer-events: stroke;
+    }
+
+    .debug-road:hover {
+      stroke: rgba(245, 203, 92, 0.72);
+    }
+
+    .debug-road.selected {
+      stroke: rgba(255, 89, 94, 0.82);
+    }
+
+    .activity-label,
+    .road-label,
+    .vertex-label {
+      position: absolute;
+      padding: 2px 4px;
+      border: 2px solid rgba(36, 49, 58, 0.88);
+      background: rgba(255, 253, 246, 0.9);
+      font-family: "Courier New", "Microsoft YaHei", monospace;
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 900;
+      white-space: nowrap;
+      color: #24313a;
+      box-shadow: 2px 2px 0 rgba(36, 49, 58, 0.18);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .vertex-label {
+      transform: translate(4px, -100%);
+      background: rgba(255, 244, 184, 0.94);
+    }
+
+    .vertex-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      margin: -3px 0 0 -3px;
+      border: 2px solid #24313a;
+      background: #ff595e;
+      z-index: 5;
+    }
+
+    .debug-handle {
+      cursor: grab;
+      pointer-events: auto;
+      touch-action: none;
+    }
+
+    .debug-handle:hover,
+    .debug-handle.dragging {
+      background: #7bdff2;
+      transform: scale(1.45);
+    }
+
+    .radius-handle {
+      background: #f5cb5c;
+    }
+
+    .road-handle {
+      background: #7bdff2;
+    }
+
+    .landmark {
+      position: absolute;
+      min-width: 54px;
+      height: 24px;
+      padding: 0 6px;
+      transform: translate(-50%, -50%);
+      border: 2px solid rgba(36, 49, 58, 0.75);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.15;
+      font-weight: 900;
+      background: rgba(255, 253, 246, 0.72);
+      box-shadow: 2px 2px 0 rgba(38, 50, 56, 0.16);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .landmark.home { background: #ffd7ba; }
+    .landmark.food { background: #cdb4db; }
+    .landmark.work { background: #bde0fe; }
+    .landmark.study { background: #fdffb6; }
+    .landmark.park { background: #95d5b2; }
+    .landmark.art { background: #ffc8dd; }
+    .landmark.public { background: #f1e0a6; }
+
+    .character {
+      position: absolute;
+      width: calc(15px * var(--char-scale, 1));
+      height: calc(21px * var(--char-scale, 1));
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -100%);
+      will-change: left, top;
+      filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+    }
+
+    .sprite {
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--ink);
+      border-radius: 50% 50% 44% 44%;
+      background: var(--char-color);
+      transform: scaleX(var(--facing, 1));
+      transform-origin: center bottom;
+    }
+
+    .sprite::before {
+      content: "";
+      position: absolute;
+      left: calc(2px * var(--char-scale, 1));
+      top: calc(-11px * var(--char-scale, 1));
+      width: calc(4px * var(--char-scale, 1));
+      height: calc(12px * var(--char-scale, 1));
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background:
+        linear-gradient(var(--char-color), var(--char-color)) padding-box;
+      box-shadow:
+        calc(7px * var(--char-scale, 1)) 0 0 -2px var(--char-color),
+        calc(7px * var(--char-scale, 1)) 0 0 0 var(--ink);
+    }
+
+    .sprite::after {
+      content: "";
+      position: absolute;
+      left: calc(3px * var(--char-scale, 1));
+      top: calc(7px * var(--char-scale, 1));
+      width: calc(9px * var(--char-scale, 1));
+      height: calc(6px * var(--char-scale, 1));
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 2px 2px, var(--ink) 0 1px, transparent 2px),
+        radial-gradient(circle at 7px 2px, var(--ink) 0 1px, transparent 2px),
+        radial-gradient(circle at 5px 4px, #fff8f0 0 2px, transparent 3px);
+    }
+
+    .nameplate {
+      position: absolute;
+      left: calc(12px * var(--char-scale, 1));
+      top: calc(-28px * var(--char-scale, 1));
+      transform: none;
+      padding: 1px 4px;
+      border: 2px solid var(--ink);
+      background: rgba(255,255,255,0.92);
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+    }
+
+    .nameplate.show {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .nameplate.moving {
+      opacity: 1;
+    }
+
+    .bubble {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 230px;
+      padding: 8px 10px;
+      border: 3px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 800;
+      box-shadow: 4px 4px 0 rgba(38, 50, 56, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+
+    .bubble.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+
+    .bubble::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -11px;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-right: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .status-board {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+    }
+
+    .status-card {
+      min-height: 74px;
+      border: 3px solid var(--ink);
+      background: #ffffff;
+      padding: 8px;
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 6px 8px;
+      align-items: start;
+    }
+
+    .status-dot {
+      width: 18px;
+      height: 18px;
+      border: 3px solid var(--ink);
+      background: var(--char-color);
+      margin-top: 2px;
+    }
+
+    .status-name {
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .status-text {
+      grid-column: 2;
+      color: #40505a;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .log-panel {
+      height: 190px;
+      padding: 10px 12px;
+      overflow-y: auto;
+      font-family: "Courier New", "Microsoft YaHei", monospace;
+      font-size: 13px;
+      line-height: 1.55;
+      background: #1e272e;
+      color: #e8f6ef;
+    }
+
+    .log-line { margin: 0 0 4px; }
+    .log-time { color: #7bdff2; font-weight: 900; }
+    .log-name { color: #ffd166; font-weight: 900; }
+    .log-meta { color: #b8d8c7; }
+
+    .notice {
+      padding: 14px;
+      font-weight: 800;
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 6px; }
+      .app { gap: 6px; }
+      .topbar {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 6px;
+      }
+      .speed-buttons { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      button {
+        min-width: 0;
+        height: 34px;
+        font-size: 12px;
+      }
+      .tick-readout { text-align: left; }
+      .status-board {
+        grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+        padding: 8px;
+        gap: 6px;
+      }
+      .status-card {
+        min-height: 68px;
+        padding: 7px;
+      }
+      .log-panel {
+        height: 150px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 4px; }
+      .retro-clock {
+        transform: scale(0.78);
+        transform-origin: left top;
+      }
+      .debug-toggle {
+        right: 10px;
+        bottom: 10px;
+        min-width: 76px;
+        height: 30px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="topbar" aria-label="播放控制">
+      <div class="time-box" id="timeDisplay">00:00</div>
+      <div class="speed-buttons">
+        <button data-speed="1">1x</button>
+        <button data-speed="10">10x</button>
+        <button data-speed="100" class="active">100x</button>
+        <button class="pause" id="pauseBtn">暂停</button>
+      </div>
+      <label class="progress-wrap">
+        <span class="progress-meta">
+          <span id="progressLabel">剧情进度 00:00 - 24:00</span>
+          <span id="rangeTime">00:00</span>
+        </span>
+        <input id="tickRange" type="range" min="0" max="8640" value="0" step="1" />
+      </label>
+      <div class="tick-readout" id="tickReadout">Tick 0<small>0 / 8640</small></div>
+    </section>
+
+    <section class="stage-frame" aria-label="游戏舞台外框">
+      <div id="stage" aria-label="AI剧剧场地图">
+        <div class="retro-clock" aria-label="地图时间">
+          <div class="clock-face" id="clockFace">
+            <span class="clock-mark" style="--mark-angle: 0deg"></span>
+            <span class="clock-mark" style="--mark-angle: 30deg"></span>
+            <span class="clock-mark" style="--mark-angle: 60deg"></span>
+            <span class="clock-mark" style="--mark-angle: 90deg"></span>
+            <span class="clock-mark" style="--mark-angle: 120deg"></span>
+            <span class="clock-mark" style="--mark-angle: 150deg"></span>
+            <span class="clock-mark" style="--mark-angle: 180deg"></span>
+            <span class="clock-mark" style="--mark-angle: 210deg"></span>
+            <span class="clock-mark" style="--mark-angle: 240deg"></span>
+            <span class="clock-mark" style="--mark-angle: 270deg"></span>
+            <span class="clock-mark" style="--mark-angle: 300deg"></span>
+            <span class="clock-mark" style="--mark-angle: 330deg"></span>
+          </div>
+          <div class="clock-readout" id="clockReadout">00:00</div>
+        </div>
+        <div class="debug-layer" id="debugLayer" aria-hidden="true"></div>
+        <button class="debug-toggle" id="debugToggle" type="button">调试模式</button>
+      </div>
+    </section>
+
+    <section class="status-board" id="statusBoard" aria-label="人物状态"></section>
+    <section class="log-panel" id="logPanel" aria-label="剧情日志"></section>
+    <section class="notice" id="notice"></section>
+  </main>
+
+  <script>
+    /*
+      这个文件只负责播放和渲染；24小时剧本数据放在 data.json。
+      你可以替换 data.json，只要保留 config / characters / timeline 这些字段即可。
+    */
+    const DATA_URL = "data.json";
+    const rabbitIdMap = {
+      zhangsan: "rabbit_1",
+      lisi: "rabbit_2",
+      wangwu: "rabbit_3",
+      zhaoliu: "rabbit_4",
+      chenqi: "rabbit_5",
+      sunba: "rabbit_6"
+    };
+    const legacyRegionAliases = {
+      home_zhang: "tree_house",
+      home_li: "tree_house",
+      apartment_wang: "tree_house",
+      dorm_chen: "tree_house",
+      cafe: "mushroom_cafe",
+      office: "gear_workshop",
+      library: "acorn_library",
+      park: "botanical_garden",
+      studio: "observatory",
+      plaza: "carrot_square"
+    };
+    const rabbitProfiles = {
+      rabbit_1: { name: "小悠米", color: "#ff8fab", scale: 0.8, init_region: "tree_house", mood: "困倦", status: "睡觉中" },
+      rabbit_2: { name: "乔治", color: "#7bdff2", scale: 1, init_region: "tree_house", mood: "平静", status: "睡觉中" },
+      rabbit_3: { name: "小泽", color: "#f9c74f", scale: 1, init_region: "tree_house", mood: "期待", status: "睡觉中" },
+      rabbit_4: { name: "晓雪", color: "#95d5b2", scale: 1, init_region: "tree_house", mood: "专注", status: "整理树叶笔记" },
+      rabbit_5: { name: "杰拉德", color: "#cdb4db", scale: 0.8, init_region: "tree_house", mood: "迷糊", status: "睡觉中" },
+      rabbit_6: { name: "劳伦斯", color: "#f4a261", scale: 1.2, init_region: "tree_house", mood: "松弛", status: "调试小铃铛" },
+      rabbit_7: { name: "Lino", color: "#9ca3af", scale: 1, init_region: "tree_house", mood: "安静", status: "睡觉中" }
+    };
+
+    const mapConfig = {
+      size: { width: 800, height: 600 },
+      locations: {
+        carrot_square: {
+          name: "胡萝卜广场",
+          center: [390, 300],
+          activityArea: { type: "circle", center: [404, 278], radius: 48 },
+          pois: [
+            { id: "fountain", name: "喷泉旁", pos: [390, 300] },
+            { id: "notice_board", name: "公告栏", pos: [345, 285] },
+            { id: "bench", name: "长椅", pos: [420, 335] }
+          ]
+        },
+        tree_house: {
+          name: "巨树树屋区",
+          center: [230, 170],
+          activityArea: { type: "polygon", points: [[128, 71], [289, 94], [276, 170], [107, 185]] },
+          pois: [
+            { id: "house_rabbit_1", name: "小悠米的树屋", pos: [170, 140] },
+            { id: "house_rabbit_2", name: "乔治的树屋", pos: [215, 115] },
+            { id: "house_rabbit_3", name: "小泽的树屋", pos: [270, 140] },
+            { id: "house_rabbit_4", name: "晓雪的树屋", pos: [170, 210] },
+            { id: "house_rabbit_5", name: "杰拉德的树屋", pos: [240, 220] },
+            { id: "house_rabbit_6", name: "劳伦斯的树屋", pos: [305, 180] },
+            { id: "house_rabbit_7", name: "Lino的树屋", pos: [300, 110] }
+          ]
+        },
+        mushroom_cafe: {
+          name: "蘑菇咖啡馆",
+          center: [230, 275],
+          activityArea: { type: "circle", center: [214, 283], radius: 29 },
+          pois: [
+            { id: "counter", name: "吧台", pos: [220, 260] },
+            { id: "table", name: "圆桌", pos: [245, 290] }
+          ]
+        },
+        timothy_farm: {
+          name: "提摩西农场",
+          center: [180, 400],
+          activityArea: { type: "polygon", points: [[71, 399], [191, 351], [285, 417], [186, 467]] },
+          pois: [
+            { id: "field", name: "草田", pos: [170, 390] },
+            { id: "greenhouse", name: "温室", pos: [230, 420] }
+          ]
+        },
+        gear_workshop: {
+          name: "齿轮工坊",
+          center: [350, 415],
+          activityArea: { type: "circle", center: [379, 389], radius: 40 },
+          pois: [
+            { id: "workbench", name: "工作台", pos: [350, 410] },
+            { id: "tool_wall", name: "工具墙", pos: [375, 430] }
+          ]
+        },
+        acorn_library: {
+          name: "橡果图书馆",
+          center: [500, 440],
+          activityArea: { type: "circle", center: [476, 436], radius: 36 },
+          pois: [
+            { id: "reading_desk", name: "阅读桌", pos: [490, 435] },
+            { id: "archive", name: "档案柜", pos: [520, 455] }
+          ]
+        },
+        botanical_garden: {
+          name: "植物园",
+          center: [560, 330],
+          activityArea: { type: "polygon", points: [[436, 341], [554, 240], [654, 317], [550, 396]] },
+          pois: [
+            { id: "green_path", name: "花园小路", pos: [560, 330] },
+            { id: "greenhouse", name: "玻璃温室", pos: [610, 350] }
+          ]
+        },
+        rainbow_lake: {
+          name: "彩虹湖",
+          center: [690, 300],
+          activityArea: { type: "polygon", points: [[631, 226], [768, 249], [764, 336], [636, 318], [601, 275]] },
+          pois: [
+            { id: "dock", name: "木码头", pos: [660, 310] },
+            { id: "lake_bench", name: "湖边长椅", pos: [710, 340] }
+          ]
+        },
+        carrot_maze: {
+          name: "地下胡萝卜迷宫",
+          center: [700, 430],
+          activityArea: { type: "circle", center: [648, 427], radius: 45 },
+          pois: [
+            { id: "entrance", name: "迷宫入口", pos: [685, 415] },
+            { id: "stone_door", name: "石门", pos: [720, 440] }
+          ]
+        },
+        rabbit_mountain: {
+          name: "兔耳山",
+          center: [520, 180],
+          activityArea: { type: "polygon", points: [[431, 94], [561, 170], [523, 239], [461, 231], [493, 182]] },
+          pois: [
+            { id: "trail", name: "登山步道", pos: [520, 190] },
+            { id: "camp", name: "山腰营地", pos: [550, 220] }
+          ]
+        },
+        weather_station: {
+          name: "云朵气象站",
+          center: [505, 75],
+          activityArea: { type: "circle", center: [433, 63], radius: 28 },
+          pois: [
+            { id: "wind_tower", name: "测风塔", pos: [505, 70] }
+          ]
+        },
+        observatory: {
+          name: "星光天文台",
+          center: [650, 70],
+          activityArea: { type: "circle", center: [608, 60], radius: 32 },
+          pois: [
+            { id: "telescope", name: "望远镜", pos: [650, 70] }
+          ]
+        },
+        shell_bay: {
+          name: "贝壳海湾",
+          center: [400, 555],
+          activityArea: { type: "polygon", points: [[342, 457], [532, 487], [645, 550], [238, 541]] },
+          pois: [
+            { id: "beach", name: "沙滩", pos: [360, 550] },
+            { id: "lighthouse", name: "灯塔", pos: [610, 525] },
+            { id: "shell_spot", name: "贝壳堆", pos: [450, 565] }
+          ]
+        },
+        lighthouse: {
+          name: "灯塔",
+          center: [78, 535],
+          activityArea: { type: "polygon", points: [[122, 457], [145, 460], [160, 534], [116, 537]] },
+          pois: [
+            { id: "lighthouse_door", name: "灯塔门口", pos: [72, 545] },
+            { id: "lamp_room", name: "灯室", pos: [95, 515] }
+          ]
+        },
+        chanson_hall: {
+          name: "香颂音乐厅",
+          center: [365, 494],
+          activityArea: { type: "circle", center: [365, 494], radius: 34 },
+          pois: [
+            { id: "stage", name: "小舞台", pos: [310, 505] },
+            { id: "entrance", name: "音乐厅入口", pos: [292, 518] },
+            { id: "piano", name: "钢琴旁", pos: [326, 494] }
+          ]
+        }
+      },
+      roads: [
+        { id: "tree_to_square", points: [[239, 196], [320, 253], [332, 291], [386, 314]], width: 12 },
+        { id: "square_to_cafe", points: [[390, 300], [296, 333], [217, 286]], width: 12 },
+        { id: "square_to_farm", points: [[390, 300], [284, 339], [281, 367], [220, 404]], width: 12 },
+        { id: "farm_to_workshop", points: [[208, 438], [264, 503], [339, 530], [452, 487], [384, 409]], width: 12 },
+        { id: "workshop_to_library", points: [[379, 395], [398, 431], [448, 435]], width: 12 },
+        { id: "library_to_garden", points: [[473, 454], [543, 411], [654, 341]], width: 12 },
+        { id: "garden_to_lake", points: [[543, 325], [471, 368], [536, 404], [675, 306]], width: 12 },
+        { id: "lake_to_maze", points: [[699, 315], [504, 477], [552, 512], [638, 451]], width: 12 },
+        { id: "square_to_mountain", points: [[406, 301], [430, 320], [488, 272], [516, 203]], width: 12 },
+        { id: "mountain_to_weather", points: [[513, 178], [476, 136], [422, 71]], width: 12 },
+        { id: "mountain_to_observatory", points: [[503, 158], [412, 67], [597, 72]], width: 12 },
+        { id: "square_to_beach", points: [[406, 312], [442, 375], [402, 418], [443, 483]], width: 12 },
+        { id: "beach_to_lighthouse", points: [[337, 523], [206, 487], [145, 524]], width: 12 },
+        { id: "beach_to_chanson", points: [[503, 507], [438, 481], [366, 518]], width: 12 }
+      ],
+      blockedAreas: [
+        { id: "deep_sea", type: "polygon", points: [[0, 560], [88, 588], [690, 585], [800, 600], [0, 600]] },
+        { id: "lake_center", type: "circle", center: [715, 300], radius: 34 },
+        { id: "steep_mountain", type: "polygon", points: [[575, 120], [630, 120], [635, 240], [604, 230]] },
+        { id: "blank_edge_top", type: "polygon", points: [[0, 0], [800, 0], [800, 24], [0, 24]] },
+        { id: "blank_edge_left", type: "polygon", points: [[0, 0], [24, 0], [24, 600], [0, 600]] },
+        { id: "blank_edge_right", type: "polygon", points: [[776, 0], [800, 0], [800, 600], [776, 600]] }
+      ],
+      rabbitHomes: {
+        rabbit_1: [170, 140],
+        rabbit_2: [215, 115],
+        rabbit_3: [270, 140],
+        rabbit_4: [170, 210],
+        rabbit_5: [240, 220],
+        rabbit_6: [305, 180],
+        rabbit_7: [300, 110]
+      }
+    };
+    window.mapConfig = mapConfig;
+
+    const stage = document.querySelector("#stage");
+    const timeDisplay = document.querySelector("#timeDisplay");
+    const clockFace = document.querySelector("#clockFace");
+    const clockReadout = document.querySelector("#clockReadout");
+    const debugToggle = document.querySelector("#debugToggle");
+    const debugLayer = document.querySelector("#debugLayer");
+    const tickReadout = document.querySelector("#tickReadout");
+    const tickRange = document.querySelector("#tickRange");
+    const rangeTime = document.querySelector("#rangeTime");
+    const progressLabel = document.querySelector("#progressLabel");
+    const logPanel = document.querySelector("#logPanel");
+    const statusBoard = document.querySelector("#statusBoard");
+    const pauseBtn = document.querySelector("#pauseBtn");
+    const notice = document.querySelector("#notice");
+    const speedButtons = [...document.querySelectorAll("[data-speed]")];
+
+    let storyData = null;
+    let regions = {};
+    let characters = {};
+    let maxTick = 8640;
+    let tickSeconds = 10;
+    let currentTick = 0;
+    let timeScale = 100;
+    let isPaused = false;
+    let tickTimer = null;
+    let activeBubbleTimers = [];
+    let eventCursor = 0;
+    let lastTimePeriod = "";
+    let stageResizeObserver = null;
+    let debugMode = false;
+    let debugDragState = null;
+    let selectedDebugObject = null;
+
+    const characterEls = {};
+    const statusEls = {};
+    const characterRuntime = {};
+    const activeMoveAnimations = {};
+    const moveRouteCache = new Map();
+    const activityState = {};
+    const statusTagTimers = {};
+
+    const navigation = (() => {
+      const keyOf = point => `${Math.round(point.x)},${Math.round(point.y)}`;
+      const toPoint = value => Array.isArray(value) ? { x: value[0], y: value[1] } : { x: value.x, y: value.y };
+      let roadGraph = buildRoadGraph();
+
+      function buildRoadGraph() {
+        const nodes = new Map();
+        const edges = new Map();
+
+        function ensureNode(point) {
+          const key = keyOf(point);
+          if (!nodes.has(key)) {
+            nodes.set(key, point);
+            edges.set(key, []);
+          }
+          return key;
+        }
+
+      function connect(a, b) {
+        const aKey = ensureNode(a);
+        const bKey = ensureNode(b);
+        if (aKey === bKey) return;
+        const weight = distance(a, b);
+        edges.get(aKey).push({ key: bKey, weight });
+        edges.get(bKey).push({ key: aKey, weight });
+      }
+
+      function connectNearbyRoadNodes(nodes, edges) {
+        const maxGap = 76;
+        const entries = [...nodes.entries()];
+
+        for (let aIndex = 0; aIndex < entries.length; aIndex += 1) {
+          for (let bIndex = aIndex + 1; bIndex < entries.length; bIndex += 1) {
+            const [aKey, a] = entries[aIndex];
+            const [bKey, b] = entries[bIndex];
+            const gap = distance(a, b);
+            if (gap > 0 && gap <= maxGap) {
+              edges.get(aKey).push({ key: bKey, weight: gap });
+              edges.get(bKey).push({ key: aKey, weight: gap });
+            }
+          }
+        }
+      }
+
+      mapConfig.roads.forEach(road => {
+        road.points.map(toPoint).forEach((point, index, roadPoints) => {
+          ensureNode(point);
+          if (index > 0) connect(roadPoints[index - 1], point);
+        });
+      });
+
+      connectNearbyRoadNodes(nodes, edges);
+
+      return { nodes, edges };
+    }
+
+      function distance(a, b) {
+        return Math.hypot(a.x - b.x, a.y - b.y);
+      }
+
+      function projectPointToSegment(point, a, b) {
+        const abx = b.x - a.x;
+        const aby = b.y - a.y;
+        const lengthSq = abx * abx + aby * aby || 1;
+        const t = Math.max(0, Math.min(1, ((point.x - a.x) * abx + (point.y - a.y) * aby) / lengthSq));
+        return {
+          point: { x: a.x + abx * t, y: a.y + aby * t },
+          t,
+          distance: distance(point, { x: a.x + abx * t, y: a.y + aby * t }),
+          a,
+          b
+        };
+      }
+
+      function nearestRoadPoint(point) {
+        const source = toPoint(point);
+        let best = null;
+
+        mapConfig.roads.forEach(road => {
+          const points = road.points.map(toPoint);
+          for (let index = 1; index < points.length; index += 1) {
+            const projection = projectPointToSegment(source, points[index - 1], points[index]);
+            const score = projection.distance - road.width / 2;
+            if (!best || score < best.score) {
+              best = { ...projection, road, score };
+            }
+          }
+        });
+
+        return best;
+      }
+
+      function withTemporaryRoadNode(graph, label, projected) {
+        const tempKey = label;
+        graph.nodes.set(tempKey, projected.point);
+        graph.edges.set(tempKey, []);
+
+        [projected.a, projected.b].forEach(endpoint => {
+          const endpointKey = keyOf(endpoint);
+          const weight = distance(projected.point, endpoint);
+          graph.edges.get(tempKey).push({ key: endpointKey, weight });
+          graph.edges.get(endpointKey).push({ key: tempKey, weight });
+        });
+
+        return tempKey;
+      }
+
+      function shortestPath(startPoint, endPoint) {
+        roadGraph = buildRoadGraph();
+        const graph = {
+          nodes: new Map(roadGraph.nodes),
+          edges: new Map([...roadGraph.edges.entries()].map(([key, value]) => [key, [...value]]))
+        };
+        const startRoad = nearestRoadPoint(startPoint);
+        const endRoad = nearestRoadPoint(endPoint);
+        const startKey = withTemporaryRoadNode(graph, "__start__", startRoad);
+        const endKey = withTemporaryRoadNode(graph, "__end__", endRoad);
+        const distances = new Map();
+        const previous = new Map();
+        const pending = new Set(graph.nodes.keys());
+
+        graph.nodes.forEach((_, key) => distances.set(key, Infinity));
+        distances.set(startKey, 0);
+
+        while (pending.size) {
+          let current = null;
+          pending.forEach(key => {
+            if (current === null || distances.get(key) < distances.get(current)) current = key;
+          });
+          if (current === null || current === endKey || distances.get(current) === Infinity) break;
+          pending.delete(current);
+
+          graph.edges.get(current).forEach(edge => {
+            if (!pending.has(edge.key)) return;
+            const candidate = distances.get(current) + edge.weight;
+            if (candidate < distances.get(edge.key)) {
+              distances.set(edge.key, candidate);
+              previous.set(edge.key, current);
+            }
+          });
+        }
+
+        const keys = [];
+        let cursor = endKey;
+        while (cursor) {
+          keys.unshift(cursor);
+          cursor = previous.get(cursor);
+        }
+
+        return keys.map(key => graph.nodes.get(key));
+      }
+
+      function pointInArea(point, area) {
+        const target = toPoint(point);
+        if (area.type === "circle") {
+          return distance(target, toPoint(area.center)) <= area.radius;
+        }
+
+        let inside = false;
+        const points = area.points.map(toPoint);
+        for (let index = 0, prev = points.length - 1; index < points.length; prev = index++) {
+          const a = points[index];
+          const b = points[prev];
+          const intersects = ((a.y > target.y) !== (b.y > target.y)) &&
+            (target.x < (b.x - a.x) * (target.y - a.y) / (b.y - a.y || 1) + a.x);
+          if (intersects) inside = !inside;
+        }
+        return inside;
+      }
+
+      function isOnRoad(point) {
+        const target = toPoint(point);
+        return mapConfig.roads.some(road => {
+          const points = road.points.map(toPoint);
+          for (let index = 1; index < points.length; index += 1) {
+            if (projectPointToSegment(target, points[index - 1], points[index]).distance <= road.width / 2) {
+              return true;
+            }
+          }
+          return false;
+        });
+      }
+
+      function isBlocked(point) {
+        return mapConfig.blockedAreas.some(area => pointInArea(point, area));
+      }
+
+      function isInAnyActivityArea(point) {
+        return Object.values(mapConfig.locations).some(location => pointInArea(point, location.activityArea));
+      }
+
+      function isWalkable(point) {
+        const target = toPoint(point);
+        const withinMap = target.x >= 0 && target.x <= mapConfig.size.width && target.y >= 0 && target.y <= mapConfig.size.height;
+        return withinMap && !isBlocked(target) && (isOnRoad(target) || isInAnyActivityArea(target));
+      }
+
+      function closestLocationId(point) {
+        let best = null;
+        Object.entries(mapConfig.locations).forEach(([locationId, location]) => {
+          const score = distance(toPoint(point), toPoint(location.center));
+          if (!best || score < best.score) best = { locationId, score };
+        });
+        return best?.locationId || "carrot_square";
+      }
+
+      function routeToPoi(currentPoint, targetLocationId, targetPoi) {
+        const target = toPoint(targetPoi.pos);
+        const roadPath = shortestPath(currentPoint, target);
+        return simplifyPath([toPoint(currentPoint), ...roadPath, target]).filter(isWalkable);
+      }
+
+      function simplifyPath(points) {
+        return points.filter((point, index) => {
+          if (index === 0) return true;
+          return distance(point, points[index - 1]) > 0.5;
+        });
+      }
+
+      function pointAlongPath(points, progress) {
+        if (!points.length) return { x: 0, y: 0 };
+        if (points.length === 1) return points[0];
+        const total = pathLength(points);
+        let remaining = total * Math.max(0, Math.min(1, progress));
+
+        for (let index = 1; index < points.length; index += 1) {
+          const a = points[index - 1];
+          const b = points[index];
+          const segmentLength = distance(a, b);
+          if (remaining <= segmentLength) {
+            const t = segmentLength ? remaining / segmentLength : 0;
+            return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+          }
+          remaining -= segmentLength;
+        }
+
+        return points[points.length - 1];
+      }
+
+      function pathLength(points) {
+        return points.reduce((sum, point, index) => {
+          if (index === 0) return 0;
+          return sum + distance(points[index - 1], point);
+        }, 0);
+      }
+
+      return {
+        closestLocationId,
+        distance,
+        isWalkable,
+        nearestRoadPoint,
+        pointAlongPath,
+        pointInArea,
+        routeToPoi
+      };
+    })();
+
+    const activitySystem = {
+      choosePoi(locationId, charId = "") {
+        const location = mapConfig.locations[locationId] || mapConfig.locations.carrot_square;
+        if (locationId === "tree_house") {
+          const home = location.pois.find(poi => poi.id === `house_${charId}`);
+          if (home) return home;
+        }
+        return location.pois[Math.floor(Math.random() * location.pois.length)] || {
+          id: "center",
+          name: location.name,
+          pos: location.center
+        };
+      },
+
+      randomPointInActivityArea(locationId, origin = null, radius = 26) {
+        const location = mapConfig.locations[locationId] || mapConfig.locations.carrot_square;
+        for (let attempt = 0; attempt < 30; attempt += 1) {
+          const base = origin || { x: location.center[0], y: location.center[1] };
+          const angle = Math.random() * Math.PI * 2;
+          const spread = Math.random() * radius;
+          const point = { x: base.x + Math.cos(angle) * spread, y: base.y + Math.sin(angle) * spread };
+          if (navigation.pointInArea(point, location.activityArea) && navigation.isWalkable(point)) {
+            return point;
+          }
+        }
+        return activitySystem.choosePoi(locationId).pos;
+      },
+
+      chooseActivityTarget(locationId, charId, origin) {
+        if (Math.random() < 0.7) {
+          return toPoint(activitySystem.choosePoi(locationId, charId).pos);
+        }
+        return toPoint(activitySystem.randomPointInActivityArea(locationId, origin));
+      }
+    };
+
+    const eventDrivenAI = {
+      triggers: [
+        "wake_up",
+        "arrive_location",
+        "complete_behavior",
+        "meet_rabbit",
+        "location_event",
+        "time_period_change",
+        "sleep_time"
+      ],
+
+      decide(trigger, context = {}) {
+        if (!this.triggers.includes(trigger)) return null;
+        return { trigger, at: currentTick, ...context };
+      }
+    };
+
+    function toPoint(value) {
+      return Array.isArray(value) ? { x: value[0], y: value[1] } : { x: value.x, y: value.y };
+    }
+
+    async function loadStoryData() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        return await response.json();
+      } catch (error) {
+        /*
+          浏览器直接双击打开 file:// 时，很多浏览器会禁止 fetch 本地 JSON。
+          因为本需求明确要求“存储、读取都放在 data.json”，这里不再内置备用数据，
+          而是给出清晰提示：用任意本地静态服务器打开即可读取 data.json。
+        */
+        showNotice("读取 data.json 失败。请用本地静态服务器打开页面，例如在当前目录运行：python3 -m http.server 4173，然后访问 http://127.0.0.1:4173/index.html");
+        throw error;
+      }
+    }
+
+    function showNotice(message) {
+      notice.style.display = "block";
+      notice.textContent = message;
+    }
+
+    function formatTickTime(tick, withSeconds = false) {
+      /*
+        全天 8640 Tick，每 Tick = 10 秒。
+        8640 * 10 = 86400 秒，正好映射到 24 小时。
+        进度条和主时间显示按 HH:MM 呈现；日志里可选择显示 HH:MM:SS。
+      */
+      if (tick >= maxTick) {
+        return withSeconds ? "24:00:00" : "24:00";
+      }
+      const totalSeconds = Math.min(tick, maxTick) * tickSeconds;
+      const hours = Math.floor(totalSeconds / 3600) % 24;
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      const base = [hours, minutes].map(value => String(value).padStart(2, "0")).join(":");
+      return withSeconds ? `${base}:${String(seconds).padStart(2, "0")}` : base;
+    }
+
+    function updateHud() {
+      const timeText = formatTickTime(currentTick);
+      timeDisplay.textContent = timeText;
+      rangeTime.textContent = timeText;
+      tickReadout.innerHTML = `Tick ${currentTick}<small>${currentTick} / ${maxTick}</small>`;
+      tickRange.value = String(currentTick);
+      updateClock();
+    }
+
+    function updateClock() {
+      const dayProgress = Math.min(currentTick, maxTick) / Math.max(1, maxTick);
+      const secondsInDay = Math.min(currentTick, maxTick) * tickSeconds;
+      const hour = Math.floor(secondsInDay / 3600) % 24;
+      const minute = Math.floor((secondsInDay % 3600) / 60);
+      const minuteAngle = minute * 6;
+      const hourAngle = dayProgress * 360;
+
+      clockFace.style.setProperty("--hour-angle", `${hourAngle}deg`);
+      clockFace.style.setProperty("--minute-angle", `${minuteAngle}deg`);
+      clockReadout.textContent = currentTick >= maxTick
+        ? "24:00"
+        : `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+    }
+
+    function updateStageScale() {
+      const frame = stage.parentElement;
+      const availableWidth = Math.max(280, frame.clientWidth);
+      const scale = availableWidth / mapConfig.size.width;
+      document.documentElement.style.setProperty("--stage-scale", String(scale));
+    }
+
+    function areaBounds(area) {
+      if (area.type === "circle") {
+        const center = toPoint(area.center);
+        return {
+          left: center.x - area.radius,
+          top: center.y - area.radius,
+          width: area.radius * 2,
+          height: area.radius * 2
+        };
+      }
+
+      const points = area.points.map(toPoint);
+      const xs = points.map(point => point.x);
+      const ys = points.map(point => point.y);
+      const left = Math.min(...xs);
+      const top = Math.min(...ys);
+      return {
+        left,
+        top,
+        width: Math.max(...xs) - left,
+        height: Math.max(...ys) - top
+      };
+    }
+
+    function formatPoint(point) {
+      return `[${Math.round(point.x)},${Math.round(point.y)}]`;
+    }
+
+    function createDebugLabel(text, point, className = "vertex-label") {
+      const label = document.createElement("div");
+      label.className = className;
+      label.textContent = text;
+      label.style.left = `${point.x}px`;
+      label.style.top = `${point.y}px`;
+      debugLayer.appendChild(label);
+      return label;
+    }
+
+    function createDebugDot(point, options = {}) {
+      const dot = document.createElement("span");
+      dot.className = `vertex-dot ${options.className || ""}`.trim();
+      dot.style.left = `${point.x}px`;
+      dot.style.top = `${point.y}px`;
+      if (options.debugType) dot.dataset.debugType = options.debugType;
+      if (options.locationId) dot.dataset.location = options.locationId;
+      if (options.roadId) dot.dataset.road = options.roadId;
+      if (options.handleType) dot.dataset.handle = options.handleType;
+      if (Number.isInteger(options.index)) dot.dataset.index = String(options.index);
+      dot.title = options.title || "";
+      debugLayer.appendChild(dot);
+      return dot;
+    }
+
+    function stagePointFromEvent(event) {
+      const rect = stage.getBoundingClientRect();
+      const scale = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stage-scale")) || 1;
+      return {
+        x: Math.max(0, Math.min(mapConfig.size.width, (event.clientX - rect.left) / scale)),
+        y: Math.max(0, Math.min(mapConfig.size.height, (event.clientY - rect.top) / scale))
+      };
+    }
+
+    function roundedStagePointFromEvent(event) {
+      const point = stagePointFromEvent(event);
+      return [Math.round(point.x), Math.round(point.y)];
+    }
+
+    function projectDebugPointToSegment(point, a, b) {
+      const abx = b.x - a.x;
+      const aby = b.y - a.y;
+      const lengthSq = abx * abx + aby * aby || 1;
+      const t = Math.max(0, Math.min(1, ((point.x - a.x) * abx + (point.y - a.y) * aby) / lengthSq));
+      const projected = { x: a.x + abx * t, y: a.y + aby * t };
+      return {
+        projected,
+        distance: navigation.distance(point, projected)
+      };
+    }
+
+    function nearestDebugSegment(points, point, closed = false) {
+      const normalizedPoints = points.map(toPoint);
+      let best = null;
+      const segmentCount = closed ? normalizedPoints.length : normalizedPoints.length - 1;
+
+      for (let index = 0; index < segmentCount; index += 1) {
+        const a = normalizedPoints[index];
+        const b = normalizedPoints[(index + 1) % normalizedPoints.length];
+        const projection = projectDebugPointToSegment(point, a, b);
+        if (!best || projection.distance < best.distance) {
+          best = {
+            ...projection,
+            insertIndex: index === normalizedPoints.length - 1 ? normalizedPoints.length : index + 1
+          };
+        }
+      }
+
+      return best;
+    }
+
+    function confirmDebugEdit(message) {
+      return window.confirm(message);
+    }
+
+    function insertDebugPointIntoRoad(roadId, event) {
+      const road = mapConfig.roads.find(item => item.id === roadId);
+      if (!road || road.points.length < 2) return;
+      const point = stagePointFromEvent(event);
+      const segment = nearestDebugSegment(road.points, point);
+      if (!segment) return;
+      const newPoint = roundedStagePointFromEvent(event);
+      if (!confirmDebugEdit(`在道路 ${road.id} 中新增坐标点 [${newPoint[0]},${newPoint[1]}] 吗？`)) return;
+      road.points.splice(segment.insertIndex, 0, newPoint);
+      moveRouteCache.clear();
+      createActivityDebugOverlay();
+    }
+
+    function insertDebugPointIntoPolygon(locationId, event) {
+      const location = mapConfig.locations[locationId];
+      const area = location?.activityArea;
+      if (!area || area.type !== "polygon" || area.points.length < 3) return;
+      const point = stagePointFromEvent(event);
+      const segment = nearestDebugSegment(area.points, point, true);
+      if (!segment) return;
+      if (segment.distance > 18) return;
+      const newPoint = roundedStagePointFromEvent(event);
+      if (!confirmDebugEdit(`在 ${location.name} 活动区域中新增坐标点 [${newPoint[0]},${newPoint[1]}] 吗？`)) return;
+      area.points.splice(segment.insertIndex, 0, newPoint);
+      createActivityDebugOverlay();
+    }
+
+    function deleteDebugPointFromHandle(handle) {
+      const index = Number(handle.dataset.index);
+      if (!Number.isInteger(index)) return;
+
+      if (handle.dataset.debugType === "road") {
+        const road = mapConfig.roads.find(item => item.id === handle.dataset.road);
+        if (!road || selectedDebugObject?.type !== "road" || selectedDebugObject.id !== road.id) return;
+        if (road.points.length <= 2) {
+          window.alert("道路至少需要保留 2 个坐标点。");
+          return;
+        }
+        const point = road.points[index];
+        if (!confirmDebugEdit(`删除道路 ${road.id} 的坐标点 ${index} [${point[0]},${point[1]}] 吗？`)) return;
+        road.points.splice(index, 1);
+        moveRouteCache.clear();
+        createActivityDebugOverlay();
+        return;
+      }
+
+      const location = mapConfig.locations[handle.dataset.location];
+      const area = location?.activityArea;
+      if (!location || !area || area.type !== "polygon") return;
+      if (selectedDebugObject?.type !== "location" || selectedDebugObject.id !== handle.dataset.location) return;
+      if (area.points.length <= 3) {
+        window.alert("多边形活动区域至少需要保留 3 个坐标点。");
+        return;
+      }
+      const point = area.points[index];
+      if (!confirmDebugEdit(`删除 ${location.name} 的坐标点 ${index} [${point[0]},${point[1]}] 吗？`)) return;
+      area.points.splice(index, 1);
+      createActivityDebugOverlay();
+    }
+
+    function updateCircleArea(location, point) {
+      const area = location.activityArea;
+      if (debugDragState.handleType === "center") {
+        area.center = [Math.round(point.x), Math.round(point.y)];
+      }
+
+      if (debugDragState.handleType === "radius") {
+        const center = toPoint(area.center);
+        area.radius = Math.max(6, Math.round(navigation.distance(center, point)));
+      }
+    }
+
+    function updatePolygonArea(location, point) {
+      const index = debugDragState.index;
+      if (!Number.isInteger(index)) return;
+      location.activityArea.points[index] = [Math.round(point.x), Math.round(point.y)];
+    }
+
+    function updateRoadPoint(road, point) {
+      const index = debugDragState.index;
+      if (!Number.isInteger(index)) return;
+      road.points[index] = [Math.round(point.x), Math.round(point.y)];
+      moveRouteCache.clear();
+    }
+
+    function updateDebugDrag(event) {
+      if (!debugDragState) return;
+      const point = stagePointFromEvent(event);
+
+      if (debugDragState.debugType === "road") {
+        const road = mapConfig.roads.find(item => item.id === debugDragState.roadId);
+        if (!road) return;
+        updateRoadPoint(road, point);
+      } else {
+        const location = mapConfig.locations[debugDragState.locationId];
+        if (!location) return;
+        if (location.activityArea.type === "circle") {
+          updateCircleArea(location, point);
+        } else {
+          updatePolygonArea(location, point);
+        }
+      }
+
+      createActivityDebugOverlay();
+    }
+
+    function stopDebugDrag() {
+      if (!debugDragState) return;
+      debugDragState = null;
+      document.body.style.userSelect = "";
+    }
+
+    function startDebugDrag(event) {
+      if (event.button === 2) return;
+      const handle = event.target.closest("[data-handle]");
+      if (!handle || !debugLayer.contains(handle)) return;
+      if (handle.dataset.debugType === "road") {
+        if (selectedDebugObject?.type !== "road" || selectedDebugObject.id !== handle.dataset.road) return;
+      } else if (selectedDebugObject?.type !== "location" || selectedDebugObject.id !== handle.dataset.location) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      debugDragState = {
+        debugType: handle.dataset.debugType || "location",
+        locationId: handle.dataset.location,
+        roadId: handle.dataset.road,
+        handleType: handle.dataset.handle,
+        index: handle.dataset.index === undefined ? null : Number(handle.dataset.index)
+      };
+      handle.classList.add("dragging");
+      document.body.style.userSelect = "none";
+    }
+
+    function selectDebugLocation(locationId) {
+      if (!mapConfig.locations[locationId]) return;
+      selectedDebugObject = { type: "location", id: locationId };
+      createActivityDebugOverlay();
+    }
+
+    function selectDebugRoad(roadId) {
+      if (!mapConfig.roads.some(road => road.id === roadId)) return;
+      selectedDebugObject = { type: "road", id: roadId };
+      createActivityDebugOverlay();
+    }
+
+    function handleDebugLayerClick(event) {
+      if (event.target.closest("[data-handle]")) return;
+
+      const road = event.target.closest(".debug-road");
+      if (road && debugLayer.contains(road)) {
+        const roadId = road.dataset.road;
+        if (selectedDebugObject?.type === "road" && selectedDebugObject.id === roadId) {
+          insertDebugPointIntoRoad(roadId, event);
+        } else {
+          selectDebugRoad(roadId);
+        }
+        return;
+      }
+
+      const shape = event.target.closest(".activity-shape");
+      if (!shape || !debugLayer.contains(shape)) return;
+      const locationId = shape.dataset.location;
+      if (selectedDebugObject?.type === "location" && selectedDebugObject.id === locationId) {
+        insertDebugPointIntoPolygon(locationId, event);
+      } else {
+        selectDebugLocation(locationId);
+      }
+    }
+
+    function handleDebugContextMenu(event) {
+      const handle = event.target.closest("[data-handle]");
+      if (!handle || !debugLayer.contains(handle)) return;
+      if (handle.dataset.handle !== "vertex" && handle.dataset.handle !== "road-vertex") return;
+      event.preventDefault();
+      event.stopPropagation();
+      deleteDebugPointFromHandle(handle);
+    }
+
+    function roadPath(points) {
+      return points
+        .map((point, index) => {
+          const target = toPoint(point);
+          return `${index === 0 ? "M" : "L"} ${target.x} ${target.y}`;
+        })
+        .join(" ");
+    }
+
+    function createRoadDebugOverlay() {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.classList.add("debug-road-svg");
+      svg.setAttribute("viewBox", `0 0 ${mapConfig.size.width} ${mapConfig.size.height}`);
+      svg.setAttribute("width", String(mapConfig.size.width));
+      svg.setAttribute("height", String(mapConfig.size.height));
+
+      mapConfig.roads.forEach(road => {
+        const isSelected = selectedDebugObject?.type === "road" && selectedDebugObject.id === road.id;
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.classList.add("debug-road");
+        if (isSelected) path.classList.add("selected");
+        path.dataset.road = road.id;
+        path.setAttribute("d", roadPath(road.points));
+        path.setAttribute("stroke-width", String(Math.max(8, road.width)));
+        path.setAttribute("title", isSelected ? `${road.id} 已选中` : `点击选择道路 ${road.id}`);
+        svg.appendChild(path);
+
+        if (isSelected) {
+          const points = road.points.map(toPoint);
+          const labelPoint = points[0] || { x: 4, y: 16 };
+          createDebugLabel(`${road.id} road width=${road.width}`, {
+            x: Math.max(4, labelPoint.x),
+            y: Math.max(16, labelPoint.y - 8)
+          }, "road-label");
+          points.forEach((point, index) => {
+            createDebugDot(point, {
+              className: "debug-handle road-handle",
+              debugType: "road",
+              roadId: road.id,
+              handleType: "road-vertex",
+              index,
+              title: `${road.id} 顶点 ${index} ${formatPoint(point)}`
+            });
+            createDebugLabel(`${index}: ${formatPoint(point)}`, point);
+          });
+        }
+      });
+
+      debugLayer.appendChild(svg);
+    }
+
+    function createActivityDebugOverlay() {
+      debugLayer.innerHTML = "";
+      createRoadDebugOverlay();
+
+      Object.entries(mapConfig.locations).forEach(([locationId, location]) => {
+        const area = location.activityArea;
+        const bounds = areaBounds(area);
+        const isSelected = selectedDebugObject?.type === "location" && selectedDebugObject.id === locationId;
+        const shape = document.createElement("div");
+        shape.className = `activity-shape${isSelected ? " selected" : ""}`;
+        shape.dataset.location = locationId;
+        shape.title = isSelected ? `${location.name} 已选中` : `点击选择 ${location.name}`;
+        shape.style.left = `${bounds.left}px`;
+        shape.style.top = `${bounds.top}px`;
+        shape.style.width = `${bounds.width}px`;
+        shape.style.height = `${bounds.height}px`;
+
+        if (area.type === "circle") {
+          shape.style.borderRadius = "50%";
+          const center = toPoint(area.center);
+          const radiusPoint = { x: center.x + area.radius, y: center.y };
+          if (isSelected) {
+            createDebugDot(center, {
+              className: "debug-handle",
+              locationId,
+              handleType: "center",
+              title: `${location.name} 圆心 ${formatPoint(center)}`
+            });
+            createDebugDot(radiusPoint, {
+              className: "debug-handle radius-handle",
+              locationId,
+              handleType: "radius",
+              title: `${location.name} 半径 ${area.radius}`
+            });
+            createDebugLabel(`${location.name} center ${formatPoint(center)} r=${area.radius} bbox [${Math.round(bounds.left)},${Math.round(bounds.top)}]-[${Math.round(bounds.left + bounds.width)},${Math.round(bounds.top + bounds.height)}]`, {
+              x: Math.max(4, bounds.left),
+              y: Math.max(16, bounds.top - 6)
+            }, "activity-label");
+          }
+        } else {
+          const points = area.points.map(toPoint);
+          const clip = points
+            .map(point => `${((point.x - bounds.left) / bounds.width) * 100}% ${((point.y - bounds.top) / bounds.height) * 100}%`)
+            .join(", ");
+          shape.style.clipPath = `polygon(${clip})`;
+          if (isSelected) {
+            createDebugLabel(`${location.name} polygon`, {
+              x: Math.max(4, bounds.left),
+              y: Math.max(16, bounds.top - 6)
+            }, "activity-label");
+
+            points.forEach((point, index) => {
+              createDebugDot(point, {
+                className: "debug-handle",
+                locationId,
+                handleType: "vertex",
+                index,
+                title: `${location.name} 顶点 ${index} ${formatPoint(point)}`
+              });
+              createDebugLabel(`${index}: ${formatPoint(point)}`, point);
+            });
+          }
+        }
+
+        debugLayer.appendChild(shape);
+      });
+    }
+
+    function setDebugMode(enabled) {
+      debugMode = enabled;
+      if (!debugMode) stopDebugDrag();
+      document.body.classList.toggle("debug-mode", debugMode);
+      debugToggle.classList.toggle("active", debugMode);
+      debugToggle.textContent = debugMode ? "关闭调试" : "调试模式";
+      debugLayer.setAttribute("aria-hidden", String(!debugMode));
+    }
+
+    function normalizeLocationId(regionId) {
+      return mapConfig.locations[regionId] ? regionId : legacyRegionAliases[regionId] || "carrot_square";
+    }
+
+    function normalizeStoryData(data) {
+      const normalizedCharacters = {};
+
+      Object.entries(rabbitProfiles).forEach(([rabbitId, profile]) => {
+        const legacyId = Object.keys(rabbitIdMap).find(key => rabbitIdMap[key] === rabbitId);
+        const incoming = data.characters?.[rabbitId] || data.characters?.[legacyId] || {};
+        normalizedCharacters[rabbitId] = {
+          ...profile,
+          ...incoming,
+          name: profile.name,
+          color: incoming.color || profile.color,
+          scale: incoming.scale || profile.scale,
+          init_region: normalizeLocationId(incoming.init_region || profile.init_region),
+          mood: incoming.mood || profile.mood,
+          status: incoming.status || profile.status
+        };
+      });
+
+      data.characters = normalizedCharacters;
+      data.timeline = data.timeline
+        .map(event => ({
+          ...event,
+          char: rabbitIdMap[event.char] || event.char,
+          from: event.from ? normalizeLocationId(event.from) : event.from,
+          to: event.to ? normalizeLocationId(event.to) : event.to
+        }))
+        .filter(event => normalizedCharacters[event.char]);
+      data.config.map_regions = Object.fromEntries(
+        Object.entries(mapConfig.locations).map(([locationId, location]) => [
+          locationId,
+          {
+            name: location.name,
+            x: location.center[0],
+            y: location.center[1],
+            kind: locationId === "tree_house" ? "home" : "public"
+          }
+        ])
+      );
+
+      return data;
+    }
+
+    function regionPoint(regionName, charId = "") {
+      const locationId = normalizeLocationId(regionName);
+      if (locationId === "tree_house" && mapConfig.rabbitHomes[charId]) {
+        return toPoint(mapConfig.rabbitHomes[charId]);
+      }
+
+      const location = mapConfig.locations[locationId] || mapConfig.locations.carrot_square;
+      const poi = activitySystem.choosePoi(locationId, charId);
+      return toPoint(poi?.pos || location.center);
+    }
+
+    function regionName(regionId) {
+      return mapConfig.locations[normalizeLocationId(regionId)]?.name || regionId;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function appendLog(message, tick = currentTick, event = null) {
+      const line = document.createElement("p");
+      line.className = "log-line";
+      const name = event?.char ? characters[event.char].name : "系统";
+      const mood = event?.mood || characterRuntime[event?.char]?.mood || "";
+      const status = event?.status || characterRuntime[event?.char]?.status || "";
+      const meta = event ? ` <span class="log-meta">[${escapeHtml(mood)} / ${escapeHtml(status)}]</span>` : "";
+      line.innerHTML = `<span class="log-time">[${formatTickTime(tick, true)} / T${tick}]</span> <span class="log-name">${escapeHtml(name)}</span>${meta} ${escapeHtml(message)}`;
+      logPanel.appendChild(line);
+
+      while (logPanel.children.length > 240) {
+        logPanel.removeChild(logPanel.firstElementChild);
+      }
+      logPanel.scrollTop = logPanel.scrollHeight;
+    }
+
+    function setCharacterFacing(charId, fromPoint, toPoint) {
+      const el = characterEls[charId];
+      if (!el || !fromPoint || !toPoint) return;
+      const dx = toPoint.x - fromPoint.x;
+      if (Math.abs(dx) > 0.08) {
+        el.style.setProperty("--facing", dx < 0 ? -1 : 1);
+      }
+    }
+
+    function setCharacterFacingByPath(charId, path, progress) {
+      const before = navigation.pointAlongPath(path, Math.max(0, progress - 0.006));
+      const after = navigation.pointAlongPath(path, Math.min(1, progress + 0.04));
+      setCharacterFacing(charId, before, after);
+    }
+
+    function setCharacterPosition(charId, point, withTransition = true, updateFacing = true) {
+      const el = characterEls[charId];
+      if (!el) return;
+      const previousPoint = characterRuntime[charId]?.point;
+
+      if (!withTransition) {
+        el.style.transition = "none";
+      }
+
+      if (updateFacing) {
+        setCharacterFacing(charId, previousPoint, point);
+      }
+
+      el.style.left = `${point.x}px`;
+      el.style.top = `${point.y}px`;
+
+      /*
+        Y-Sort 遮挡：
+        地图上 y/top 越大，角色越靠近屏幕下方，也就应该盖住上方角色。
+        所以每次坐标改变都把 zIndex 设置为当前 top 的整数值。
+      */
+      el.style.zIndex = String(Math.round(point.y));
+      if (characterRuntime[charId]) {
+        characterRuntime[charId].point = { x: point.x, y: point.y };
+      }
+    }
+
+    function setCharacterRuntime(charId, patch) {
+      characterRuntime[charId] = { ...characterRuntime[charId], ...patch };
+      updateStatusCard(charId);
+      updateCharacterStatusTag(charId);
+    }
+
+    function updateStatusCard(charId) {
+      const el = statusEls[charId];
+      if (!el) return;
+
+      const runtime = characterRuntime[charId];
+      el.querySelector(".status-text").innerHTML =
+        `心情：${escapeHtml(runtime.mood || "未知")}<br>状态：${escapeHtml(runtime.status || "未知")}`;
+    }
+
+    function isMovingStatus(runtime) {
+      return runtime?.isMoving || /^前往|^返回|路上/.test(runtime?.status || "");
+    }
+
+    function updateCharacterStatusTag(charId) {
+      const el = characterEls[charId];
+      if (!el) return;
+
+      const runtime = characterRuntime[charId];
+      const tag = el.querySelector(".nameplate");
+      const label = characters[charId]?.name || charId;
+      tag.textContent = `${label} · ${runtime?.status || "待机中"}`;
+      tag.classList.toggle("moving", isMovingStatus(runtime));
+
+      if (isMovingStatus(runtime)) {
+        if (statusTagTimers[charId]) {
+          window.clearTimeout(statusTagTimers[charId]);
+          statusTagTimers[charId] = null;
+        }
+        tag.classList.add("show");
+        return;
+      }
+
+      if (statusTagTimers[charId]) return;
+      const delay = 800 + Math.random() * 2600;
+      statusTagTimers[charId] = window.setTimeout(() => {
+        tag.classList.add("show");
+        const visibleMs = 1000 + Math.random() * 1000;
+        statusTagTimers[charId] = window.setTimeout(() => {
+          tag.classList.remove("show");
+          statusTagTimers[charId] = null;
+        }, visibleMs);
+      }, delay);
+    }
+
+    function clearStatusTagTimers() {
+      Object.values(statusTagTimers).forEach(timer => {
+        if (timer) window.clearTimeout(timer);
+      });
+      Object.keys(statusTagTimers).forEach(charId => {
+        statusTagTimers[charId] = null;
+      });
+    }
+
+    function clearBubbleTimers() {
+      activeBubbleTimers.forEach(timer => window.clearTimeout(timer));
+      activeBubbleTimers = [];
+    }
+
+    function hideAllBubbles() {
+      Object.values(characterEls).forEach(el => {
+        const bubble = el.querySelector(".bubble");
+        bubble.classList.remove("show");
+        bubble.textContent = "";
+      });
+    }
+
+    function scheduleBubbleHide(event) {
+      if (isPaused) return;
+
+      const visibleMs = Math.max(0, (event.end_tick - currentTick) * tickSeconds / timeScale * 1000);
+      const timer = window.setTimeout(() => {
+        if (currentTick >= event.end_tick) {
+          characterEls[event.char].querySelector(".bubble").classList.remove("show");
+        }
+      }, visibleMs);
+      activeBubbleTimers.push(timer);
+    }
+
+    function showDialogue(event) {
+      const bubble = characterEls[event.char].querySelector(".bubble");
+      bubble.textContent = event.text;
+      bubble.classList.add("show");
+      scheduleBubbleHide(event);
+    }
+
+    function moveCacheKey(event) {
+      return `${event.char}:${event.start_tick}:${event.end_tick}:${event.from}:${event.to}`;
+    }
+
+    function getMoveRoute(event) {
+      const key = moveCacheKey(event);
+      if (moveRouteCache.has(key)) return moveRouteCache.get(key);
+
+      const previousSnapshot = findCharacterSnapshot(event.char, Math.max(0, event.start_tick - 1));
+      const from = previousSnapshot?.point || regionPoint(event.from, event.char);
+      const toLocation = normalizeLocationId(event.to);
+      const targetPoi = activitySystem.choosePoi(toLocation, event.char);
+      const path = navigation.routeToPoi(from, toLocation, targetPoi);
+      const route = {
+        locationId: toLocation,
+        poi: targetPoi,
+        path: path.length ? path : [from, toPoint(targetPoi.pos)]
+      };
+
+      moveRouteCache.set(key, route);
+      return route;
+    }
+
+    function cancelMoveAnimation(charId) {
+      if (activeMoveAnimations[charId]) {
+        window.cancelAnimationFrame(activeMoveAnimations[charId]);
+        delete activeMoveAnimations[charId];
+      }
+    }
+
+    function playMove(event) {
+      const route = getMoveRoute(event);
+      const durationMs = Math.max(1, (event.end_tick - currentTick) * tickSeconds / timeScale * 1000);
+      const startedAt = performance.now();
+      const startProgress = Math.min(1, Math.max(0, (currentTick - event.start_tick) / (event.end_tick - event.start_tick)));
+      const el = characterEls[event.char];
+
+      cancelMoveAnimation(event.char);
+      el.style.transition = "none";
+      setCharacterFacingByPath(event.char, route.path, startProgress);
+
+      function frame(now) {
+        const elapsed = Math.min(1, (now - startedAt) / durationMs);
+        const progress = startProgress + (1 - startProgress) * elapsed;
+        const point = navigation.pointAlongPath(route.path, progress);
+        setCharacterFacingByPath(event.char, route.path, progress);
+        setCharacterPosition(event.char, point, false, false);
+
+        if (elapsed < 1 && !isPaused) {
+          activeMoveAnimations[event.char] = window.requestAnimationFrame(frame);
+        } else if (elapsed >= 1) {
+          characterRuntime[event.char].locationId = route.locationId;
+          characterRuntime[event.char].point = route.path[route.path.length - 1];
+          eventDrivenAI.decide("arrive_location", { char: event.char, locationId: route.locationId });
+          delete activeMoveAnimations[event.char];
+        }
+      }
+
+      activeMoveAnimations[event.char] = window.requestAnimationFrame(frame);
+    }
+
+    function describeEvent(event) {
+      if (event.type === "dialogue") {
+        return `“${event.text}”`;
+      }
+      return event.detail || event.status || event.type;
+    }
+
+    function handleEvent(event, shouldLog = true) {
+      setCharacterRuntime(event.char, {
+        mood: event.mood || characterRuntime[event.char]?.mood,
+        status: event.status || characterRuntime[event.char]?.status,
+        isMoving: event.type === "move"
+      });
+
+      if (shouldLog) {
+        appendLog(describeEvent(event), event.start_tick, event);
+      }
+
+      if (event.type === "move") {
+        playMove(event);
+      }
+
+      if (event.type === "dialogue") {
+        showDialogue(event);
+      }
+    }
+
+    function runDueEvents(tick) {
+      while (eventCursor < storyData.timeline.length && storyData.timeline[eventCursor].start_tick <= tick) {
+        const event = storyData.timeline[eventCursor];
+        if (event.start_tick === tick) {
+          handleEvent(event, true);
+        }
+        eventCursor += 1;
+      }
+    }
+
+    function advanceTick() {
+      if (isPaused) return;
+      if (currentTick >= maxTick) {
+        pausePlayback();
+        return;
+      }
+
+      currentTick += 1;
+      updateHud();
+      runDueEvents(currentTick);
+      refreshRuntimeByTick(currentTick);
+      updateActivityMovement(currentTick);
+      runEventDrivenAITriggers(currentTick);
+    }
+
+    function clearTickTimer() {
+      if (tickTimer) {
+        window.clearInterval(tickTimer);
+        tickTimer = null;
+      }
+    }
+
+    function scheduleTicks() {
+      clearTickTimer();
+      if (isPaused) return;
+
+      /*
+        Tick 调度：
+        1x   = 现实 10 秒前进 1 Tick
+        10x  = 现实 1 秒前进 1 Tick
+        100x = 现实 0.1 秒前进 1 Tick
+      */
+      const tickMs = tickSeconds / timeScale * 1000;
+      tickTimer = window.setInterval(advanceTick, tickMs);
+    }
+
+    function pausePlayback() {
+      isPaused = true;
+      pauseBtn.textContent = "继续";
+      pauseBtn.classList.add("active");
+      clearTickTimer();
+      Object.keys(activeMoveAnimations).forEach(cancelMoveAnimation);
+    }
+
+    function resumePlayback() {
+      isPaused = false;
+      pauseBtn.textContent = "暂停";
+      pauseBtn.classList.remove("active");
+      scheduleTicks();
+      resumeActiveMovesAfterSeek(currentTick);
+      restoreActiveDialogues(currentTick);
+    }
+
+    function setSpeed(speed) {
+      timeScale = speed;
+      speedButtons.forEach(btn => {
+        btn.classList.toggle("active", Number(btn.dataset.speed) === speed);
+      });
+      scheduleTicks();
+      if (!isPaused) {
+        resumeActiveMovesAfterSeek(currentTick);
+      }
+      appendLog(`播放速度切换为 ${speed}x`);
+    }
+
+    function getInterpolatedMovePosition(event, tick) {
+      const route = getMoveRoute(event);
+      const progress = Math.min(1, Math.max(0, (tick - event.start_tick) / (event.end_tick - event.start_tick)));
+      return navigation.pointAlongPath(route.path, progress);
+    }
+
+    function findCharacterSnapshot(charId, targetTick) {
+      const charData = characters[charId];
+      const snapshot = {
+        point: regionPoint(charData.init_region, charId),
+        locationId: normalizeLocationId(charData.init_region),
+        mood: charData.mood || "平静",
+        status: charData.status || "待机中",
+        isMoving: false
+      };
+
+      storyData.timeline
+        .filter(event => event.char === charId && event.start_tick <= targetTick)
+        .forEach(event => {
+          if (event.mood) snapshot.mood = event.mood;
+          if (event.status) snapshot.status = event.status;
+
+          if (event.type === "move") {
+            if (targetTick < event.end_tick) {
+              snapshot.point = getInterpolatedMovePosition(event, targetTick);
+              snapshot.status = event.status || `前往${regionName(event.to)}`;
+              snapshot.isMoving = true;
+            } else {
+              const route = getMoveRoute(event);
+              snapshot.point = route.path[route.path.length - 1];
+              snapshot.locationId = route.locationId;
+              snapshot.status = `在${regionName(event.to)}`;
+              snapshot.isMoving = false;
+            }
+          } else {
+            snapshot.isMoving = false;
+          }
+        });
+
+      return snapshot;
+    }
+
+    function refreshRuntimeByTick(targetTick) {
+      Object.keys(characters).forEach(charId => {
+        const snapshot = findCharacterSnapshot(charId, targetTick);
+        setCharacterRuntime(charId, { mood: snapshot.mood, status: snapshot.status, locationId: snapshot.locationId, point: snapshot.point, isMoving: snapshot.isMoving });
+      });
+    }
+
+    function activeEventForChar(charId, targetTick, type = null) {
+      return storyData.timeline.find(event =>
+        event.char === charId &&
+        event.start_tick <= targetTick &&
+        targetTick < event.end_tick &&
+        (!type || event.type === type)
+      );
+    }
+
+    function getTimePeriod(targetTick) {
+      const hour = Math.floor((targetTick * tickSeconds) / 3600) % 24;
+      if (hour >= 5 && hour < 8) return "wake_up";
+      if (hour >= 8 && hour < 12) return "morning";
+      if (hour >= 12 && hour < 18) return "afternoon";
+      if (hour >= 18 && hour < 22) return "evening";
+      return "sleep_time";
+    }
+
+    function runEventDrivenAITriggers(targetTick) {
+      const period = getTimePeriod(targetTick);
+      if (period !== lastTimePeriod) {
+        eventDrivenAI.decide("time_period_change", { period });
+        if (period === "wake_up") eventDrivenAI.decide("wake_up", { period });
+        if (period === "sleep_time") eventDrivenAI.decide("sleep_time", { period });
+        lastTimePeriod = period;
+      }
+
+      storyData.timeline
+        .filter(event => event.end_tick === targetTick && event.type !== "move")
+        .forEach(event => eventDrivenAI.decide("complete_behavior", { char: event.char, type: event.type }));
+
+      Object.entries(characterRuntime).forEach(([charId, runtime]) => {
+        Object.entries(characterRuntime).forEach(([otherId, otherRuntime]) => {
+          if (charId >= otherId || !runtime.point || !otherRuntime.point) return;
+          if (navigation.distance(runtime.point, otherRuntime.point) < 24) {
+            eventDrivenAI.decide("meet_rabbit", { chars: [charId, otherId] });
+          }
+        });
+      });
+    }
+
+    function updateActivityMovement(targetTick) {
+      Object.keys(characters).forEach(charId => {
+        if (activeEventForChar(charId, targetTick, "move")) return;
+        if (activeEventForChar(charId, targetTick, "dialogue")) return;
+
+        const action = activeEventForChar(charId, targetTick, "action");
+        const runtime = characterRuntime[charId];
+        const locationId = runtime.locationId || navigation.closestLocationId(runtime.point || regionPoint(characters[charId].init_region, charId));
+        if (!mapConfig.locations[locationId]) return;
+
+        const state = activityState[charId] || { nextTick: 0 };
+        if (targetTick < state.nextTick) return;
+
+        const origin = runtime.point || regionPoint(locationId, charId);
+        const target = action
+          ? activitySystem.chooseActivityTarget(locationId, charId, origin)
+          : toPoint(activitySystem.choosePoi(locationId, charId).pos);
+
+        if (navigation.pointInArea(target, mapConfig.locations[locationId].activityArea) && navigation.isWalkable(target)) {
+          const el = characterEls[charId];
+          el.style.transition = `left ${Math.max(0.08, 18 * tickSeconds / timeScale)}s linear, top ${Math.max(0.08, 18 * tickSeconds / timeScale)}s linear`;
+          setCharacterPosition(charId, target, true);
+        }
+
+        activityState[charId] = { nextTick: targetTick + 18 + Math.floor(Math.random() * 24) };
+      });
+    }
+
+    function restoreActiveDialogues(targetTick) {
+      hideAllBubbles();
+      storyData.timeline
+        .filter(event => event.type === "dialogue" && event.start_tick <= targetTick && targetTick < event.end_tick)
+        .forEach(event => {
+          const bubble = characterEls[event.char].querySelector(".bubble");
+          bubble.textContent = event.text;
+          bubble.classList.add("show");
+          scheduleBubbleHide(event);
+        });
+    }
+
+    function resumeActiveMovesAfterSeek(targetTick) {
+      /*
+        拖动进度条落在 move 中间时：
+        1. resetStateToTick 已经用 transition:none 把角色放到插值坐标。
+        2. 如果继续播放，则用“剩余 Tick 数”重新计算 transition_seconds。
+        3. 直接把 left/top 设为终点，浏览器从当前插值坐标继续补完剩余移动。
+      */
+      if (isPaused) return;
+
+      storyData.timeline
+        .filter(event => event.type === "move" && event.start_tick <= targetTick && targetTick < event.end_tick)
+        .forEach(event => playMove(event));
+    }
+
+    function rebuildLog(targetTick) {
+      logPanel.innerHTML = "";
+      storyData.timeline
+        .filter(event => event.start_tick <= targetTick)
+        .slice(-180)
+        .forEach(event => appendLog(describeEvent(event), event.start_tick, event));
+    }
+
+    function resetStateToTick(targetTick) {
+      /*
+        进度条跳转状态重置逻辑：
+        1. 清掉旧 Tick 定时器、气泡隐藏定时器、所有 CSS transition。
+        2. 对每个角色遍历它在 targetTick 之前的事件，恢复最后心情、状态和坐标。
+        3. 如果 targetTick 落在某个 move 中间，用线性插值计算中间坐标。
+        4. 恢复 targetTick 时仍有效的对话气泡。
+        5. 重建日志上下文，然后从新 Tick 继续播放。
+      */
+      clearTickTimer();
+      clearBubbleTimers();
+      clearStatusTagTimers();
+      Object.keys(activeMoveAnimations).forEach(cancelMoveAnimation);
+      currentTick = targetTick;
+      eventCursor = storyData.timeline.findIndex(event => event.start_tick > targetTick);
+      if (eventCursor === -1) eventCursor = storyData.timeline.length;
+
+      Object.keys(characters).forEach(charId => {
+        const snapshot = findCharacterSnapshot(charId, targetTick);
+        setCharacterPosition(charId, snapshot.point, false, false);
+        setCharacterRuntime(charId, { mood: snapshot.mood, status: snapshot.status, locationId: snapshot.locationId, isMoving: snapshot.isMoving });
+      });
+
+      restoreActiveDialogues(targetTick);
+      rebuildLog(targetTick);
+      updateHud();
+      resumeActiveMovesAfterSeek(targetTick);
+      scheduleTicks();
+    }
+
+    function createLandmarks() {
+      Object.entries(regions).forEach(([key, point]) => {
+        const landmark = document.createElement("div");
+        landmark.className = `landmark ${point.kind || ""}`;
+        landmark.textContent = point.name || key;
+        landmark.style.left = `${point.x}px`;
+        landmark.style.top = `${point.y}px`;
+        landmark.style.zIndex = String(Math.round(point.y - 20));
+        stage.appendChild(landmark);
+      });
+    }
+
+    function createCharacters() {
+      Object.entries(characters).forEach(([charId, charData]) => {
+        const el = document.createElement("div");
+        el.className = "character";
+        el.dataset.char = charId;
+        el.style.setProperty("--char-color", charData.color);
+        el.style.setProperty("--char-scale", charData.scale || 1);
+        el.innerHTML = `
+          <div class="bubble"></div>
+          <div class="sprite"></div>
+          <div class="nameplate">${escapeHtml(charData.name)}</div>
+        `;
+        stage.appendChild(el);
+        characterEls[charId] = el;
+
+        characterRuntime[charId] = {
+          mood: charData.mood || "平静",
+          status: charData.status || "待机中",
+          isMoving: false
+        };
+
+        setCharacterPosition(charId, regionPoint(charData.init_region, charId), false);
+      });
+    }
+
+    function createStatusCards() {
+      Object.entries(characters).forEach(([charId, charData]) => {
+        const card = document.createElement("article");
+        card.className = "status-card";
+        card.style.setProperty("--char-color", charData.color);
+        card.innerHTML = `
+          <div class="status-dot"></div>
+          <div class="status-name">${escapeHtml(charData.name)}</div>
+          <div class="status-text"></div>
+        `;
+        statusBoard.appendChild(card);
+        statusEls[charId] = card;
+        updateStatusCard(charId);
+      });
+    }
+
+    function bindControls() {
+      speedButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          setSpeed(Number(btn.dataset.speed));
+        });
+      });
+
+      pauseBtn.addEventListener("click", () => {
+        if (isPaused) {
+          resumePlayback();
+        } else {
+          pausePlayback();
+        }
+      });
+
+      tickRange.addEventListener("input", event => {
+        resetStateToTick(Number(event.target.value));
+      });
+
+      debugToggle.addEventListener("click", () => {
+        setDebugMode(!debugMode);
+      });
+
+      debugLayer.addEventListener("pointerdown", startDebugDrag);
+      debugLayer.addEventListener("mousedown", startDebugDrag);
+      debugLayer.addEventListener("click", handleDebugLayerClick);
+      debugLayer.addEventListener("contextmenu", handleDebugContextMenu);
+      window.addEventListener("pointermove", updateDebugDrag);
+      window.addEventListener("pointerup", stopDebugDrag);
+      window.addEventListener("pointercancel", stopDebugDrag);
+      window.addEventListener("mousemove", updateDebugDrag);
+      window.addEventListener("mouseup", stopDebugDrag);
+    }
+
+    async function init() {
+      storyData = normalizeStoryData(await loadStoryData());
+      regions = storyData.config.map_regions;
+      characters = storyData.characters;
+      tickSeconds = storyData.config.tick_interval_seconds || 10;
+      maxTick = storyData.config.max_tick || 8640;
+      storyData.timeline.sort((a, b) => a.start_tick - b.start_tick);
+
+      tickRange.max = String(maxTick);
+      progressLabel.textContent = `剧情进度 00:00 - ${formatTickTime(maxTick)}`;
+
+      createActivityDebugOverlay();
+      createCharacters();
+      createStatusCards();
+      bindControls();
+      updateStageScale();
+      stageResizeObserver = new ResizeObserver(updateStageScale);
+      stageResizeObserver.observe(stage.parentElement);
+      window.addEventListener("resize", updateStageScale);
+      updateHud();
+      appendLog(`24小时剧本 ${storyData.date} 已从 data.json 载入，共 ${storyData.timeline.length} 条事件。`, 0);
+      runDueEvents(0);
+      refreshRuntimeByTick(0);
+      updateActivityMovement(0);
+      runEventDrivenAITriggers(0);
+      scheduleTicks();
+    }
+
+    init();
+  </script>
+</body>
+</html>
