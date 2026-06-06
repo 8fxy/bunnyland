@@ -436,9 +436,9 @@
 
     .nameplate {
       position: absolute;
-      left: calc(12px * var(--char-scale, 1));
-      top: calc(-28px * var(--char-scale, 1));
-      transform: none;
+      left: 50%;
+      top: calc(16px * var(--char-scale, 1));
+      transform: translateX(-50%) translateY(2px);
       padding: 1px 4px;
       border: 2px solid var(--ink);
       background: rgba(255,255,255,0.92);
@@ -451,11 +451,12 @@
 
     .nameplate.show {
       opacity: 1;
-      transform: translateY(-2px);
+      transform: translateX(-50%) translateY(0);
     }
 
     .nameplate.moving {
       opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .bubble {
@@ -607,9 +608,9 @@
     <section class="topbar" aria-label="播放控制">
       <div class="time-box" id="timeDisplay">00:00</div>
       <div class="speed-buttons">
-        <button data-speed="1">1x</button>
+        <button data-speed="1" class="active">1x</button>
         <button data-speed="10">10x</button>
-        <button data-speed="100" class="active">100x</button>
+        <button data-speed="100">100x</button>
         <button class="pause" id="pauseBtn">暂停</button>
       </div>
       <label class="progress-wrap">
@@ -657,6 +658,9 @@
       你可以替换 data.json，只要保留 config / characters / timeline 这些字段即可。
     */
     const DATA_URL = "data.json";
+    const SECONDS_PER_DAY = 24 * 60 * 60;
+    // 每个 move 事件的视觉行走统一用 10 ticks；到达后在地点内活动，直到下一次 move 开始。
+    const MOVE_VISUAL_TICKS = 10;
     const rabbitIdMap = {
       zhangsan: "rabbit_1",
       lisi: "rabbit_2",
@@ -890,7 +894,7 @@
     let maxTick = 8640;
     let tickSeconds = 10;
     let currentTick = 0;
-    let timeScale = 100;
+    let timeScale = 1;
     let isPaused = false;
     let tickTimer = null;
     let activeBubbleTimers = [];
@@ -906,7 +910,8 @@
     const characterRuntime = {};
     const activeMoveAnimations = {};
     const moveRouteCache = new Map();
-    const activityState = {};
+    const activityTimers = {};
+    const arrivedMoveKeys = new Set();
     const statusTagTimers = {};
 
     const navigation = (() => {
@@ -1182,8 +1187,8 @@
 
       randomPointInActivityArea(locationId, origin = null, radius = 26) {
         const location = mapConfig.locations[locationId] || mapConfig.locations.carrot_square;
+        const base = origin || { x: location.center[0], y: location.center[1] };
         for (let attempt = 0; attempt < 30; attempt += 1) {
-          const base = origin || { x: location.center[0], y: location.center[1] };
           const angle = Math.random() * Math.PI * 2;
           const spread = Math.random() * radius;
           const point = { x: base.x + Math.cos(angle) * spread, y: base.y + Math.sin(angle) * spread };
@@ -1191,14 +1196,15 @@
             return point;
           }
         }
-        return activitySystem.choosePoi(locationId).pos;
+        return navigation.pointInArea(base, location.activityArea) ? base : activitySystem.choosePoi(locationId).pos;
       },
 
-      chooseActivityTarget(locationId, charId, origin) {
-        if (Math.random() < 0.7) {
-          return toPoint(activitySystem.choosePoi(locationId, charId).pos);
+      chooseActivityTarget(locationId, charId, origin, maxDistance = 26) {
+        if (Math.random() < 0.35) {
+          const poiTarget = toPoint(activitySystem.choosePoi(locationId, charId).pos);
+          if (origin && navigation.distance(toPoint(origin), poiTarget) <= maxDistance) return poiTarget;
         }
-        return toPoint(activitySystem.randomPointInActivityArea(locationId, origin));
+        return toPoint(activitySystem.randomPointInActivityArea(locationId, origin, maxDistance));
       }
     };
 
@@ -1261,6 +1267,18 @@
       const seconds = totalSeconds % 60;
       const base = [hours, minutes].map(value => String(value).padStart(2, "0")).join(":");
       return withSeconds ? `${base}:${String(seconds).padStart(2, "0")}` : base;
+    }
+
+    function maxTickForDay(tickSecondsValue) {
+      return Math.round(SECONDS_PER_DAY / tickSecondsValue);
+    }
+
+    function systemTimeToTick(date = new Date()) {
+      const secondsSinceMidnight =
+        date.getHours() * 3600 +
+        date.getMinutes() * 60 +
+        date.getSeconds();
+      return Math.min(maxTick - 1, Math.floor(secondsSinceMidnight / tickSeconds));
     }
 
     function updateHud() {
@@ -1872,13 +1890,14 @@
       }
 
       if (statusTagTimers[charId]) return;
-      const delay = 800 + Math.random() * 2600;
+      const delay = 8000 + Math.random() * 8000;
       statusTagTimers[charId] = window.setTimeout(() => {
         tag.classList.add("show");
-        const visibleMs = 1000 + Math.random() * 1000;
+        const visibleMs = 4000 + Math.random() * 4000;
         statusTagTimers[charId] = window.setTimeout(() => {
           tag.classList.remove("show");
           statusTagTimers[charId] = null;
+          if (!isPaused) updateCharacterStatusTag(charId);
         }, visibleMs);
       }, delay);
     }
@@ -1897,6 +1916,15 @@
       activeBubbleTimers = [];
     }
 
+    function clearActivityTimers() {
+      Object.values(activityTimers).forEach(timer => {
+        if (timer) window.clearTimeout(timer);
+      });
+      Object.keys(activityTimers).forEach(charId => {
+        activityTimers[charId] = null;
+      });
+    }
+
     function hideAllBubbles() {
       Object.values(characterEls).forEach(el => {
         const bubble = el.querySelector(".bubble");
@@ -1908,11 +1936,10 @@
     function scheduleBubbleHide(event) {
       if (isPaused) return;
 
-      const visibleMs = Math.max(0, (event.end_tick - currentTick) * tickSeconds / timeScale * 1000);
+      const remainingMs = Math.max(0, (event.end_tick - currentTick) * tickSeconds / timeScale * 1000);
+      const visibleMs = Math.min(remainingMs, 2 * tickSeconds / timeScale * 1000);
       const timer = window.setTimeout(() => {
-        if (currentTick >= event.end_tick) {
-          characterEls[event.char].querySelector(".bubble").classList.remove("show");
-        }
+        characterEls[event.char].querySelector(".bubble").classList.remove("show");
       }, visibleMs);
       activeBubbleTimers.push(timer);
     }
@@ -1954,11 +1981,42 @@
       }
     }
 
+    function moveProgressAtTick(event, tick) {
+      return Math.min(1, Math.max(0, (tick - event.start_tick) / MOVE_VISUAL_TICKS));
+    }
+
+    function finishMoveVisual(event, route) {
+      const target = route.path[route.path.length - 1];
+      const arrivalKey = moveCacheKey(event);
+      setCharacterFacingByPath(event.char, route.path, 1);
+      setCharacterPosition(event.char, target, false, false);
+      if (characterRuntime[event.char]) {
+        characterRuntime[event.char].locationId = route.locationId;
+        characterRuntime[event.char].point = target;
+        characterRuntime[event.char].isMoving = false;
+        characterRuntime[event.char].status = `在${regionName(route.locationId)}`;
+        updateCharacterStatusTag(event.char);
+        updateStatusCard(event.char);
+      }
+      if (!arrivedMoveKeys.has(arrivalKey)) {
+        arrivedMoveKeys.add(arrivalKey);
+        eventDrivenAI.decide("arrive_location", { char: event.char, locationId: route.locationId });
+      }
+      scheduleCharacterActivity(event.char, 250);
+      delete activeMoveAnimations[event.char];
+    }
+
     function playMove(event) {
       const route = getMoveRoute(event);
-      const durationMs = Math.max(1, (event.end_tick - currentTick) * tickSeconds / timeScale * 1000);
+      const startProgress = moveProgressAtTick(event, currentTick);
+      if (startProgress >= 1) {
+        finishMoveVisual(event, route);
+        return;
+      }
+
+      const remainingMoveTicks = MOVE_VISUAL_TICKS * (1 - startProgress);
+      const durationMs = Math.max(1, remainingMoveTicks * tickSeconds / timeScale * 1000);
       const startedAt = performance.now();
-      const startProgress = Math.min(1, Math.max(0, (currentTick - event.start_tick) / (event.end_tick - event.start_tick)));
       const el = characterEls[event.char];
 
       cancelMoveAnimation(event.char);
@@ -1975,10 +2033,7 @@
         if (elapsed < 1 && !isPaused) {
           activeMoveAnimations[event.char] = window.requestAnimationFrame(frame);
         } else if (elapsed >= 1) {
-          characterRuntime[event.char].locationId = route.locationId;
-          characterRuntime[event.char].point = route.path[route.path.length - 1];
-          eventDrivenAI.decide("arrive_location", { char: event.char, locationId: route.locationId });
-          delete activeMoveAnimations[event.char];
+          finishMoveVisual(event, route);
         }
       }
 
@@ -2033,7 +2088,6 @@
       updateHud();
       runDueEvents(currentTick);
       refreshRuntimeByTick(currentTick);
-      updateActivityMovement(currentTick);
       runEventDrivenAITriggers(currentTick);
     }
 
@@ -2063,6 +2117,7 @@
       pauseBtn.textContent = "继续";
       pauseBtn.classList.add("active");
       clearTickTimer();
+      clearActivityTimers();
       Object.keys(activeMoveAnimations).forEach(cancelMoveAnimation);
     }
 
@@ -2071,6 +2126,7 @@
       pauseBtn.textContent = "暂停";
       pauseBtn.classList.remove("active");
       scheduleTicks();
+      scheduleActivityMovement();
       resumeActiveMovesAfterSeek(currentTick);
       restoreActiveDialogues(currentTick);
     }
@@ -2089,7 +2145,7 @@
 
     function getInterpolatedMovePosition(event, tick) {
       const route = getMoveRoute(event);
-      const progress = Math.min(1, Math.max(0, (tick - event.start_tick) / (event.end_tick - event.start_tick)));
+      const progress = moveProgressAtTick(event, tick);
       return navigation.pointAlongPath(route.path, progress);
     }
 
@@ -2111,9 +2167,16 @@
 
           if (event.type === "move") {
             if (targetTick < event.end_tick) {
+              const progress = moveProgressAtTick(event, targetTick);
               snapshot.point = getInterpolatedMovePosition(event, targetTick);
-              snapshot.status = event.status || `前往${regionName(event.to)}`;
-              snapshot.isMoving = true;
+              if (progress < 1) {
+                snapshot.status = event.status || `前往${regionName(event.to)}`;
+                snapshot.isMoving = true;
+              } else {
+                snapshot.locationId = normalizeLocationId(event.to);
+                snapshot.status = `在${regionName(event.to)}`;
+                snapshot.isMoving = false;
+              }
             } else {
               const route = getMoveRoute(event);
               snapshot.point = route.path[route.path.length - 1];
@@ -2177,31 +2240,62 @@
       });
     }
 
-    function updateActivityMovement(targetTick) {
-      Object.keys(characters).forEach(charId => {
-        if (activeEventForChar(charId, targetTick, "move")) return;
-        if (activeEventForChar(charId, targetTick, "dialogue")) return;
+    function shouldStayStillForStatus(...values) {
+      return values
+        .filter(Boolean)
+        .some(value => /睡觉|睡眠|睡着|打盹|小憩|午睡|昏睡|晕倒|昏倒|昏迷|躺下|卧床/.test(value));
+    }
 
-        const action = activeEventForChar(charId, targetTick, "action");
-        const runtime = characterRuntime[charId];
-        const locationId = runtime.locationId || navigation.closestLocationId(runtime.point || regionPoint(characters[charId].init_region, charId));
-        if (!mapConfig.locations[locationId]) return;
+    function performActivityMovement(charId) {
+      if (isPaused) return;
+      const moveEvent = activeEventForChar(charId, currentTick, "move");
+      if (moveEvent && moveProgressAtTick(moveEvent, currentTick) < 1) return;
 
-        const state = activityState[charId] || { nextTick: 0 };
-        if (targetTick < state.nextTick) return;
+      const action = activeEventForChar(charId, currentTick, "action");
+      const runtime = characterRuntime[charId];
+      if (shouldStayStillForStatus(runtime?.status, action?.status, action?.detail)) return;
+      const locationId = runtime.locationId || navigation.closestLocationId(runtime.point || regionPoint(characters[charId].init_region, charId));
+      if (!mapConfig.locations[locationId]) return;
 
-        const origin = runtime.point || regionPoint(locationId, charId);
-        const target = action
-          ? activitySystem.chooseActivityTarget(locationId, charId, origin)
-          : toPoint(activitySystem.choosePoi(locationId, charId).pos);
-
-        if (navigation.pointInArea(target, mapConfig.locations[locationId].activityArea) && navigation.isWalkable(target)) {
-          const el = characterEls[charId];
-          el.style.transition = `left ${Math.max(0.08, 18 * tickSeconds / timeScale)}s linear, top ${Math.max(0.08, 18 * tickSeconds / timeScale)}s linear`;
-          setCharacterPosition(charId, target, true);
+      const origin = runtime.point || regionPoint(locationId, charId);
+      const rabbitLength = 21 * (characters[charId]?.scale || 1);
+      const maxActivityStep = rabbitLength * 3;
+      const minActivityStep = Math.max(12, rabbitLength * 1.15);
+      let target = null;
+      let fallbackTarget = null;
+      for (let attempt = 0; attempt < 8; attempt += 1) {
+        const candidate = action
+          ? activitySystem.chooseActivityTarget(locationId, charId, origin, maxActivityStep)
+          : toPoint(activitySystem.randomPointInActivityArea(locationId, origin, maxActivityStep));
+        fallbackTarget = candidate;
+        if (navigation.distance(toPoint(origin), candidate) >= minActivityStep) {
+          target = candidate;
+          break;
         }
+      }
+      target = target || fallbackTarget;
+      if (!target) return;
 
-        activityState[charId] = { nextTick: targetTick + 18 + Math.floor(Math.random() * 24) };
+      if (navigation.pointInArea(target, mapConfig.locations[locationId].activityArea) && navigation.isWalkable(target)) {
+        const el = characterEls[charId];
+        el.style.transition = `left 2s ease-in-out, top 2s ease-in-out`;
+        setCharacterPosition(charId, target, true);
+      }
+    }
+
+    function scheduleCharacterActivity(charId, delayMs = 0) {
+      if (activityTimers[charId]) window.clearTimeout(activityTimers[charId]);
+      activityTimers[charId] = window.setTimeout(() => {
+        activityTimers[charId] = null;
+        performActivityMovement(charId);
+        scheduleCharacterActivity(charId, 3000 + Math.random() * 1000);
+      }, delayMs);
+    }
+
+    function scheduleActivityMovement() {
+      if (isPaused) return;
+      Object.keys(characters).forEach((charId, index) => {
+        scheduleCharacterActivity(charId, 80 + index * 55 + Math.random() * 180);
       });
     }
 
@@ -2251,6 +2345,8 @@
       clearTickTimer();
       clearBubbleTimers();
       clearStatusTagTimers();
+      clearActivityTimers();
+      arrivedMoveKeys.clear();
       Object.keys(activeMoveAnimations).forEach(cancelMoveAnimation);
       currentTick = targetTick;
       eventCursor = storyData.timeline.findIndex(event => event.start_tick > targetTick);
@@ -2266,6 +2362,7 @@
       rebuildLog(targetTick);
       updateHud();
       resumeActiveMovesAfterSeek(targetTick);
+      scheduleActivityMovement();
       scheduleTicks();
     }
 
@@ -2361,7 +2458,8 @@
       regions = storyData.config.map_regions;
       characters = storyData.characters;
       tickSeconds = storyData.config.tick_interval_seconds || 10;
-      maxTick = storyData.config.max_tick || 8640;
+      maxTick = maxTickForDay(tickSeconds);
+      storyData.config.max_tick = maxTick;
       storyData.timeline.sort((a, b) => a.start_tick - b.start_tick);
 
       tickRange.max = String(maxTick);
@@ -2375,13 +2473,8 @@
       stageResizeObserver = new ResizeObserver(updateStageScale);
       stageResizeObserver.observe(stage.parentElement);
       window.addEventListener("resize", updateStageScale);
-      updateHud();
-      appendLog(`24小时剧本 ${storyData.date} 已从 data.json 载入，共 ${storyData.timeline.length} 条事件。`, 0);
-      runDueEvents(0);
-      refreshRuntimeByTick(0);
-      updateActivityMovement(0);
-      runEventDrivenAITriggers(0);
-      scheduleTicks();
+      resetStateToTick(systemTimeToTick());
+      appendLog(`已按系统时间从 ${formatTickTime(currentTick, true)} / Tick ${currentTick} 开始播放。`, currentTick);
     }
 
     init();

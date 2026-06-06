@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-05",
+  "date": "2026-06-06",
   "config": {
     "tick_interval_seconds": 10,
     "max_tick": 8640,
@@ -81,6 +81,18 @@
         "kind": "park",
         "x": 400,
         "y": 555
+      },
+      "lighthouse": {
+        "name": "灯塔",
+        "kind": "public",
+        "x": 78,
+        "y": 535
+      },
+      "chanson_hall": {
+        "name": "香颂音乐厅",
+        "kind": "art",
+        "x": 365,
+        "y": 494
       }
     }
   },
@@ -115,7 +127,7 @@
       "scale": 1,
       "init_region": "tree_house",
       "mood": "专注",
-      "status": "睡觉中"
+      "status": "整理树叶笔记"
     },
     "rabbit_5": {
       "name": "杰拉德",
@@ -131,7 +143,7 @@
       "scale": 1.2,
       "init_region": "tree_house",
       "mood": "松弛",
-      "status": "睡觉中"
+      "status": "调试小铃铛"
     },
     "rabbit_7": {
       "name": "Lino",
@@ -145,7 +157,7 @@
   "timeline": [
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 540,
       "char": "rabbit_1",
       "type": "action",
       "mood": "困倦",
@@ -154,7 +166,7 @@
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 580,
       "char": "rabbit_2",
       "type": "action",
       "mood": "困倦",
@@ -163,7 +175,7 @@
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 620,
       "char": "rabbit_3",
       "type": "action",
       "mood": "困倦",
@@ -172,7 +184,7 @@
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 660,
       "char": "rabbit_4",
       "type": "action",
       "mood": "困倦",
@@ -181,7 +193,7 @@
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 700,
       "char": "rabbit_5",
       "type": "action",
       "mood": "困倦",
@@ -190,1143 +202,5261 @@
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
+      "end_tick": 240,
       "char": "rabbit_6",
       "type": "action",
       "mood": "困倦",
       "status": "睡觉中",
-      "detail": "劳伦斯在树屋里睡觉，窗外的叶子被晨风轻轻晃动"
+      "detail": "劳伦斯在树屋里睡觉，手边还放着小工具包"
     },
     {
       "start_tick": 0,
-      "end_tick": 780,
-      "char": "rabbit_7",
-      "type": "action",
-      "mood": "困倦",
-      "status": "睡觉中",
-      "detail": "Lino在树屋里睡觉，窗外的叶子被晨风轻轻晃动"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 900,
-      "char": "rabbit_3",
-      "type": "action",
-      "mood": "兴奋",
-      "status": "准备开店清单",
-      "detail": "小泽确认咖啡豆、蘑菇杯和今日甜点牌"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 900,
-      "char": "rabbit_6",
-      "type": "action",
-      "mood": "松弛",
-      "status": "检查工具包",
-      "detail": "劳伦斯把扳手、木槌和备用齿轮按大小排成一列"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 960,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "清醒",
-      "status": "整理小挎包",
-      "detail": "小悠米把迷你望远镜和贝壳袋塞进小挎包"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 960,
-      "char": "rabbit_5",
-      "type": "action",
-      "mood": "迷糊",
-      "status": "找围巾",
-      "detail": "杰拉德在树屋里找那条总会自己滑到椅背上的围巾"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 1020,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "平静",
-      "status": "晨间拉伸",
-      "detail": "乔治在树屋平台上做拉伸，顺手把公共小路扫干净"
-    },
-    {
-      "start_tick": 780,
-      "end_tick": 1020,
+      "end_tick": 90,
       "char": "rabbit_7",
       "type": "action",
       "mood": "安静",
-      "status": "擦相机镜头",
-      "detail": "Lino把灰色小相机擦亮，准备拍一整天的地图纪念照"
+      "status": "浅睡中",
+      "detail": "Lino抱着相机浅浅睡了一会儿，窗外还有一点星光"
     },
     {
-      "start_tick": 780,
-      "end_tick": 1080,
-      "char": "rabbit_4",
+      "start_tick": 30,
+      "end_tick": 70,
+      "char": "rabbit_2",
       "type": "action",
-      "mood": "专注",
-      "status": "整理观测本",
-      "detail": "晓雪把昨晚的星星草图按亮度重新排序"
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "乔治在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 900,
-      "end_tick": 1140,
-      "char": "rabbit_3",
+      "start_tick": 45,
+      "end_tick": 69,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "巨树树屋区这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 90,
+      "end_tick": 100,
+      "char": "rabbit_7",
       "type": "move",
       "from": "tree_house",
-      "to": "mushroom_cafe",
-      "mood": "轻快",
-      "status": "前往蘑菇咖啡馆",
-      "detail": "小泽沿着小路前往蘑菇咖啡馆"
+      "to": "observatory",
+      "mood": "安静",
+      "status": "前往星光天文台",
+      "detail": "Lino趁夜色还深，沿山路去星光天文台确认相机位置"
     },
     {
-      "start_tick": 900,
-      "end_tick": 1200,
+      "start_tick": 114,
+      "end_tick": 154,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "期待",
+      "status": "在巨树树屋区停下来看一眼周围动静",
+      "detail": "杰拉德在巨树树屋区停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 129,
+      "end_tick": 153,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "如果今天有地图脚注，这里一定要写上巨树树屋区。"
+    },
+    {
+      "start_tick": 198,
+      "end_tick": 238,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在巨树树屋区把随身小物重新收好",
+      "detail": "小悠米在巨树树屋区把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 213,
+      "end_tick": 237,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "巨树树屋区小发现",
+      "text": "我刚才听见巨树树屋区有一点点新的声音。"
+    },
+    {
+      "start_tick": 240,
+      "end_tick": 250,
       "char": "rabbit_6",
       "type": "move",
       "from": "tree_house",
-      "to": "gear_workshop",
-      "mood": "稳当",
-      "status": "前往齿轮工坊",
-      "detail": "劳伦斯沿着小路前往齿轮工坊"
+      "to": "weather_station",
+      "mood": "可靠",
+      "status": "前往云朵气象站",
+      "detail": "劳伦斯听见风铃轻响，出门去云朵气象站看一眼风向"
     },
     {
-      "start_tick": 960,
-      "end_tick": 1200,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "tree_house",
-      "to": "mushroom_cafe",
-      "mood": "轻快",
-      "status": "前往蘑菇咖啡馆",
-      "detail": "小悠米沿着小路前往蘑菇咖啡馆"
+      "start_tick": 270,
+      "end_tick": 520,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "专注",
+      "status": "夜拍星台",
+      "detail": "Lino在望远镜旁拍下夜里最后一点星光"
     },
     {
-      "start_tick": 960,
-      "end_tick": 1260,
+      "start_tick": 282,
+      "end_tick": 322,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "满足",
+      "status": "在巨树树屋区做一段很短的观察记录",
+      "detail": "晓雪在巨树树屋区做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 297,
+      "end_tick": 321,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 360,
+      "end_tick": 390,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "安静",
+      "status": "夜拍星台",
+      "text": "凌晨的天文台很轻，连快门声都要小一点。"
+    },
+    {
+      "start_tick": 366,
+      "end_tick": 406,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在星光天文台确认下一段路怎么走",
+      "detail": "Lino在星光天文台确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 381,
+      "end_tick": 405,
       "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "巨树树屋区小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 401,
+      "end_tick": 441,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在巨树树屋区给刚才的发现起一个临时名字",
+      "detail": "乔治在巨树树屋区给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 420,
+      "end_tick": 680,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "认真",
+      "status": "清晨风向检查",
+      "detail": "劳伦斯给测风塔上油，确认今天的风不会把门吹歪"
+    },
+    {
+      "start_tick": 450,
+      "end_tick": 490,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在巨树树屋区把今日地图补上一笔",
+      "detail": "小泽在巨树树屋区把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 465,
+      "end_tick": 489,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "云朵气象站小发现",
+      "text": "云朵气象站的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 472,
+      "end_tick": 496,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "巨树树屋区小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 485,
+      "end_tick": 525,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "专注",
+      "status": "在巨树树屋区检查小包里的工具和便签",
+      "detail": "杰拉德在巨树树屋区检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 510,
+      "end_tick": 540,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "稳当",
+      "status": "清晨风向检查",
+      "text": "风向没问题，今天适合把所有门都修得很温柔。"
+    },
+    {
+      "start_tick": 520,
+      "end_tick": 530,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "observatory",
+      "to": "tree_house",
+      "mood": "安心",
+      "status": "前往巨树树屋区",
+      "detail": "Lino收好相机，沿着微亮的山路回树屋"
+    },
+    {
+      "start_tick": 534,
+      "end_tick": 574,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在云朵气象站听风、看光、顺便发一会儿呆",
+      "detail": "劳伦斯在云朵气象站听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 540,
+      "end_tick": 570,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "早安，今天要把地图走得热热闹闹。"
+    },
+    {
+      "start_tick": 556,
+      "end_tick": 580,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "巨树树屋区小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 569,
+      "end_tick": 609,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "安心",
+      "status": "在巨树树屋区把心情调到适合继续出发",
+      "detail": "小悠米在巨树树屋区把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 580,
+      "end_tick": 610,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "我听见风在催大家出门。"
+    },
+    {
+      "start_tick": 620,
+      "end_tick": 650,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "先伸个懒腰，再去冒险。"
+    },
+    {
+      "start_tick": 640,
+      "end_tick": 664,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "巨树树屋区小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 653,
+      "end_tick": 693,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "晓雪在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 660,
+      "end_tick": 690,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "早安，今天要把地图走得热热闹闹。"
+    },
+    {
+      "start_tick": 680,
+      "end_tick": 690,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "weather_station",
+      "to": "tree_house",
+      "mood": "安心",
+      "status": "前往巨树树屋区",
+      "detail": "劳伦斯踩着清晨的风回到树屋，准备正式开始一天"
+    },
+    {
+      "start_tick": 700,
+      "end_tick": 730,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "我听见风在催大家出门。"
+    },
+    {
+      "start_tick": 700,
+      "end_tick": 1080,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "满足",
+      "status": "回笼觉",
+      "detail": "Lino把相机放在床头，补一个很短很香的觉"
+    },
+    {
+      "start_tick": 702,
+      "end_tick": 726,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "巨树树屋区小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 720,
+      "end_tick": 730,
+      "char": "rabbit_1",
       "type": "move",
       "from": "tree_house",
       "to": "carrot_square",
       "mood": "好奇",
       "status": "前往胡萝卜广场",
-      "detail": "杰拉德沿着小路前往胡萝卜广场"
+      "detail": "小悠米沿着道路从巨树树屋区去胡萝卜广场"
     },
     {
-      "start_tick": 1020,
-      "end_tick": 1320,
+      "start_tick": 724,
+      "end_tick": 748,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 737,
+      "end_tick": 777,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "期待",
+      "status": "在巨树树屋区停下来看一眼周围动静",
+      "detail": "Lino在巨树树屋区停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 740,
+      "end_tick": 770,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "先伸个懒腰，再去冒险。"
+    },
+    {
+      "start_tick": 780,
+      "end_tick": 790,
       "char": "rabbit_2",
       "type": "move",
       "from": "tree_house",
       "to": "timothy_farm",
-      "mood": "可靠",
+      "mood": "专注",
       "status": "前往提摩西农场",
-      "detail": "乔治沿着小路前往提摩西农场"
+      "detail": "乔治沿着道路从巨树树屋区去提摩西农场"
     },
     {
-      "start_tick": 1020,
-      "end_tick": 1440,
+      "start_tick": 780,
+      "end_tick": 810,
       "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "迷糊",
+      "status": "刚醒来",
+      "text": "早安，今天要把地图走得热热闹闹。"
+    },
+    {
+      "start_tick": 808,
+      "end_tick": 832,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 840,
+      "end_tick": 850,
+      "char": "rabbit_3",
       "type": "move",
       "from": "tree_house",
-      "to": "rabbit_mountain",
-      "mood": "从容",
-      "status": "前往兔耳山",
-      "detail": "Lino沿着小路前往兔耳山"
+      "to": "mushroom_cafe",
+      "mood": "开心",
+      "status": "前往蘑菇咖啡馆",
+      "detail": "小泽沿着道路从巨树树屋区去蘑菇咖啡馆"
     },
     {
-      "start_tick": 1080,
-      "end_tick": 1500,
+      "start_tick": 850,
+      "end_tick": 1150,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "开心",
+      "status": "读广场公告",
+      "detail": "小悠米在胡萝卜广场读广场公告，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 856,
+      "end_tick": 896,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在巨树树屋区把今日地图补上一笔",
+      "detail": "杰拉德在巨树树屋区把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 860,
+      "end_tick": 1020,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "松弛",
+      "status": "整理工具包",
+      "detail": "劳伦斯把螺丝刀、油壶和小尺子重新排好队"
+    },
+    {
+      "start_tick": 892,
+      "end_tick": 916,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "巨树树屋区小发现",
+      "text": "巨树树屋区这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 895,
+      "end_tick": 925,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "读广场公告",
+      "text": "公告栏又多了一张手写便签。"
+    },
+    {
+      "start_tick": 899,
+      "end_tick": 923,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "胡萝卜广场小发现",
+      "text": "我刚才听见胡萝卜广场有一点点新的声音。"
+    },
+    {
+      "start_tick": 900,
+      "end_tick": 910,
       "char": "rabbit_4",
       "type": "move",
       "from": "tree_house",
       "to": "acorn_library",
-      "mood": "认真",
+      "mood": "可靠",
       "status": "前往橡果图书馆",
-      "detail": "晓雪沿着小路前往橡果图书馆"
+      "detail": "晓雪沿着道路从巨树树屋区去橡果图书馆"
     },
     {
-      "start_tick": 1140,
-      "end_tick": 2220,
-      "char": "rabbit_3",
-      "type": "action",
-      "mood": "精神",
-      "status": "咖啡馆开店",
-      "detail": "小泽打开蘑菇咖啡馆的圆窗，第一锅胡萝卜拿铁冒出热气"
-    },
-    {
-      "start_tick": 1200,
-      "end_tick": 1680,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "满足",
-      "status": "喝热可可",
-      "detail": "小悠米在蘑菇咖啡馆吧台旁记录今天想去的地方"
-    },
-    {
-      "start_tick": 1200,
-      "end_tick": 2040,
+      "start_tick": 905,
+      "end_tick": 945,
       "char": "rabbit_6",
       "type": "action",
-      "mood": "专注",
-      "status": "修工作台",
-      "detail": "劳伦斯在工作台前修好会嘎吱响的夹具"
+      "mood": "满足",
+      "status": "在巨树树屋区做一段很短的观察记录",
+      "detail": "劳伦斯在巨树树屋区做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 1260,
-      "end_tick": 1980,
-      "char": "rabbit_5",
+      "start_tick": 940,
+      "end_tick": 980,
+      "char": "rabbit_1",
       "type": "action",
-      "mood": "活泼",
-      "status": "喷泉边速写",
-      "detail": "杰拉德坐在喷泉旁画路过兔兔的耳朵形状"
+      "mood": "好奇",
+      "status": "在胡萝卜广场听风、看光、顺便发一会儿呆",
+      "detail": "小悠米在胡萝卜广场听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 1320,
-      "end_tick": 2100,
+      "start_tick": 940,
+      "end_tick": 1360,
       "char": "rabbit_2",
       "type": "action",
-      "mood": "踏实",
-      "status": "检查草田",
-      "detail": "乔治在草田边记录哪些提摩西草已经可以收割"
+      "mood": "可靠",
+      "status": "检查温室门",
+      "detail": "乔治在提摩西农场检查温室门，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 1440,
-      "end_tick": 2160,
+      "start_tick": 942,
+      "end_tick": 982,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在提摩西农场确认下一段路怎么走",
+      "detail": "乔治在提摩西农场确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 960,
+      "end_tick": 970,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "tree_house",
+      "to": "carrot_maze",
+      "mood": "期待",
+      "status": "前往地下胡萝卜迷宫",
+      "detail": "杰拉德沿着道路从巨树树屋区去地下胡萝卜迷宫"
+    },
+    {
+      "start_tick": 976,
+      "end_tick": 1000,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "如果今天有地图脚注，这里一定要写上巨树树屋区。"
+    },
+    {
+      "start_tick": 983,
+      "end_tick": 1007,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "提摩西农场小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 995,
+      "end_tick": 1025,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "检查温室门",
+      "text": "温室门终于不吱呀叫了。"
+    },
+    {
+      "start_tick": 1020,
+      "end_tick": 1030,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "tree_house",
+      "to": "gear_workshop",
+      "mood": "轻快",
+      "status": "前往齿轮工坊",
+      "detail": "劳伦斯沿着道路从巨树树屋区去齿轮工坊"
+    },
+    {
+      "start_tick": 1030,
+      "end_tick": 1570,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "期待",
+      "status": "给客人递热饮",
+      "detail": "小泽在蘑菇咖啡馆给客人递热饮，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1036,
+      "end_tick": 1066,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "读广场公告",
+      "text": "喷泉的水声刚好能盖住肚子叫。"
+    },
+    {
+      "start_tick": 1042,
+      "end_tick": 1082,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在蘑菇咖啡馆把随身小物重新收好",
+      "detail": "小泽在蘑菇咖啡馆把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1067,
+      "end_tick": 1091,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 1080,
+      "end_tick": 1090,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "tree_house",
+      "to": "observatory",
+      "mood": "认真",
+      "status": "前往星光天文台",
+      "detail": "Lino沿着道路从巨树树屋区去星光天文台"
+    },
+    {
+      "start_tick": 1090,
+      "end_tick": 1570,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "认真",
+      "status": "试走迷宫入口",
+      "detail": "杰拉德在地下胡萝卜迷宫试走迷宫入口，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1095,
+      "end_tick": 1125,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "开心",
+      "status": "给客人递热饮",
+      "text": "这一杯闻起来像雨后的蘑菇伞。"
+    },
+    {
+      "start_tick": 1120,
+      "end_tick": 1480,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "轻快",
+      "status": "翻看旧地图",
+      "detail": "晓雪在橡果图书馆翻看旧地图，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1126,
+      "end_tick": 1166,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在橡果图书馆给刚才的发现起一个临时名字",
+      "detail": "晓雪在橡果图书馆给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1143,
+      "end_tick": 1183,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "期待",
+      "status": "在提摩西农场停下来看一眼周围动静",
+      "detail": "乔治在提摩西农场停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1145,
+      "end_tick": 1175,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "试走迷宫入口",
+      "text": "石门要是说话，我先装作没听见。"
+    },
+    {
+      "start_tick": 1151,
+      "end_tick": 1175,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "橡果图书馆小发现",
+      "text": "橡果图书馆的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 1165,
+      "end_tick": 1195,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "翻看旧地图",
+      "text": "这本书闻起来像晒过太阳的橡果。"
+    },
+    {
+      "start_tick": 1180,
+      "end_tick": 1480,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "满足",
+      "status": "打磨铜色螺丝",
+      "detail": "劳伦斯在齿轮工坊打磨铜色螺丝，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1192,
+      "end_tick": 1232,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "安心",
+      "status": "在蘑菇咖啡馆把心情调到适合继续出发",
+      "detail": "小泽在蘑菇咖啡馆把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1200,
+      "end_tick": 1210,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "carrot_square",
+      "to": "mushroom_cafe",
+      "mood": "专注",
+      "status": "前往蘑菇咖啡馆",
+      "detail": "小悠米沿着道路从胡萝卜广场去蘑菇咖啡馆"
+    },
+    {
+      "start_tick": 1200,
+      "end_tick": 1230,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "检查温室门",
+      "text": "这片草田比昨天精神。"
+    },
+    {
+      "start_tick": 1227,
+      "end_tick": 1267,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在地下胡萝卜迷宫把随身小物重新收好",
+      "detail": "杰拉德在地下胡萝卜迷宫把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1235,
+      "end_tick": 1259,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "地下胡萝卜迷宫小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 1245,
+      "end_tick": 1275,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "打磨铜色螺丝",
+      "text": "谁把小螺丝藏进围裙口袋了？"
+    },
+    {
+      "start_tick": 1270,
+      "end_tick": 1690,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "校准望远镜",
+      "detail": "Lino在星光天文台校准望远镜，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1276,
+      "end_tick": 1316,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "认真",
+      "status": "在齿轮工坊整理刚才发现的小线索",
+      "detail": "劳伦斯在齿轮工坊整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1278,
+      "end_tick": 1318,
       "char": "rabbit_7",
       "type": "action",
       "mood": "专注",
-      "status": "拍晨雾",
-      "detail": "Lino在登山步道旁拍晨雾，等第一束光照到山腰营地"
+      "status": "在星光天文台检查小包里的工具和便签",
+      "detail": "Lino在星光天文台检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 1500,
-      "end_tick": 1530,
+      "start_tick": 1315,
+      "end_tick": 1345,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "校准望远镜",
+      "text": "白天的天文台也有星星的味道。"
+    },
+    {
+      "start_tick": 1319,
+      "end_tick": 1343,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "齿轮工坊小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 1320,
+      "end_tick": 1350,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "广场集合",
+      "text": "我带了小纸条，谁负责把它贴到公告栏？"
+    },
+    {
+      "start_tick": 1343,
+      "end_tick": 1373,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "翻看旧地图",
+      "text": "旧地图边角写着一个小小的问号。"
+    },
+    {
+      "start_tick": 1350,
+      "end_tick": 1380,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "广场集合",
+      "text": "收到，我把这句记进今天的地图。"
+    },
+    {
+      "start_tick": 1360,
+      "end_tick": 1720,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "可靠",
+      "status": "擦亮圆桌",
+      "detail": "小悠米在蘑菇咖啡馆擦亮圆桌，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1360,
+      "end_tick": 1384,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 1362,
+      "end_tick": 1402,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "满足",
+      "status": "在蘑菇咖啡馆做一段很短的观察记录",
+      "detail": "小悠米在蘑菇咖啡馆做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1364,
+      "end_tick": 1394,
       "char": "rabbit_3",
       "type": "dialogue",
-      "mood": "热情",
-      "status": "招呼客人",
-      "text": "今天第一杯胡萝卜拿铁，给最早出门的兔兔。"
+      "mood": "轻快",
+      "status": "给客人递热饮",
+      "text": "如果奶泡会唱歌，它应该唱低音部。"
     },
     {
-      "start_tick": 1500,
-      "end_tick": 2340,
+      "start_tick": 1366,
+      "end_tick": 1396,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "打磨铜色螺丝",
+      "text": "这颗齿轮只差半圈耐心。"
+    },
+    {
+      "start_tick": 1380,
+      "end_tick": 1410,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "咖啡香气",
+      "text": "我负责确认咖啡不会把齿轮也叫醒。"
+    },
+    {
+      "start_tick": 1387,
+      "end_tick": 1417,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "试走迷宫入口",
+      "text": "迷宫入口的风有胡萝卜味。"
+    },
+    {
+      "start_tick": 1395,
+      "end_tick": 1435,
       "char": "rabbit_4",
       "type": "action",
-      "mood": "安静",
-      "status": "查星图档案",
-      "detail": "晓雪在档案柜前找出旧星图，给每条星轨贴上细小标签"
+      "mood": "温柔",
+      "status": "在橡果图书馆确认下一段路怎么走",
+      "detail": "晓雪在橡果图书馆确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1403,
+      "end_tick": 1427,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "星光天文台小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 1405,
+      "end_tick": 1435,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "擦亮圆桌",
+      "text": "如果奶泡会唱歌，它应该唱低音部。"
+    },
+    {
+      "start_tick": 1410,
+      "end_tick": 1434,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "提摩西农场小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 1410,
+      "end_tick": 1440,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "咖啡香气",
+      "text": "那我们待会儿在下一站交换线索。"
+    },
+    {
+      "start_tick": 1450,
+      "end_tick": 1460,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "timothy_farm",
+      "to": "gear_workshop",
+      "mood": "开心",
+      "status": "前往齿轮工坊",
+      "detail": "乔治沿着道路从提摩西农场去齿轮工坊"
+    },
+    {
+      "start_tick": 1479,
+      "end_tick": 1519,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在星光天文台把今日地图补上一笔",
+      "detail": "Lino在星光天文台把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1494,
+      "end_tick": 1518,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 1530,
+      "end_tick": 1540,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "acorn_library",
+      "to": "rabbit_mountain",
+      "mood": "期待",
+      "status": "前往兔耳山",
+      "detail": "晓雪沿着道路从橡果图书馆去兔耳山"
     },
     {
       "start_tick": 1530,
       "end_tick": 1560,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "校准望远镜",
+      "text": "望远镜说它还没睡醒。"
+    },
+    {
+      "start_tick": 1563,
+      "end_tick": 1603,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在蘑菇咖啡馆听风、看光、顺便发一会儿呆",
+      "detail": "小泽在蘑菇咖啡馆听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1583,
+      "end_tick": 1613,
       "char": "rabbit_1",
       "type": "dialogue",
-      "mood": "开心",
-      "status": "点热可可",
-      "text": "我要小杯的，杯子太大会挡住我的路线图。"
+      "mood": "轻快",
+      "status": "擦亮圆桌",
+      "text": "这一杯闻起来像雨后的蘑菇伞。"
     },
     {
-      "start_tick": 1680,
-      "end_tick": 1980,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "mushroom_cafe",
-      "to": "carrot_square",
-      "mood": "期待",
-      "status": "前往胡萝卜广场",
-      "detail": "小悠米沿着小路前往胡萝卜广场"
-    },
-    {
-      "start_tick": 1980,
-      "end_tick": 2520,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "专注",
-      "status": "看公告栏",
-      "detail": "小悠米在公告栏前抄下彩虹湖巡游通知"
-    },
-    {
-      "start_tick": 1980,
-      "end_tick": 2520,
+      "start_tick": 1598,
+      "end_tick": 1638,
       "char": "rabbit_5",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "carrot_maze",
-      "mood": "紧张",
-      "status": "前往地下胡萝卜迷宫",
-      "detail": "杰拉德沿着小路前往地下胡萝卜迷宫"
+      "type": "action",
+      "mood": "安心",
+      "status": "在地下胡萝卜迷宫把心情调到适合继续出发",
+      "detail": "杰拉德在地下胡萝卜迷宫把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 2040,
-      "end_tick": 2520,
+      "start_tick": 1610,
+      "end_tick": 1620,
       "char": "rabbit_6",
       "type": "move",
       "from": "gear_workshop",
       "to": "timothy_farm",
       "mood": "认真",
       "status": "前往提摩西农场",
-      "detail": "劳伦斯沿着小路前往提摩西农场"
+      "detail": "劳伦斯沿着道路从齿轮工坊去提摩西农场"
     },
     {
-      "start_tick": 2100,
-      "end_tick": 2460,
+      "start_tick": 1640,
+      "end_tick": 2120,
       "char": "rabbit_2",
-      "type": "move",
-      "from": "timothy_farm",
-      "to": "gear_workshop",
+      "type": "action",
+      "mood": "期待",
+      "status": "打磨铜色螺丝",
+      "detail": "乔治在齿轮工坊打磨铜色螺丝，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1650,
+      "end_tick": 1690,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "专注",
+      "status": "在齿轮工坊检查小包里的工具和便签",
+      "detail": "乔治在齿轮工坊检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1660,
+      "end_tick": 2080,
+      "char": "rabbit_4",
+      "type": "action",
       "mood": "认真",
-      "status": "前往齿轮工坊",
-      "detail": "乔治沿着小路前往齿轮工坊"
+      "status": "整理山腰营地",
+      "detail": "晓雪在兔耳山整理山腰营地，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 2160,
-      "end_tick": 2580,
-      "char": "rabbit_7",
+      "start_tick": 1660,
+      "end_tick": 1670,
+      "char": "rabbit_5",
       "type": "move",
-      "from": "rabbit_mountain",
-      "to": "observatory",
-      "mood": "好奇",
-      "status": "前往星光天文台",
-      "detail": "Lino沿着小路前往星光天文台"
+      "from": "carrot_maze",
+      "to": "rainbow_lake",
+      "mood": "轻快",
+      "status": "前往彩虹湖",
+      "detail": "杰拉德沿着道路从地下胡萝卜迷宫去彩虹湖"
     },
     {
-      "start_tick": 2220,
-      "end_tick": 2580,
+      "start_tick": 1663,
+      "end_tick": 1687,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "兔耳山小发现",
+      "text": "兔耳山这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 1682,
+      "end_tick": 1722,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "认真",
+      "status": "在蘑菇咖啡馆整理刚才发现的小线索",
+      "detail": "小悠米在蘑菇咖啡馆整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1695,
+      "end_tick": 1725,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "开心",
+      "status": "打磨铜色螺丝",
+      "text": "这颗齿轮只差半圈耐心。"
+    },
+    {
+      "start_tick": 1700,
+      "end_tick": 1710,
       "char": "rabbit_3",
       "type": "move",
       "from": "mushroom_cafe",
       "to": "carrot_square",
-      "mood": "忙碌",
+      "mood": "可靠",
       "status": "前往胡萝卜广场",
-      "detail": "小泽沿着小路前往胡萝卜广场"
+      "detail": "小泽沿着道路从蘑菇咖啡馆去胡萝卜广场"
     },
     {
-      "start_tick": 2340,
-      "end_tick": 2940,
+      "start_tick": 1705,
+      "end_tick": 1735,
       "char": "rabbit_4",
-      "type": "move",
-      "from": "acorn_library",
-      "to": "rabbit_mountain",
+      "type": "dialogue",
       "mood": "期待",
-      "status": "前往兔耳山",
-      "detail": "晓雪沿着小路前往兔耳山"
+      "status": "整理山腰营地",
+      "text": "站高一点，连烦恼都变小了。"
     },
     {
-      "start_tick": 2460,
-      "end_tick": 3180,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "专注",
-      "status": "修理水车齿轮",
-      "detail": "乔治在工作台边帮忙校准农场水车的小齿轮"
-    },
-    {
-      "start_tick": 2520,
-      "end_tick": 2880,
-      "char": "rabbit_1",
+      "start_tick": 1740,
+      "end_tick": 1750,
+      "char": "rabbit_7",
       "type": "move",
-      "from": "carrot_square",
-      "to": "botanical_garden",
-      "mood": "好奇",
-      "status": "前往植物园",
-      "detail": "小悠米沿着小路前往植物园"
+      "from": "observatory",
+      "to": "weather_station",
+      "mood": "满足",
+      "status": "前往云朵气象站",
+      "detail": "Lino沿着道路从星光天文台去云朵气象站"
     },
     {
-      "start_tick": 2520,
-      "end_tick": 3180,
+      "start_tick": 1753,
+      "end_tick": 1777,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 1766,
+      "end_tick": 1806,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "期待",
+      "status": "在兔耳山停下来看一眼周围动静",
+      "detail": "晓雪在兔耳山停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1800,
+      "end_tick": 1840,
       "char": "rabbit_6",
       "type": "action",
-      "mood": "可靠",
-      "status": "修温室门",
-      "detail": "劳伦斯把温室门调到轻轻一推就能关严"
+      "mood": "轻快",
+      "status": "在提摩西农场给刚才的发现起一个临时名字",
+      "detail": "劳伦斯在提摩西农场给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 2520,
-      "end_tick": 3300,
+      "start_tick": 1800,
+      "end_tick": 2160,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "浇灌草田",
+      "detail": "劳伦斯在提摩西农场浇灌草田，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 1810,
+      "end_tick": 1820,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "mushroom_cafe",
+      "to": "botanical_garden",
+      "mood": "开心",
+      "status": "前往植物园",
+      "detail": "小悠米沿着道路从蘑菇咖啡馆去植物园"
+    },
+    {
+      "start_tick": 1814,
+      "end_tick": 1838,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "提摩西农场小发现",
+      "text": "我刚才听见提摩西农场有一点点新的声音。"
+    },
+    {
+      "start_tick": 1820,
+      "end_tick": 2360,
       "char": "rabbit_5",
       "type": "action",
-      "mood": "兴奋",
-      "status": "拓印石门纹路",
-      "detail": "杰拉德在石门前拓印纹路，决定把它做成布料花样"
+      "mood": "满足",
+      "status": "数湖边石子",
+      "detail": "杰拉德在彩虹湖数湖边石子，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 2580,
-      "end_tick": 3300,
+      "start_tick": 1832,
+      "end_tick": 1856,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "彩虹湖小发现",
+      "text": "如果今天有地图脚注，这里一定要写上彩虹湖。"
+    },
+    {
+      "start_tick": 1837,
+      "end_tick": 1861,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "齿轮工坊小发现",
+      "text": "齿轮工坊的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 1865,
+      "end_tick": 1895,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "浇灌草田",
+      "text": "这片草田比昨天精神。"
+    },
+    {
+      "start_tick": 1875,
+      "end_tick": 1905,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "数湖边石子",
+      "text": "木码头的第三块板子会轻轻唱歌。"
+    },
+    {
+      "start_tick": 1885,
+      "end_tick": 1925,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在齿轮工坊把今日地图补上一笔",
+      "detail": "乔治在齿轮工坊把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1920,
+      "end_tick": 2220,
       "char": "rabbit_3",
       "type": "action",
-      "mood": "热情",
-      "status": "流动咖啡车",
-      "detail": "小泽把小推车停在喷泉旁，给赶路的兔兔递热饮"
+      "mood": "轻快",
+      "status": "读广场公告",
+      "detail": "小泽在胡萝卜广场读广场公告，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 2580,
-      "end_tick": 3360,
+      "start_tick": 1920,
+      "end_tick": 1950,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "整理山腰营地",
+      "text": "那块石头真的像兔耳朵。"
+    },
+    {
+      "start_tick": 1921,
+      "end_tick": 1945,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "胡萝卜广场小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 1934,
+      "end_tick": 1974,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "满足",
+      "status": "在胡萝卜广场做一段很短的观察记录",
+      "detail": "小泽在胡萝卜广场做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 1937,
+      "end_tick": 1967,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "打磨铜色螺丝",
+      "text": "谁把小螺丝藏进围裙口袋了？"
+    },
+    {
+      "start_tick": 1960,
+      "end_tick": 2440,
       "char": "rabbit_7",
       "type": "action",
       "mood": "安静",
-      "status": "整理星台照片",
-      "detail": "Lino在望远镜旁给白天的天文台拍空镜照片"
+      "status": "记录风向",
+      "detail": "Lino在云朵气象站记录风向，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 2640,
-      "end_tick": 2670,
+      "start_tick": 1966,
+      "end_tick": 1990,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "云朵气象站小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 1969,
+      "end_tick": 2009,
       "char": "rabbit_5",
-      "type": "dialogue",
-      "mood": "紧张",
-      "status": "迷宫入口",
-      "text": "如果石门突然说话，我就假装自己只是路过。"
+      "type": "action",
+      "mood": "好奇",
+      "status": "在彩虹湖听风、看光、顺便发一会儿呆",
+      "detail": "杰拉德在彩虹湖听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 2670,
-      "end_tick": 2700,
-      "char": "rabbit_6",
-      "type": "dialogue",
-      "mood": "稳当",
-      "status": "检查工具",
-      "text": "它要是真说话，我先听听是哪颗齿轮缺油。"
+      "start_tick": 1969,
+      "end_tick": 2009,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在云朵气象站把随身小物重新收好",
+      "detail": "Lino在云朵气象站把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 2880,
-      "end_tick": 3540,
+      "start_tick": 1985,
+      "end_tick": 2015,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "读广场公告",
+      "text": "喷泉的水声刚好能盖住肚子叫。"
+    },
+    {
+      "start_tick": 2000,
+      "end_tick": 2420,
       "char": "rabbit_1",
       "type": "action",
-      "mood": "开心",
-      "status": "采集花香",
-      "detail": "小悠米在植物园花园小路上给每一种香味做编号"
+      "mood": "期待",
+      "status": "观察玻璃温室",
+      "detail": "小悠米在植物园观察玻璃温室，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 2940,
-      "end_tick": 3540,
+      "start_tick": 2005,
+      "end_tick": 2029,
       "char": "rabbit_4",
-      "type": "action",
-      "mood": "开阔",
-      "status": "校准山路标记",
-      "detail": "晓雪在登山步道旁检查夜间发光的路标"
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "兔耳山小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
     },
     {
-      "start_tick": 3180,
-      "end_tick": 3600,
+      "start_tick": 2005,
+      "end_tick": 2035,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "记录风向",
+      "text": "云朵仪表晃得像在打拍子。"
+    },
+    {
+      "start_tick": 2018,
+      "end_tick": 2058,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在提摩西农场确认下一段路怎么走",
+      "detail": "劳伦斯在提摩西农场确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2023,
+      "end_tick": 2053,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "浇灌草田",
+      "text": "温室门终于不吱呀叫了。"
+    },
+    {
+      "start_tick": 2045,
+      "end_tick": 2075,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "开心",
+      "status": "观察玻璃温室",
+      "text": "花苞今天像偷偷长高了一点。"
+    },
+    {
+      "start_tick": 2053,
+      "end_tick": 2093,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在植物园给刚才的发现起一个临时名字",
+      "detail": "小悠米在植物园给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2089,
+      "end_tick": 2113,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "彩虹湖小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 2100,
+      "end_tick": 2130,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "开心",
+      "status": "山路天气",
+      "text": "如果云突然变厚，我们就把路线写得更亮一点。"
+    },
+    {
+      "start_tick": 2106,
+      "end_tick": 2136,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "读广场公告",
+      "text": "公告栏又多了一张手写便签。"
+    },
+    {
+      "start_tick": 2130,
+      "end_tick": 2160,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "山路天气",
+      "text": "听起来像一件值得认真完成的小事。"
+    },
+    {
+      "start_tick": 2154,
+      "end_tick": 2184,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "数湖边石子",
+      "text": "湖面像打翻了一盒彩色糖。"
+    },
+    {
+      "start_tick": 2170,
+      "end_tick": 2180,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "rabbit_mountain",
+      "to": "weather_station",
+      "mood": "轻快",
+      "status": "前往云朵气象站",
+      "detail": "晓雪沿着道路从兔耳山去云朵气象站"
+    },
+    {
+      "start_tick": 2173,
+      "end_tick": 2197,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "提摩西农场小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 2180,
+      "end_tick": 2204,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "植物园小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 2210,
+      "end_tick": 2220,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "timothy_farm",
+      "to": "lighthouse",
+      "mood": "满足",
+      "status": "前往灯塔",
+      "detail": "劳伦斯沿着道路从提摩西农场去灯塔"
+    },
+    {
+      "start_tick": 2221,
+      "end_tick": 2261,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "安心",
+      "status": "在云朵气象站把心情调到适合继续出发",
+      "detail": "Lino在云朵气象站把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2250,
+      "end_tick": 2260,
       "char": "rabbit_2",
       "type": "move",
       "from": "gear_workshop",
       "to": "acorn_library",
-      "mood": "好学",
+      "mood": "可靠",
       "status": "前往橡果图书馆",
-      "detail": "乔治沿着小路前往橡果图书馆"
+      "detail": "乔治沿着道路从齿轮工坊去橡果图书馆"
     },
     {
-      "start_tick": 3180,
-      "end_tick": 3660,
-      "char": "rabbit_6",
-      "type": "move",
-      "from": "timothy_farm",
-      "to": "shell_bay",
-      "mood": "好奇",
-      "status": "前往贝壳海湾",
-      "detail": "劳伦斯沿着小路前往贝壳海湾"
+      "start_tick": 2257,
+      "end_tick": 2281,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "云朵气象站小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
     },
     {
-      "start_tick": 3300,
-      "end_tick": 3840,
+      "start_tick": 2257,
+      "end_tick": 2287,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "记录风向",
+      "text": "今天的风向有点调皮。"
+    },
+    {
+      "start_tick": 2260,
+      "end_tick": 2290,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "观察玻璃温室",
+      "text": "玻璃温室把云也照进来了。"
+    },
+    {
+      "start_tick": 2270,
+      "end_tick": 2280,
       "char": "rabbit_3",
       "type": "move",
       "from": "carrot_square",
-      "to": "rabbit_mountain",
-      "mood": "勇敢",
-      "status": "前往兔耳山",
-      "detail": "小泽沿着小路前往兔耳山"
-    },
-    {
-      "start_tick": 3300,
-      "end_tick": 3840,
-      "char": "rabbit_5",
-      "type": "move",
-      "from": "carrot_maze",
-      "to": "rainbow_lake",
-      "mood": "释然",
-      "status": "前往彩虹湖",
-      "detail": "杰拉德沿着小路前往彩虹湖"
-    },
-    {
-      "start_tick": 3360,
-      "end_tick": 3900,
-      "char": "rabbit_7",
-      "type": "move",
-      "from": "observatory",
-      "to": "rainbow_lake",
+      "to": "chanson_hall",
       "mood": "期待",
-      "status": "前往彩虹湖",
-      "detail": "Lino沿着小路前往彩虹湖"
+      "status": "前往香颂音乐厅",
+      "detail": "小泽沿着道路从胡萝卜广场去香颂音乐厅"
     },
     {
-      "start_tick": 3540,
-      "end_tick": 3900,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "botanical_garden",
-      "to": "rainbow_lake",
-      "mood": "雀跃",
-      "status": "前往彩虹湖",
-      "detail": "小悠米沿着小路前往彩虹湖"
-    },
-    {
-      "start_tick": 3540,
-      "end_tick": 4020,
+      "start_tick": 2330,
+      "end_tick": 2810,
       "char": "rabbit_4",
-      "type": "move",
-      "from": "rabbit_mountain",
-      "to": "observatory",
-      "mood": "兴奋",
-      "status": "前往星光天文台",
-      "detail": "晓雪沿着小路前往星光天文台"
-    },
-    {
-      "start_tick": 3600,
-      "end_tick": 4320,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "安静",
-      "status": "查农场手册",
-      "detail": "乔治在阅读桌旁翻找关于温室湿度的旧手册"
-    },
-    {
-      "start_tick": 3660,
-      "end_tick": 4380,
-      "char": "rabbit_6",
-      "type": "action",
-      "mood": "踏实",
-      "status": "修灯塔踏板",
-      "detail": "劳伦斯在灯塔旁给松动踏板加了两枚铜钉"
-    },
-    {
-      "start_tick": 3840,
-      "end_tick": 4500,
-      "char": "rabbit_3",
-      "type": "action",
-      "mood": "开阔",
-      "status": "山腰送茶",
-      "detail": "小泽在山腰营地分发热茶，顺便听风吹过兔耳山的声音"
-    },
-    {
-      "start_tick": 3840,
-      "end_tick": 4560,
-      "char": "rabbit_5",
-      "type": "action",
-      "mood": "放松",
-      "status": "码头画水波",
-      "detail": "杰拉德在木码头旁试着用三种蓝色画出湖面闪光"
-    },
-    {
-      "start_tick": 3900,
-      "end_tick": 4440,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "安静",
-      "status": "湖边写明信片",
-      "detail": "小悠米坐在湖边长椅上，把湖面的颜色写成一串配方"
-    },
-    {
-      "start_tick": 3900,
-      "end_tick": 4560,
-      "char": "rabbit_7",
       "type": "action",
       "mood": "满足",
-      "status": "拍湖面倒影",
-      "detail": "Lino在木码头边等一阵风停下，把倒影拍得很稳"
+      "status": "给测风塔上油",
+      "detail": "晓雪在云朵气象站给测风塔上油，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 4020,
-      "end_tick": 4050,
-      "char": "rabbit_1",
-      "type": "dialogue",
-      "mood": "惊喜",
-      "status": "湖边相遇",
-      "text": "Lino，你拍到湖面那道彩色波纹了吗？"
+      "start_tick": 2340,
+      "end_tick": 2380,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "满足",
+      "status": "在彩虹湖做一段很短的观察记录",
+      "detail": "杰拉德在彩虹湖做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 4020,
-      "end_tick": 4920,
+      "start_tick": 2341,
+      "end_tick": 2381,
       "char": "rabbit_4",
       "type": "action",
       "mood": "专注",
-      "status": "调望远镜",
-      "detail": "晓雪在望远镜旁把镜筒对准今晚会升起的星桥"
+      "status": "在云朵气象站检查小包里的工具和便签",
+      "detail": "晓雪在云朵气象站检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 4050,
-      "end_tick": 4080,
-      "char": "rabbit_7",
-      "type": "dialogue",
-      "mood": "安静",
-      "status": "拍照中",
-      "text": "拍到了，但我在等它变成第二种颜色。"
-    },
-    {
-      "start_tick": 4320,
-      "end_tick": 4740,
-      "char": "rabbit_2",
-      "type": "move",
-      "from": "acorn_library",
-      "to": "botanical_garden",
-      "mood": "笃定",
-      "status": "前往植物园",
-      "detail": "乔治沿着小路前往植物园"
-    },
-    {
-      "start_tick": 4380,
-      "end_tick": 4920,
-      "char": "rabbit_6",
-      "type": "move",
-      "from": "shell_bay",
-      "to": "carrot_maze",
-      "mood": "谨慎",
-      "status": "前往地下胡萝卜迷宫",
-      "detail": "劳伦斯沿着小路前往地下胡萝卜迷宫"
-    },
-    {
-      "start_tick": 4440,
-      "end_tick": 4920,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "rainbow_lake",
-      "to": "shell_bay",
-      "mood": "向往",
-      "status": "前往贝壳海湾",
-      "detail": "小悠米沿着小路前往贝壳海湾"
-    },
-    {
-      "start_tick": 4500,
-      "end_tick": 4920,
-      "char": "rabbit_3",
-      "type": "move",
-      "from": "rabbit_mountain",
-      "to": "weather_station",
-      "mood": "好奇",
-      "status": "前往云朵气象站",
-      "detail": "小泽沿着小路前往云朵气象站"
-    },
-    {
-      "start_tick": 4560,
-      "end_tick": 5100,
-      "char": "rabbit_5",
-      "type": "move",
-      "from": "rainbow_lake",
-      "to": "botanical_garden",
-      "mood": "灵感",
-      "status": "前往植物园",
-      "detail": "杰拉德沿着小路前往植物园"
-    },
-    {
-      "start_tick": 4560,
-      "end_tick": 5100,
-      "char": "rabbit_7",
-      "type": "move",
-      "from": "rainbow_lake",
-      "to": "carrot_maze",
-      "mood": "谨慎",
-      "status": "前往地下胡萝卜迷宫",
-      "detail": "Lino沿着小路前往地下胡萝卜迷宫"
-    },
-    {
-      "start_tick": 4740,
-      "end_tick": 5400,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "投入",
-      "status": "调整玻璃温室",
-      "detail": "乔治按手册里的办法给玻璃温室调通风口"
-    },
-    {
-      "start_tick": 4920,
-      "end_tick": 5340,
+      "start_tick": 2375,
+      "end_tick": 2405,
       "char": "rabbit_4",
-      "type": "move",
-      "from": "observatory",
-      "to": "weather_station",
-      "mood": "谨慎",
-      "status": "前往云朵气象站",
-      "detail": "晓雪沿着小路前往云朵气象站"
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "给测风塔上油",
+      "text": "云朵仪表晃得像在打拍子。"
     },
     {
-      "start_tick": 4920,
-      "end_tick": 5520,
+      "start_tick": 2400,
+      "end_tick": 2760,
       "char": "rabbit_3",
-      "type": "action",
-      "mood": "谨慎",
-      "status": "记录云影",
-      "detail": "小泽在测风塔边记下云影经过咖啡馆屋顶的时间"
-    },
-    {
-      "start_tick": 4920,
-      "end_tick": 5700,
-      "char": "rabbit_6",
-      "type": "action",
-      "mood": "投入",
-      "status": "检查迷宫石门",
-      "detail": "劳伦斯听石门回声，判断里面哪段机关需要上油"
-    },
-    {
-      "start_tick": 4920,
-      "end_tick": 5940,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "沉迷",
-      "status": "找小贝壳",
-      "detail": "小悠米沿着沙滩慢慢找最像月牙的贝壳"
-    },
-    {
-      "start_tick": 4980,
-      "end_tick": 5010,
-      "char": "rabbit_2",
-      "type": "dialogue",
-      "mood": "认真",
-      "status": "温室旁",
-      "text": "这本手册说傍晚要开半扇窗，植物会睡得更好。"
-    },
-    {
-      "start_tick": 5010,
-      "end_tick": 5040,
-      "char": "rabbit_5",
-      "type": "dialogue",
-      "mood": "灵感",
-      "status": "设计花纹",
-      "text": "植物会睡觉？那我要设计一条会打哈欠的围巾。"
-    },
-    {
-      "start_tick": 5100,
-      "end_tick": 5760,
-      "char": "rabbit_5",
-      "type": "action",
-      "mood": "沉迷",
-      "status": "设计花纹",
-      "detail": "杰拉德把石门纹和花瓣形状拼成新围巾草图"
-    },
-    {
-      "start_tick": 5100,
-      "end_tick": 5820,
-      "char": "rabbit_7",
-      "type": "action",
-      "mood": "兴奋",
-      "status": "记录迷宫入口",
-      "detail": "Lino在迷宫入口拍下石门纹理，给照片取名为胡萝卜回声"
-    },
-    {
-      "start_tick": 5340,
-      "end_tick": 5940,
-      "char": "rabbit_4",
       "type": "action",
       "mood": "认真",
-      "status": "核对云层",
-      "detail": "晓雪和气象站的小风铃一起确认晚上的云量"
+      "status": "练习合唱拍子",
+      "detail": "小泽在香颂音乐厅练习合唱拍子，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 5400,
-      "end_tick": 5940,
-      "char": "rabbit_2",
-      "type": "move",
-      "from": "botanical_garden",
-      "to": "timothy_farm",
-      "mood": "满足",
-      "status": "返回提摩西农场",
-      "detail": "乔治沿着小路前往提摩西农场"
-    },
-    {
-      "start_tick": 5520,
-      "end_tick": 6180,
+      "start_tick": 2407,
+      "end_tick": 2447,
       "char": "rabbit_3",
-      "type": "move",
-      "from": "weather_station",
-      "to": "mushroom_cafe",
-      "mood": "轻松",
-      "status": "返回蘑菇咖啡馆",
-      "detail": "小泽沿着小路前往蘑菇咖啡馆"
-    },
-    {
-      "start_tick": 5700,
-      "end_tick": 6180,
-      "char": "rabbit_6",
-      "type": "move",
-      "from": "carrot_maze",
-      "to": "gear_workshop",
-      "mood": "满足",
-      "status": "返回齿轮工坊",
-      "detail": "劳伦斯沿着小路前往齿轮工坊"
-    },
-    {
-      "start_tick": 5760,
-      "end_tick": 6300,
-      "char": "rabbit_5",
-      "type": "move",
-      "from": "botanical_garden",
-      "to": "gear_workshop",
+      "type": "action",
       "mood": "认真",
-      "status": "前往齿轮工坊",
-      "detail": "杰拉德沿着小路前往齿轮工坊"
+      "status": "在香颂音乐厅整理刚才发现的小线索",
+      "detail": "小泽在香颂音乐厅整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 5820,
-      "end_tick": 6420,
-      "char": "rabbit_7",
-      "type": "move",
-      "from": "carrot_maze",
-      "to": "shell_bay",
-      "mood": "放松",
-      "status": "前往贝壳海湾",
-      "detail": "Lino沿着小路前往贝壳海湾"
-    },
-    {
-      "start_tick": 5940,
-      "end_tick": 6420,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "shell_bay",
-      "to": "carrot_square",
-      "mood": "满足",
-      "status": "返回胡萝卜广场",
-      "detail": "小悠米沿着小路前往胡萝卜广场"
-    },
-    {
-      "start_tick": 5940,
-      "end_tick": 6540,
-      "char": "rabbit_4",
-      "type": "move",
-      "from": "weather_station",
-      "to": "observatory",
-      "mood": "期待",
-      "status": "返回星光天文台",
-      "detail": "晓雪沿着小路前往星光天文台"
-    },
-    {
-      "start_tick": 5940,
-      "end_tick": 6720,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "开心",
-      "status": "晚间浇水",
-      "detail": "乔治在草田里慢慢浇水，等夕阳把温室照成金色"
-    },
-    {
-      "start_tick": 6180,
-      "end_tick": 6960,
-      "char": "rabbit_6",
-      "type": "action",
-      "mood": "专注",
-      "status": "制作小风铃",
-      "detail": "劳伦斯把贝壳和旧齿轮串成一只会报时的小风铃"
-    },
-    {
-      "start_tick": 6180,
-      "end_tick": 7020,
+      "start_tick": 2416,
+      "end_tick": 2440,
       "char": "rabbit_3",
-      "type": "action",
-      "mood": "忙碌",
-      "status": "晚间甜点",
-      "detail": "小泽给晚归的兔兔烤蘑菇小蛋糕"
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "香颂音乐厅小发现",
+      "text": "如果今天有地图脚注，这里一定要写上香颂音乐厅。"
     },
     {
-      "start_tick": 6300,
-      "end_tick": 6960,
-      "char": "rabbit_5",
-      "type": "action",
-      "mood": "专注",
-      "status": "裁剪布样",
-      "detail": "杰拉德借工坊的压边工具，把布样边缘压得整整齐齐"
-    },
-    {
-      "start_tick": 6420,
-      "end_tick": 7140,
-      "char": "rabbit_7",
-      "type": "action",
-      "mood": "平静",
-      "status": "拍海湾黄昏",
-      "detail": "Lino在沙滩边拍黄昏，把灯塔放在画面右侧"
-    },
-    {
-      "start_tick": 6420,
-      "end_tick": 7200,
+      "start_tick": 2424,
+      "end_tick": 2464,
       "char": "rabbit_1",
       "type": "action",
       "mood": "温柔",
-      "status": "摆贝壳摊",
-      "detail": "小悠米把收集到的贝壳摆成小小展台，给路过的兔兔介绍纹路"
+      "status": "在植物园确认下一段路怎么走",
+      "detail": "小悠米在植物园确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 6540,
-      "end_tick": 7800,
+      "start_tick": 2430,
+      "end_tick": 2850,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "安静",
+      "status": "擦拭灯室玻璃",
+      "detail": "劳伦斯在灯塔擦拭灯室玻璃，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 2432,
+      "end_tick": 2456,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "云朵气象站小发现",
+      "text": "我刚才听见云朵气象站有一点点新的声音。"
+    },
+    {
+      "start_tick": 2440,
+      "end_tick": 2480,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "期待",
+      "status": "在灯塔停下来看一眼周围动静",
+      "detail": "劳伦斯在灯塔停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2465,
+      "end_tick": 2495,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "练习合唱拍子",
+      "text": "小舞台灯一亮，连影子都想跳舞。"
+    },
+    {
+      "start_tick": 2470,
+      "end_tick": 3010,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "轻快",
+      "status": "翻看旧地图",
+      "detail": "乔治在橡果图书馆翻看旧地图，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 2477,
+      "end_tick": 2517,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在橡果图书馆把随身小物重新收好",
+      "detail": "乔治在橡果图书馆把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2485,
+      "end_tick": 2509,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "橡果图书馆小发现",
+      "text": "橡果图书馆这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 2490,
+      "end_tick": 2500,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "rainbow_lake",
+      "to": "botanical_garden",
+      "mood": "认真",
+      "status": "前往植物园",
+      "detail": "杰拉德沿着道路从彩虹湖去植物园"
+    },
+    {
+      "start_tick": 2495,
+      "end_tick": 2525,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "擦拭灯室玻璃",
+      "text": "这里能听见最远的浪声。"
+    },
+    {
+      "start_tick": 2508,
+      "end_tick": 2548,
       "char": "rabbit_4",
       "type": "action",
-      "mood": "惊喜",
-      "status": "夜间观星",
-      "detail": "晓雪邀请大家轮流看望远镜里闪闪发亮的星桥"
+      "mood": "兴奋",
+      "status": "在云朵气象站把今日地图补上一笔",
+      "detail": "晓雪在云朵气象站把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 6600,
-      "end_tick": 6630,
+      "start_tick": 2525,
+      "end_tick": 2555,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "翻看旧地图",
+      "text": "这本书闻起来像晒过太阳的橡果。"
+    },
+    {
+      "start_tick": 2530,
+      "end_tick": 2540,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "weather_station",
+      "to": "rabbit_mountain",
+      "mood": "灵感满满",
+      "status": "前往兔耳山",
+      "detail": "Lino沿着道路从云朵气象站去兔耳山"
+    },
+    {
+      "start_tick": 2550,
+      "end_tick": 2560,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "botanical_garden",
+      "to": "rainbow_lake",
+      "mood": "可靠",
+      "status": "前往彩虹湖",
+      "detail": "小悠米沿着道路从植物园去彩虹湖"
+    },
+    {
+      "start_tick": 2600,
+      "end_tick": 2624,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "灯塔小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 2623,
+      "end_tick": 2653,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "练习合唱拍子",
+      "text": "这段旋律适合从湖边走到海湾。"
+    },
+    {
+      "start_tick": 2627,
+      "end_tick": 2667,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "安心",
+      "status": "在橡果图书馆把心情调到适合继续出发",
+      "detail": "乔治在橡果图书馆把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2627,
+      "end_tick": 2657,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "给测风塔上油",
+      "text": "今天的风向有点调皮。"
+    },
+    {
+      "start_tick": 2660,
+      "end_tick": 2700,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在兔耳山听风、看光、顺便发一会儿呆",
+      "detail": "Lino在兔耳山听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2660,
+      "end_tick": 3200,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "好奇",
+      "status": "寻找兔耳形石头",
+      "detail": "Lino在兔耳山寻找兔耳形石头，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 2676,
+      "end_tick": 2716,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在香颂音乐厅给刚才的发现起一个临时名字",
+      "detail": "小泽在香颂音乐厅给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2680,
+      "end_tick": 2980,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "记录花苞高度",
+      "detail": "杰拉德在植物园记录花苞高度，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 2684,
+      "end_tick": 2708,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "兔耳山小发现",
+      "text": "兔耳山的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 2686,
+      "end_tick": 2710,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "植物园小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 2690,
+      "end_tick": 2720,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "擦拭灯室玻璃",
+      "text": "灯塔玻璃要擦到能看见云的背面。"
+    },
+    {
+      "start_tick": 2691,
+      "end_tick": 2715,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "橡果图书馆小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 2705,
+      "end_tick": 2735,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "寻找兔耳形石头",
+      "text": "站高一点，连烦恼都变小了。"
+    },
+    {
+      "start_tick": 2711,
+      "end_tick": 2751,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "认真",
+      "status": "在植物园整理刚才发现的小线索",
+      "detail": "杰拉德在植物园整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2735,
+      "end_tick": 2765,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "记录花苞高度",
+      "text": "花苞今天像偷偷长高了一点。"
+    },
+    {
+      "start_tick": 2760,
+      "end_tick": 2790,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "湖边发现",
+      "text": "这道彩光像给迷宫画了出口。"
+    },
+    {
+      "start_tick": 2760,
+      "end_tick": 2800,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "专注",
+      "status": "在灯塔检查小包里的工具和便签",
+      "detail": "劳伦斯在灯塔检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2770,
+      "end_tick": 3250,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "轻快",
+      "status": "看湖面彩光",
+      "detail": "小悠米在彩虹湖看湖面彩光，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 2775,
+      "end_tick": 2799,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "香颂音乐厅小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 2777,
+      "end_tick": 2801,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "彩虹湖小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 2790,
+      "end_tick": 2820,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "湖边发现",
+      "text": "我同意，而且要带一点点点心。"
+    },
+    {
+      "start_tick": 2795,
+      "end_tick": 2835,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "期待",
+      "status": "在彩虹湖停下来看一眼周围动静",
+      "detail": "小悠米在彩虹湖停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2804,
+      "end_tick": 2834,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "翻看旧地图",
+      "text": "旧地图边角写着一个小小的问号。"
+    },
+    {
+      "start_tick": 2815,
+      "end_tick": 2845,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "可靠",
+      "status": "看湖面彩光",
+      "text": "木码头的第三块板子会轻轻唱歌。"
+    },
+    {
+      "start_tick": 2850,
+      "end_tick": 2860,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "chanson_hall",
+      "to": "shell_bay",
+      "mood": "轻快",
+      "status": "前往贝壳海湾",
+      "detail": "小泽沿着道路从香颂音乐厅去贝壳海湾"
+    },
+    {
+      "start_tick": 2859,
+      "end_tick": 2883,
       "char": "rabbit_4",
       "type": "dialogue",
       "mood": "期待",
-      "status": "观星邀请",
-      "text": "今晚星桥会从天文台右侧升起来，大家别错过。"
+      "status": "云朵气象站小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
     },
     {
-      "start_tick": 6630,
-      "end_tick": 6660,
-      "char": "rabbit_3",
-      "type": "dialogue",
-      "mood": "忙碌",
-      "status": "烤甜点",
-      "text": "我带无咖啡因热饮，保证看完星星还能睡着。"
-    },
-    {
-      "start_tick": 6720,
-      "end_tick": 7320,
-      "char": "rabbit_2",
-      "type": "move",
-      "from": "timothy_farm",
-      "to": "carrot_square",
-      "mood": "放松",
-      "status": "前往胡萝卜广场",
-      "detail": "乔治沿着小路前往胡萝卜广场"
-    },
-    {
-      "start_tick": 6960,
-      "end_tick": 7440,
+      "start_tick": 2866,
+      "end_tick": 2896,
       "char": "rabbit_5",
-      "type": "move",
-      "from": "gear_workshop",
-      "to": "carrot_square",
-      "mood": "开心",
-      "status": "前往胡萝卜广场",
-      "detail": "杰拉德沿着小路前往胡萝卜广场"
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "记录花苞高度",
+      "text": "玻璃温室把云也照进来了。"
     },
     {
-      "start_tick": 6960,
-      "end_tick": 7440,
+      "start_tick": 2879,
+      "end_tick": 2919,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在云朵气象站把随身小物重新收好",
+      "detail": "晓雪在云朵气象站把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 2940,
+      "end_tick": 2950,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "weather_station",
+      "to": "observatory",
+      "mood": "认真",
+      "status": "前往星光天文台",
+      "detail": "晓雪沿着道路从云朵气象站去星光天文台"
+    },
+    {
+      "start_tick": 2940,
+      "end_tick": 2950,
       "char": "rabbit_6",
       "type": "move",
-      "from": "gear_workshop",
-      "to": "weather_station",
-      "mood": "笃定",
-      "status": "前往云朵气象站",
-      "detail": "劳伦斯沿着小路前往云朵气象站"
+      "from": "lighthouse",
+      "to": "shell_bay",
+      "mood": "灵感满满",
+      "status": "前往贝壳海湾",
+      "detail": "劳伦斯沿着道路从灯塔去贝壳海湾"
     },
     {
-      "start_tick": 7020,
-      "end_tick": 7500,
-      "char": "rabbit_3",
-      "type": "move",
-      "from": "mushroom_cafe",
-      "to": "carrot_square",
-      "mood": "满足",
-      "status": "前往胡萝卜广场",
-      "detail": "小泽沿着小路前往胡萝卜广场"
+      "start_tick": 2943,
+      "end_tick": 2967,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "植物园小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
     },
     {
-      "start_tick": 7140,
-      "end_tick": 7680,
+      "start_tick": 2963,
+      "end_tick": 3003,
       "char": "rabbit_7",
-      "type": "move",
-      "from": "shell_bay",
-      "to": "carrot_square",
+      "type": "action",
       "mood": "满足",
-      "status": "前往胡萝卜广场",
-      "detail": "Lino沿着小路前往胡萝卜广场"
+      "status": "在兔耳山做一段很短的观察记录",
+      "detail": "Lino在兔耳山做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 7200,
-      "end_tick": 7800,
-      "char": "rabbit_1",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "小悠米沿着小路前往巨树树屋区"
+      "start_tick": 2994,
+      "end_tick": 3024,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "寻找兔耳形石头",
+      "text": "那块石头真的像兔耳朵。"
     },
     {
-      "start_tick": 7320,
-      "end_tick": 7860,
+      "start_tick": 2998,
+      "end_tick": 3038,
       "char": "rabbit_2",
       "type": "action",
-      "mood": "温和",
-      "status": "分享草田新闻",
-      "detail": "乔治在喷泉旁告诉大家明天会有新鲜提摩西草"
+      "mood": "好奇",
+      "status": "在橡果图书馆听风、看光、顺便发一会儿呆",
+      "detail": "乔治在橡果图书馆听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
     },
     {
-      "start_tick": 7440,
-      "end_tick": 7980,
-      "char": "rabbit_5",
-      "type": "action",
-      "mood": "害羞",
-      "status": "展示新围巾",
-      "detail": "杰拉德在广场长椅边展示新围巾，偷偷等大家夸奖"
-    },
-    {
-      "start_tick": 7440,
-      "end_tick": 7980,
-      "char": "rabbit_6",
-      "type": "action",
-      "mood": "自豪",
-      "status": "安装风铃",
-      "detail": "劳伦斯把小风铃挂到测风塔边，晚风一吹就叮当作响"
-    },
-    {
-      "start_tick": 7500,
-      "end_tick": 7530,
-      "char": "rabbit_6",
-      "type": "dialogue",
-      "mood": "自豪",
-      "status": "安装完成",
-      "text": "气象站风铃上线，听到三声就是晚风转向。"
-    },
-    {
-      "start_tick": 7500,
-      "end_tick": 8040,
+      "start_tick": 3010,
+      "end_tick": 3430,
       "char": "rabbit_3",
       "type": "action",
-      "mood": "开心",
-      "status": "广场夜饮",
-      "detail": "小泽在长椅旁摆出无咖啡因热饮，免得大家晚上睡不着"
+      "mood": "满足",
+      "status": "沿沙滩散步",
+      "detail": "小泽在贝壳海湾沿沙滩散步，顺手记下一点今天的小发现"
     },
     {
-      "start_tick": 7530,
-      "end_tick": 7560,
+      "start_tick": 3030,
+      "end_tick": 3040,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "botanical_garden",
+      "to": "acorn_library",
+      "mood": "满足",
+      "status": "前往橡果图书馆",
+      "detail": "杰拉德沿着道路从植物园去橡果图书馆"
+    },
+    {
+      "start_tick": 3034,
+      "end_tick": 3058,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "彩虹湖小发现",
+      "text": "如果今天有地图脚注，这里一定要写上彩虹湖。"
+    },
+    {
+      "start_tick": 3047,
+      "end_tick": 3087,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在贝壳海湾确认下一段路怎么走",
+      "detail": "小泽在贝壳海湾确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3060,
+      "end_tick": 3070,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "acorn_library",
+      "to": "carrot_square",
+      "mood": "期待",
+      "status": "前往胡萝卜广场",
+      "detail": "乔治沿着道路从橡果图书馆去胡萝卜广场"
+    },
+    {
+      "start_tick": 3067,
+      "end_tick": 3097,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "看湖面彩光",
+      "text": "湖面像打翻了一盒彩色糖。"
+    },
+    {
+      "start_tick": 3070,
+      "end_tick": 3550,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "好奇",
+      "status": "沿沙滩散步",
+      "detail": "劳伦斯在贝壳海湾沿沙滩散步，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3075,
+      "end_tick": 3105,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "沿沙滩散步",
+      "text": "海风把今天吹得很亮。"
+    },
+    {
+      "start_tick": 3078,
+      "end_tick": 3102,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "贝壳海湾小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 3111,
+      "end_tick": 3135,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "兔耳山小发现",
+      "text": "兔耳山这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 3130,
+      "end_tick": 3670,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "校准望远镜",
+      "detail": "晓雪在星光天文台校准望远镜，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3131,
+      "end_tick": 3171,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在贝壳海湾把今日地图补上一笔",
+      "detail": "劳伦斯在贝壳海湾把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3135,
+      "end_tick": 3165,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "沿沙滩散步",
+      "text": "这枚贝壳可以当秘密印章。"
+    },
+    {
+      "start_tick": 3166,
+      "end_tick": 3206,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "专注",
+      "status": "在彩虹湖检查小包里的工具和便签",
+      "detail": "小悠米在彩虹湖检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3175,
+      "end_tick": 3205,
       "char": "rabbit_4",
       "type": "dialogue",
       "mood": "认真",
-      "status": "核对云层",
-      "text": "那我把三声记进观测本，明天再验证一次。"
+      "status": "校准望远镜",
+      "text": "白天的天文台也有星星的味道。"
+    },
+    {
+      "start_tick": 3190,
+      "end_tick": 3490,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "认真",
+      "status": "喷泉边聊天",
+      "detail": "乔治在胡萝卜广场喷泉边聊天，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3202,
+      "end_tick": 3226,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "贝壳海湾小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 3203,
+      "end_tick": 3227,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "胡萝卜广场小发现",
+      "text": "我刚才听见胡萝卜广场有一点点新的声音。"
+    },
+    {
+      "start_tick": 3245,
+      "end_tick": 3275,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "喷泉边聊天",
+      "text": "公告栏又多了一张手写便签。"
+    },
+    {
+      "start_tick": 3250,
+      "end_tick": 3290,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "安心",
+      "status": "在星光天文台把心情调到适合继续出发",
+      "detail": "晓雪在星光天文台把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3250,
+      "end_tick": 3610,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "安静",
+      "status": "整理橡果档案",
+      "detail": "杰拉德在橡果图书馆整理橡果档案，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3252,
+      "end_tick": 3292,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在橡果图书馆给刚才的发现起一个临时名字",
+      "detail": "杰拉德在橡果图书馆给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3270,
+      "end_tick": 3300,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "沿沙滩散步",
+      "text": "这枚贝壳可以当秘密印章。"
+    },
+    {
+      "start_tick": 3286,
+      "end_tick": 3310,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "星光天文台小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 3300,
+      "end_tick": 3310,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "rainbow_lake",
+      "to": "shell_bay",
+      "mood": "期待",
+      "status": "前往贝壳海湾",
+      "detail": "小悠米沿着道路从彩虹湖去贝壳海湾"
+    },
+    {
+      "start_tick": 3300,
+      "end_tick": 3330,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "工坊点心",
+      "text": "修完这颗齿轮，我想用蘑菇饼干庆祝。"
+    },
+    {
+      "start_tick": 3305,
+      "end_tick": 3335,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "整理橡果档案",
+      "text": "这本书闻起来像晒过太阳的橡果。"
+    },
+    {
+      "start_tick": 3330,
+      "end_tick": 3360,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "工坊点心",
+      "text": "收到，我把这句记进今天的地图。"
+    },
+    {
+      "start_tick": 3330,
+      "end_tick": 3340,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "rabbit_mountain",
+      "to": "acorn_library",
+      "mood": "安静",
+      "status": "前往橡果图书馆",
+      "detail": "Lino沿着道路从兔耳山去橡果图书馆"
+    },
+    {
+      "start_tick": 3367,
+      "end_tick": 3397,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "沿沙滩散步",
+      "text": "海风把今天吹得很亮。"
+    },
+    {
+      "start_tick": 3369,
+      "end_tick": 3409,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "满足",
+      "status": "在胡萝卜广场做一段很短的观察记录",
+      "detail": "乔治在胡萝卜广场做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3370,
+      "end_tick": 3394,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "橡果图书馆小发现",
+      "text": "橡果图书馆的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 3376,
+      "end_tick": 3406,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "喷泉边聊天",
+      "text": "喷泉的水声刚好能盖住肚子叫。"
+    },
+    {
+      "start_tick": 3418,
+      "end_tick": 3458,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "期待",
+      "status": "在贝壳海湾停下来看一眼周围动静",
+      "detail": "小泽在贝壳海湾停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3430,
+      "end_tick": 3970,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "认真",
+      "status": "擦亮海湾木牌",
+      "detail": "小悠米在贝壳海湾擦亮海湾木牌，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3453,
+      "end_tick": 3493,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在橡果图书馆确认下一段路怎么走",
+      "detail": "杰拉德在橡果图书馆确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3454,
+      "end_tick": 3478,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "贝壳海湾小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 3461,
+      "end_tick": 3485,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "贝壳海湾小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 3464,
+      "end_tick": 3494,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "校准望远镜",
+      "text": "望远镜说它还没睡醒。"
+    },
+    {
+      "start_tick": 3473,
+      "end_tick": 3503,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "整理橡果档案",
+      "text": "旧地图边角写着一个小小的问号。"
+    },
+    {
+      "start_tick": 3475,
+      "end_tick": 3505,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "擦亮海湾木牌",
+      "text": "这枚贝壳可以当秘密印章。"
+    },
+    {
+      "start_tick": 3490,
+      "end_tick": 3790,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "专注",
+      "status": "翻看旧地图",
+      "detail": "Lino在橡果图书馆翻看旧地图，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3502,
+      "end_tick": 3542,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在贝壳海湾把随身小物重新收好",
+      "detail": "劳伦斯在贝壳海湾把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3504,
+      "end_tick": 3544,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "认真",
+      "status": "在橡果图书馆整理刚才发现的小线索",
+      "detail": "Lino在橡果图书馆整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3535,
+      "end_tick": 3565,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "安静",
+      "status": "翻看旧地图",
+      "text": "这本书闻起来像晒过太阳的橡果。"
+    },
+    {
+      "start_tick": 3537,
+      "end_tick": 3577,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在贝壳海湾把今日地图补上一笔",
+      "detail": "小悠米在贝壳海湾把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3538,
+      "end_tick": 3562,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "橡果图书馆小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 3545,
+      "end_tick": 3569,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "胡萝卜广场小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 3560,
+      "end_tick": 3570,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "lighthouse",
+      "mood": "认真",
+      "status": "前往灯塔",
+      "detail": "小泽沿着道路从贝壳海湾去灯塔"
+    },
+    {
+      "start_tick": 3580,
+      "end_tick": 3590,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "carrot_square",
+      "to": "mushroom_cafe",
+      "mood": "轻快",
+      "status": "前往蘑菇咖啡馆",
+      "detail": "乔治沿着道路从胡萝卜广场去蘑菇咖啡馆"
+    },
+    {
+      "start_tick": 3621,
+      "end_tick": 3661,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在星光天文台听风、看光、顺便发一会儿呆",
+      "detail": "晓雪在星光天文台听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3676,
+      "end_tick": 3706,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "翻看旧地图",
+      "text": "旧地图边角写着一个小小的问号。"
+    },
+    {
+      "start_tick": 3680,
+      "end_tick": 3690,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "chanson_hall",
+      "mood": "安静",
+      "status": "前往香颂音乐厅",
+      "detail": "劳伦斯沿着道路从贝壳海湾去香颂音乐厅"
+    },
+    {
+      "start_tick": 3700,
+      "end_tick": 3710,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "acorn_library",
+      "to": "gear_workshop",
+      "mood": "灵感满满",
+      "status": "前往齿轮工坊",
+      "detail": "杰拉德沿着道路从橡果图书馆去齿轮工坊"
+    },
+    {
+      "start_tick": 3705,
+      "end_tick": 3745,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在橡果图书馆给刚才的发现起一个临时名字",
+      "detail": "Lino在橡果图书馆给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3720,
+      "end_tick": 3730,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "observatory",
+      "to": "botanical_garden",
+      "mood": "满足",
+      "status": "前往植物园",
+      "detail": "晓雪沿着道路从星光天文台去植物园"
+    },
+    {
+      "start_tick": 3740,
+      "end_tick": 3780,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "认真",
+      "status": "在蘑菇咖啡馆整理刚才发现的小线索",
+      "detail": "乔治在蘑菇咖啡馆整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3740,
+      "end_tick": 4100,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "满足",
+      "status": "给客人递热饮",
+      "detail": "乔治在蘑菇咖啡馆给客人递热饮，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3750,
+      "end_tick": 4230,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "检查灯塔门口",
+      "detail": "小泽在灯塔检查灯塔门口，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3764,
+      "end_tick": 3794,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "擦亮海湾木牌",
+      "text": "海风把今天吹得很亮。"
+    },
+    {
+      "start_tick": 3765,
+      "end_tick": 3789,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "灯塔小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 3789,
+      "end_tick": 3829,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "专注",
+      "status": "在灯塔检查小包里的工具和便签",
+      "detail": "小泽在灯塔检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3795,
+      "end_tick": 3825,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "给客人递热饮",
+      "text": "如果奶泡会唱歌，它应该唱低音部。"
+    },
+    {
+      "start_tick": 3815,
+      "end_tick": 3845,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "检查灯塔门口",
+      "text": "灯塔玻璃要擦到能看见云的背面。"
+    },
+    {
+      "start_tick": 3830,
+      "end_tick": 4250,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "好奇",
+      "status": "打磨铜色螺丝",
+      "detail": "杰拉德在齿轮工坊打磨铜色螺丝，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3831,
+      "end_tick": 3855,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "齿轮工坊小发现",
+      "text": "齿轮工坊这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 3840,
+      "end_tick": 4380,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "专注",
+      "status": "调试小舞台灯",
+      "detail": "劳伦斯在香颂音乐厅调试小舞台灯，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3840,
+      "end_tick": 3850,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "acorn_library",
+      "to": "rainbow_lake",
+      "mood": "好奇",
+      "status": "前往彩虹湖",
+      "detail": "Lino沿着道路从橡果图书馆去彩虹湖"
+    },
+    {
+      "start_tick": 3841,
+      "end_tick": 3881,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "期待",
+      "status": "在齿轮工坊停下来看一眼周围动静",
+      "detail": "杰拉德在齿轮工坊停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3873,
+      "end_tick": 3913,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "安心",
+      "status": "在香颂音乐厅把心情调到适合继续出发",
+      "detail": "劳伦斯在香颂音乐厅把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3881,
+      "end_tick": 3905,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "香颂音乐厅小发现",
+      "text": "如果今天有地图脚注，这里一定要写上香颂音乐厅。"
+    },
+    {
+      "start_tick": 3885,
+      "end_tick": 3915,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "打磨铜色螺丝",
+      "text": "这颗齿轮只差半圈耐心。"
+    },
+    {
+      "start_tick": 3888,
+      "end_tick": 3912,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "贝壳海湾小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 3905,
+      "end_tick": 3935,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "安静",
+      "status": "调试小舞台灯",
+      "text": "这段旋律适合从湖边走到海湾。"
+    },
+    {
+      "start_tick": 3908,
+      "end_tick": 3948,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在贝壳海湾把随身小物重新收好",
+      "detail": "小悠米在贝壳海湾把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 3940,
+      "end_tick": 4240,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "安静",
+      "status": "修剪花园小路",
+      "detail": "晓雪在植物园修剪花园小路，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 3951,
+      "end_tick": 3975,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "植物园小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 3960,
+      "end_tick": 3990,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "星台传闻",
+      "text": "迷宫石门和星台照片里，可能藏着同一个符号。"
+    },
+    {
+      "start_tick": 3963,
+      "end_tick": 3993,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "给客人递热饮",
+      "text": "这一杯闻起来像雨后的蘑菇伞。"
+    },
+    {
+      "start_tick": 3972,
+      "end_tick": 3996,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 3985,
+      "end_tick": 4015,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "修剪花园小路",
+      "text": "玻璃温室把云也照进来了。"
+    },
+    {
+      "start_tick": 3990,
+      "end_tick": 4020,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "星台传闻",
+      "text": "那我们待会儿在下一站交换线索。"
+    },
+    {
+      "start_tick": 3992,
+      "end_tick": 4032,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "满足",
+      "status": "在植物园做一段很短的观察记录",
+      "detail": "晓雪在植物园做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4030,
+      "end_tick": 4390,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "开心",
+      "status": "检查木码头",
+      "detail": "Lino在彩虹湖检查木码头，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4033,
+      "end_tick": 4057,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "彩虹湖小发现",
+      "text": "我刚才听见彩虹湖有一点点新的声音。"
+    },
+    {
+      "start_tick": 4047,
+      "end_tick": 4077,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "检查灯塔门口",
+      "text": "这里能听见最远的浪声。"
+    },
+    {
+      "start_tick": 4056,
+      "end_tick": 4080,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "灯塔小发现",
+      "text": "灯塔的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 4060,
+      "end_tick": 4070,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "chanson_hall",
+      "mood": "轻快",
+      "status": "前往香颂音乐厅",
+      "detail": "小悠米沿着道路从贝壳海湾去香颂音乐厅"
+    },
+    {
+      "start_tick": 4075,
+      "end_tick": 4105,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "检查木码头",
+      "text": "湖面像打翻了一盒彩色糖。"
+    },
+    {
+      "start_tick": 4076,
+      "end_tick": 4116,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在彩虹湖确认下一段路怎么走",
+      "detail": "Lino在彩虹湖确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4090,
+      "end_tick": 4120,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "打磨铜色螺丝",
+      "text": "谁把小螺丝藏进围裙口袋了？"
+    },
+    {
+      "start_tick": 4111,
+      "end_tick": 4151,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在蘑菇咖啡馆给刚才的发现起一个临时名字",
+      "detail": "乔治在蘑菇咖啡馆给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4126,
+      "end_tick": 4156,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "修剪花园小路",
+      "text": "花苞今天像偷偷长高了一点。"
+    },
+    {
+      "start_tick": 4140,
+      "end_tick": 4164,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "植物园小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 4160,
+      "end_tick": 4200,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在灯塔把今日地图补上一笔",
+      "detail": "小泽在灯塔把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4174,
+      "end_tick": 4204,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "调试小舞台灯",
+      "text": "小舞台灯一亮，连影子都想跳舞。"
+    },
+    {
+      "start_tick": 4195,
+      "end_tick": 4235,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "专注",
+      "status": "在齿轮工坊检查小包里的工具和便签",
+      "detail": "杰拉德在齿轮工坊检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4220,
+      "end_tick": 4520,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "满足",
+      "status": "擦亮钢琴边缘",
+      "detail": "小悠米在香颂音乐厅擦亮钢琴边缘，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4224,
+      "end_tick": 4248,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "齿轮工坊小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 4230,
+      "end_tick": 4240,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "mushroom_cafe",
+      "to": "shell_bay",
+      "mood": "认真",
+      "status": "前往贝壳海湾",
+      "detail": "乔治沿着道路从蘑菇咖啡馆去贝壳海湾"
+    },
+    {
+      "start_tick": 4244,
+      "end_tick": 4284,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在香颂音乐厅听风、看光、顺便发一会儿呆",
+      "detail": "劳伦斯在香颂音乐厅听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4253,
+      "end_tick": 4283,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "检查木码头",
+      "text": "木码头的第三块板子会轻轻唱歌。"
+    },
+    {
+      "start_tick": 4265,
+      "end_tick": 4295,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "擦亮钢琴边缘",
+      "text": "这段旋律适合从湖边走到海湾。"
+    },
+    {
+      "start_tick": 4279,
+      "end_tick": 4319,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "安心",
+      "status": "在香颂音乐厅把心情调到适合继续出发",
+      "detail": "小悠米在香颂音乐厅把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4280,
+      "end_tick": 4290,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "rainbow_lake",
+      "mood": "满足",
+      "status": "前往彩虹湖",
+      "detail": "小泽沿着道路从灯塔去彩虹湖"
+    },
+    {
+      "start_tick": 4308,
+      "end_tick": 4332,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "香颂音乐厅小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 4315,
+      "end_tick": 4339,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "香颂音乐厅小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 4330,
+      "end_tick": 4340,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "botanical_garden",
+      "to": "carrot_square",
+      "mood": "灵感满满",
+      "status": "前往胡萝卜广场",
+      "detail": "晓雪沿着道路从植物园去胡萝卜广场"
+    },
+    {
+      "start_tick": 4380,
+      "end_tick": 4390,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "gear_workshop",
+      "to": "shell_bay",
+      "mood": "安静",
+      "status": "前往贝壳海湾",
+      "detail": "杰拉德沿着道路从齿轮工坊去贝壳海湾"
+    },
+    {
+      "start_tick": 4392,
+      "end_tick": 4416,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "彩虹湖小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 4406,
+      "end_tick": 4436,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "擦亮钢琴边缘",
+      "text": "小舞台灯一亮，连影子都想跳舞。"
+    },
+    {
+      "start_tick": 4420,
+      "end_tick": 4840,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "捡贝壳",
+      "detail": "乔治在贝壳海湾捡贝壳，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4430,
+      "end_tick": 4440,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "chanson_hall",
+      "to": "carrot_square",
+      "mood": "好奇",
+      "status": "前往胡萝卜广场",
+      "detail": "劳伦斯沿着道路从香颂音乐厅去胡萝卜广场"
+    },
+    {
+      "start_tick": 4433,
+      "end_tick": 4457,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "贝壳海湾小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 4460,
+      "end_tick": 4820,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "好奇",
+      "status": "整理胡萝卜旗帜",
+      "detail": "晓雪在胡萝卜广场整理胡萝卜旗帜，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4465,
+      "end_tick": 4505,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "认真",
+      "status": "在胡萝卜广场整理刚才发现的小线索",
+      "detail": "晓雪在胡萝卜广场整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4475,
+      "end_tick": 4505,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "捡贝壳",
+      "text": "这枚贝壳可以当秘密印章。"
+    },
+    {
+      "start_tick": 4480,
+      "end_tick": 4490,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "rainbow_lake",
+      "to": "lighthouse",
+      "mood": "专注",
+      "status": "前往灯塔",
+      "detail": "Lino沿着道路从彩虹湖去灯塔"
+    },
+    {
+      "start_tick": 4482,
+      "end_tick": 4522,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在贝壳海湾确认下一段路怎么走",
+      "detail": "乔治在贝壳海湾确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4500,
+      "end_tick": 5040,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "安静",
+      "status": "检查木码头",
+      "detail": "小泽在彩虹湖检查木码头，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4500,
+      "end_tick": 4524,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "彩虹湖小发现",
+      "text": "彩虹湖这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 4505,
+      "end_tick": 4535,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "整理胡萝卜旗帜",
+      "text": "公告栏又多了一张手写便签。"
+    },
+    {
+      "start_tick": 4531,
+      "end_tick": 4571,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在彩虹湖把随身小物重新收好",
+      "detail": "小泽在彩虹湖把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4540,
+      "end_tick": 5020,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "专注",
+      "status": "捡贝壳",
+      "detail": "杰拉德在贝壳海湾捡贝壳，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4565,
+      "end_tick": 4595,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "检查木码头",
+      "text": "木码头的第三块板子会轻轻唱歌。"
+    },
+    {
+      "start_tick": 4566,
+      "end_tick": 4606,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在贝壳海湾把今日地图补上一笔",
+      "detail": "杰拉德在贝壳海湾把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4567,
+      "end_tick": 4591,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "胡萝卜广场小发现",
+      "text": "如果今天有地图脚注，这里一定要写上胡萝卜广场。"
+    },
+    {
+      "start_tick": 4595,
+      "end_tick": 4625,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "安静",
+      "status": "捡贝壳",
+      "text": "海风把今天吹得很亮。"
+    },
+    {
+      "start_tick": 4620,
+      "end_tick": 4650,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "音乐厅彩排",
+      "text": "如果我们从这里唱到海湾，浪会不会帮忙和声？"
+    },
+    {
+      "start_tick": 4620,
+      "end_tick": 4920,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "开心",
+      "status": "喷泉边聊天",
+      "detail": "劳伦斯在胡萝卜广场喷泉边聊天，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4632,
+      "end_tick": 4672,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "满足",
+      "status": "在胡萝卜广场做一段很短的观察记录",
+      "detail": "劳伦斯在胡萝卜广场做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4650,
+      "end_tick": 4680,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "安静",
+      "status": "音乐厅彩排",
+      "text": "听起来像一件值得认真完成的小事。"
+    },
+    {
+      "start_tick": 4650,
+      "end_tick": 4660,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "chanson_hall",
+      "to": "lighthouse",
+      "mood": "认真",
+      "status": "前往灯塔",
+      "detail": "小悠米沿着道路从香颂音乐厅去灯塔"
+    },
+    {
+      "start_tick": 4651,
+      "end_tick": 4675,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "贝壳海湾小发现",
+      "text": "我刚才听见贝壳海湾有一点点新的声音。"
+    },
+    {
+      "start_tick": 4680,
+      "end_tick": 4710,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "捡贝壳",
+      "text": "海风把今天吹得很亮。"
+    },
+    {
+      "start_tick": 4683,
+      "end_tick": 4713,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "整理胡萝卜旗帜",
+      "text": "喷泉的水声刚好能盖住肚子叫。"
+    },
+    {
+      "start_tick": 4685,
+      "end_tick": 4715,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "喷泉边聊天",
+      "text": "公告栏又多了一张手写便签。"
+    },
+    {
+      "start_tick": 4700,
+      "end_tick": 5120,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "可靠",
+      "status": "记录海风方向",
+      "detail": "Lino在灯塔记录海风方向，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4702,
+      "end_tick": 4742,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "期待",
+      "status": "在灯塔停下来看一眼周围动静",
+      "detail": "Lino在灯塔停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4734,
+      "end_tick": 4774,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在胡萝卜广场给刚才的发现起一个临时名字",
+      "detail": "晓雪在胡萝卜广场给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4735,
+      "end_tick": 4759,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "胡萝卜广场小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 4745,
+      "end_tick": 4775,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "记录海风方向",
+      "text": "这里能听见最远的浪声。"
+    },
+    {
+      "start_tick": 4806,
+      "end_tick": 4836,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "喷泉边聊天",
+      "text": "喷泉的水声刚好能盖住肚子叫。"
+    },
+    {
+      "start_tick": 4818,
+      "end_tick": 4858,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "专注",
+      "status": "在灯塔检查小包里的工具和便签",
+      "detail": "Lino在灯塔检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4819,
+      "end_tick": 4843,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "灯塔小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 4826,
+      "end_tick": 4850,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "贝壳海湾小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 4834,
+      "end_tick": 4864,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "检查木码头",
+      "text": "湖面像打翻了一盒彩色糖。"
+    },
+    {
+      "start_tick": 4837,
+      "end_tick": 4867,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "捡贝壳",
+      "text": "这枚贝壳可以当秘密印章。"
+    },
+    {
+      "start_tick": 4840,
+      "end_tick": 5200,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "检查灯塔门口",
+      "detail": "小悠米在灯塔检查灯塔门口，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 4844,
+      "end_tick": 4868,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "灯塔小发现",
+      "text": "灯塔的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 4854,
+      "end_tick": 4894,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在灯塔听风、看光、顺便发一会儿呆",
+      "detail": "小悠米在灯塔听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4885,
+      "end_tick": 4915,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "检查灯塔门口",
+      "text": "灯塔玻璃要擦到能看见云的背面。"
+    },
+    {
+      "start_tick": 4890,
+      "end_tick": 4900,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "tree_house",
+      "mood": "满足",
+      "status": "前往巨树树屋区",
+      "detail": "乔治沿着道路从贝壳海湾去巨树树屋区"
+    },
+    {
+      "start_tick": 4902,
+      "end_tick": 4942,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "安心",
+      "status": "在彩虹湖把心情调到适合继续出发",
+      "detail": "小泽在彩虹湖把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4910,
+      "end_tick": 4934,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "彩虹湖小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 4937,
+      "end_tick": 4977,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在贝壳海湾把随身小物重新收好",
+      "detail": "杰拉德在贝壳海湾把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 4950,
+      "end_tick": 4960,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "carrot_square",
+      "to": "tree_house",
+      "mood": "安静",
+      "status": "前往巨树树屋区",
+      "detail": "晓雪沿着道路从胡萝卜广场去巨树树屋区"
+    },
+    {
+      "start_tick": 4960,
+      "end_tick": 4990,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "记录海风方向",
+      "text": "灯塔玻璃要擦到能看见云的背面。"
+    },
+    {
+      "start_tick": 5010,
+      "end_tick": 5020,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "carrot_square",
+      "to": "tree_house",
+      "mood": "专注",
+      "status": "前往巨树树屋区",
+      "detail": "劳伦斯沿着道路从胡萝卜广场去巨树树屋区"
+    },
+    {
+      "start_tick": 5021,
+      "end_tick": 5061,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "满足",
+      "status": "在灯塔做一段很短的观察记录",
+      "detail": "小悠米在灯塔做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5063,
+      "end_tick": 5093,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "检查灯塔门口",
+      "text": "这里能听见最远的浪声。"
+    },
+    {
+      "start_tick": 5070,
+      "end_tick": 5080,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "tree_house",
+      "mood": "好奇",
+      "status": "前往巨树树屋区",
+      "detail": "杰拉德沿着道路从贝壳海湾去巨树树屋区"
+    },
+    {
+      "start_tick": 5110,
+      "end_tick": 5530,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "安静",
+      "status": "睡前整理",
+      "detail": "乔治在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5110,
+      "end_tick": 5530,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "专注",
+      "status": "睡前整理",
+      "detail": "晓雪在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5113,
+      "end_tick": 5137,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 5122,
+      "end_tick": 5162,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在巨树树屋区确认下一段路怎么走",
+      "detail": "晓雪在巨树树屋区确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5125,
+      "end_tick": 5165,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "期待",
+      "status": "在巨树树屋区停下来看一眼周围动静",
+      "detail": "乔治在巨树树屋区停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5130,
+      "end_tick": 5140,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "rainbow_lake",
+      "to": "tree_house",
+      "mood": "灵感满满",
+      "status": "前往巨树树屋区",
+      "detail": "小泽沿着道路从彩虹湖去巨树树屋区"
+    },
+    {
+      "start_tick": 5169,
+      "end_tick": 5193,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "灯塔小发现",
+      "text": "灯塔这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 5189,
+      "end_tick": 5229,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在灯塔把今日地图补上一笔",
+      "detail": "Lino在灯塔把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5224,
+      "end_tick": 5264,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "专注",
+      "status": "在巨树树屋区检查小包里的工具和便签",
+      "detail": "乔治在巨树树屋区检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5230,
+      "end_tick": 5650,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "可靠",
+      "status": "睡前整理",
+      "detail": "劳伦斯在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5230,
+      "end_tick": 5254,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "巨树树屋区小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 5241,
+      "end_tick": 5281,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "劳伦斯在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5250,
+      "end_tick": 5260,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "tree_house",
+      "mood": "满足",
+      "status": "前往巨树树屋区",
+      "detail": "小悠米沿着道路从灯塔去巨树树屋区"
+    },
+    {
+      "start_tick": 5250,
+      "end_tick": 5260,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "tree_house",
+      "mood": "开心",
+      "status": "前往巨树树屋区",
+      "detail": "Lino沿着道路从灯塔去巨树树屋区"
+    },
+    {
+      "start_tick": 5253,
+      "end_tick": 5277,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "巨树树屋区小发现",
+      "text": "如果今天有地图脚注，这里一定要写上巨树树屋区。"
+    },
+    {
+      "start_tick": 5260,
+      "end_tick": 5680,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "好奇",
+      "status": "睡前整理",
+      "detail": "小泽在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5260,
+      "end_tick": 5680,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "开心",
+      "status": "睡前整理",
+      "detail": "杰拉德在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5265,
+      "end_tick": 5289,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 5273,
+      "end_tick": 5313,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在巨树树屋区听风、看光、顺便发一会儿呆",
+      "detail": "小泽在巨树树屋区听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5280,
+      "end_tick": 5310,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "灯塔计划",
+      "text": "灯室玻璃擦亮以后，连山路都像有了方向。"
+    },
+    {
+      "start_tick": 5308,
+      "end_tick": 5348,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "安心",
+      "status": "在巨树树屋区把心情调到适合继续出发",
+      "detail": "杰拉德在巨树树屋区把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5310,
+      "end_tick": 5340,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "灯塔计划",
+      "text": "我同意，而且要带一点点点心。"
+    },
+    {
+      "start_tick": 5337,
+      "end_tick": 5361,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "巨树树屋区小发现",
+      "text": "我刚才听见巨树树屋区有一点点新的声音。"
+    },
+    {
+      "start_tick": 5357,
+      "end_tick": 5397,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在巨树树屋区给刚才的发现起一个临时名字",
+      "detail": "劳伦斯在巨树树屋区给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5380,
+      "end_tick": 5800,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "期待",
+      "status": "睡前整理",
+      "detail": "Lino在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5382,
+      "end_tick": 5406,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 5421,
+      "end_tick": 5445,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "巨树树屋区小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 5470,
+      "end_tick": 5890,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "安静",
+      "status": "睡前整理",
+      "detail": "小悠米在巨树树屋区睡前整理，顺手记下一点今天的小发现"
+    },
+    {
+      "start_tick": 5476,
+      "end_tick": 5516,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "期待",
+      "status": "在巨树树屋区停下来看一眼周围动静",
+      "detail": "晓雪在巨树树屋区停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5477,
+      "end_tick": 5517,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "小悠米在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5505,
+      "end_tick": 5529,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "巨树树屋区小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 5560,
+      "end_tick": 5600,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在巨树树屋区把随身小物重新收好",
+      "detail": "Lino在巨树树屋区把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5589,
+      "end_tick": 5613,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "巨树树屋区小发现",
+      "text": "巨树树屋区的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 5595,
+      "end_tick": 5635,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在巨树树屋区把今日地图补上一笔",
+      "detail": "乔治在巨树树屋区把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5596,
+      "end_tick": 5620,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 5644,
+      "end_tick": 5684,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "满足",
+      "status": "在巨树树屋区做一段很短的观察记录",
+      "detail": "小泽在巨树树屋区做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5673,
+      "end_tick": 5697,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 5679,
+      "end_tick": 5719,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在巨树树屋区听风、看光、顺便发一会儿呆",
+      "detail": "杰拉德在巨树树屋区听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5680,
+      "end_tick": 5704,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "巨树树屋区小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 5728,
+      "end_tick": 5768,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在巨树树屋区确认下一段路怎么走",
+      "detail": "劳伦斯在巨树树屋区确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5763,
+      "end_tick": 5803,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在巨树树屋区给刚才的发现起一个临时名字",
+      "detail": "小悠米在巨树树屋区给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5764,
+      "end_tick": 5788,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 5847,
+      "end_tick": 5887,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "专注",
+      "status": "在巨树树屋区检查小包里的工具和便签",
+      "detail": "晓雪在巨树树屋区检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5848,
+      "end_tick": 5872,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "巨树树屋区小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 5900,
+      "end_tick": 5910,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "tree_house",
+      "to": "chanson_hall",
+      "mood": "期待",
+      "status": "前往香颂音乐厅",
+      "detail": "小悠米沿着夜色里的道路从巨树树屋区去香颂音乐厅"
+    },
+    {
+      "start_tick": 5931,
+      "end_tick": 5971,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "安心",
+      "status": "在巨树树屋区把心情调到适合继续出发",
+      "detail": "Lino在巨树树屋区把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 5932,
+      "end_tick": 5956,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "巨树树屋区小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 5966,
+      "end_tick": 6006,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在巨树树屋区把随身小物重新收好",
+      "detail": "乔治在巨树树屋区把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6015,
+      "end_tick": 6055,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "小泽在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6016,
+      "end_tick": 6040,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "巨树树屋区小发现",
+      "text": "巨树树屋区这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 6050,
+      "end_tick": 6090,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "满足",
+      "status": "在巨树树屋区做一段很短的观察记录",
+      "detail": "杰拉德在巨树树屋区做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6099,
+      "end_tick": 6139,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "期待",
+      "status": "在巨树树屋区停下来看一眼周围动静",
+      "detail": "劳伦斯在巨树树屋区停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6100,
+      "end_tick": 6460,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "轻快",
+      "status": "去音乐厅看灯",
+      "detail": "小悠米把小舞台的灯光调到像晚霞一样软。"
+    },
+    {
+      "start_tick": 6100,
+      "end_tick": 6110,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "tree_house",
+      "to": "gear_workshop",
+      "mood": "专注",
+      "status": "前往齿轮工坊",
+      "detail": "乔治沿着夜色里的道路从巨树树屋区去齿轮工坊"
+    },
+    {
+      "start_tick": 6100,
+      "end_tick": 6124,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "巨树树屋区小发现",
+      "text": "如果今天有地图脚注，这里一定要写上巨树树屋区。"
+    },
+    {
+      "start_tick": 6108,
+      "end_tick": 6132,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "香颂音乐厅小发现",
+      "text": "我刚才听见香颂音乐厅有一点点新的声音。"
+    },
+    {
+      "start_tick": 6134,
+      "end_tick": 6174,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在香颂音乐厅确认下一段路怎么走",
+      "detail": "小悠米在香颂音乐厅确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6180,
+      "end_tick": 6210,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "晚间分工",
+      "text": "音乐厅的灯调好了，灯塔那边交给你啦。"
+    },
+    {
+      "start_tick": 6191,
+      "end_tick": 6215,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 6210,
+      "end_tick": 6240,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "晚间分工",
+      "text": "收到，我会把它记进今晚的地图。"
+    },
+    {
+      "start_tick": 6218,
+      "end_tick": 6258,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在巨树树屋区把今日地图补上一笔",
+      "detail": "晓雪在巨树树屋区把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6220,
+      "end_tick": 6250,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "去音乐厅看灯",
+      "text": "小舞台像把傍晚藏进了玻璃罐。"
+    },
+    {
+      "start_tick": 6275,
+      "end_tick": 6299,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "巨树树屋区的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 6300,
+      "end_tick": 6310,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "tree_house",
+      "to": "mushroom_cafe",
+      "mood": "轻快",
+      "status": "前往蘑菇咖啡馆",
+      "detail": "小泽沿着夜色里的道路从巨树树屋区去蘑菇咖啡馆"
+    },
+    {
+      "start_tick": 6302,
+      "end_tick": 6342,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在巨树树屋区听风、看光、顺便发一会儿呆",
+      "detail": "Lino在巨树树屋区听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6320,
+      "end_tick": 6680,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "安心",
+      "status": "晚间检修",
+      "detail": "乔治检查工坊里还没收好的小齿轮。"
+    },
+    {
+      "start_tick": 6328,
+      "end_tick": 6352,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "齿轮工坊小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 6337,
+      "end_tick": 6377,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "安心",
+      "status": "在齿轮工坊把心情调到适合继续出发",
+      "detail": "乔治在齿轮工坊把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6359,
+      "end_tick": 6383,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "巨树树屋区小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 6421,
+      "end_tick": 6461,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "杰拉德在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6440,
+      "end_tick": 6470,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "晚间检修",
+      "text": "如果齿轮也会困，它们现在应该在打哈欠。"
+    },
+    {
+      "start_tick": 6443,
+      "end_tick": 6467,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 6450,
+      "end_tick": 6474,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "香颂音乐厅小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 6470,
+      "end_tick": 6510,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "专注",
+      "status": "在巨树树屋区检查小包里的工具和便签",
+      "detail": "劳伦斯在巨树树屋区检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6500,
+      "end_tick": 6860,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "好奇",
+      "status": "准备夜间热饮",
+      "detail": "小泽给晚归的兔兔准备热饮。"
+    },
+    {
+      "start_tick": 6500,
+      "end_tick": 6510,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "tree_house",
+      "to": "observatory",
+      "mood": "安心",
+      "status": "前往星光天文台",
+      "detail": "晓雪沿着夜色里的道路从巨树树屋区去星光天文台"
+    },
+    {
+      "start_tick": 6505,
+      "end_tick": 6545,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "期待",
+      "status": "在香颂音乐厅停下来看一眼周围动静",
+      "detail": "小悠米在香颂音乐厅停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6505,
+      "end_tick": 6545,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在蘑菇咖啡馆给刚才的发现起一个临时名字",
+      "detail": "小泽在蘑菇咖啡馆给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6527,
+      "end_tick": 6551,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "巨树树屋区小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 6534,
+      "end_tick": 6558,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "齿轮工坊小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 6618,
+      "end_tick": 6642,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 6620,
+      "end_tick": 6650,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "准备夜间热饮",
+      "text": "夜里的第一杯咖啡要轻一点。"
+    },
+    {
+      "start_tick": 6673,
+      "end_tick": 6713,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "满足",
+      "status": "在巨树树屋区做一段很短的观察记录",
+      "detail": "Lino在巨树树屋区做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6700,
+      "end_tick": 7060,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "认真",
+      "status": "去天文台记星光",
+      "detail": "晓雪去天文台补写晚间观测笔记。"
+    },
+    {
+      "start_tick": 6700,
+      "end_tick": 6710,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "tree_house",
+      "to": "carrot_maze",
+      "mood": "好奇",
+      "status": "前往地下胡萝卜迷宫",
+      "detail": "杰拉德沿着夜色里的道路从巨树树屋区去地下胡萝卜迷宫"
+    },
+    {
+      "start_tick": 6702,
+      "end_tick": 6726,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "星光天文台小发现",
+      "text": "星光天文台这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 6708,
+      "end_tick": 6748,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在齿轮工坊听风、看光、顺便发一会儿呆",
+      "detail": "乔治在齿轮工坊听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6708,
+      "end_tick": 6748,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在星光天文台把随身小物重新收好",
+      "detail": "晓雪在星光天文台把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6720,
+      "end_tick": 6730,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "chanson_hall",
+      "to": "shell_bay",
+      "mood": "专注",
+      "status": "前往贝壳海湾",
+      "detail": "小悠米沿着夜色里的道路从香颂音乐厅去贝壳海湾"
+    },
+    {
+      "start_tick": 6757,
+      "end_tick": 6797,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在蘑菇咖啡馆确认下一段路怎么走",
+      "detail": "小泽在蘑菇咖啡馆确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6820,
+      "end_tick": 6850,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "去天文台记星光",
+      "text": "星光还没出来，纸页已经等不及了。"
+    },
+    {
+      "start_tick": 6841,
+      "end_tick": 6881,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在巨树树屋区把今日地图补上一笔",
+      "detail": "劳伦斯在巨树树屋区把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6870,
+      "end_tick": 6894,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "巨树树屋区小发现",
+      "text": "我刚才听见巨树树屋区有一点点新的声音。"
+    },
+    {
+      "start_tick": 6900,
+      "end_tick": 7260,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "安心",
+      "status": "去海湾听浪",
+      "detail": "小悠米沿着沙滩找一枚能唱高音的贝壳。"
+    },
+    {
+      "start_tick": 6900,
+      "end_tick": 6930,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "海湾线索",
+      "text": "我在石门纹路里看见了像浪花的线。"
+    },
+    {
+      "start_tick": 6900,
+      "end_tick": 6910,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "tree_house",
+      "to": "timothy_farm",
+      "mood": "认真",
+      "status": "前往提摩西农场",
+      "detail": "劳伦斯沿着夜色里的道路从巨树树屋区去提摩西农场"
+    },
+    {
+      "start_tick": 6910,
+      "end_tick": 6950,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "专注",
+      "status": "在贝壳海湾检查小包里的工具和便签",
+      "detail": "小悠米在贝壳海湾检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6911,
+      "end_tick": 6935,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "贝壳海湾小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 6920,
+      "end_tick": 7280,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "去迷宫听回声",
+      "detail": "杰拉德在迷宫入口听石门有没有悄悄练习说话。"
+    },
+    {
+      "start_tick": 6922,
+      "end_tick": 6946,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "地下胡萝卜迷宫小发现",
+      "text": "如果今天有地图脚注，这里一定要写上地下胡萝卜迷宫。"
+    },
+    {
+      "start_tick": 6928,
+      "end_tick": 6968,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在地下胡萝卜迷宫给刚才的发现起一个临时名字",
+      "detail": "杰拉德在地下胡萝卜迷宫给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6930,
+      "end_tick": 6960,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "海湾线索",
+      "text": "听起来像一条会发光的线索。"
+    },
+    {
+      "start_tick": 6954,
+      "end_tick": 6978,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "巨树树屋区小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 6960,
+      "end_tick": 7000,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "安心",
+      "status": "在星光天文台把心情调到适合继续出发",
+      "detail": "晓雪在星光天文台把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 6961,
+      "end_tick": 6985,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "齿轮工坊小发现",
+      "text": "齿轮工坊的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 7020,
+      "end_tick": 7050,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "去海湾听浪",
+      "text": "这枚贝壳应该负责今天的副歌。"
+    },
+    {
+      "start_tick": 7040,
+      "end_tick": 7050,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "gear_workshop",
+      "to": "lighthouse",
+      "mood": "轻快",
+      "status": "前往灯塔",
+      "detail": "乔治沿着夜色里的道路从齿轮工坊去灯塔"
+    },
+    {
+      "start_tick": 7040,
+      "end_tick": 7070,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "去迷宫听回声",
+      "text": "石门今天很安静，但它看起来像憋着谜语。"
+    },
+    {
+      "start_tick": 7044,
+      "end_tick": 7084,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "认真",
+      "status": "在巨树树屋区整理刚才发现的小线索",
+      "detail": "Lino在巨树树屋区整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7045,
+      "end_tick": 7069,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "蘑菇咖啡馆小发现",
+      "text": "先别急，我想再看一眼这里的光。"
+    },
+    {
+      "start_tick": 7100,
+      "end_tick": 7110,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "tree_house",
+      "to": "rabbit_mountain",
+      "mood": "灵感满满",
+      "status": "前往兔耳山",
+      "detail": "Lino沿着夜色里的道路从巨树树屋区去兔耳山"
+    },
+    {
+      "start_tick": 7120,
+      "end_tick": 7480,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "满足",
+      "status": "夜间农场检查",
+      "detail": "劳伦斯去农场确认温室门锁没有松。"
+    },
+    {
+      "start_tick": 7128,
+      "end_tick": 7168,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "期待",
+      "status": "在蘑菇咖啡馆停下来看一眼周围动静",
+      "detail": "小泽在蘑菇咖啡馆停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7129,
+      "end_tick": 7153,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "星光天文台小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 7163,
+      "end_tick": 7203,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在地下胡萝卜迷宫确认下一段路怎么走",
+      "detail": "杰拉德在地下胡萝卜迷宫确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7212,
+      "end_tick": 7252,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在提摩西农场把随身小物重新收好",
+      "detail": "劳伦斯在提摩西农场把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7213,
+      "end_tick": 7237,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "地下胡萝卜迷宫小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 7240,
+      "end_tick": 7600,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "好奇",
+      "status": "去灯塔修门铃",
+      "detail": "乔治把灯塔门口的铃铛调到刚刚好的音量。"
+    },
+    {
+      "start_tick": 7240,
+      "end_tick": 7270,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "夜间农场检查",
+      "text": "温室门今晚终于学会轻声关门。"
+    },
+    {
+      "start_tick": 7247,
+      "end_tick": 7287,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在贝壳海湾把今日地图补上一笔",
+      "detail": "小悠米在贝壳海湾把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7249,
+      "end_tick": 7289,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "满足",
+      "status": "在灯塔做一段很短的观察记录",
+      "detail": "乔治在灯塔做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7297,
+      "end_tick": 7321,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "提摩西农场小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
+    },
+    {
+      "start_tick": 7304,
+      "end_tick": 7328,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "贝壳海湾小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 7320,
+      "end_tick": 7680,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "期待",
+      "status": "去山路拍夜景",
+      "detail": "Lino在兔耳山找适合拍晚霞的位置。"
+    },
+    {
+      "start_tick": 7331,
+      "end_tick": 7371,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在星光天文台听风、看光、顺便发一会儿呆",
+      "detail": "晓雪在星光天文台听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7360,
+      "end_tick": 7390,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "去灯塔修门铃",
+      "text": "灯塔的门铃不该吓到浪花。"
+    },
+    {
+      "start_tick": 7360,
+      "end_tick": 7370,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "mushroom_cafe",
+      "to": "chanson_hall",
+      "mood": "安心",
+      "status": "前往香颂音乐厅",
+      "detail": "小泽沿着夜色里的道路从蘑菇咖啡馆去香颂音乐厅"
+    },
+    {
+      "start_tick": 7381,
+      "end_tick": 7405,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "兔耳山小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 7388,
+      "end_tick": 7412,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "灯塔小发现",
+      "text": "灯塔这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 7415,
+      "end_tick": 7455,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在兔耳山给刚才的发现起一个临时名字",
+      "detail": "Lino在兔耳山给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7440,
+      "end_tick": 7470,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "夜景热饮",
+      "text": "你拍晚霞，我负责让热饮不凉。"
+    },
+    {
+      "start_tick": 7440,
+      "end_tick": 7470,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "去山路拍夜景",
+      "text": "山路把天空举得好高。"
+    },
+    {
+      "start_tick": 7450,
+      "end_tick": 7490,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "认真",
+      "status": "在灯塔整理刚才发现的小线索",
+      "detail": "乔治在灯塔整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7470,
+      "end_tick": 7500,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "夜景热饮",
+      "text": "那我们明天从这里继续。"
+    },
+    {
+      "start_tick": 7534,
+      "end_tick": 7574,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "期待",
+      "status": "在地下胡萝卜迷宫停下来看一眼周围动静",
+      "detail": "杰拉德在地下胡萝卜迷宫停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7556,
+      "end_tick": 7580,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "星光天文台小发现",
+      "text": "我刚才听见星光天文台有一点点新的声音。"
+    },
+    {
+      "start_tick": 7560,
+      "end_tick": 7920,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "认真",
+      "status": "送热饮到音乐厅",
+      "detail": "小泽把热饮送到香颂音乐厅的小舞台边。"
+    },
+    {
+      "start_tick": 7567,
+      "end_tick": 7607,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "专注",
+      "status": "在香颂音乐厅检查小包里的工具和便签",
+      "detail": "小泽在香颂音乐厅检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7574,
+      "end_tick": 7598,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "香颂音乐厅小发现",
+      "text": "如果今天有地图脚注，这里一定要写上香颂音乐厅。"
+    },
+    {
+      "start_tick": 7583,
+      "end_tick": 7623,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "安心",
+      "status": "在提摩西农场把心情调到适合继续出发",
+      "detail": "劳伦斯在提摩西农场把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7600,
+      "end_tick": 7610,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "observatory",
+      "to": "weather_station",
+      "mood": "好奇",
+      "status": "前往云朵气象站",
+      "detail": "晓雪沿着夜色里的道路从星光天文台去云朵气象站"
+    },
+    {
+      "start_tick": 7618,
+      "end_tick": 7658,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在贝壳海湾把随身小物重新收好",
+      "detail": "小悠米在贝壳海湾把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7640,
+      "end_tick": 7664,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "地下胡萝卜迷宫小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
     },
     {
       "start_tick": 7680,
-      "end_tick": 8160,
-      "char": "rabbit_7",
-      "type": "action",
-      "mood": "温和",
-      "status": "放映照片",
-      "detail": "Lino在公告栏旁贴出一整天的照片，让大家认领自己的背影"
+      "end_tick": 7710,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "送热饮到音乐厅",
+      "text": "唱歌之前喝一口，声音会更圆。"
+    },
+    {
+      "start_tick": 7724,
+      "end_tick": 7748,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "提摩西农场小发现",
+      "text": "我在这里发现了一条很短但很亮的线索。"
+    },
+    {
+      "start_tick": 7731,
+      "end_tick": 7755,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "贝壳海湾小发现",
+      "text": "先别急，我想再看一眼这里的光。"
     },
     {
       "start_tick": 7740,
       "end_tick": 7770,
-      "char": "rabbit_7",
+      "char": "rabbit_4",
       "type": "dialogue",
-      "mood": "温和",
-      "status": "照片放映",
-      "text": "这张背影是谁？耳朵尖刚好挡住了灯塔。"
+      "mood": "安心",
+      "status": "风向报告",
+      "text": "今晚风从海湾来，温室门应该会很乖。"
     },
     {
       "start_tick": 7770,
       "end_tick": 7800,
-      "char": "rabbit_5",
-      "type": "dialogue",
-      "mood": "害羞",
-      "status": "认领照片",
-      "text": "可能是我，但围巾比我本人更抢镜。"
-    },
-    {
-      "start_tick": 7800,
-      "end_tick": 8400,
-      "char": "rabbit_4",
-      "type": "move",
-      "from": "observatory",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "晓雪沿着小路前往巨树树屋区"
-    },
-    {
-      "start_tick": 7800,
-      "end_tick": 8640,
-      "char": "rabbit_1",
-      "type": "action",
-      "mood": "安心",
-      "status": "睡觉中",
-      "detail": "小悠米把贝壳放在窗边，听着树叶声睡着了"
-    },
-    {
-      "start_tick": 7860,
-      "end_tick": 8280,
-      "char": "rabbit_2",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "乔治沿着小路前往巨树树屋区"
-    },
-    {
-      "start_tick": 7980,
-      "end_tick": 8400,
-      "char": "rabbit_5",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "杰拉德沿着小路前往巨树树屋区"
-    },
-    {
-      "start_tick": 7980,
-      "end_tick": 8520,
       "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "风向报告",
+      "text": "我喜欢这个安排，安静又可靠。"
+    },
+    {
+      "start_tick": 7786,
+      "end_tick": 7826,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在兔耳山确认下一段路怎么走",
+      "detail": "Lino在兔耳山确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7800,
+      "end_tick": 8160,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "去气象站核对风向",
+      "detail": "晓雪把天文台的云影和气象站风向对齐。"
+    },
+    {
+      "start_tick": 7804,
+      "end_tick": 7844,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "满足",
+      "status": "在云朵气象站做一段很短的观察记录",
+      "detail": "晓雪在云朵气象站做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7808,
+      "end_tick": 7832,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "兔耳山小发现",
+      "text": "兔耳山的风好像知道我们下一站去哪。"
+    },
+    {
+      "start_tick": 7815,
+      "end_tick": 7839,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "灯塔小发现",
+      "text": "今天的故事比昨天多了一颗小纽扣。"
+    },
+    {
+      "start_tick": 7821,
+      "end_tick": 7861,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "轻快",
+      "status": "在灯塔给刚才的发现起一个临时名字",
+      "detail": "乔治在灯塔给刚才的发现起一个临时名字，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7840,
+      "end_tick": 7850,
+      "char": "rabbit_5",
       "type": "move",
-      "from": "weather_station",
+      "from": "carrot_maze",
+      "to": "lighthouse",
+      "mood": "认真",
+      "status": "前往灯塔",
+      "detail": "杰拉德沿着夜色里的道路从地下胡萝卜迷宫去灯塔"
+    },
+    {
+      "start_tick": 7870,
+      "end_tick": 7910,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在香颂音乐厅把今日地图补上一笔",
+      "detail": "小泽在香颂音乐厅把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7899,
+      "end_tick": 7923,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "温柔",
+      "status": "香颂音乐厅小发现",
+      "text": "这个角落适合放一张秘密便签。"
+    },
+    {
+      "start_tick": 7900,
+      "end_tick": 7910,
+      "char": "rabbit_1",
+      "type": "move",
+      "from": "shell_bay",
       "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "劳伦斯沿着小路前往巨树树屋区"
+      "mood": "轻快",
+      "status": "前往巨树树屋区",
+      "detail": "小悠米沿着夜色里的道路从贝壳海湾去巨树树屋区"
+    },
+    {
+      "start_tick": 7920,
+      "end_tick": 7950,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "去气象站核对风向",
+      "text": "风向和星图，今天终于坐在同一页上。"
+    },
+    {
+      "start_tick": 7954,
+      "end_tick": 7994,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "好奇",
+      "status": "在提摩西农场听风、看光、顺便发一会儿呆",
+      "detail": "劳伦斯在提摩西农场听风、看光、顺便发一会儿呆，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 7983,
+      "end_tick": 8007,
+      "char": "rabbit_4",
+      "type": "dialogue",
+      "mood": "兴奋",
+      "status": "云朵气象站小发现",
+      "text": "我觉得这里可以成为新的集合暗号。"
     },
     {
       "start_tick": 8040,
-      "end_tick": 8460,
-      "char": "rabbit_3",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "小泽沿着小路前往巨树树屋区"
-    },
-    {
-      "start_tick": 8160,
-      "end_tick": 8580,
-      "char": "rabbit_7",
-      "type": "move",
-      "from": "carrot_square",
-      "to": "tree_house",
-      "mood": "困倦",
-      "status": "回树屋路上",
-      "detail": "Lino沿着小路前往巨树树屋区"
-    },
-    {
-      "start_tick": 8280,
-      "end_tick": 8640,
-      "char": "rabbit_2",
-      "type": "action",
-      "mood": "平静",
-      "status": "睡觉中",
-      "detail": "乔治把手册夹上叶子书签，然后关灯睡觉"
-    },
-    {
-      "start_tick": 8400,
-      "end_tick": 8640,
-      "char": "rabbit_4",
-      "type": "action",
-      "mood": "满足",
-      "status": "睡觉中",
-      "detail": "晓雪抱着星图睡着，铅笔还夹在耳朵后面"
-    },
-    {
-      "start_tick": 8400,
-      "end_tick": 8640,
+      "end_tick": 8400,
       "char": "rabbit_5",
       "type": "action",
       "mood": "满足",
+      "status": "去灯塔比对符号",
+      "detail": "杰拉德把石门纹路拿到灯塔光下比对。"
+    },
+    {
+      "start_tick": 8041,
+      "end_tick": 8081,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "专注",
+      "status": "在灯塔检查小包里的工具和便签",
+      "detail": "杰拉德在灯塔检查小包里的工具和便签，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8067,
+      "end_tick": 8091,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "灯塔小发现",
+      "text": "脚步声停下来以后，细节就冒出来了。"
+    },
+    {
+      "start_tick": 8073,
+      "end_tick": 8113,
+      "char": "rabbit_4",
+      "type": "action",
+      "mood": "认真",
+      "status": "在云朵气象站整理刚才发现的小线索",
+      "detail": "晓雪在云朵气象站整理刚才发现的小线索，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8080,
+      "end_tick": 8640,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "满足",
       "status": "睡觉中",
-      "detail": "杰拉德把新围巾盖在枕边，睡前又摸了摸布样边角"
+      "detail": "小悠米把晚间的小冒险收进口袋，安心睡着"
+    },
+    {
+      "start_tick": 8080,
+      "end_tick": 8090,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "timothy_farm",
+      "to": "shell_bay",
+      "mood": "灵感满满",
+      "status": "前往贝壳海湾",
+      "detail": "劳伦斯沿着夜色里的道路从提摩西农场去贝壳海湾"
+    },
+    {
+      "start_tick": 8091,
+      "end_tick": 8131,
+      "char": "rabbit_1",
+      "type": "action",
+      "mood": "安心",
+      "status": "在巨树树屋区把心情调到适合继续出发",
+      "detail": "小悠米在巨树树屋区把心情调到适合继续出发，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8100,
+      "end_tick": 8130,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "好奇",
+      "status": "灯塔符号",
+      "text": "灯塔的光一转，纹路真的变清楚了。"
+    },
+    {
+      "start_tick": 8130,
+      "end_tick": 8160,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "灵感满满",
+      "status": "灯塔符号",
+      "text": "收到，我会把它记进今晚的地图。"
+    },
+    {
+      "start_tick": 8157,
+      "end_tick": 8197,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "期待",
+      "status": "在兔耳山停下来看一眼周围动静",
+      "detail": "Lino在兔耳山停下来看一眼周围动静，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8158,
+      "end_tick": 8182,
+      "char": "rabbit_1",
+      "type": "dialogue",
+      "mood": "安心",
+      "status": "巨树树屋区小发现",
+      "text": "如果今天有地图脚注，这里一定要写上巨树树屋区。"
+    },
+    {
+      "start_tick": 8160,
+      "end_tick": 8170,
+      "char": "rabbit_2",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "tree_house",
+      "mood": "安心",
+      "status": "前往巨树树屋区",
+      "detail": "乔治沿着夜色里的道路从灯塔去巨树树屋区"
+    },
+    {
+      "start_tick": 8160,
+      "end_tick": 8190,
+      "char": "rabbit_5",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "去灯塔比对符号",
+      "text": "灯光一照，纹路像开始排队。"
+    },
+    {
+      "start_tick": 8235,
+      "end_tick": 8259,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "专注",
+      "status": "兔耳山小发现",
+      "text": "兔耳山这一刻刚刚好，我想把它记下来。"
+    },
+    {
+      "start_tick": 8260,
+      "end_tick": 8460,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "期待",
+      "status": "去海湾收工具",
+      "detail": "劳伦斯把落在海湾木牌旁的工具收好。"
+    },
+    {
+      "start_tick": 8270,
+      "end_tick": 8294,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "贝壳海湾小发现",
+      "text": "等我数到三，就把这件事放进日记。"
+    },
+    {
+      "start_tick": 8276,
+      "end_tick": 8316,
+      "char": "rabbit_5",
+      "type": "action",
+      "mood": "兴奋",
+      "status": "在灯塔把今日地图补上一笔",
+      "detail": "杰拉德在灯塔把今日地图补上一笔，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8280,
+      "end_tick": 8290,
+      "char": "rabbit_3",
+      "type": "move",
+      "from": "chanson_hall",
+      "to": "tree_house",
+      "mood": "好奇",
+      "status": "前往巨树树屋区",
+      "detail": "小泽沿着夜色里的道路从香颂音乐厅去巨树树屋区"
+    },
+    {
+      "start_tick": 8320,
+      "end_tick": 8330,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "rabbit_mountain",
+      "to": "lighthouse",
+      "mood": "满足",
+      "status": "前往灯塔",
+      "detail": "Lino沿着夜色里的道路从兔耳山去灯塔"
+    },
+    {
+      "start_tick": 8325,
+      "end_tick": 8365,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "满足",
+      "status": "在贝壳海湾做一段很短的观察记录",
+      "detail": "劳伦斯在贝壳海湾做一段很短的观察记录，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8340,
+      "end_tick": 8640,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "满足",
+      "status": "睡觉中",
+      "detail": "乔治把晚间的小冒险收进口袋，安心睡着"
+    },
+    {
+      "start_tick": 8344,
+      "end_tick": 8368,
+      "char": "rabbit_2",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "巨树树屋区小发现",
+      "text": "我刚才听见巨树树屋区有一点点新的声音。"
+    },
+    {
+      "start_tick": 8345,
+      "end_tick": 8385,
+      "char": "rabbit_2",
+      "type": "action",
+      "mood": "温柔",
+      "status": "在巨树树屋区确认下一段路怎么走",
+      "detail": "乔治在巨树树屋区确认下一段路怎么走，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8360,
+      "end_tick": 8390,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "轻快",
+      "status": "去海湾收工具",
+      "text": "工具箱满了，心里就踏实了。"
+    },
+    {
+      "start_tick": 8380,
+      "end_tick": 8390,
+      "char": "rabbit_4",
+      "type": "move",
+      "from": "weather_station",
+      "to": "tree_house",
+      "mood": "认真",
+      "status": "前往巨树树屋区",
+      "detail": "晓雪沿着夜色里的道路从云朵气象站去巨树树屋区"
+    },
+    {
+      "start_tick": 8400,
+      "end_tick": 8410,
+      "char": "rabbit_5",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "tree_house",
+      "mood": "灵感满满",
+      "status": "前往巨树树屋区",
+      "detail": "杰拉德沿着夜色里的道路从灯塔去巨树树屋区"
     },
     {
       "start_tick": 8460,
@@ -1335,25 +5465,101 @@
       "type": "action",
       "mood": "满足",
       "status": "睡觉中",
-      "detail": "小泽在梦里还听见咖啡杯轻轻碰响"
+      "detail": "小泽把晚间的小冒险收进口袋，安心睡着"
+    },
+    {
+      "start_tick": 8460,
+      "end_tick": 8490,
+      "char": "rabbit_6",
+      "type": "dialogue",
+      "mood": "认真",
+      "status": "收工路上",
+      "text": "最后一盏远光亮着，大家就知道路还在。"
+    },
+    {
+      "start_tick": 8460,
+      "end_tick": 8470,
+      "char": "rabbit_6",
+      "type": "move",
+      "from": "shell_bay",
+      "to": "tree_house",
+      "mood": "满足",
+      "status": "前往巨树树屋区",
+      "detail": "劳伦斯沿着夜色里的道路从贝壳海湾去巨树树屋区"
+    },
+    {
+      "start_tick": 8462,
+      "end_tick": 8502,
+      "char": "rabbit_3",
+      "type": "action",
+      "mood": "灵感满满",
+      "status": "在巨树树屋区把随身小物重新收好",
+      "detail": "小泽在巨树树屋区把随身小物重新收好，让这一天多了一点细碎但可爱的动静"
+    },
+    {
+      "start_tick": 8462,
+      "end_tick": 8486,
+      "char": "rabbit_3",
+      "type": "dialogue",
+      "mood": "期待",
+      "status": "巨树树屋区小发现",
+      "text": "这件小事很适合等会儿讲给大家听。"
+    },
+    {
+      "start_tick": 8490,
+      "end_tick": 8520,
+      "char": "rabbit_7",
+      "type": "dialogue",
+      "mood": "满足",
+      "status": "收工路上",
+      "text": "听起来像一条会发光的线索。"
+    },
+    {
+      "start_tick": 8500,
+      "end_tick": 8520,
+      "char": "rabbit_7",
+      "type": "action",
+      "mood": "专注",
+      "status": "去灯塔拍远光",
+      "detail": "Lino去灯塔拍下最后一束远光。"
     },
     {
       "start_tick": 8520,
+      "end_tick": 8530,
+      "char": "rabbit_7",
+      "type": "move",
+      "from": "lighthouse",
+      "to": "tree_house",
+      "mood": "期待",
+      "status": "前往巨树树屋区",
+      "detail": "Lino沿着夜色里的道路从灯塔去巨树树屋区"
+    },
+    {
+      "start_tick": 8560,
       "end_tick": 8640,
-      "char": "rabbit_6",
+      "char": "rabbit_4",
       "type": "action",
-      "mood": "安心",
+      "mood": "满足",
       "status": "睡觉中",
-      "detail": "劳伦斯听见远处风铃响了两声，满意地睡着"
+      "detail": "晓雪把晚间的小冒险收进口袋，安心睡着"
     },
     {
       "start_tick": 8580,
       "end_tick": 8640,
-      "char": "rabbit_7",
+      "char": "rabbit_5",
       "type": "action",
-      "mood": "安静",
+      "mood": "满足",
       "status": "睡觉中",
-      "detail": "Lino把相机放回木盒，最后一张照片还没舍得删"
+      "detail": "杰拉德把晚间的小冒险收进口袋，安心睡着"
+    },
+    {
+      "start_tick": 8620,
+      "end_tick": 8640,
+      "char": "rabbit_6",
+      "type": "action",
+      "mood": "满足",
+      "status": "睡觉中",
+      "detail": "劳伦斯把晚间的小冒险收进口袋，安心睡着"
     }
   ]
 }
