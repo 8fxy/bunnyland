@@ -1,0 +1,62 @@
+roads:
+  tree_to_square:
+    name: 巨树树屋区到胡萝卜广场
+    from: tree_house
+    to: carrot_square
+  square_to_cafe:
+    name: 胡萝卜广场到蘑菇咖啡馆
+    from: carrot_square
+    to: mushroom_cafe
+  square_to_farm:
+    name: 胡萝卜广场到提摩西农场
+    from: carrot_square
+    to: timothy_farm
+  farm_to_workshop:
+    name: 提摩西农场到齿轮工坊
+    from: timothy_farm
+    to: gear_workshop
+  workshop_to_library:
+    name: 齿轮工坊到橡果图书馆
+    from: gear_workshop
+    to: acorn_library
+  library_to_garden:
+    name: 橡果图书馆到植物园
+    from: acorn_library
+    to: botanical_garden
+  garden_to_lake:
+    name: 植物园到彩虹湖
+    from: botanical_garden
+    to: rainbow_lake
+  lake_to_maze:
+    name: 彩虹湖到地下胡萝卜迷宫
+    from: rainbow_lake
+    to: carrot_maze
+  square_to_mountain:
+    name: 胡萝卜广场到兔耳山
+    from: carrot_square
+    to: rabbit_mountain
+  mountain_to_weather:
+    name: 兔耳山到云朵气象站
+    from: rabbit_mountain
+    to: weather_station
+  mountain_to_observatory:
+    name: 兔耳山到星光天文台
+    from: rabbit_mountain
+    to: observatory
+  square_to_beach:
+    name: 胡萝卜广场到贝壳海湾
+    from: carrot_square
+    to: shell_bay
+  beach_to_lighthouse:
+    name: 贝壳海湾到灯塔
+    from: shell_bay
+    to: lighthouse
+  beach_to_chanson:
+    name: 贝壳海湾到香颂音乐厅
+    from: shell_bay
+    to: chanson_hall
+
+notes:
+  - 事件里的 from/to 使用地点 id，不使用道路 id。
+  - 无直达道路的地点移动可以跨多条道路，但剧情上要写成合理换乘，不要写成穿越空白区域。
+  - road id 只用于校验地图连通关系和提示 agent 理解地理结构。

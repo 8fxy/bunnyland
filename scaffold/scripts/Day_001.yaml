@@ -1,0 +1,47 @@
+day_id: Day_001
+summary: 春日开园日，兔兔们从树屋出发，分别修路灯、筹备音乐厅小演出、记录天气和整理海湾线索。
+beats:
+  morning:
+    ticks: [0, 2160]
+    focus:
+      - 小悠米去植物园找新开的花。
+      - 乔治和劳伦斯检查齿轮工坊、农场工具和灯塔门铃。
+      - 晓雪从兔耳山记录云层，准备去气象站。
+  noon:
+    ticks: [2160, 4320]
+    focus:
+      - 小泽在蘑菇咖啡馆准备点心，邀请大家傍晚去香颂音乐厅。
+      - 杰拉德在地下胡萝卜迷宫发现奇怪纹样，去彩虹湖比对倒影。
+      - Lino 在天文台和气象站之间拍云影。
+  afternoon:
+    ticks: [4320, 6480]
+    focus:
+      - 胡萝卜广场出现公告，大家交错移动并短暂碰面。
+      - 贝壳海湾、灯塔和香颂音乐厅形成一条小剧情线。
+      - 图书馆提供旧地图线索，连接迷宫和灯塔。
+  night:
+    ticks: [6480, 8640]
+    focus:
+      - 香颂音乐厅有小演出，之后兔兔们去海湾和天文台看星光。
+      - 夜深后逐渐回到巨树树屋区休息。
+required_locations:
+  - tree_house
+  - carrot_square
+  - mushroom_cafe
+  - timothy_farm
+  - gear_workshop
+  - acorn_library
+  - botanical_garden
+  - rainbow_lake
+  - carrot_maze
+  - rabbit_mountain
+  - weather_station
+  - observatory
+  - shell_bay
+  - lighthouse
+  - chanson_hall
+tone:
+  - 温暖
+  - 轻微冒险
+  - 日常细节多
+  - 对话短而具体

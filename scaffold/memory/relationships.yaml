@@ -1,0 +1,38 @@
+relationships:
+  rabbit_1:
+    rabbit_3:
+      - 小悠米会把小泽的点心香写成便签。
+    rabbit_4:
+      - 小悠米把发现交给晓雪归档。
+    rabbit_5:
+      - 小悠米相信杰拉德的奇想能变成线索。
+  rabbit_2:
+    rabbit_6:
+      - 乔治和劳伦斯用维修和巡检互相补位。
+    rabbit_3:
+      - 乔治常帮小泽把灯和桌面调稳。
+  rabbit_3:
+    rabbit_5:
+      - 小泽愿意把杰拉德的奇想变成热闹节目。
+    rabbit_7:
+      - 小泽觉得Lino的照片让甜点更有故事。
+  rabbit_4:
+    rabbit_7:
+      - 晓雪和Lino会共享云影、星光和照片时间。
+    rabbit_6:
+      - 晓雪信任劳伦斯的灯塔巡检。
+  rabbit_5:
+    rabbit_1:
+      - 杰拉德喜欢看小悠米整理复杂线索。
+    rabbit_6:
+      - 杰拉德把劳伦斯修好的灯塔当作冒险终点。
+  rabbit_6:
+    rabbit_2:
+      - 劳伦斯和乔治配合维修时几乎不用多说话。
+    rabbit_4:
+      - 劳伦斯会等晓雪确认风向后再点灯。
+  rabbit_7:
+    rabbit_4:
+      - Lino安静地补上晓雪需要的照片证据。
+    rabbit_3:
+      - Lino觉得小泽的热饮能让夜景照片更暖。

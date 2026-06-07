@@ -1,0 +1,44 @@
+movement:
+  navigation_layer:
+    base_map_is_visual_only: true
+    rabbits_move_only_on: roads_and_activity_areas
+    no_teleport: true
+  move_events:
+    duration_source: scaffold/world/travel_times.yaml
+    duration_rule: end_tick = start_tick + all_pairs[from,to].duration_ticks
+    status_format: 前往{target_location_name}
+    start: current_location_or_last_arrival_location
+    end: target_location
+    route_rule:
+      - 生成 data.json 前先查 scaffold/world/travel_times.yaml。
+      - 如果 from/to 是同一地点，不要生成 move，改写成 action 或 dialogue。
+      - 优先选择道路网络上相邻或合理可达的目标。
+      - 如果 from/to 没有直达道路，剧情 detail 里要暗示经过中间地点或沿主路换向。
+      - 不要写成越过湖心、海水、山体、地图边缘或建筑外墙。
+    after_arrival:
+      - 到达地点后立即进入该地点 activityArea 内自由活动。
+      - 直到下一次 move 事件开始前，该兔兔都应被视为留在当前地点。
+
+activity:
+  free_roam:
+    enabled_after_move_arrival: true
+    interval_seconds_hint: 3-4
+    animation_duration: 2s ease-in-out
+    max_step: 兔兔显示长度的3倍
+  poi_behavior:
+    stay_at_poi_probability: 0.7
+    small_roam_probability: 0.3
+  immobile_statuses:
+    - 睡觉
+    - 熟睡
+    - 打盹
+    - 午睡
+    - 晕倒
+    - 躺平
+  immobile_rule: 这些状态期间不要安排地点内乱走或连续行动。
+
+pace:
+  preferred_move_frequency: 自然分布，恢复早期节奏，不要求每分钟至少一只兔兔移动。
+  visual_goal:
+    - 一倍速观看时偶尔有兔兔在路上，更多时候有人在地点里活动或说话。
+    - 每个时间段尽量同时包含移动、地点活动、对话三种画面层次。

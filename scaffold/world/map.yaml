@@ -1,0 +1,65 @@
+map_size:
+  width: 800
+  height: 600
+
+locations:
+  tree_house:
+    name: 巨树树屋区
+    kind: home
+    center: [230, 170]
+  carrot_square:
+    name: 胡萝卜广场
+    kind: public
+    center: [390, 300]
+  mushroom_cafe:
+    name: 蘑菇咖啡馆
+    kind: food
+    center: [230, 275]
+  timothy_farm:
+    name: 提摩西农场
+    kind: work
+    center: [180, 400]
+  gear_workshop:
+    name: 齿轮工坊
+    kind: work
+    center: [350, 415]
+  acorn_library:
+    name: 橡果图书馆
+    kind: study
+    center: [500, 440]
+  botanical_garden:
+    name: 植物园
+    kind: park
+    center: [560, 330]
+  rainbow_lake:
+    name: 彩虹湖
+    kind: park
+    center: [690, 300]
+  carrot_maze:
+    name: 地下胡萝卜迷宫
+    kind: public
+    center: [700, 430]
+  rabbit_mountain:
+    name: 兔耳山
+    kind: park
+    center: [520, 180]
+  weather_station:
+    name: 云朵气象站
+    kind: study
+    center: [505, 75]
+  observatory:
+    name: 星光天文台
+    kind: study
+    center: [650, 70]
+  shell_bay:
+    name: 贝壳海湾
+    kind: park
+    center: [400, 555]
+  lighthouse:
+    name: 灯塔
+    kind: public
+    center: [78, 535]
+  chanson_hall:
+    name: 香颂音乐厅
+    kind: art
+    center: [365, 494]

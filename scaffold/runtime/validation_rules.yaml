@@ -1,0 +1,40 @@
+validation:
+  json:
+    - 输出必须能被 JSON.parse 解析。
+    - 不允许 Markdown 代码块、注释或额外说明文字。
+  top_level:
+    required: [date, config, characters, timeline]
+  config:
+    tick_interval_seconds: 10
+    max_tick: 8640
+    required_map_regions:
+      - tree_house
+      - carrot_square
+      - mushroom_cafe
+      - timothy_farm
+      - gear_workshop
+      - acorn_library
+      - botanical_garden
+      - rainbow_lake
+      - carrot_maze
+      - rabbit_mountain
+      - weather_station
+      - observatory
+      - shell_bay
+      - lighthouse
+      - chanson_hall
+  characters:
+    required_ids: [rabbit_1, rabbit_2, rabbit_3, rabbit_4, rabbit_5, rabbit_6, rabbit_7]
+    forbidden_names: [米米, 奶糖, 提莫, 布丁, 小麦]
+  timeline:
+    sort: start_tick ascending
+    tick_range: 0..8640
+    allowed_types: [move, action, dialogue]
+    no_overlap_per_character: true
+    move_duration_rule: end_tick - start_tick must equal scaffold/world/travel_times.yaml all_pairs duration_ticks
+    dialogue_max_duration_ticks: 2
+    move_from_to_must_be_map_regions: true
+  story:
+    - 每只兔兔都要有当天个人剧情。
+    - 尽量覆盖全部地点，必须包含灯塔和香颂音乐厅。
+    - 睡觉、打盹、晕倒、熟睡、午睡、躺平期间不要安排活动式动作。

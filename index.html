@@ -150,7 +150,7 @@
       height: var(--stage-h);
       overflow: hidden;
       image-rendering: pixelated;
-      background: var(--grass) url("assets/map_day.png") center / 800px 600px no-repeat;
+      background: var(--grass) var(--map-image, url("assets/map_day.png")) center / 800px 600px no-repeat;
       transform: scale(var(--stage-scale));
       transform-origin: left top;
     }
@@ -660,7 +660,7 @@
     const DATA_URL = "data.json";
     const SECONDS_PER_DAY = 24 * 60 * 60;
     // 每个 move 事件的视觉行走统一用 10 ticks；到达后在地点内活动，直到下一次 move 开始。
-    const MOVE_VISUAL_TICKS = 10;
+    const FALLBACK_MOVE_VISUAL_TICKS = 10;
     const rabbitIdMap = {
       zhangsan: "rabbit_1",
       lisi: "rabbit_2",
@@ -1290,6 +1290,11 @@
       updateClock();
     }
 
+    function updateMapTheme(hour) {
+      const isNight = hour < 6 || hour >= 19;
+      stage.style.setProperty("--map-image", `url("assets/${isNight ? "map_night.png" : "map_day.png"}")`);
+    }
+
     function updateClock() {
       const dayProgress = Math.min(currentTick, maxTick) / Math.max(1, maxTick);
       const secondsInDay = Math.min(currentTick, maxTick) * tickSeconds;
@@ -1303,6 +1308,7 @@
       clockReadout.textContent = currentTick >= maxTick
         ? "24:00"
         : `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+      updateMapTheme(currentTick >= maxTick ? 0 : hour);
     }
 
     function updateStageScale() {
@@ -1981,8 +1987,13 @@
       }
     }
 
+    function moveDurationTicks(event) {
+      const duration = Number(event.end_tick) - Number(event.start_tick);
+      return Number.isFinite(duration) && duration > 0 ? duration : FALLBACK_MOVE_VISUAL_TICKS;
+    }
+
     function moveProgressAtTick(event, tick) {
-      return Math.min(1, Math.max(0, (tick - event.start_tick) / MOVE_VISUAL_TICKS));
+      return Math.min(1, Math.max(0, (tick - event.start_tick) / moveDurationTicks(event)));
     }
 
     function finishMoveVisual(event, route) {
@@ -2014,7 +2025,7 @@
         return;
       }
 
-      const remainingMoveTicks = MOVE_VISUAL_TICKS * (1 - startProgress);
+      const remainingMoveTicks = moveDurationTicks(event) * (1 - startProgress);
       const durationMs = Math.max(1, remainingMoveTicks * tickSeconds / timeScale * 1000);
       const startedAt = performance.now();
       const el = characterEls[event.char];

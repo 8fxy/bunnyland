@@ -1,0 +1,116 @@
+json_contract:
+  output_format: valid_json_only
+  top_level_fields:
+    - date
+    - config
+    - characters
+    - timeline
+
+config:
+  tick_interval_seconds: 10
+  max_tick: 8640
+  day_duration: 24h
+  map_regions:
+    - tree_house
+    - carrot_square
+    - mushroom_cafe
+    - timothy_farm
+    - gear_workshop
+    - acorn_library
+    - botanical_garden
+    - rainbow_lake
+    - carrot_maze
+    - rabbit_mountain
+    - weather_station
+    - observatory
+    - shell_bay
+    - lighthouse
+    - chanson_hall
+
+characters:
+  required_ids:
+    - rabbit_1
+    - rabbit_2
+    - rabbit_3
+    - rabbit_4
+    - rabbit_5
+    - rabbit_6
+    - rabbit_7
+  names:
+    rabbit_1: 小悠米
+    rabbit_2: 乔治
+    rabbit_3: 小泽
+    rabbit_4: 晓雪
+    rabbit_5: 杰拉德
+    rabbit_6: 劳伦斯
+    rabbit_7: Lino
+
+timeline:
+  type: array
+  sort: start_tick_ascending
+  event_types:
+    - move
+    - action
+    - dialogue
+  shared_fields:
+    start_tick:
+      type: integer
+      min: 0
+      max: 8639
+    end_tick:
+      type: integer
+      min: 1
+      max: 8640
+      rule: end_tick_must_be_greater_than_start_tick
+    char:
+      type: string
+      enum: [rabbit_1, rabbit_2, rabbit_3, rabbit_4, rabbit_5, rabbit_6, rabbit_7]
+    type:
+      type: string
+      enum: [move, action, dialogue]
+    mood:
+      type: string
+    status:
+      type: string
+
+event_shapes:
+  move:
+    required_fields: [start_tick, end_tick, char, type, from, to, mood, status, detail]
+    duration_rule: end_tick_minus_start_tick_must_equal_travel_times_lookup
+    duration_source: scaffold/world/travel_times.yaml all_pairs.duration_ticks
+    from:
+      type: string
+      enum_ref: config.map_regions
+    to:
+      type: string
+      enum_ref: config.map_regions
+    status_rule: status_should_be_前往加目标地点中文名
+    detail:
+      type: string
+      purpose: 写清兔兔为什么出发，以及路上看见的小细节。
+  action:
+    required_fields: [start_tick, end_tick, char, type, mood, status, detail]
+    location:
+      type: optional_string
+      enum_ref: config.map_regions
+    detail:
+      type: string
+      purpose: 写清在地点内做什么，避免只写“玩耍”“发呆”。
+  dialogue:
+    required_fields: [start_tick, end_tick, char, type, mood, status, text]
+    location:
+      type: optional_string
+      enum_ref: config.map_regions
+    text:
+      type: string
+      max_display_ticks: 2
+      style: 简短、可爱、有当天剧情信息，不要长篇独白。
+
+hard_rules:
+  - 只允许小写事件类型 move/action/dialogue。
+  - 所有 move 事件必须按 scaffold/world/travel_times.yaml 的 all_pairs 表设置持续 ticks。
+  - move.end_tick 必须等于 move.start_tick + 对应 from/to 地点对的 duration_ticks。
+  - 不要使用旧人物名：米米、奶糖、提莫、布丁、小麦。
+  - 不要创造地图外地点。
+  - timeline 必须覆盖 0 到 8640 ticks 的一天，但不要求每分钟都有 move。
+  - 同一只兔兔的事件时间可以相邻，但不要重叠。

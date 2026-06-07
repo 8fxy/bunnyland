@@ -1,0 +1,50 @@
+characters:
+  rabbit_1:
+    name: 小悠米
+    color: "#ff8fab"
+    scale: 0.8
+    home: tree_house
+    personality: 好奇、轻快、喜欢把小发现写成便签
+    story_hooks: [植物观察, 海湾贝壳, 音乐厅小舞台]
+  rabbit_2:
+    name: 乔治
+    color: "#7bdff2"
+    scale: 1
+    home: tree_house
+    personality: 稳当、爱修东西、说话直接但温柔
+    story_hooks: [齿轮工坊, 农场工具, 灯塔门铃]
+  rabbit_3:
+    name: 小泽
+    color: "#f9c74f"
+    scale: 1
+    home: tree_house
+    personality: 热情、爱做饮品、喜欢给大家送小点心
+    story_hooks: [蘑菇咖啡馆, 胡萝卜广场, 香颂音乐厅]
+  rabbit_4:
+    name: 晓雪
+    color: "#95d5b2"
+    scale: 1
+    home: tree_house
+    personality: 专注、爱记录、对天气和星象敏感
+    story_hooks: [橡果图书馆, 兔耳山, 气象站, 天文台]
+  rabbit_5:
+    name: 杰拉德
+    color: "#cdb4db"
+    scale: 0.8
+    home: tree_house
+    personality: 想象力强、容易兴奋、喜欢迷宫和纹样
+    story_hooks: [地下胡萝卜迷宫, 彩虹湖, 灯塔符号]
+  rabbit_6:
+    name: 劳伦斯
+    color: "#f4a261"
+    scale: 1.2
+    home: tree_house
+    personality: 可靠、行动派、常常负责收尾和维修
+    story_hooks: [齿轮工坊, 提摩西农场, 贝壳海湾, 灯塔]
+  rabbit_7:
+    name: Lino
+    color: "#9ca3af"
+    scale: 1
+    home: tree_house
+    personality: 安静、观察力强、喜欢摄影和星光
+    story_hooks: [星光天文台, 云朵气象站, 兔耳山, 灯塔]

@@ -1,0 +1,727 @@
+# Generated from index.html mapConfig roads. Update with: node scaffold/tools/generate_travel_times.js
+travel_time_model:
+  source: index.html mapConfig.roads polyline length
+  algorithm: shortest_path_on_road_graph
+  pixels_per_tick: 35
+  min_duration_ticks: 4
+  formula: duration_ticks = max(4, round(distance_px / 35))
+  tick_interval_seconds: 10
+  agent_rule: move.end_tick = move.start_tick + duration_ticks from all_pairs for the unordered from/to pair
+
+direct_roads:
+  tree_to_square:
+    from: tree_house
+    to: carrot_square
+    distance_px: 198
+    duration_ticks: 6
+    points: [[239,196],[320,253],[332,291],[386,314]]
+  square_to_cafe:
+    from: carrot_square
+    to: mushroom_cafe
+    distance_px: 192
+    duration_ticks: 5
+    points: [[390,300],[296,333],[217,286]]
+  square_to_farm:
+    from: carrot_square
+    to: timothy_farm
+    distance_px: 212
+    duration_ticks: 6
+    points: [[390,300],[284,339],[281,367],[220,404]]
+  farm_to_workshop:
+    from: timothy_farm
+    to: gear_workshop
+    distance_px: 390
+    duration_ticks: 11
+    points: [[208,438],[264,503],[339,530],[452,487],[384,409]]
+  workshop_to_library:
+    from: gear_workshop
+    to: acorn_library
+    distance_px: 91
+    duration_ticks: 4
+    points: [[379,395],[398,431],[448,435]]
+  library_to_garden:
+    from: acorn_library
+    to: botanical_garden
+    distance_px: 213
+    duration_ticks: 6
+    points: [[473,454],[543,411],[654,341]]
+  garden_to_lake:
+    from: botanical_garden
+    to: rainbow_lake
+    distance_px: 328
+    duration_ticks: 9
+    points: [[543,325],[471,368],[536,404],[675,306]]
+  lake_to_maze:
+    from: rainbow_lake
+    to: carrot_maze
+    distance_px: 418
+    duration_ticks: 12
+    points: [[699,315],[504,477],[552,512],[638,451]]
+  square_to_mountain:
+    from: carrot_square
+    to: rabbit_mountain
+    distance_px: 180
+    duration_ticks: 5
+    points: [[406,301],[430,320],[488,272],[516,203]]
+  mountain_to_weather:
+    from: rabbit_mountain
+    to: weather_station
+    distance_px: 140
+    duration_ticks: 4
+    points: [[513,178],[476,136],[422,71]]
+  mountain_to_observatory:
+    from: rabbit_mountain
+    to: observatory
+    distance_px: 314
+    duration_ticks: 9
+    points: [[503,158],[412,67],[597,72]]
+  square_to_beach:
+    from: carrot_square
+    to: shell_bay
+    distance_px: 208
+    duration_ticks: 6
+    points: [[406,312],[442,375],[402,418],[443,483]]
+  beach_to_lighthouse:
+    from: shell_bay
+    to: lighthouse
+    distance_px: 207
+    duration_ticks: 6
+    points: [[337,523],[206,487],[145,524]]
+  beach_to_chanson:
+    from: shell_bay
+    to: chanson_hall
+    distance_px: 151
+    duration_ticks: 4
+    points: [[503,507],[438,481],[366,518]]
+
+all_pairs:
+  - from: tree_house
+    to: carrot_square
+    distance_px: 198
+    duration_ticks: 6
+    via: [tree_house, carrot_square]
+    roads: [tree_to_square]
+  - from: tree_house
+    to: mushroom_cafe
+    distance_px: 390
+    duration_ticks: 11
+    via: [tree_house, carrot_square, mushroom_cafe]
+    roads: [tree_to_square, square_to_cafe]
+  - from: tree_house
+    to: timothy_farm
+    distance_px: 410
+    duration_ticks: 12
+    via: [tree_house, carrot_square, timothy_farm]
+    roads: [tree_to_square, square_to_farm]
+  - from: tree_house
+    to: gear_workshop
+    distance_px: 800
+    duration_ticks: 23
+    via: [tree_house, carrot_square, timothy_farm, gear_workshop]
+    roads: [tree_to_square, square_to_farm, farm_to_workshop]
+  - from: tree_house
+    to: acorn_library
+    distance_px: 891
+    duration_ticks: 25
+    via: [tree_house, carrot_square, timothy_farm, gear_workshop, acorn_library]
+    roads: [tree_to_square, square_to_farm, farm_to_workshop, workshop_to_library]
+  - from: tree_house
+    to: botanical_garden
+    distance_px: 1104
+    duration_ticks: 32
+    via: [tree_house, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden]
+    roads: [tree_to_square, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden]
+  - from: tree_house
+    to: rainbow_lake
+    distance_px: 1432
+    duration_ticks: 41
+    via: [tree_house, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake]
+    roads: [tree_to_square, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake]
+  - from: tree_house
+    to: carrot_maze
+    distance_px: 1850
+    duration_ticks: 53
+    via: [tree_house, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [tree_to_square, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake, lake_to_maze]
+  - from: tree_house
+    to: rabbit_mountain
+    distance_px: 378
+    duration_ticks: 11
+    via: [tree_house, carrot_square, rabbit_mountain]
+    roads: [tree_to_square, square_to_mountain]
+  - from: tree_house
+    to: weather_station
+    distance_px: 518
+    duration_ticks: 15
+    via: [tree_house, carrot_square, rabbit_mountain, weather_station]
+    roads: [tree_to_square, square_to_mountain, mountain_to_weather]
+  - from: tree_house
+    to: observatory
+    distance_px: 692
+    duration_ticks: 20
+    via: [tree_house, carrot_square, rabbit_mountain, observatory]
+    roads: [tree_to_square, square_to_mountain, mountain_to_observatory]
+  - from: tree_house
+    to: shell_bay
+    distance_px: 406
+    duration_ticks: 12
+    via: [tree_house, carrot_square, shell_bay]
+    roads: [tree_to_square, square_to_beach]
+  - from: tree_house
+    to: lighthouse
+    distance_px: 613
+    duration_ticks: 18
+    via: [tree_house, carrot_square, shell_bay, lighthouse]
+    roads: [tree_to_square, square_to_beach, beach_to_lighthouse]
+  - from: tree_house
+    to: chanson_hall
+    distance_px: 557
+    duration_ticks: 16
+    via: [tree_house, carrot_square, shell_bay, chanson_hall]
+    roads: [tree_to_square, square_to_beach, beach_to_chanson]
+  - from: carrot_square
+    to: mushroom_cafe
+    distance_px: 192
+    duration_ticks: 5
+    via: [carrot_square, mushroom_cafe]
+    roads: [square_to_cafe]
+  - from: carrot_square
+    to: timothy_farm
+    distance_px: 212
+    duration_ticks: 6
+    via: [carrot_square, timothy_farm]
+    roads: [square_to_farm]
+  - from: carrot_square
+    to: gear_workshop
+    distance_px: 602
+    duration_ticks: 17
+    via: [carrot_square, timothy_farm, gear_workshop]
+    roads: [square_to_farm, farm_to_workshop]
+  - from: carrot_square
+    to: acorn_library
+    distance_px: 693
+    duration_ticks: 20
+    via: [carrot_square, timothy_farm, gear_workshop, acorn_library]
+    roads: [square_to_farm, farm_to_workshop, workshop_to_library]
+  - from: carrot_square
+    to: botanical_garden
+    distance_px: 906
+    duration_ticks: 26
+    via: [carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden]
+    roads: [square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden]
+  - from: carrot_square
+    to: rainbow_lake
+    distance_px: 1234
+    duration_ticks: 35
+    via: [carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake]
+    roads: [square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake]
+  - from: carrot_square
+    to: carrot_maze
+    distance_px: 1652
+    duration_ticks: 47
+    via: [carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake, lake_to_maze]
+  - from: carrot_square
+    to: rabbit_mountain
+    distance_px: 180
+    duration_ticks: 5
+    via: [carrot_square, rabbit_mountain]
+    roads: [square_to_mountain]
+  - from: carrot_square
+    to: weather_station
+    distance_px: 320
+    duration_ticks: 9
+    via: [carrot_square, rabbit_mountain, weather_station]
+    roads: [square_to_mountain, mountain_to_weather]
+  - from: carrot_square
+    to: observatory
+    distance_px: 494
+    duration_ticks: 14
+    via: [carrot_square, rabbit_mountain, observatory]
+    roads: [square_to_mountain, mountain_to_observatory]
+  - from: carrot_square
+    to: shell_bay
+    distance_px: 208
+    duration_ticks: 6
+    via: [carrot_square, shell_bay]
+    roads: [square_to_beach]
+  - from: carrot_square
+    to: lighthouse
+    distance_px: 415
+    duration_ticks: 12
+    via: [carrot_square, shell_bay, lighthouse]
+    roads: [square_to_beach, beach_to_lighthouse]
+  - from: carrot_square
+    to: chanson_hall
+    distance_px: 359
+    duration_ticks: 10
+    via: [carrot_square, shell_bay, chanson_hall]
+    roads: [square_to_beach, beach_to_chanson]
+  - from: mushroom_cafe
+    to: timothy_farm
+    distance_px: 404
+    duration_ticks: 12
+    via: [mushroom_cafe, carrot_square, timothy_farm]
+    roads: [square_to_cafe, square_to_farm]
+  - from: mushroom_cafe
+    to: gear_workshop
+    distance_px: 794
+    duration_ticks: 23
+    via: [mushroom_cafe, carrot_square, timothy_farm, gear_workshop]
+    roads: [square_to_cafe, square_to_farm, farm_to_workshop]
+  - from: mushroom_cafe
+    to: acorn_library
+    distance_px: 885
+    duration_ticks: 25
+    via: [mushroom_cafe, carrot_square, timothy_farm, gear_workshop, acorn_library]
+    roads: [square_to_cafe, square_to_farm, farm_to_workshop, workshop_to_library]
+  - from: mushroom_cafe
+    to: botanical_garden
+    distance_px: 1098
+    duration_ticks: 31
+    via: [mushroom_cafe, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden]
+    roads: [square_to_cafe, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden]
+  - from: mushroom_cafe
+    to: rainbow_lake
+    distance_px: 1426
+    duration_ticks: 41
+    via: [mushroom_cafe, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake]
+    roads: [square_to_cafe, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake]
+  - from: mushroom_cafe
+    to: carrot_maze
+    distance_px: 1844
+    duration_ticks: 53
+    via: [mushroom_cafe, carrot_square, timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [square_to_cafe, square_to_farm, farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake, lake_to_maze]
+  - from: mushroom_cafe
+    to: rabbit_mountain
+    distance_px: 372
+    duration_ticks: 11
+    via: [mushroom_cafe, carrot_square, rabbit_mountain]
+    roads: [square_to_cafe, square_to_mountain]
+  - from: mushroom_cafe
+    to: weather_station
+    distance_px: 512
+    duration_ticks: 15
+    via: [mushroom_cafe, carrot_square, rabbit_mountain, weather_station]
+    roads: [square_to_cafe, square_to_mountain, mountain_to_weather]
+  - from: mushroom_cafe
+    to: observatory
+    distance_px: 686
+    duration_ticks: 20
+    via: [mushroom_cafe, carrot_square, rabbit_mountain, observatory]
+    roads: [square_to_cafe, square_to_mountain, mountain_to_observatory]
+  - from: mushroom_cafe
+    to: shell_bay
+    distance_px: 400
+    duration_ticks: 11
+    via: [mushroom_cafe, carrot_square, shell_bay]
+    roads: [square_to_cafe, square_to_beach]
+  - from: mushroom_cafe
+    to: lighthouse
+    distance_px: 607
+    duration_ticks: 17
+    via: [mushroom_cafe, carrot_square, shell_bay, lighthouse]
+    roads: [square_to_cafe, square_to_beach, beach_to_lighthouse]
+  - from: mushroom_cafe
+    to: chanson_hall
+    distance_px: 551
+    duration_ticks: 16
+    via: [mushroom_cafe, carrot_square, shell_bay, chanson_hall]
+    roads: [square_to_cafe, square_to_beach, beach_to_chanson]
+  - from: timothy_farm
+    to: gear_workshop
+    distance_px: 390
+    duration_ticks: 11
+    via: [timothy_farm, gear_workshop]
+    roads: [farm_to_workshop]
+  - from: timothy_farm
+    to: acorn_library
+    distance_px: 481
+    duration_ticks: 14
+    via: [timothy_farm, gear_workshop, acorn_library]
+    roads: [farm_to_workshop, workshop_to_library]
+  - from: timothy_farm
+    to: botanical_garden
+    distance_px: 694
+    duration_ticks: 20
+    via: [timothy_farm, gear_workshop, acorn_library, botanical_garden]
+    roads: [farm_to_workshop, workshop_to_library, library_to_garden]
+  - from: timothy_farm
+    to: rainbow_lake
+    distance_px: 1022
+    duration_ticks: 29
+    via: [timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake]
+    roads: [farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake]
+  - from: timothy_farm
+    to: carrot_maze
+    distance_px: 1440
+    duration_ticks: 41
+    via: [timothy_farm, gear_workshop, acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [farm_to_workshop, workshop_to_library, library_to_garden, garden_to_lake, lake_to_maze]
+  - from: timothy_farm
+    to: rabbit_mountain
+    distance_px: 392
+    duration_ticks: 11
+    via: [timothy_farm, carrot_square, rabbit_mountain]
+    roads: [square_to_farm, square_to_mountain]
+  - from: timothy_farm
+    to: weather_station
+    distance_px: 532
+    duration_ticks: 15
+    via: [timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: timothy_farm
+    to: observatory
+    distance_px: 706
+    duration_ticks: 20
+    via: [timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: timothy_farm
+    to: shell_bay
+    distance_px: 420
+    duration_ticks: 12
+    via: [timothy_farm, carrot_square, shell_bay]
+    roads: [square_to_farm, square_to_beach]
+  - from: timothy_farm
+    to: lighthouse
+    distance_px: 627
+    duration_ticks: 18
+    via: [timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: timothy_farm
+    to: chanson_hall
+    distance_px: 571
+    duration_ticks: 16
+    via: [timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [square_to_farm, square_to_beach, beach_to_chanson]
+  - from: gear_workshop
+    to: acorn_library
+    distance_px: 91
+    duration_ticks: 4
+    via: [gear_workshop, acorn_library]
+    roads: [workshop_to_library]
+  - from: gear_workshop
+    to: botanical_garden
+    distance_px: 304
+    duration_ticks: 9
+    via: [gear_workshop, acorn_library, botanical_garden]
+    roads: [workshop_to_library, library_to_garden]
+  - from: gear_workshop
+    to: rainbow_lake
+    distance_px: 632
+    duration_ticks: 18
+    via: [gear_workshop, acorn_library, botanical_garden, rainbow_lake]
+    roads: [workshop_to_library, library_to_garden, garden_to_lake]
+  - from: gear_workshop
+    to: carrot_maze
+    distance_px: 1050
+    duration_ticks: 30
+    via: [gear_workshop, acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [workshop_to_library, library_to_garden, garden_to_lake, lake_to_maze]
+  - from: gear_workshop
+    to: rabbit_mountain
+    distance_px: 782
+    duration_ticks: 22
+    via: [gear_workshop, timothy_farm, carrot_square, rabbit_mountain]
+    roads: [farm_to_workshop, square_to_farm, square_to_mountain]
+  - from: gear_workshop
+    to: weather_station
+    distance_px: 922
+    duration_ticks: 26
+    via: [gear_workshop, timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: gear_workshop
+    to: observatory
+    distance_px: 1096
+    duration_ticks: 31
+    via: [gear_workshop, timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: gear_workshop
+    to: shell_bay
+    distance_px: 810
+    duration_ticks: 23
+    via: [gear_workshop, timothy_farm, carrot_square, shell_bay]
+    roads: [farm_to_workshop, square_to_farm, square_to_beach]
+  - from: gear_workshop
+    to: lighthouse
+    distance_px: 1017
+    duration_ticks: 29
+    via: [gear_workshop, timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [farm_to_workshop, square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: gear_workshop
+    to: chanson_hall
+    distance_px: 961
+    duration_ticks: 27
+    via: [gear_workshop, timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [farm_to_workshop, square_to_farm, square_to_beach, beach_to_chanson]
+  - from: acorn_library
+    to: botanical_garden
+    distance_px: 213
+    duration_ticks: 6
+    via: [acorn_library, botanical_garden]
+    roads: [library_to_garden]
+  - from: acorn_library
+    to: rainbow_lake
+    distance_px: 541
+    duration_ticks: 15
+    via: [acorn_library, botanical_garden, rainbow_lake]
+    roads: [library_to_garden, garden_to_lake]
+  - from: acorn_library
+    to: carrot_maze
+    distance_px: 959
+    duration_ticks: 27
+    via: [acorn_library, botanical_garden, rainbow_lake, carrot_maze]
+    roads: [library_to_garden, garden_to_lake, lake_to_maze]
+  - from: acorn_library
+    to: rabbit_mountain
+    distance_px: 873
+    duration_ticks: 25
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain]
+  - from: acorn_library
+    to: weather_station
+    distance_px: 1013
+    duration_ticks: 29
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: acorn_library
+    to: observatory
+    distance_px: 1187
+    duration_ticks: 34
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: acorn_library
+    to: shell_bay
+    distance_px: 901
+    duration_ticks: 26
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach]
+  - from: acorn_library
+    to: lighthouse
+    distance_px: 1108
+    duration_ticks: 32
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: acorn_library
+    to: chanson_hall
+    distance_px: 1052
+    duration_ticks: 30
+    via: [acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_chanson]
+  - from: botanical_garden
+    to: rainbow_lake
+    distance_px: 328
+    duration_ticks: 9
+    via: [botanical_garden, rainbow_lake]
+    roads: [garden_to_lake]
+  - from: botanical_garden
+    to: carrot_maze
+    distance_px: 746
+    duration_ticks: 21
+    via: [botanical_garden, rainbow_lake, carrot_maze]
+    roads: [garden_to_lake, lake_to_maze]
+  - from: botanical_garden
+    to: rabbit_mountain
+    distance_px: 1086
+    duration_ticks: 31
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain]
+  - from: botanical_garden
+    to: weather_station
+    distance_px: 1226
+    duration_ticks: 35
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: botanical_garden
+    to: observatory
+    distance_px: 1400
+    duration_ticks: 40
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: botanical_garden
+    to: shell_bay
+    distance_px: 1114
+    duration_ticks: 32
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach]
+  - from: botanical_garden
+    to: lighthouse
+    distance_px: 1321
+    duration_ticks: 38
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: botanical_garden
+    to: chanson_hall
+    distance_px: 1265
+    duration_ticks: 36
+    via: [botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_chanson]
+  - from: rainbow_lake
+    to: carrot_maze
+    distance_px: 418
+    duration_ticks: 12
+    via: [rainbow_lake, carrot_maze]
+    roads: [lake_to_maze]
+  - from: rainbow_lake
+    to: rabbit_mountain
+    distance_px: 1414
+    duration_ticks: 40
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain]
+  - from: rainbow_lake
+    to: weather_station
+    distance_px: 1554
+    duration_ticks: 44
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: rainbow_lake
+    to: observatory
+    distance_px: 1728
+    duration_ticks: 49
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: rainbow_lake
+    to: shell_bay
+    distance_px: 1442
+    duration_ticks: 41
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach]
+  - from: rainbow_lake
+    to: lighthouse
+    distance_px: 1649
+    duration_ticks: 47
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: rainbow_lake
+    to: chanson_hall
+    distance_px: 1593
+    duration_ticks: 46
+    via: [rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_chanson]
+  - from: carrot_maze
+    to: rabbit_mountain
+    distance_px: 1832
+    duration_ticks: 52
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain]
+  - from: carrot_maze
+    to: weather_station
+    distance_px: 1972
+    duration_ticks: 56
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, weather_station]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_weather]
+  - from: carrot_maze
+    to: observatory
+    distance_px: 2146
+    duration_ticks: 61
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, rabbit_mountain, observatory]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_mountain, mountain_to_observatory]
+  - from: carrot_maze
+    to: shell_bay
+    distance_px: 1860
+    duration_ticks: 53
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach]
+  - from: carrot_maze
+    to: lighthouse
+    distance_px: 2067
+    duration_ticks: 59
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, lighthouse]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_lighthouse]
+  - from: carrot_maze
+    to: chanson_hall
+    distance_px: 2011
+    duration_ticks: 57
+    via: [carrot_maze, rainbow_lake, botanical_garden, acorn_library, gear_workshop, timothy_farm, carrot_square, shell_bay, chanson_hall]
+    roads: [lake_to_maze, garden_to_lake, library_to_garden, workshop_to_library, farm_to_workshop, square_to_farm, square_to_beach, beach_to_chanson]
+  - from: rabbit_mountain
+    to: weather_station
+    distance_px: 140
+    duration_ticks: 4
+    via: [rabbit_mountain, weather_station]
+    roads: [mountain_to_weather]
+  - from: rabbit_mountain
+    to: observatory
+    distance_px: 314
+    duration_ticks: 9
+    via: [rabbit_mountain, observatory]
+    roads: [mountain_to_observatory]
+  - from: rabbit_mountain
+    to: shell_bay
+    distance_px: 388
+    duration_ticks: 11
+    via: [rabbit_mountain, carrot_square, shell_bay]
+    roads: [square_to_mountain, square_to_beach]
+  - from: rabbit_mountain
+    to: lighthouse
+    distance_px: 595
+    duration_ticks: 17
+    via: [rabbit_mountain, carrot_square, shell_bay, lighthouse]
+    roads: [square_to_mountain, square_to_beach, beach_to_lighthouse]
+  - from: rabbit_mountain
+    to: chanson_hall
+    distance_px: 539
+    duration_ticks: 15
+    via: [rabbit_mountain, carrot_square, shell_bay, chanson_hall]
+    roads: [square_to_mountain, square_to_beach, beach_to_chanson]
+  - from: weather_station
+    to: observatory
+    distance_px: 454
+    duration_ticks: 13
+    via: [weather_station, rabbit_mountain, observatory]
+    roads: [mountain_to_weather, mountain_to_observatory]
+  - from: weather_station
+    to: shell_bay
+    distance_px: 528
+    duration_ticks: 15
+    via: [weather_station, rabbit_mountain, carrot_square, shell_bay]
+    roads: [mountain_to_weather, square_to_mountain, square_to_beach]
+  - from: weather_station
+    to: lighthouse
+    distance_px: 735
+    duration_ticks: 21
+    via: [weather_station, rabbit_mountain, carrot_square, shell_bay, lighthouse]
+    roads: [mountain_to_weather, square_to_mountain, square_to_beach, beach_to_lighthouse]
+  - from: weather_station
+    to: chanson_hall
+    distance_px: 679
+    duration_ticks: 19
+    via: [weather_station, rabbit_mountain, carrot_square, shell_bay, chanson_hall]
+    roads: [mountain_to_weather, square_to_mountain, square_to_beach, beach_to_chanson]
+  - from: observatory
+    to: shell_bay
+    distance_px: 702
+    duration_ticks: 20
+    via: [observatory, rabbit_mountain, carrot_square, shell_bay]
+    roads: [mountain_to_observatory, square_to_mountain, square_to_beach]
+  - from: observatory
+    to: lighthouse
+    distance_px: 909
+    duration_ticks: 26
+    via: [observatory, rabbit_mountain, carrot_square, shell_bay, lighthouse]
+    roads: [mountain_to_observatory, square_to_mountain, square_to_beach, beach_to_lighthouse]
+  - from: observatory
+    to: chanson_hall
+    distance_px: 853
+    duration_ticks: 24
+    via: [observatory, rabbit_mountain, carrot_square, shell_bay, chanson_hall]
+    roads: [mountain_to_observatory, square_to_mountain, square_to_beach, beach_to_chanson]
+  - from: shell_bay
+    to: lighthouse
+    distance_px: 207
+    duration_ticks: 6
+    via: [shell_bay, lighthouse]
+    roads: [beach_to_lighthouse]
+  - from: shell_bay
+    to: chanson_hall
+    distance_px: 151
+    duration_ticks: 4
+    via: [shell_bay, chanson_hall]
+    roads: [beach_to_chanson]
+  - from: lighthouse
+    to: chanson_hall
+    distance_px: 358
+    duration_ticks: 10
+    via: [lighthouse, shell_bay, chanson_hall]
+    roads: [beach_to_lighthouse, beach_to_chanson]
