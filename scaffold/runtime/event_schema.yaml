@@ -104,7 +104,8 @@ event_shapes:
     text:
       type: string
       max_display_ticks: 2
-      style: 简短、可爱、有当天剧情信息，不要长篇独白。
+      max_chars: 20
+      style: 可爱、有当天剧情信息，不要长篇独白。
 
 hard_rules:
   - 只允许小写事件类型 move/action/dialogue。

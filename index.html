@@ -394,6 +394,16 @@
       filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
     }
 
+    .nameplate-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 760;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
     .sprite {
       position: absolute;
       inset: 0;
@@ -436,8 +446,8 @@
 
     .nameplate {
       position: absolute;
-      left: 50%;
-      top: calc(16px * var(--char-scale, 1));
+      left: 0;
+      top: 0;
       transform: translateX(-50%) translateY(2px);
       padding: 1px 4px;
       border: 2px solid var(--ink);
@@ -447,6 +457,9 @@
       white-space: nowrap;
       opacity: 0;
       transition: opacity 0.16s ease, transform 0.16s ease;
+      will-change: left, top, opacity, transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .nameplate.show {
@@ -533,6 +546,30 @@
       color: #40505a;
       font-size: 12px;
       line-height: 1.45;
+    }
+
+    body.night-mode .status-board {
+      background: #182532;
+      box-shadow: 5px 5px 0 rgba(2, 8, 15, 0.72);
+    }
+
+    body.night-mode .status-card {
+      background: #223243;
+      color: #f4ecd5;
+      border-color: #17202b;
+    }
+
+    body.night-mode .status-text {
+      color: #d7e7ec;
+    }
+
+    body.night-mode .status-name {
+      color: #fff2b8;
+    }
+
+    body.night-mode .status-dot {
+      border-color: #101820;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
     }
 
     .log-panel {
@@ -643,6 +680,7 @@
           <div class="clock-readout" id="clockReadout">00:00</div>
         </div>
         <div class="debug-layer" id="debugLayer" aria-hidden="true"></div>
+        <div class="nameplate-layer" id="nameplateLayer" aria-hidden="true"></div>
         <button class="debug-toggle" id="debugToggle" type="button">调试模式</button>
       </div>
     </section>
@@ -878,6 +916,7 @@
     const clockReadout = document.querySelector("#clockReadout");
     const debugToggle = document.querySelector("#debugToggle");
     const debugLayer = document.querySelector("#debugLayer");
+    const nameplateLayer = document.querySelector("#nameplateLayer");
     const tickReadout = document.querySelector("#tickReadout");
     const tickRange = document.querySelector("#tickRange");
     const rangeTime = document.querySelector("#rangeTime");
@@ -906,6 +945,7 @@
     let selectedDebugObject = null;
 
     const characterEls = {};
+    const nameplateEls = {};
     const statusEls = {};
     const characterRuntime = {};
     const activeMoveAnimations = {};
@@ -1293,6 +1333,7 @@
     function updateMapTheme(hour) {
       const isNight = hour < 6 || hour >= 19;
       stage.style.setProperty("--map-image", `url("assets/${isNight ? "map_night.png" : "map_day.png"}")`);
+      document.body.classList.toggle("night-mode", isNight);
     }
 
     function updateClock() {
@@ -1855,6 +1896,16 @@
       if (characterRuntime[charId]) {
         characterRuntime[charId].point = { x: point.x, y: point.y };
       }
+      updateNameplatePosition(charId, point);
+    }
+
+    function updateNameplatePosition(charId, point = characterRuntime[charId]?.point) {
+      const tag = nameplateEls[charId];
+      if (!tag || !point) return;
+      const scale = characters[charId]?.scale || 1;
+      tag.style.left = `${point.x}px`;
+      tag.style.top = `${point.y - 5 * scale}px`;
+      tag.style.zIndex = String(Math.round(point.y) + 900);
     }
 
     function setCharacterRuntime(charId, patch) {
@@ -1873,17 +1924,17 @@
     }
 
     function isMovingStatus(runtime) {
-      return runtime?.isMoving || /^前往|^返回|路上/.test(runtime?.status || "");
+      return runtime?.isMoving || /前往|返回|路上/.test(runtime?.status || "");
     }
 
     function updateCharacterStatusTag(charId) {
-      const el = characterEls[charId];
-      if (!el) return;
+      const tag = nameplateEls[charId];
+      if (!tag) return;
 
       const runtime = characterRuntime[charId];
-      const tag = el.querySelector(".nameplate");
       const label = characters[charId]?.name || charId;
       tag.textContent = `${label} · ${runtime?.status || "待机中"}`;
+      updateNameplatePosition(charId);
       tag.classList.toggle("moving", isMovingStatus(runtime));
 
       if (isMovingStatus(runtime)) {
@@ -2399,10 +2450,16 @@
         el.innerHTML = `
           <div class="bubble"></div>
           <div class="sprite"></div>
-          <div class="nameplate">${escapeHtml(charData.name)}</div>
         `;
         stage.appendChild(el);
         characterEls[charId] = el;
+
+        const nameplate = document.createElement("div");
+        nameplate.className = "nameplate";
+        nameplate.dataset.char = charId;
+        nameplate.textContent = charData.name;
+        nameplateLayer.appendChild(nameplate);
+        nameplateEls[charId] = nameplate;
 
         characterRuntime[charId] = {
           mood: charData.mood || "平静",

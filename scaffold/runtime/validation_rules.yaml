@@ -33,6 +33,7 @@ validation:
     no_overlap_per_character: true
     move_duration_rule: end_tick - start_tick must equal scaffold/world/travel_times.yaml all_pairs duration_ticks
     dialogue_max_duration_ticks: 2
+    dialogue_max_chars: 20
     move_from_to_must_be_map_regions: true
   story:
     - 每只兔兔都要有当天个人剧情。
