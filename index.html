@@ -394,6 +394,12 @@
       filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
     }
 
+    .character.has-asset {
+      width: calc(var(--sprite-w, 15px) * var(--char-scale, 1));
+      height: calc(var(--sprite-h, 21px) * var(--char-scale, 1));
+      filter: drop-shadow(2px 3px 0 rgba(35, 42, 38, 0.24));
+    }
+
     .nameplate-layer {
       position: absolute;
       inset: 0;
@@ -412,6 +418,19 @@
       background: var(--char-color);
       transform: scaleX(var(--facing, 1));
       transform-origin: center bottom;
+    }
+
+    .character.has-asset .sprite {
+      border: 0;
+      border-radius: 0;
+      background: center bottom / contain no-repeat var(--sprite-image);
+      image-rendering: auto;
+      transform: scaleX(calc(var(--facing, 1) * -1));
+    }
+
+    .character.has-asset .sprite::before,
+    .character.has-asset .sprite::after {
+      content: none;
     }
 
     .sprite::before {
@@ -720,12 +739,72 @@
       plaza: "carrot_square"
     };
     const rabbitProfiles = {
-      rabbit_1: { name: "小悠米", color: "#ff8fab", scale: 0.8, init_region: "tree_house", mood: "困倦", status: "睡觉中" },
-      rabbit_2: { name: "乔治", color: "#7bdff2", scale: 1, init_region: "tree_house", mood: "平静", status: "睡觉中" },
-      rabbit_3: { name: "小泽", color: "#f9c74f", scale: 1, init_region: "tree_house", mood: "期待", status: "睡觉中" },
-      rabbit_4: { name: "晓雪", color: "#95d5b2", scale: 1, init_region: "tree_house", mood: "专注", status: "整理树叶笔记" },
+      rabbit_1: {
+        name: "小悠米",
+        color: "#ff8fab",
+        scale: 0.8,
+        init_region: "tree_house",
+        mood: "困倦",
+        status: "睡觉中",
+        sprite: {
+          src: "assets/characters/youmi-stage.png",
+          width: 44,
+          height: 44
+        }
+      },
+      rabbit_2: {
+        name: "乔治",
+        color: "#7bdff2",
+        scale: 1,
+        init_region: "tree_house",
+        mood: "平静",
+        status: "睡觉中",
+        sprite: {
+          src: "assets/characters/george-v3-stage.png",
+          width: 25,
+          height: 52
+        }
+      },
+      rabbit_3: {
+        name: "小泽",
+        color: "#f9c74f",
+        scale: 1,
+        init_region: "tree_house",
+        mood: "期待",
+        status: "睡觉中",
+        sprite: {
+          src: "assets/characters/xiaoze-stage.png",
+          width: 27,
+          height: 48
+        }
+      },
+      rabbit_4: {
+        name: "晓雪",
+        color: "#95d5b2",
+        scale: 1,
+        init_region: "tree_house",
+        mood: "专注",
+        status: "整理树叶笔记",
+        sprite: {
+          src: "assets/characters/xiaoxue-stage.png",
+          width: 63,
+          height: 48
+        }
+      },
       rabbit_5: { name: "杰拉德", color: "#cdb4db", scale: 0.8, init_region: "tree_house", mood: "迷糊", status: "睡觉中" },
-      rabbit_6: { name: "劳伦斯", color: "#f4a261", scale: 1.2, init_region: "tree_house", mood: "松弛", status: "调试小铃铛" },
+      rabbit_6: {
+        name: "劳伦斯",
+        color: "#f4a261",
+        scale: 1.2,
+        init_region: "tree_house",
+        mood: "松弛",
+        status: "调试小铃铛",
+        sprite: {
+          src: "assets/characters/lawrence-stage.png",
+          width: 25,
+          height: 44
+        }
+      },
       rabbit_7: { name: "Lino", color: "#9ca3af", scale: 1, init_region: "tree_house", mood: "安静", status: "睡觉中" }
     };
 
@@ -2443,10 +2522,15 @@
     function createCharacters() {
       Object.entries(characters).forEach(([charId, charData]) => {
         const el = document.createElement("div");
-        el.className = "character";
+        el.className = `character${charData.sprite ? " has-asset" : ""}`;
         el.dataset.char = charId;
         el.style.setProperty("--char-color", charData.color);
         el.style.setProperty("--char-scale", charData.scale || 1);
+        if (charData.sprite) {
+          el.style.setProperty("--sprite-image", `url("${charData.sprite.src}")`);
+          el.style.setProperty("--sprite-w", `${charData.sprite.width}px`);
+          el.style.setProperty("--sprite-h", `${charData.sprite.height}px`);
+        }
         el.innerHTML = `
           <div class="bubble"></div>
           <div class="sprite"></div>
