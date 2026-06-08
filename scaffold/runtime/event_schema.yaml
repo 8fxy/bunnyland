@@ -105,6 +105,8 @@ event_shapes:
       type: string
       max_display_ticks: 2
       max_chars: 20
+      latin_text_max_chars: 60
+      latin_text_rule: 如果对白包含法语/拉丁字母文本，可按中文 max_chars 的 3 倍以内处理。
       style: 可爱、有当天剧情信息，不要长篇独白。
 
 hard_rules:
