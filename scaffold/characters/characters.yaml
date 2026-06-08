@@ -1,50 +1,152 @@
 characters:
   rabbit_1:
     name: 小悠米
-    color: "#ff8fab"
+    gender: 女
+    birthday: 3月28日
+    color: "#fff4f4"
     scale: 0.8
     home: tree_house
-    personality: 好奇、轻快、喜欢把小发现写成便签
-    story_hooks: [植物观察, 海湾贝壳, 音乐厅小舞台]
+    appearance: 小小的可爱白色垂耳兔，爱穿蜜蜂服。
+    personality: 勇敢、好奇、容易迷路但很有探索精神。
+    bio: 白天做蜜蜂去采蜜，晚上又变成兔兔；梦想成为旅行家，记录世界上所有的鲜花种类。
+    important_items:
+      - 用树叶做成的《世界鲜花图鉴》
+      - 蜜蜂服
+    story_hooks:
+      - 白天采蜜，晚上回树屋整理花卉记录
+      - 把稀有花朵带给杰拉德当绘画素材
+      - 偶尔迷路到小泽咖啡馆糖罐或晓雪耳朵上
+    relationships:
+      rabbit_5: 是杰拉德的灵感缪斯，常把花带给他画。
+      rabbit_4: 会把采来的花给晓雪尝试扎染发带。
+      rabbit_3: 容易飞到小泽咖啡馆的糖罐上。
+
   rabbit_2:
     name: 乔治
+    aliases: [乔老爷]
+    gender: 男
+    birthday: 11月3日
+    birthplace: 山东
     color: "#7bdff2"
     scale: 1
     home: tree_house
-    personality: 稳当、爱修东西、说话直接但温柔
-    story_hooks: [齿轮工坊, 农场工具, 灯塔门铃]
+    appearance: 戴蓝色帽子、穿蓝色背带裤的小白兔。
+    personality: 调皮开朗、古灵精怪、鬼点子多。
+    bio: 很喜欢植物园，喜欢晓雪。最近迷恋劳力士手表，经常大喊“给我劳”，让劳伦斯误以为乔治对他有异样的感情。
+    story_hooks:
+      - 在植物园照看薄荷和各种植物
+      - 大喊“给我劳”引发劳伦斯误会
+      - 被晓雪一杯苦涩浓缩咖啡治住
+    relationships:
+      rabbit_4: 喜欢晓雪，也最听晓雪的话。
+      rabbit_6: 因“给我劳”口头禅被劳伦斯误会。
+      rabbit_3: 给小泽咖啡馆友情提供植物园薄荷。
+
   rabbit_3:
     name: 小泽
+    gender: 男
+    birthday: 7月12日
+    birthplace: 山东
     color: "#f9c74f"
     scale: 1
     home: tree_house
-    personality: 热情、爱做饮品、喜欢给大家送小点心
-    story_hooks: [蘑菇咖啡馆, 胡萝卜广场, 香颂音乐厅]
+    appearance: 安静的美男兔，精致但骨子里豪爽。
+    personality: 热心、有生活情调、安静温柔、隐形富豪精致boy。
+    bio: 喜欢度假，在 Bunnyland 开了一家咖啡馆，擅长甜点和咖啡；咖啡馆是整个 Bunnyland 的信息情报站。
+    signature:
+      - 能把每杯咖啡奶泡拉成在场兔兔的头像
+      - 尤其喜欢拉乔治吃瘪的表情
+    story_hooks:
+      - 用乔治植物园提供的薄荷做咖啡
+      - 新品发布会邀请晓雪拍照推广
+      - 端着咖啡看报纸，旁听劳伦斯和乔治的抓马
+    relationships:
+      rabbit_2: 使用乔治提供的薄荷，也爱观察乔治吃瘪。
+      rabbit_4: 推新品时总邀请晓雪拍照推广。
+      rabbit_5: 咖啡馆招牌由杰拉德绘制。
+      rabbit_6: 常听劳伦斯讲乔治误会事件。
+
   rabbit_4:
     name: 晓雪
+    gender: 女
+    birthday: 10月9日
+    birthplace: 扬州
     color: "#95d5b2"
     scale: 1
     home: tree_house
-    personality: 专注、爱记录、对天气和星象敏感
-    story_hooks: [橡果图书馆, 兔耳山, 气象站, 天文台]
+    appearance: Bunnyland 最乖的垂耳兔小公主，薄荷绿色皮毛，有很多小裙子。
+    personality: 聪慧安静、甜美可爱、乖巧但能治住乔治。
+    languages: [法语, 中文]
+    bio: 喜欢乔治，热衷收集各式发带装饰耳朵，有专门存放发带的微型衣帽间；最近用小悠米采蜜带回来的植物花卉自己扎染发带。
+    hidden_skill: 法式浪漫吐槽。乔治调皮过头时会用极快法语语速优雅碎碎念，乔治听不懂只能点头。
+    story_hooks:
+      - 收集发带并经营微型衣帽间
+      - 用植物花卉扎染发带
+      - 乔治大喊“给我劳”时递上苦涩浓缩咖啡
+    relationships:
+      rabbit_2: 喜欢乔治，也是唯一能治住乔治的人。
+      rabbit_1: 使用小悠米带回来的花卉扎染发带。
+      rabbit_7: 经常请 Lino 拍发带穿搭街拍。
+
   rabbit_5:
     name: 杰拉德
+    gender: 男
+    birthday: 12月7日
     color: "#cdb4db"
     scale: 0.8
     home: tree_house
-    personality: 想象力强、容易兴奋、喜欢迷宫和纹样
-    story_hooks: [地下胡萝卜迷宫, 彩虹湖, 灯塔符号]
+    appearance: 有艺术家忧郁气质的小兔兔。
+    personality: 想象力丰富、爱画画、喜欢冬天，常把日常画成奇幻冒险。
+    bio: 劳伦斯把他当亲弟弟照顾，并且过度保护；劳伦斯去山东后疯狂喂他吃鲁菜，导致他苦恼怎么一边保持艺术家气质一边减肥。
+    story_hooks:
+      - 把大家日常画成奇幻冒险故事
+      - 给小泽咖啡馆画招牌
+      - 被劳伦斯投喂鲁菜后思考艺术家减肥
+    relationships:
+      rabbit_6: 被劳伦斯当亲弟弟过度保护。
+      rabbit_1: 小悠米是他的灵感缪斯。
+      rabbit_3: 为小泽咖啡馆画招牌。
+
   rabbit_6:
     name: 劳伦斯
+    gender: 男
+    birthday: 1月18日
+    birthplace: 北欧
     color: "#f4a261"
     scale: 1.2
     home: tree_house
-    personality: 可靠、行动派、常常负责收尾和维修
-    story_hooks: [齿轮工坊, 提摩西农场, 贝壳海湾, 灯塔]
+    appearance: 高大沉稳，经常穿得很保暖；夏天厚毛衣热到耳朵耷拉。
+    personality: 沉稳可靠、照顾人、容易把乔治的“给我劳”想歪。
+    bio: 后来来到山东生活，爱上中国美食，尤其疯狂迷恋山东大葱蘸酱和煎饼果子。每年圣诞节会返回北欧做圣诞老人，12月开始用棉花贴胡子，并打包小泽咖啡馆甜点带回北欧当礼物。
+    story_hooks:
+      - 夏天穿厚毛衣导致耳朵耷拉
+      - 吃山东大葱蘸酱和煎饼果子
+      - 误会乔治的“给我劳”
+      - 圣诞节回北欧做圣诞老人
+    relationships:
+      rabbit_2: 因乔治中央空调和“给我劳”口头禅产生误会。
+      rabbit_5: 把杰拉德当亲弟弟过度保护。
+      rabbit_3: 圣诞节会打包小泽咖啡馆甜点。
+
   rabbit_7:
     name: Lino
-    color: "#9ca3af"
+    aliases: [lino]
+    gender: 男
+    birthday: 6月2日
+    birthplace: 意大利乌迪内省塔尔琴托
+    species: 棕色野兔
+    color: "#9b7653"
     scale: 1
     home: tree_house
-    personality: 安静、观察力强、喜欢摄影和星光
-    story_hooks: [星光天文台, 云朵气象站, 兔耳山, 灯塔]
+    appearance: 棕色野兔，安静时像背景板；撒娇时耳朵会卷成两个心形。
+    personality: 温顺、热爱摄影、看着内向但喜欢撒娇。
+    bio: 和狗狗是好朋友，经常帮晓雪拍发带穿搭街拍照，也是唯一用镜头捕捉到“乔治向劳伦斯解释现场”的吃瓜群众。
+    story_hooks:
+      - 给晓雪拍发带穿搭街拍
+      - 用镜头记录乔治向劳伦斯解释的现场
+      - 撒娇时耳朵卷成心形
+      - 和狗狗是好朋友
+    relationships:
+      rabbit_4: 经常帮晓雪拍发带穿搭。
+      rabbit_2: 拍到乔治解释“给我劳”的名场面。
+      rabbit_6: 拍到劳伦斯误会乔治后的反应。

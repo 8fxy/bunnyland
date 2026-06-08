@@ -28,172 +28,172 @@ const locations = {
 const characterDefs = {
   rabbit_1: {
     name: "小悠米",
-    color: "#ff8fab",
+    color: "#fff4f4",
     scale: 0.8,
-    mood: "好奇",
+    mood: "勇敢",
     wakeTick: 2880,
     dialogueTarget: 53,
-    route: ["carrot_square", "botanical_garden", "acorn_library", "shell_bay", "chanson_hall", "mushroom_cafe", "rainbow_lake", "carrot_square", "lighthouse", "botanical_garden"],
-    actionStatuses: ["认真写花影便签", "追着光影找线索", "贴好开园小旗", "画下一朵小花", "拼起今日线索", "记录亮亮颜色"],
+    route: ["botanical_garden", "mushroom_cafe", "acorn_library", "chanson_hall", "rainbow_lake", "botanical_garden", "mushroom_cafe", "shell_bay", "carrot_square", "lighthouse"],
+    actionStatuses: ["认真采蜜", "画鲜花图鉴", "轻轻试飞", "寻找稀有花", "整理树叶书", "迷路后导航"],
     actionDetails: [
-      "小悠米把新发现折成小便签，贴在能被大家看见的地方。",
-      "小悠米沿着光影慢慢比对，给每个小变化起了轻快的名字。",
-      "小悠米把地点里的细节画成小图标，像在做一张会呼吸的地图。"
+      "小悠米穿着蜜蜂服采蜜，把花粉小心收进随身的小罐子。",
+      "小悠米翻开树叶做成的《世界鲜花图鉴》，给新花歪歪扭扭补上一页。",
+      "小悠米勇敢地飞过路口，虽然路线有点歪，但眼睛一直亮亮的。"
     ],
     dialogues: [
-      "这里有新发现，我先贴住它。",
-      "这束光像在偷偷给我指路。",
-      "我想给它起个很小的名字。",
-      "等一下，我要把颜色记准。",
-      "这张便签应该贴在最亮处。",
-      "如果线索会唱歌，它一定很轻。"
+      "这朵花我要记下来。",
+      "我没有迷路，只是探险。",
+      "蜂蜜罐要拿稳一点。",
+      "这朵给杰拉德画画。",
+      "晚上我又变回兔兔啦。",
+      "世界鲜花还差好多页。"
     ],
-    memory: "把花影、灯塔光和音乐厅便签连成一条线。"
+    memory: "记得白天穿蜜蜂服采蜜，晚上整理树叶鲜花图鉴。"
   },
   rabbit_2: {
     name: "乔治",
     color: "#7bdff2",
     scale: 1,
-    mood: "平静",
+    mood: "调皮",
     wakeTick: 2880,
     dialogueTarget: 53,
-    route: ["timothy_farm", "gear_workshop", "mushroom_cafe", "lighthouse", "chanson_hall", "carrot_square", "timothy_farm", "gear_workshop", "shell_bay", "acorn_library"],
-    actionStatuses: ["仔细检查螺丝", "更换柔软垫圈", "把灯架调稳", "慢慢打磨边角", "写下维修记录", "测试弹簧回弹"],
+    route: ["botanical_garden", "mushroom_cafe", "carrot_square", "gear_workshop", "botanical_garden", "chanson_hall", "mushroom_cafe", "rabbit_mountain", "acorn_library", "botanical_garden"],
+    actionStatuses: ["认真养薄荷", "大喊给我劳", "解释手表梗", "调皮想点子", "被递苦咖啡", "照看植物园"],
     actionDetails: [
-      "乔治蹲下来检查接口，确认每一处小松动都能被及时修好。",
-      "乔治把工具排成整齐一列，做完一项就轻轻点一下头。",
-      "乔治把灯和木件调到刚刚好，语气平稳得像一把尺子。"
+      "乔治戴着蓝色帽子在植物园转来转去，顺手给小泽摘了一小把薄荷。",
+      "乔治忽然喊出“给我劳”，又赶紧解释自己说的是劳力士手表。",
+      "乔治鬼点子转得飞快，看到晓雪端来浓缩咖啡，立刻乖了半拍。"
     ],
     dialogues: [
-      "这里松了一点，我马上处理。",
-      "别急，先看清楚接缝位置。",
-      "工具够用，问题应该不大。",
-      "这样会稳很多，可以放心。",
-      "我留一枚备用垫圈在这里。",
-      "声音正常，我们可以继续了。"
+      "给我劳！我是说表！",
+      "乔老爷今天也很稳。",
+      "晓雪你看这片叶子。",
+      "植物园归我巡逻啦。",
+      "这杯咖啡怎么这么苦。",
+      "我真没那个意思啊。"
     ],
-    memory: "记得用稳定的小维修守住大家的节奏。"
+    memory: "记得自己喜欢晓雪，也记得“给我劳”会让劳伦斯误会。"
   },
   rabbit_3: {
     name: "小泽",
     color: "#f9c74f",
     scale: 1,
-    mood: "热情",
+    mood: "精致",
     wakeTick: 2880,
     dialogueTarget: 53,
-    route: ["mushroom_cafe", "carrot_square", "chanson_hall", "shell_bay", "mushroom_cafe", "timothy_farm", "rainbow_lake", "chanson_hall", "lighthouse", "carrot_square"],
-    actionStatuses: ["烤一盘蜂蜜点心", "倒好一杯热饮", "摆好小圆盘子", "贴上今日菜单", "分发甜甜点心", "试试新香气"],
+    route: ["mushroom_cafe", "botanical_garden", "carrot_square", "chanson_hall", "mushroom_cafe", "acorn_library", "rainbow_lake", "mushroom_cafe", "lighthouse", "carrot_square"],
+    actionStatuses: ["冲一杯咖啡", "拉花乔治脸", "试做新甜点", "看报听抓马", "邀请晓雪拍照", "整理情报站"],
     actionDetails: [
-      "小泽把点心盘摆成弧线，保证每只兔兔路过时都能闻到甜香。",
-      "小泽忙着给杯口系细绳，笑声像刚出炉的热气一样冒出来。",
-      "小泽把今日菜单改成更热闹的版本，还给最后一行画了糖霜。"
+      "小泽在咖啡馆里慢慢拉花，把奶泡拉成乔治吃瘪的小表情。",
+      "小泽端着咖啡精致地看报纸，耳朵却在认真接收乔治和劳伦斯的抓马。",
+      "小泽把乔治植物园送来的薄荷洗净，准备做一杯新的推广饮品。"
     ],
     dialogues: [
-      "先吃一口，灵感马上会来。",
-      "这杯热饮留给晚到的朋友。",
-      "香味已经跑到门口迎接大家。",
-      "点心要配今天的光才好。",
-      "我给大家多留了一整盘。",
-      "甜一点，走远路也不累。"
+      "今天的奶泡像乔治。",
+      "晓雪来拍新品吗？",
+      "薄荷是乔治友情赞助。",
+      "咖啡馆消息很灵的。",
+      "劳伦斯又听错了吗。",
+      "甜点给北欧也打包。"
     ],
-    memory: "记得用点心和热饮把大家聚到音乐厅。"
+    memory: "记得咖啡馆是Bunnyland情报站，新品要请晓雪拍照。"
   },
   rabbit_4: {
     name: "晓雪",
     color: "#95d5b2",
     scale: 1,
-    mood: "专注",
+    mood: "乖巧",
     wakeTick: 2880,
     dialogueTarget: 53,
-    route: ["rabbit_mountain", "weather_station", "observatory", "acorn_library", "shell_bay", "lighthouse", "chanson_hall", "weather_station", "observatory", "botanical_garden"],
-    actionStatuses: ["认真记录风向", "重新校准星图", "查阅旧天气册", "描下云层细线", "测量灯塔光角", "归档线索地图"],
+    route: ["botanical_garden", "mushroom_cafe", "acorn_library", "chanson_hall", "weather_station", "observatory", "botanical_garden", "mushroom_cafe", "carrot_square", "rabbit_mountain"],
+    actionStatuses: ["扎染新发带", "整理衣帽间", "法语碎碎念", "递浓缩咖啡", "试戴小发带", "安静拍穿搭"],
     actionDetails: [
-      "晓雪把风向、云影和地点时间写成整齐的小格，不漏掉任何一笔。",
-      "晓雪安静地核对星图，确认每条线都能和今天的天气对上。",
-      "晓雪把旧记录翻到空白处，补上一行非常准确的注释。"
+      "晓雪把小悠米带来的花卉铺平，给薄荷绿色耳朵配一条新的扎染发带。",
+      "晓雪在微型衣帽间里整理发带，连最小的蝴蝶结都摆得很端正。",
+      "晓雪听见乔治又在喊“给我劳”，安静递上一杯苦涩浓缩咖啡。"
     ],
     dialogues: [
-      "风向变了，我先记在这里。",
-      "这条线还要再核对一次。",
-      "云层比早上薄了一点点。",
-      "星图和灯塔的位置能对上。",
-      "今天的资料够写满一页。",
-      "先别动，我要量一下角度。"
+      "乔治，先喝咖啡。",
+      "Mon dieu, George, tu es incroyable.",
+      "这条发带颜色刚好。",
+      "Lino帮我拍一张好吗。",
+      "小悠米的花很适合。",
+      "乔治又只会点头了。"
     ],
-    memory: "把风向、星图、灯塔刻痕整理进同一本档案。"
+    memory: "记得自己喜欢乔治，也记得用法语和浓缩咖啡治住他。"
   },
   rabbit_5: {
     name: "杰拉德",
     color: "#cdb4db",
     scale: 0.8,
-    mood: "兴奋",
+    mood: "忧郁",
     wakeTick: 2880,
     dialogueTarget: 52,
-    route: ["carrot_maze", "rainbow_lake", "shell_bay", "lighthouse", "chanson_hall", "carrot_maze", "botanical_garden", "rainbow_lake", "acorn_library", "lighthouse"],
-    actionStatuses: ["拓下迷宫花纹", "比对湖面倒影", "寻找弯弯贝壳", "讲起奇怪线索", "画出秘密箭头", "摸摸灯塔刻痕"],
+    route: ["chanson_hall", "mushroom_cafe", "botanical_garden", "carrot_maze", "rainbow_lake", "acorn_library", "mushroom_cafe", "lighthouse", "shell_bay", "chanson_hall"],
+    actionStatuses: ["画奇幻冒险", "润色鲜花图鉴", "设计咖啡招牌", "躲开鲁菜加餐", "保持忧郁气质", "寻找冬天灵感"],
     actionDetails: [
-      "杰拉德把纹样看成一场小冒险，越看越觉得每个弯都藏着入口。",
-      "杰拉德拿着拓片来回比对，眼睛亮得像刚发现一扇暗门。",
-      "杰拉德把贝壳、湖光和迷宫线条摆成一排，开心得差点跳起来。"
+      "杰拉德把大家今天的日常画成奇幻冒险，乔治的手表被画成神秘宝物。",
+      "杰拉德帮小悠米润色鲜花图鉴，又偷偷把花瓣画得像冬天的雪。",
+      "杰拉德看见劳伦斯端来鲁菜，认真思考艺术家忧郁气质该怎么减肥。"
     ],
     dialogues: [
-      "这个弯看起来像秘密入口！",
-      "等一下，它好像在指灯塔。",
-      "我梦里真的见过这条线。",
-      "迷宫肯定也听见音乐了。",
-      "这片贝壳刚好补上缺口。",
-      "这不是巧合，这是邀请！"
+      "这段日常像史诗。",
+      "小悠米是我的缪斯。",
+      "我真的吃不下鲁菜了。",
+      "冬天才有忧郁光线。",
+      "招牌要再梦幻一点。",
+      "减肥也要保持气质。"
     ],
-    memory: "确认迷宫纹样、贝壳和灯塔刻痕能互相补全。"
+    memory: "记得小悠米是灵感缪斯，也记得劳伦斯总把自己当弟弟投喂。"
   },
   rabbit_6: {
     name: "劳伦斯",
     color: "#f4a261",
     scale: 1.2,
-    mood: "可靠",
+    mood: "沉稳",
     wakeTick: 2880,
     dialogueTarget: 52,
-    route: ["gear_workshop", "timothy_farm", "lighthouse", "shell_bay", "chanson_hall", "gear_workshop", "carrot_square", "lighthouse", "timothy_farm", "shell_bay"],
-    actionStatuses: ["认真巡完整圈", "安装轻巧齿轮", "仔细测试水压", "准时点亮灯塔", "收好厚厚手套", "稳住转动灯光"],
+    route: ["mushroom_cafe", "carrot_square", "timothy_farm", "gear_workshop", "botanical_garden", "mushroom_cafe", "lighthouse", "shell_bay", "chanson_hall", "carrot_square"],
+    actionStatuses: ["吃煎饼果子", "蘸大葱酱", "耳朵热耷拉", "误会乔治话", "照顾杰拉德", "打包甜点"],
     actionDetails: [
-      "劳伦斯按顺序检查一遍，确认每个地方都能撑到夜里。",
-      "劳伦斯把大手套放在一边，动作稳得像在给地图压住边角。",
-      "劳伦斯听完灯声才点头，决定把最后一次巡检排到更晚。"
+      "劳伦斯穿着厚毛衣走在山东夏天里，耳朵热得慢慢耷拉下来。",
+      "劳伦斯认真研究大葱蘸酱和煎饼果子，觉得这里的美食很值得定居。",
+      "劳伦斯听见乔治大喊“给我劳”，沉默片刻后又开始产生复杂误会。"
     ],
     dialogues: [
-      "我再确认一遍，别漏细节。",
-      "灯能撑到夜里，放心吧。",
-      "水压已经稳了，可以放心。",
-      "这里我来收尾，你们先走。",
-      "别急，先把路让开一点。",
-      "最后一圈巡检不能省。"
+      "乔治刚才是在叫我吗。",
+      "大葱蘸酱很有力量。",
+      "毛衣今天有点太厚。",
+      "杰拉德再吃一口吧。",
+      "圣诞甜点要预订。",
+      "我可能误会了吗。"
     ],
-    memory: "记得把灯塔、农场和工坊都巡到夜里才安心。"
+    memory: "记得山东美食很好，也记得乔治的“给我劳”可能只是手表。"
   },
   rabbit_7: {
     name: "Lino",
-    color: "#9ca3af",
+    color: "#9b7653",
     scale: 1,
-    mood: "安静",
+    mood: "温顺",
     wakeTick: 300,
     restUntil: 2880,
     dialogueTarget: 52,
-    route: ["observatory", "weather_station", "rabbit_mountain", "carrot_square", "observatory", "rainbow_lake", "shell_bay", "chanson_hall", "weather_station", "lighthouse", "rabbit_mountain"],
-    actionStatuses: ["拍下清晨星轨", "轻轻收好镜头", "安静等风停下", "冲洗小张照片", "拍下最后尾光", "叠好灰色底片"],
+    route: ["observatory", "weather_station", "botanical_garden", "mushroom_cafe", "carrot_square", "rainbow_lake", "chanson_hall", "mushroom_cafe", "rabbit_mountain", "lighthouse", "botanical_garden"],
+    actionStatuses: ["拍发带街拍", "记录解释现场", "轻轻撒个娇", "耳朵卷心形", "安静调镜头", "整理吃瓜照片"],
     actionDetails: [
-      "Lino安静地调整镜头，把光线留在最灰也最柔的位置。",
-      "Lino没有急着说话，只把照片边角压平，等颜色慢慢显出来。",
-      "Lino站在稍远处按下快门，像把今天的一小块安静收进口袋。"
+      "Lino安静地帮晓雪拍发带穿搭，镜头把薄荷绿色和小裙子都收得很温柔。",
+      "Lino看起来像背景板，却精准拍下了乔治向劳伦斯解释的现场。",
+      "Lino撒娇时耳朵卷成两个心形，连快门声都变得软软的。"
     ],
     dialogues: [
-      "光刚好停在这里，别动。",
-      "我想再等一秒，让风过去。",
-      "这张照片适合放在最后。",
-      "云影很轻，我们别惊动它。",
-      "照片也会记得今天的声音。",
-      "灰色其实也可以很亮。"
+      "晓雪，这张很好看。",
+      "我拍到解释现场了。",
+      "耳朵不要自己卷呀。",
+      "狗狗也会喜欢这张。",
+      "我只是安静吃瓜。",
+      "再让我撒娇一下。"
     ],
-    memory: "用照片记录清晨星轨、白天云影和夜晚尾光。"
+    memory: "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。"
   }
 };
 
@@ -221,98 +221,98 @@ const timeline = [];
 
 const moveDetailsByChar = {
   rabbit_1: [
-    "{name}沿路看见一点亮色花影，就把脚步放慢记了一笔。",
-    "{name}抱着便签本去{place}，一路寻找能贴上纸角的位置。",
-    "{name}跟着风里的颜色往前走，想把{place}也写进地图边。",
-    "{name}经过路口时停了一小下，给远处的光画了个箭头。",
-    "{name}把今天的新发现夹在耳边，轻快地往{place}走去。"
+    "{name}穿着蜜蜂服飞向{place}，一路寻找没见过的花。",
+    "{name}抱着蜂蜜罐去{place}，差点把路牌当成新花种。",
+    "{name}把树叶图鉴夹好，勇敢地往{place}继续探险。",
+    "{name}飞过路口时绕了一圈，确认这不是迷路而是探索。",
+    "{name}带着一朵稀有小花去{place}，准备晚点给杰拉德看。"
   ],
   rabbit_2: [
-    "{name}边走边听工具包的声音，确认没有哪颗螺丝在乱晃。",
-    "{name}去{place}前先数了一遍备用件，步子稳稳的。",
-    "{name}沿路查看木桥和路牌，顺手记下两处可以加固的地方。",
-    "{name}把小锉刀放到最顺手的位置，再朝{place}走去。",
-    "{name}走得不快，但每到一个转弯都会确认路线够安全。"
+    "{name}戴着蓝帽子去{place}，嘴里还念着新看的手表型号。",
+    "{name}去{place}前喊了一声给我劳，然后立刻四处解释。",
+    "{name}沿路给植物园的薄荷浇水，顺手想了三个鬼点子。",
+    "{name}看见晓雪的方向就放慢脚步，蓝色背带裤晃了一下。",
+    "{name}朝{place}跑去，像乔老爷准备宣布一件大事。"
   ],
   rabbit_3: [
-    "{name}提着香喷喷的小篮子，往{place}一路分着甜味。",
-    "{name}经过广场时闻了闻风向，判断点心香会飘到哪里。",
-    "{name}把热饮护在怀里，小跑着去给{place}添一点热闹。",
-    "{name}一路想着新菜单，连脚步都像刚出炉的点心一样轻。",
-    "{name}去{place}前多带了一块蜂蜜点心，准备送给晚到的朋友。"
+    "{name}端着咖啡去{place}，奶泡上还留着乔治吃瘪的表情。",
+    "{name}带着新甜点去{place}，顺便收集今天的第一条情报。",
+    "{name}路过植物园时拿到薄荷，心里已经想好新品名字。",
+    "{name}把报纸夹在手边，优雅地往{place}继续移动。",
+    "{name}去{place}前打包了几块甜点，准备留给劳伦斯过节。"
   ],
   rabbit_4: [
-    "{name}沿途核对风向和影子，把每个转弯都记成细小坐标。",
-    "{name}去{place}前看了看云层，确认这段路适合做记录。",
-    "{name}走得很安静，手里的本子已经翻到新的空白页。",
-    "{name}把星图夹紧，沿道路去{place}验证下一条线索。",
-    "{name}路过树影时停下测了光角，再继续往前走。"
+    "{name}戴着新发带去{place}，薄荷绿色耳朵安静垂着。",
+    "{name}带着小悠米采来的花去{place}，准备继续试染发带。",
+    "{name}听见乔治远远喊话，已经把浓缩咖啡端稳。",
+    "{name}往{place}走得很乖，法语吐槽却已经在心里排队。",
+    "{name}整理好小裙子，准备去{place}让Lino再拍一张。"
   ],
   rabbit_5: [
-    "{name}举着拓片往{place}跑，觉得每个路口都像秘密入口。",
-    "{name}一路比划贝壳弧线，越走越确定线索没有结束。",
-    "{name}去{place}时差点被自己的新猜想逗笑，耳朵都抖了抖。",
-    "{name}把路线想成迷宫分支，兴奋地数着下一道弯。",
-    "{name}沿着道路追那条奇怪线索，像追一扇会移动的门。"
+    "{name}抱着画本去{place}，把普通路口想成奇幻城门。",
+    "{name}带着小悠米的花稿去{place}，准备给图鉴润色。",
+    "{name}一边往{place}走，一边思考忧郁艺术家能不能少吃鲁菜。",
+    "{name}把今天的路线画成冒险地图，兴致很高又很忧郁。",
+    "{name}去{place}前看了看冬天色卡，决定给故事加一点雪。"
   ],
   rabbit_6: [
-    "{name}去{place}前回头看了一眼路灯，确认身后也安全。",
-    "{name}按巡检顺序往前走，每一步都像在给地图压住边角。",
-    "{name}把手套扣紧，准备到{place}处理最后一处不稳。",
-    "{name}沿路听灯声和水声，判断哪里还需要收尾。",
-    "{name}走得很踏实，像把整条路都检查了一遍。"
+    "{name}穿着厚毛衣往{place}走，山东夏天让耳朵慢慢耷拉。",
+    "{name}去{place}前买了煎饼果子，还认真研究大葱蘸酱比例。",
+    "{name}听见乔治的声音后沉默了一下，才继续往{place}走。",
+    "{name}把给杰拉德的加餐收好，步子沉稳地去{place}。",
+    "{name}路过咖啡馆时预订甜点，想着圣诞节要带回北欧。"
   ],
   rabbit_7: [
-    "{name}等风压低草叶后才动身，镜头安静地贴在胸前。",
-    "{name}去{place}时没有惊动路边的光，只把影子收进照片。",
-    "{name}沿路寻找最灰也最亮的角度，脚步轻得几乎没有声音。",
-    "{name}把照片封套夹好，慢慢往{place}那边走。",
-    "{name}停在路口等了一秒，等云影刚好让出道路。"
+    "{name}背着相机去{place}，像背景板一样安静又可靠。",
+    "{name}去{place}前检查了晓雪的街拍，耳朵差点卷成心形。",
+    "{name}一路寻找乔治解释现场的角度，吃瓜吃得很温顺。",
+    "{name}把镜头抱好，轻轻往{place}走，像怕惊动照片。",
+    "{name}想起狗狗朋友会喜欢这张照片，脚步也软了一点。"
   ]
 };
 
 const actionTailsByChar = {
   rabbit_1: [
-    "纸角被风吹起时，她又补了一颗小星星。",
-    "她把颜色排成顺序，准备晚点讲给大家听。",
-    "最后那一笔很小，却刚好让线索亮起来。",
-    "她退后看了看，觉得这里应该有一张新便签。"
+    "她在旁边标注：可能是世界上第很多很多号花。",
+    "蜂蜜罐晃了一下，但她勇敢地稳住了。",
+    "她决定晚上把这页讲给杰拉德听。",
+    "她觉得这次迷路也很有旅行家的气质。"
   ],
   rabbit_2: [
-    "他试了两次，确认声音变得平稳才收手。",
-    "工具被放回固定位置，一件也没有少。",
-    "他没有多说，只把备用件留在最容易找到的地方。",
-    "检查记录写得很短，但每一项都清清楚楚。"
+    "他又小声补了一句：真的只是手表。",
+    "他看见晓雪以后，调皮劲立刻少了一半。",
+    "植物园的薄荷被他照顾得很神气。",
+    "远处的劳伦斯听见后，表情又复杂了一点。"
   ],
   rabbit_3: [
-    "甜香绕了一圈，像是在替她招呼大家。",
-    "她给最后一份多加了半滴蜜，心情立刻亮起来。",
-    "杯口的细绳被系成小结，看起来像节日暗号。",
-    "她数着空盘子，已经开始想下一种味道。"
+    "咖啡香绕过桌角，带回两条新八卦。",
+    "他把报纸翻过一页，假装什么都没听见。",
+    "新品照片位已经给晓雪留好。",
+    "奶泡里的乔治表情越来越像本人。"
   ],
   rabbit_4: [
-    "她把数据写在边角，连小数点都没有放松。",
-    "本子合上前，她又核对了一次方向。",
-    "这条记录被她画上细线，暂时归进灯塔那一页。",
-    "她没有急着下结论，只在旁边标了一个问号。"
+    "她把发带轻轻抚平，甜得很安静。",
+    "那句法语吐槽优雅得像一条丝带。",
+    "乔治虽然听不懂，但已经乖乖点头。",
+    "她把小悠米带来的花色记进衣帽间标签。"
   ],
   rabbit_5: [
-    "他越看越兴奋，觉得这里肯定藏着下一扇门。",
-    "拓片边缘被他按得平平整整，像宝藏地图。",
-    "他立刻画了一个箭头，生怕线索偷偷跑掉。",
-    "这个发现让他小声笑了两下，又赶紧继续比对。"
+    "画面里每只兔兔都像要踏上冒险。",
+    "他决定把自己画瘦一点，但不失忧郁。",
+    "劳伦斯的加餐阴影暂时被他画成山脉。",
+    "小悠米带来的花让整页都亮起来。"
   ],
   rabbit_6: [
-    "他确认能撑到夜里，才把手套重新戴好。",
-    "最后一下拧紧后，他才放心地点点头。",
-    "他把现场收得很干净，像什么都没乱过。",
-    "他留下一个备用方案，以防晚上风向突然变化。"
+    "他认真考虑要不要把毛衣换薄一点。",
+    "他把大葱蘸酱的味道记成山东生活重点。",
+    "他想着杰拉德太瘦，决定晚点再端一盘菜。",
+    "他又问了一遍：乔治真的不是在叫我吗。"
   ],
   rabbit_7: [
-    "照片边缘慢慢显出光，他安静地等颜色稳定。",
-    "他没有立刻移动，只把这一刻记进灰色封套。",
-    "镜头里的影子很轻，他把呼吸也放慢了一点。",
-    "他把照片压平，像把一天的声音收小。"
+    "照片里刚好有一只正在解释的乔治。",
+    "他安静得像没在吃瓜，但快门声很诚实。",
+    "耳朵卷成心形时，他自己也有点不好意思。",
+    "他给晓雪留了一张最温柔的底片。"
   ]
 };
 
@@ -322,6 +322,14 @@ function template(text, values) {
 
 function charLength(text) {
   return [...text].length;
+}
+
+function hasLatinText(text) {
+  return /[A-Za-zÀ-ÖØ-öø-ÿ]/.test(text);
+}
+
+function dialogueMaxChars(text) {
+  return hasLatinText(text) ? 60 : 20;
 }
 
 function assertEvent(event) {
@@ -337,7 +345,7 @@ function assertEvent(event) {
   if (event.type === "dialogue" && event.end_tick - event.start_tick > 2) {
     throw new Error(`Dialogue too long: ${JSON.stringify(event)}`);
   }
-  if (event.type === "dialogue" && charLength(event.text) > 20) {
+  if (event.type === "dialogue" && charLength(event.text) > dialogueMaxChars(event.text)) {
     throw new Error(`Dialogue text too long: ${event.text}`);
   }
 }
@@ -571,41 +579,55 @@ ${Object.entries(characterDefs).map(([id, def]) => `  ${id}:
 const relationships = `relationships:
   rabbit_1:
     rabbit_3:
-      - 小悠米会把小泽的点心香写成便签。
+      - 小悠米容易飞到小泽咖啡馆的糖罐上。
     rabbit_4:
-      - 小悠米把发现交给晓雪归档。
+      - 小悠米把采蜜带回来的花给晓雪扎染发带。
     rabbit_5:
-      - 小悠米相信杰拉德的奇想能变成线索。
+      - 小悠米是杰拉德的灵感缪斯。
   rabbit_2:
     rabbit_6:
-      - 乔治和劳伦斯用维修和巡检互相补位。
+      - 乔治喊“给我劳”会让劳伦斯误以为在叫他。
     rabbit_3:
-      - 乔治常帮小泽把灯和桌面调稳。
+      - 乔治给小泽咖啡馆友情提供植物园薄荷。
+    rabbit_4:
+      - 乔治喜欢晓雪，也只有晓雪能治住他。
   rabbit_3:
     rabbit_5:
-      - 小泽愿意把杰拉德的奇想变成热闹节目。
+      - 小泽咖啡馆的招牌是杰拉德画的。
     rabbit_7:
-      - 小泽觉得Lino的照片让甜点更有故事。
+      - 小泽知道Lino总能拍到最关键的吃瓜现场。
+    rabbit_4:
+      - 小泽推出新品时总邀请晓雪拍照推广。
   rabbit_4:
     rabbit_7:
-      - 晓雪和Lino会共享云影、星光和照片时间。
+      - 晓雪经常请Lino拍发带穿搭街拍照。
     rabbit_6:
-      - 晓雪信任劳伦斯的灯塔巡检。
+      - 晓雪知道劳伦斯误会乔治时需要一点温柔解释。
+    rabbit_2:
+      - 晓雪会用法语吐槽和浓缩咖啡治住乔治。
   rabbit_5:
     rabbit_1:
-      - 杰拉德喜欢看小悠米整理复杂线索。
+      - 杰拉德把小悠米带回的花当作绘画素材。
     rabbit_6:
-      - 杰拉德把劳伦斯修好的灯塔当作冒险终点。
+      - 杰拉德被劳伦斯当亲弟弟过度保护和投喂。
+    rabbit_3:
+      - 杰拉德给小泽咖啡馆设计了招牌。
   rabbit_6:
     rabbit_2:
-      - 劳伦斯和乔治配合维修时几乎不用多说话。
+      - 劳伦斯时常误会乔治对自己有不一样的感情。
     rabbit_4:
-      - 劳伦斯会等晓雪确认风向后再点灯。
+      - 劳伦斯尊重晓雪对乔治的管教方式。
+    rabbit_5:
+      - 劳伦斯把杰拉德当亲弟弟照顾。
+    rabbit_3:
+      - 劳伦斯圣诞节会打包小泽咖啡馆甜点回北欧。
   rabbit_7:
     rabbit_4:
-      - Lino安静地补上晓雪需要的照片证据。
+      - Lino常帮晓雪拍发带穿搭街拍。
     rabbit_3:
-      - Lino觉得小泽的热饮能让夜景照片更暖。
+      - Lino会在小泽咖啡馆安静整理吃瓜照片。
+    rabbit_2:
+      - Lino拍到过乔治向劳伦斯解释“给我劳”的现场。
 `;
 
 fs.writeFileSync(path.join(root, "scaffold/memory/long_memory.yaml"), longMemory);
