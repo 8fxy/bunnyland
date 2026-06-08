@@ -6,6 +6,55 @@ const travelText = fs.readFileSync(path.join(root, "scaffold/world/travel_times.
 
 const MAX_TICK = 8640;
 const RETURN_HOME_TICK = 8580; // 23:50
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+function formatDate(date) {
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0")
+  ].join("-");
+}
+
+function defaultTargetDate() {
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+  return formatDate(date);
+}
+
+const runDate = process.argv[2] || defaultTargetDate();
+if (!DATE_RE.test(runDate)) {
+  throw new Error("Usage: node scaffold/tools/generate_day_from_scaffold.js YYYY-MM-DD");
+}
+
+function hashString(text) {
+  let hash = 2166136261;
+  for (const ch of text) {
+    hash ^= ch.charCodeAt(0);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return hash >>> 0;
+}
+
+function makeRng(seedText) {
+  let state = hashString(seedText) || 1;
+  return () => {
+    state = (state + 0x6D2B79F5) >>> 0;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function intFor(seedText, max) {
+  if (max <= 0) return 0;
+  return Math.floor(makeRng(`${runDate}:${seedText}`)() * max);
+}
+
+function pickFor(seedText, items) {
+  return items[intFor(seedText, items.length)];
+}
 
 const locations = {
   tree_house: { name: "巨树树屋区", kind: "home", x: 230, y: 170, short: "树屋" },
@@ -28,6 +77,7 @@ const locations = {
 const characterDefs = {
   rabbit_1: {
     name: "小悠米",
+    birthday: "3月28日",
     color: "#fff4f4",
     scale: 0.8,
     mood: "勇敢",
@@ -46,12 +96,17 @@ const characterDefs = {
       "蜂蜜罐要拿稳一点。",
       "这朵给杰拉德画画。",
       "晚上我又变回兔兔啦。",
-      "世界鲜花还差好多页。"
+      "世界鲜花还差好多页。",
+      "今天的风像路标。",
+      "我找到新花线索啦。",
+      "这页要画小星星。",
+      "我先勇敢一下。"
     ],
     memory: "记得白天穿蜜蜂服采蜜，晚上整理树叶鲜花图鉴。"
   },
   rabbit_2: {
     name: "乔治",
+    birthday: "11月3日",
     color: "#7bdff2",
     scale: 1,
     mood: "调皮",
@@ -70,12 +125,17 @@ const characterDefs = {
       "晓雪你看这片叶子。",
       "植物园归我巡逻啦。",
       "这杯咖啡怎么这么苦。",
-      "我真没那个意思啊。"
+      "我真没那个意思啊。",
+      "薄荷今天很精神。",
+      "我只是路过一下。",
+      "谁又在传我啦。",
+      "这个梗能解释。"
     ],
     memory: "记得自己喜欢晓雪，也记得“给我劳”会让劳伦斯误会。"
   },
   rabbit_3: {
     name: "小泽",
+    birthday: "7月12日",
     color: "#f9c74f",
     scale: 1,
     mood: "精致",
@@ -94,12 +154,17 @@ const characterDefs = {
       "薄荷是乔治友情赞助。",
       "咖啡馆消息很灵的。",
       "劳伦斯又听错了吗。",
-      "甜点给北欧也打包。"
+      "甜点给北欧也打包。",
+      "今天情报有香气。",
+      "杯垫背面有线索。",
+      "新品名我想好了。",
+      "先别告诉乔治。"
     ],
     memory: "记得咖啡馆是Bunnyland情报站，新品要请晓雪拍照。"
   },
   rabbit_4: {
     name: "晓雪",
+    birthday: "10月9日",
     color: "#95d5b2",
     scale: 1,
     mood: "乖巧",
@@ -118,12 +183,17 @@ const characterDefs = {
       "这条发带颜色刚好。",
       "Lino帮我拍一张好吗。",
       "小悠米的花很适合。",
-      "乔治又只会点头了。"
+      "乔治又只会点头了。",
+      "这色卡好温柔。",
+      "慢一点也很好。",
+      "George, calme-toi.",
+      "我听见你解释啦。"
     ],
     memory: "记得自己喜欢乔治，也记得用法语和浓缩咖啡治住他。"
   },
   rabbit_5: {
     name: "杰拉德",
+    birthday: "12月7日",
     color: "#cdb4db",
     scale: 0.8,
     mood: "忧郁",
@@ -142,12 +212,17 @@ const characterDefs = {
       "我真的吃不下鲁菜了。",
       "冬天才有忧郁光线。",
       "招牌要再梦幻一点。",
-      "减肥也要保持气质。"
+      "减肥也要保持气质。",
+      "这页适合加雾。",
+      "我把它画成传说。",
+      "灵感在灯塔那边。",
+      "别再给我加餐啦。"
     ],
     memory: "记得小悠米是灵感缪斯，也记得劳伦斯总把自己当弟弟投喂。"
   },
   rabbit_6: {
     name: "劳伦斯",
+    birthday: "1月18日",
     color: "#f4a261",
     scale: 1.2,
     mood: "沉稳",
@@ -166,12 +241,17 @@ const characterDefs = {
       "毛衣今天有点太厚。",
       "杰拉德再吃一口吧。",
       "圣诞甜点要预订。",
-      "我可能误会了吗。"
+      "我可能误会了吗。",
+      "这份也给杰拉德。",
+      "我先确认一下。",
+      "礼物要包稳一点。",
+      "乔治是在说表吧。"
     ],
     memory: "记得山东美食很好，也记得乔治的“给我劳”可能只是手表。"
   },
   rabbit_7: {
     name: "Lino",
+    birthday: "6月2日",
     color: "#9b7653",
     scale: 1,
     mood: "温顺",
@@ -191,7 +271,11 @@ const characterDefs = {
       "耳朵不要自己卷呀。",
       "狗狗也会喜欢这张。",
       "我只是安静吃瓜。",
-      "再让我撒娇一下。"
+      "再让我撒娇一下。",
+      "今天光线很软。",
+      "我拍到小线索了。",
+      "这张先不要删。",
+      "我在调曝光。"
     ],
     memory: "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。"
   }
@@ -219,55 +303,157 @@ for (const line of travelText.split(/\n/)) {
 
 const timeline = [];
 
+const dailyWeather = [
+  { mood: "晴朗", note: "晨光把路牌照得亮亮的", prop: "透明花露" },
+  { mood: "微雨", note: "细雨落在蘑菇伞沿上", prop: "小雨铃" },
+  { mood: "多云", note: "云影慢慢经过广场", prop: "云朵贴纸" },
+  { mood: "有风", note: "风把发带和地图角吹起来", prop: "风向缎带" },
+  { mood: "薄雾", note: "湖边和灯塔都有一点朦胧", prop: "雾色明信片" },
+  { mood: "星晴", note: "夜里天文台的星星格外清楚", prop: "星星糖" }
+];
+
+const dailyRumors = [
+  "咖啡馆今天流传一张新菜单草稿",
+  "植物园的薄荷长出一片很像帽子的叶子",
+  "香颂音乐厅在试一段很轻的开场曲",
+  "灯塔门口多了一本等人认领的小册子",
+  "图书馆借阅卡背面出现一行铅笔字",
+  "彩虹湖边有人看见会反光的小贝壳",
+  "齿轮工坊的钟今天慢了整整两拍"
+];
+
+const sharedProps = [
+  "蜂蜜便签",
+  "薄荷糖纸",
+  "发带色卡",
+  "咖啡印章",
+  "旧地图角",
+  "星象小票",
+  "灯塔钥匙扣",
+  "音乐厅节目单"
+];
+
+function parseBirthday(text) {
+  const match = text.match(/^(\d{1,2})月(\d{1,2})日$/);
+  if (!match) return null;
+  return { month: Number(match[1]), day: Number(match[2]) };
+}
+
+function dateParts(dateText) {
+  const [year, month, day] = dateText.split("-").map(Number);
+  return { year, month, day };
+}
+
+function dayOfYear(year, month, day) {
+  return Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(year, 0, 1)) / 86400000) + 1;
+}
+
+function daysUntilBirthday(dateText, birthdayText) {
+  const birthday = parseBirthday(birthdayText);
+  if (!birthday) return null;
+  const { year, month, day } = dateParts(dateText);
+  const today = dayOfYear(year, month, day);
+  const birthdayThisYear = dayOfYear(year, birthday.month, birthday.day);
+  const daysInYear = dayOfYear(year, 12, 31);
+  return (birthdayThisYear - today + daysInYear + 1) % (daysInYear + 1);
+}
+
+function birthdayNote(def) {
+  const days = daysUntilBirthday(runDate, def.birthday);
+  if (days === 0) return `${def.name}今天生日，大家悄悄把祝福塞进日程里。`;
+  if (days !== null && days <= 7) return `${def.name}生日倒数${days}天，大家开始准备小惊喜。`;
+  if (days !== null && days >= 358) return `${def.name}生日刚过不久，祝福还在岛上慢慢回响。`;
+  if (days !== null && days <= 35) return `${def.name}的生日已经进入远远倒数，礼物灵感开始冒头。`;
+  return "";
+}
+
+const dailyContext = {
+  weather: pickFor("weather", dailyWeather),
+  rumor: pickFor("rumor", dailyRumors),
+  prop: pickFor("prop", sharedProps)
+};
+
+function dailyDetail(seed, fragments) {
+  return pickFor(seed, fragments);
+}
+
 const moveDetailsByChar = {
   rabbit_1: [
     "{name}穿着蜜蜂服飞向{place}，一路寻找没见过的花。",
     "{name}抱着蜂蜜罐去{place}，差点把路牌当成新花种。",
     "{name}把树叶图鉴夹好，勇敢地往{place}继续探险。",
     "{name}飞过路口时绕了一圈，确认这不是迷路而是探索。",
-    "{name}带着一朵稀有小花去{place}，准备晚点给杰拉德看。"
+    "{name}带着一朵稀有小花去{place}，准备晚点给杰拉德看。",
+    "{name}沿着{dailyProp}留下的小标记去{place}，每一步都像新发现。",
+    "{name}听说{dailyRumor}，立刻把{place}列进今日探险。",
+    "{name}把翅膀抖得亮亮的，趁着{weatherMood}去{place}找花。",
+    "{name}路过一片会发光的草叶，认真决定先飞去{place}。"
   ],
   rabbit_2: [
     "{name}戴着蓝帽子去{place}，嘴里还念着新看的手表型号。",
     "{name}去{place}前喊了一声给我劳，然后立刻四处解释。",
     "{name}沿路给植物园的薄荷浇水，顺手想了三个鬼点子。",
     "{name}看见晓雪的方向就放慢脚步，蓝色背带裤晃了一下。",
-    "{name}朝{place}跑去，像乔老爷准备宣布一件大事。"
+    "{name}朝{place}跑去，像乔老爷准备宣布一件大事。",
+    "{name}把{dailyProp}塞进口袋，假装这也是限量表盒。",
+    "{name}听见{dailyRumor}后眼睛一亮，马上拐去{place}。",
+    "{name}趁着{weatherMood}巡逻，顺便把薄荷护送到{place}。",
+    "{name}在路口练习解释话术，越解释越像要去{place}闯祸。"
   ],
   rabbit_3: [
     "{name}端着咖啡去{place}，奶泡上还留着乔治吃瘪的表情。",
     "{name}带着新甜点去{place}，顺便收集今天的第一条情报。",
     "{name}路过植物园时拿到薄荷，心里已经想好新品名字。",
     "{name}把报纸夹在手边，优雅地往{place}继续移动。",
-    "{name}去{place}前打包了几块甜点，准备留给劳伦斯过节。"
+    "{name}去{place}前打包了几块甜点，准备留给劳伦斯过节。",
+    "{name}把{dailyProp}压在账本里，带着新线索去{place}。",
+    "{name}听说{dailyRumor}，决定亲自去{place}确认消息源。",
+    "{name}顺着{weatherMood}的气味调整咖啡配方，再慢慢去{place}。",
+    "{name}把今日情报写成小票，轻轻夹好后前往{place}。"
   ],
   rabbit_4: [
     "{name}戴着新发带去{place}，薄荷绿色耳朵安静垂着。",
     "{name}带着小悠米采来的花去{place}，准备继续试染发带。",
     "{name}听见乔治远远喊话，已经把浓缩咖啡端稳。",
     "{name}往{place}走得很乖，法语吐槽却已经在心里排队。",
-    "{name}整理好小裙子，准备去{place}让Lino再拍一张。"
+    "{name}整理好小裙子，准备去{place}让Lino再拍一张。",
+    "{name}把{dailyProp}别在发带盒上，安静地去{place}配色。",
+    "{name}听到{dailyRumor}后轻轻点头，决定去{place}看看。",
+    "{name}趁{weatherMood}把裙摆整理好，像一小阵薄荷风走向{place}。",
+    "{name}带着新色卡去{place}，每一步都很乖很有主意。"
   ],
   rabbit_5: [
     "{name}抱着画本去{place}，把普通路口想成奇幻城门。",
     "{name}带着小悠米的花稿去{place}，准备给图鉴润色。",
     "{name}一边往{place}走，一边思考忧郁艺术家能不能少吃鲁菜。",
     "{name}把今天的路线画成冒险地图，兴致很高又很忧郁。",
-    "{name}去{place}前看了看冬天色卡，决定给故事加一点雪。"
+    "{name}去{place}前看了看冬天色卡，决定给故事加一点雪。",
+    "{name}把{dailyProp}画成传奇道具，抱着画本走去{place}。",
+    "{name}听说{dailyRumor}，马上觉得这是一段奇幻支线。",
+    "{name}在{weatherMood}里寻找阴影形状，慢慢走向{place}。",
+    "{name}把路边小石子当作城堡遗迹，郑重前往{place}。"
   ],
   rabbit_6: [
     "{name}穿着厚毛衣往{place}走，山东夏天让耳朵慢慢耷拉。",
     "{name}去{place}前买了煎饼果子，还认真研究大葱蘸酱比例。",
     "{name}听见乔治的声音后沉默了一下，才继续往{place}走。",
     "{name}把给杰拉德的加餐收好，步子沉稳地去{place}。",
-    "{name}路过咖啡馆时预订甜点，想着圣诞节要带回北欧。"
+    "{name}路过咖啡馆时预订甜点，想着圣诞节要带回北欧。",
+    "{name}把{dailyProp}收进口袋，像保管一份重要礼物。",
+    "{name}听见{dailyRumor}后认真判断，也许应该去{place}帮忙。",
+    "{name}顶着{weatherMood}继续前进，毛衣和责任感都很厚。",
+    "{name}带着给杰拉德的备用餐盒，稳稳走向{place}。"
   ],
   rabbit_7: [
     "{name}背着相机去{place}，像背景板一样安静又可靠。",
     "{name}去{place}前检查了晓雪的街拍，耳朵差点卷成心形。",
     "{name}一路寻找乔治解释现场的角度，吃瓜吃得很温顺。",
     "{name}把镜头抱好，轻轻往{place}走，像怕惊动照片。",
-    "{name}想起狗狗朋友会喜欢这张照片，脚步也软了一点。"
+    "{name}想起狗狗朋友会喜欢这张照片，脚步也软了一点。",
+    "{name}把{dailyProp}放进相机包，准备去{place}拍今日光线。",
+    "{name}听说{dailyRumor}，安静地决定去{place}取景。",
+    "{name}趁着{weatherMood}调整曝光，慢慢走向{place}。",
+    "{name}在路边试拍一张空镜，确认下一站就是{place}。"
   ]
 };
 
@@ -276,44 +462,214 @@ const actionTailsByChar = {
     "她在旁边标注：可能是世界上第很多很多号花。",
     "蜂蜜罐晃了一下，但她勇敢地稳住了。",
     "她决定晚上把这页讲给杰拉德听。",
-    "她觉得这次迷路也很有旅行家的气质。"
+    "她觉得这次迷路也很有旅行家的气质。",
+    "她把“{weatherNote}”也画成一条小箭头。",
+    "她把{dailyProp}夹进图鉴，假装这是探险徽章。",
+    "听见{dailyRumor}后，她把问号画得特别圆。"
   ],
   rabbit_2: [
     "他又小声补了一句：真的只是手表。",
     "他看见晓雪以后，调皮劲立刻少了一半。",
     "植物园的薄荷被他照顾得很神气。",
-    "远处的劳伦斯听见后，表情又复杂了一点。"
+    "远处的劳伦斯听见后，表情又复杂了一点。",
+    "他觉得“{weatherNote}”让帽檐看起来更有戏。",
+    "他把{dailyProp}当成新梗道具，差点又解释不清。",
+    "听见{dailyRumor}后，他决定先装作自己早就知道。"
   ],
   rabbit_3: [
     "咖啡香绕过桌角，带回两条新八卦。",
     "他把报纸翻过一页，假装什么都没听见。",
     "新品照片位已经给晓雪留好。",
-    "奶泡里的乔治表情越来越像本人。"
+    "奶泡里的乔治表情越来越像本人。",
+    "他把“{weatherNote}”写进新品口味备注。",
+    "他在杯垫背面盖了一个{dailyProp}小印章。",
+    "听见{dailyRumor}后，他把情报等级悄悄升了一格。"
   ],
   rabbit_4: [
     "她把发带轻轻抚平，甜得很安静。",
     "那句法语吐槽优雅得像一条丝带。",
     "乔治虽然听不懂，但已经乖乖点头。",
-    "她把小悠米带来的花色记进衣帽间标签。"
+    "她把小悠米带来的花色记进衣帽间标签。",
+    "她觉得“{weatherNote}”刚好适合试一条浅色发带。",
+    "她把{dailyProp}收进小盒子，留作下一套穿搭灵感。",
+    "听见{dailyRumor}后，她只眨了眨眼，已经想好配色。"
   ],
   rabbit_5: [
     "画面里每只兔兔都像要踏上冒险。",
     "他决定把自己画瘦一点，但不失忧郁。",
     "劳伦斯的加餐阴影暂时被他画成山脉。",
-    "小悠米带来的花让整页都亮起来。"
+    "小悠米带来的花让整页都亮起来。",
+    "他把“{weatherNote}”画成一层柔软阴影。",
+    "他把{dailyProp}画成主角会捡到的神秘物。",
+    "听见{dailyRumor}后，他在页角写下“第二章”。"
   ],
   rabbit_6: [
     "他认真考虑要不要把毛衣换薄一点。",
     "他把大葱蘸酱的味道记成山东生活重点。",
     "他想着杰拉德太瘦，决定晚点再端一盘菜。",
-    "他又问了一遍：乔治真的不是在叫我吗。"
+    "他又问了一遍：乔治真的不是在叫我吗。",
+    "他看着“{weatherNote}”，觉得应该多带一件围巾，又觉得不太对。",
+    "他把{dailyProp}仔细包好，准备当作备用礼物。",
+    "听见{dailyRumor}后，他认真地把误会和事实分成两栏。"
   ],
   rabbit_7: [
     "照片里刚好有一只正在解释的乔治。",
     "他安静得像没在吃瓜，但快门声很诚实。",
     "耳朵卷成心形时，他自己也有点不好意思。",
-    "他给晓雪留了一张最温柔的底片。"
+    "他给晓雪留了一张最温柔的底片。",
+    "他拍下“{weatherNote}”，照片边缘像被轻轻擦亮。",
+    "他把{dailyProp}放在镜头旁边，当作今日色彩参考。",
+    "听见{dailyRumor}后，他决定拍一组沉默证据。"
   ]
+};
+
+const phaseBeats = {
+  morning: {
+    label: "清晨",
+    details: [
+      "开园前的路牌还带着露水。",
+      "第一批脚印从树屋慢慢散开。",
+      "广场公告牌被擦得很亮。",
+      "大家把今天的小任务别在包带上。"
+    ],
+    dialogues: ["早安，开园啦。", "露水还在叶尖。", "今天先看路牌。", "我带了小清单。"]
+  },
+  noon: {
+    label: "午间",
+    details: [
+      "咖啡馆的点心香气绕过主路。",
+      "午后的公告让几条线索碰到一起。",
+      "薄荷、旧地图和节目单都被摆上桌。",
+      "大家在广场附近短短交换消息。"
+    ],
+    dialogues: ["午间消息来了。", "点心先留一块。", "这线索能接上。", "我听见公告了。"]
+  },
+  afternoon: {
+    label: "午后",
+    details: [
+      "旧地图把迷宫、海湾和灯塔连成一条线。",
+      "海湾风把音乐厅节目单翻开一角。",
+      "齿轮工坊的慢钟让大家重新对表。",
+      "图书馆借阅卡背面那行字变得更清楚。"
+    ],
+    dialogues: ["旧地图有用。", "海湾那边见。", "慢钟又慢啦。", "这行字很关键。"]
+  },
+  night: {
+    label: "夜晚",
+    details: [
+      "香颂音乐厅亮起一排小灯。",
+      "灯塔和天文台把夜色分成两种光。",
+      "海湾的贝壳把星光反射到节目单上。",
+      "夜深后大家把今天的线索收进包里。"
+    ],
+    dialogues: ["小演出开始啦。", "灯塔亮起来了。", "星星很清楚。", "今天可以收尾。"]
+  }
+};
+
+const locationActivities = {
+  tree_house: [
+    { status: "整理背包", detail: "{name}在树屋门口清点{dailyProp}，把今日线索按颜色排好。" },
+    { status: "贴小便签", detail: "{name}把一张小便签贴在树屋扶手上，提醒大家晚上23:50回家。" },
+    { status: "看开园表", detail: "{name}看了看开园表，发现{phaseDetail}" }
+  ],
+  carrot_square: [
+    { status: "看公告牌", detail: "{name}在胡萝卜广场读公告，公告上写着：{dailyRumor}。" },
+    { status: "换线索", detail: "{name}把{dailyProp}放到公告牌下，换到一条去海湾的小线索。" },
+    { status: "记路牌", detail: "{name}沿着广场路牌重新确认去农场、山路和海湾的方向。" }
+  ],
+  mushroom_cafe: [
+    { status: "试新点心", detail: "{name}在蘑菇咖啡馆试了一小口点心，旁边的杯垫写着{phaseLabel}暗号。" },
+    { status: "听新消息", detail: "{name}听见咖啡机旁传来新消息，和{dailyRumor}正好对上。" },
+    { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" }
+  ],
+  timothy_farm: [
+    { status: "查农具箱", detail: "{name}在提摩西农场检查农具箱，里面夹着一片薄荷糖纸。" },
+    { status: "看田埂", detail: "{name}沿田埂看了看脚印，确认这条路会通往齿轮工坊。" },
+    { status: "收小萝卜", detail: "{name}把小萝卜排成箭头，给后面来的兔兔指路。" }
+  ],
+  gear_workshop: [
+    { status: "修慢钟", detail: "{name}在齿轮工坊听慢了两拍的钟，认真把时间重新校准。" },
+    { status: "试门铃", detail: "{name}试了试灯塔门铃备用齿轮，声音像一颗小星星落地。" },
+    { status: "擦齿轮", detail: "{name}把齿轮擦亮，发现里面映出一小段旧地图线。" }
+  ],
+  acorn_library: [
+    { status: "查借阅卡", detail: "{name}在橡果图书馆翻到借阅卡，背面的铅笔字指向迷宫。" },
+    { status: "摊旧地图", detail: "{name}把旧地图摊开，发现海湾、灯塔和音乐厅被同一条虚线连着。" },
+    { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}的编号，轻轻夹进书签。" }
+  ],
+  botanical_garden: [
+    { status: "认新叶子", detail: "{name}在植物园认出一片像蓝帽子的薄荷叶，忍不住多看两眼。" },
+    { status: "采花样本", detail: "{name}把花样本装进小纸袋，准备给发带和图鉴都留一份。" },
+    { status: "浇薄荷田", detail: "{name}给薄荷田浇水，水珠在{weatherMood}里亮了一下。" }
+  ],
+  rainbow_lake: [
+    { status: "比对倒影", detail: "{name}在彩虹湖边比对倒影，发现迷宫纹样在水面上反过来了。" },
+    { status: "捡亮贝壳", detail: "{name}捡到一枚会反光的小贝壳，像给夜晚留下的提示。" },
+    { status: "看湖面光", detail: "{name}看湖面把{weatherNote}揉成一条很软的彩带。" }
+  ],
+  carrot_maze: [
+    { status: "描迷宫纹", detail: "{name}在地下胡萝卜迷宫描下一段奇怪纹样，线条像通往灯塔。" },
+    { status: "数转角", detail: "{name}一边数转角一边做记号，避免把探险写成迷路。" },
+    { status: "找出口箭头", detail: "{name}发现墙边有个小箭头，正好指向旧地图缺口。" }
+  ],
+  rabbit_mountain: [
+    { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，决定把天气写得更准确。" },
+    { status: "听远处钟", detail: "{name}在山路上听见工坊慢钟，声音轻轻飘到云里。" },
+    { status: "系风向带", detail: "{name}把风向缎带系在路牌上，给去气象站的兔兔看。" }
+  ],
+  weather_station: [
+    { status: "记云层", detail: "{name}在云朵气象站记录云层，旁边标注今天是{weatherMood}。" },
+    { status: "读雨量杯", detail: "{name}读了读雨量杯，又把数据抄到节目单背面。" },
+    { status: "校风向仪", detail: "{name}校准风向仪，发现指针短短指向香颂音乐厅。" }
+  ],
+  observatory: [
+    { status: "调望远镜", detail: "{name}在星光天文台调望远镜，把夜里的路线提前对准。" },
+    { status: "画星象票", detail: "{name}画了一张星象小票，准备晚上拿去海湾对星光。" },
+    { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" }
+  ],
+  shell_bay: [
+    { status: "找海湾线索", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
+    { status: "听潮声", detail: "{name}听潮声把灯塔方向说得很轻，像一条不会消失的路线。" },
+    { status: "收贝壳光", detail: "{name}把贝壳光收进小盒子，准备带去音乐厅当舞台灵感。" }
+  ],
+  lighthouse: [
+    { status: "试灯塔铃", detail: "{name}在灯塔门口试门铃，声音一路滚到海湾边。" },
+    { status: "擦灯罩", detail: "{name}把灯塔灯罩擦亮，发现光线能照出旧地图的一角。" },
+    { status: "看守小册", detail: "{name}翻开等人认领的小册子，第一页夹着{dailyProp}。" }
+  ],
+  chanson_hall: [
+    { status: "排小演出", detail: "{name}在香颂音乐厅帮忙排小演出，节目单边角闪着贝壳光。" },
+    { status: "试开场曲", detail: "{name}听见一段很轻的开场曲，觉得今天的故事终于接上了。" },
+    { status: "摆节目单", detail: "{name}把音乐厅节目单摆整齐，给晚上的兔兔们留好座位。" }
+  ]
+};
+
+const charExtraDialogues = {
+  rabbit_1: ["这片叶子有路线。", "我把花样收好啦。", "不是迷路是发现。", "贝壳也像花瓣。", "灯塔好高呀。", "我想画进图鉴。", "这条线通哪里。", "音乐厅会开花吗。"],
+  rabbit_2: ["慢钟不是我的锅。", "门铃我会修一点。", "给我劳，是表啦。", "薄荷叶像帽子。", "晓雪别看我呀。", "我先去解释。", "公告肯定懂我。", "这齿轮很乔老爷。"],
+  rabbit_3: ["这消息值一杯。", "节目单别沾奶泡。", "新品叫海湾月光。", "咖啡章盖这里。", "乔治又上新闻。", "甜点留到晚上。", "这张小票有趣。", "情报先冷萃。"],
+  rabbit_4: ["这颜色很适合。", "乔治，慢慢说。", "发带要配海风。", "节目单折整齐。", "Cette couleur est douce.", "我把花色记下。", "灯光好温柔。", "先别弄乱啦。"],
+  rabbit_5: ["这就是第二章。", "迷宫纹样会发光。", "我要把钟画歪。", "海湾像插画边。", "请别端加餐。", "这光线很忧郁。", "灯塔像城堡。", "演出要有雪。"],
+  rabbit_6: ["我来检查门铃。", "这份给杰拉德。", "误会先放一放。", "大葱也能庆祝。", "毛衣确实有点热。", "灯塔需要稳一点。", "我把礼物包好。", "乔治是在说表。"],
+  rabbit_7: ["这张光很好。", "我拍到公告了。", "先调一下曝光。", "海湾适合长镜头。", "耳朵别卷太快。", "我在听开场曲。", "这张留给晓雪。", "证据很安静。"]
+};
+
+const locationDialogues = {
+  tree_house: ["晚上记得回家。", "背包已经好了。"],
+  carrot_square: ["公告牌更新了。", "广场消息好多。"],
+  mushroom_cafe: ["咖啡香到路口。", "杯垫背面有字。"],
+  timothy_farm: ["田埂有小脚印。", "农具箱有线索。"],
+  gear_workshop: ["钟慢了两拍。", "齿轮会唱歌吗。"],
+  acorn_library: ["借阅卡翻过来。", "旧地图接上了。"],
+  botanical_garden: ["薄荷像蓝帽子。", "花样本要收好。"],
+  rainbow_lake: ["倒影反过来了。", "贝壳会反光。"],
+  carrot_maze: ["转角要做记号。", "纹样像路线。"],
+  rabbit_mountain: ["云影过山啦。", "山路风好清楚。"],
+  weather_station: ["风向指音乐厅。", "雨量杯很乖。"],
+  observatory: ["星象票画好了。", "望远镜对准啦。"],
+  shell_bay: ["潮声指向灯塔。", "贝壳像小灯。"],
+  lighthouse: ["门铃声音好远。", "灯罩擦亮啦。"],
+  chanson_hall: ["开场曲好轻。", "节目单排好啦。"]
 };
 
 function template(text, values) {
@@ -357,9 +713,7 @@ function expandStatus(event) {
   if (/睡觉|补个觉/.test(status)) return `安静${status}`;
   if (/醒来|出门/.test(status)) return `慢慢${status}`;
 
-  const seed = `${event.char}:${event.start_tick}:${status}`;
-  let hash = 0;
-  for (const ch of seed) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+  const hash = hashString(`${runDate}:${event.char}:${event.start_tick}:${status}`);
 
   const existingPrefixes = ["认真", "轻轻", "慢慢", "仔细", "继续", "重新", "安静"];
   if (existingPrefixes.some(prefix => status.startsWith(prefix))) {
@@ -382,6 +736,73 @@ function travelDuration(from, to) {
   const duration = durationByPair.get(`${from}|${to}`);
   if (!duration) throw new Error(`Missing travel duration: ${from} -> ${to}`);
   return duration;
+}
+
+function decorate(text, char, def, index, extra = {}) {
+  return template(text, {
+    name: def.name,
+    weatherMood: dailyContext.weather.mood,
+    weatherNote: dailyContext.weather.note,
+    dailyProp: dailyContext.prop,
+    dailyRumor: extra.dailyRumor || pickFor(`rumor:${char}:${index}:${text}:${extra.phaseLabel || ""}:${extra.place || ""}`, dailyRumors),
+    birthdayNote: birthdayNote(def),
+    phaseLabel: extra.phaseLabel || "",
+    phaseDetail: extra.phaseDetail || "",
+    ...extra
+  });
+}
+
+function phaseForTick(tick) {
+  if (tick < 2160) return "morning";
+  if (tick < 4320) return "noon";
+  if (tick < 6480) return "afternoon";
+  return "night";
+}
+
+function phaseContext(tick, seed) {
+  const phase = phaseForTick(tick);
+  const beat = phaseBeats[phase];
+  return {
+    phase,
+    phaseLabel: beat.label,
+    phaseDetail: pickFor(`${seed}:phase-detail:${phase}`, beat.details)
+  };
+}
+
+function locationAction(char, def, location, tick, index, i) {
+  const phase = phaseContext(tick, `${char}:${i}:${location}`);
+  const options = locationActivities[location] || [];
+  const locationOption = options.length ? pickFor(`${char}:loc-action:${location}:${i}`, options) : null;
+  const useLocation = locationOption && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 68;
+  if (!useLocation) return null;
+  return {
+    status: locationOption.status,
+    detail: decorate(locationOption.detail, char, def, index, phase)
+  };
+}
+
+function dialogueFor(char, def, location, tick, i, offset) {
+  const phase = phaseForTick(tick);
+  const phaseInfo = phaseContext(tick, `${char}:dialogue-phase:${location}:${i}:${offset}`);
+  const rawPool = [
+    ...def.dialogues,
+    ...(charExtraDialogues[char] || []),
+    ...(locationDialogues[location] || []),
+    ...(phaseBeats[phase]?.dialogues || []),
+    "{placeShort}有新线索。",
+    "{phaseLabel}线索到了。",
+    "{placeShort}收好{dailyProp}。",
+    "{weatherMood}适合{placeShort}。",
+    "我记下{placeShort}。",
+    "{placeShort}也有关。"
+  ];
+  const pool = rawPool
+    .map(line => decorate(line, char, def, 0, {
+      ...phaseInfo,
+      placeShort: locations[location]?.short || "这里"
+    }))
+    .filter(line => charLength(line) <= dialogueMaxChars(line));
+  return pickFor(`${char}:dialogue:${location}:${tick}:${i}:${offset}`, pool);
 }
 
 function nextDestination(route, current, index) {
@@ -439,33 +860,40 @@ function addMove(char, start, from, to, mood, detail) {
 function generateCharacterDay(char, def, index) {
   let current = "tree_house";
   let tick = 0;
-  let routeIndex = index;
+  let routeIndex = index + intFor(`${char}:route-offset`, def.route.length);
   let dialogueCount = 0;
   let moveCount = 0;
+  const birthdayText = birthdayNote(def);
+  const dialogueOffset = intFor(`${char}:dialogue-offset`, def.dialogues.length);
+  const actionOffset = intFor(`${char}:action-offset`, def.actionStatuses.length);
+  const moveOffset = intFor(`${char}:move-offset`, moveDetailsByChar[char].length);
+  const tailOffset = intFor(`${char}:tail-offset`, actionTailsByChar[char].length);
+  const birthdaySlot = intFor(`${char}:birthday-slot`, 12);
 
   const sleepEnd = def.wakeTick;
-  tick = addAction(char, 0, sleepEnd, "困倦", "树屋里睡觉中", `${def.name}在树屋里睡觉，梦里还留着今天要用的小线索。`, "tree_house");
+  tick = addAction(char, 0, sleepEnd, "困倦", "树屋里睡觉中", decorate(`${def.name}在树屋里睡觉，梦里有{dailyProp}和今天要用的小线索。`, char, def, index), "tree_house");
 
   if (def.restUntil && def.restUntil > tick) {
-    tick = addDialogue(char, tick + 4, def.mood, "揉揉眼睛醒来", def.dialogues[0], current);
+    tick = addDialogue(char, tick + 4, def.mood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
     dialogueCount += 1;
     const firstTarget = nextDestination(def.route, current, routeIndex);
     routeIndex += 1;
-    tick = addMove(char, tick + 4, current, firstTarget, def.mood, `${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。`);
+    tick = addMove(char, tick + 4, current, firstTarget, def.mood, decorate(`${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。{phaseDetail}`, char, def, index, phaseContext(tick + 4, `${char}:early`)));
     moveCount += 1;
     current = firstTarget;
-    tick = addAction(char, tick, 28, def.mood, def.actionStatuses[0], def.actionDetails[0], current);
-    tick = addDialogue(char, tick + 4, def.mood, def.actionStatuses[1], def.dialogues[1], current);
+    const earlyLocationAction = locationAction(char, def, current, tick, index, -2);
+    tick = addAction(char, tick, 28, def.mood, earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length], earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)), current);
+    tick = addDialogue(char, tick + 4, def.mood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
     dialogueCount += 1;
     const backDuration = travelDuration(current, "tree_house");
-    tick = addMove(char, Math.max(tick + 8, def.restUntil - backDuration - 120), current, "tree_house", "安静", `${def.name}把清晨记录收好，沿原路回树屋休息到正式开园。`);
+    tick = addMove(char, Math.max(tick + 8, def.restUntil - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
     moveCount += 1;
     current = "tree_house";
-    tick = addAction(char, tick, def.restUntil - tick, "困倦", "树屋里补个觉", `${def.name}回到树屋短短打了个盹，把早晨的光藏进心里。`, current);
+    tick = addAction(char, tick, def.restUntil - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
   }
 
   tick = Math.max(tick, def.restUntil || def.wakeTick);
-  tick = addDialogue(char, tick + 4, def.mood, "准备出门巡游", def.dialogues[2 % def.dialogues.length], current);
+  tick = addDialogue(char, tick + 4, def.mood, "准备出门巡游", birthdayText && daysUntilBirthday(runDate, def.birthday) === 0 ? "今天我生日呀。" : dialogueFor(char, def, current, tick + 4, -1, dialogueOffset + 2), current);
   dialogueCount += 1;
 
   const regularMovesNeeded = 43 - moveCount;
@@ -476,7 +904,7 @@ function generateCharacterDay(char, def, index) {
   if (interval < 40) throw new Error(`Schedule too tight for ${char}`);
 
   for (let i = 0; i < regularMovesNeeded; i += 1) {
-    const plannedStart = Math.max(tick + 4, loopStart + i * interval + ((i + index) % 5) * 3);
+    const plannedStart = Math.max(tick + 4, loopStart + i * interval + intFor(`${char}:jitter:${i}`, 5) * 3);
     const target = nextDestination(def.route, current, routeIndex);
     routeIndex += 1;
     tick = addMove(
@@ -485,26 +913,29 @@ function generateCharacterDay(char, def, index) {
       current,
       target,
       def.mood,
-      template(moveDetailsByChar[char][i % moveDetailsByChar[char].length], {
-        name: def.name,
+      decorate(moveDetailsByChar[char][(i + moveOffset) % moveDetailsByChar[char].length], char, def, index, {
         place: locations[target].name,
-        short: locations[target].short
+        short: locations[target].short,
+        ...phaseContext(plannedStart, `${char}:move:${i}`)
       })
     );
     moveCount += 1;
     current = target;
 
-    const actionStatus = def.actionStatuses[i % def.actionStatuses.length];
-    const actionDetail = `${def.actionDetails[i % def.actionDetails.length]}${actionTailsByChar[char][i % actionTailsByChar[char].length]}`;
+    const isBirthdayBeat = birthdayText && i === birthdaySlot;
+    const locAction = locationAction(char, def, current, tick, index, i);
+    const actionStatus = isBirthdayBeat ? (daysUntilBirthday(runDate, def.birthday) === 0 ? "生日小派对" : "准备小惊喜") : (locAction?.status || def.actionStatuses[(i + actionOffset) % def.actionStatuses.length]);
+    const baseDetail = locAction?.detail || decorate(`${def.actionDetails[(i + actionOffset) % def.actionDetails.length]}${actionTailsByChar[char][(i + tailOffset) % actionTailsByChar[char].length]}`, char, def, index, phaseContext(tick, `${char}:action:${i}`));
+    const actionDetail = `${baseDetail}${isBirthdayBeat ? birthdayText : ""}`;
     tick = addAction(char, tick, 8 + (i % 4), def.mood, actionStatus, actionDetail, current);
 
-    const line = def.dialogues[i % def.dialogues.length];
+    const line = dialogueFor(char, def, current, tick + 2, i, dialogueOffset);
     tick = addDialogue(char, tick + 2, def.mood, actionStatus, line, current);
     dialogueCount += 1;
 
     if (i < dialogueExtrasNeeded) {
-      const extraLine = def.dialogues[(i + 3) % def.dialogues.length];
-      tick = addDialogue(char, tick + 2, def.mood, def.actionStatuses[(i + 1) % def.actionStatuses.length], extraLine, current);
+      const extraLine = dialogueFor(char, def, current, tick + 2, i, dialogueOffset + 3);
+      tick = addDialogue(char, tick + 2, def.mood, def.actionStatuses[(i + actionOffset + 1) % def.actionStatuses.length], extraLine, current);
       dialogueCount += 1;
     }
   }
@@ -512,15 +943,15 @@ function generateCharacterDay(char, def, index) {
   if (current === "tree_house") {
     const target = nextDestination(def.route, current, routeIndex);
     const start = Math.min(tick + 8, RETURN_HOME_TICK - travelDuration(target, "tree_house") - travelDuration(current, target) - 2);
-    tick = addMove(char, start, current, target, def.mood, `${def.name}在睡前又去${locations[target].name}确认最后一个细节。`);
+    tick = addMove(char, start, current, target, def.mood, decorate(`${def.name}在睡前又去${locations[target].name}确认最后一个细节，顺手带上{dailyProp}。`, char, def, index));
     moveCount += 1;
     current = target;
   }
 
-  tick = addMove(char, RETURN_HOME_TICK, current, "tree_house", "困倦", `${def.name}等到23:50才进入回家睡觉阶段，沿道路回到巨树树屋区。`);
+  tick = addMove(char, RETURN_HOME_TICK, current, "tree_house", "困倦", decorate(`${def.name}等到23:50才进入回家睡觉阶段，带着{weatherMood}的一天沿道路回到巨树树屋区。`, char, def, index));
   moveCount += 1;
   current = "tree_house";
-  tick = addAction(char, tick, MAX_TICK - tick, "困倦", "树屋里睡觉中", `${def.name}回到树屋，把今天的性格和故事都收进梦里。`, current);
+  tick = addAction(char, tick, MAX_TICK - tick, "困倦", "树屋里睡觉中", decorate(`${def.name}回到树屋，把{dailyRumor}和今天的故事都收进梦里。`, char, def, index), current);
 
   if (moveCount !== 44) {
     throw new Error(`${char} move count ${moveCount}, expected 44`);
@@ -544,7 +975,7 @@ for (const char of Object.keys(characterDefs)) {
 }
 
 const data = {
-  date: "2026-06-07",
+  date: runDate,
   config: {
     tick_interval_seconds: 10,
     max_tick: MAX_TICK,
