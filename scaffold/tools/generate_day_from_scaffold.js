@@ -255,8 +255,7 @@ const characterDefs = {
     color: "#9b7653",
     scale: 1,
     mood: "温顺",
-    wakeTick: 300,
-    restUntil: 2880,
+    wakeTick: 2880,
     dialogueTarget: 52,
     route: ["observatory", "weather_station", "botanical_garden", "mushroom_cafe", "carrot_square", "rainbow_lake", "chanson_hall", "mushroom_cafe", "rabbit_mountain", "lighthouse", "botanical_garden"],
     actionStatuses: ["拍发带街拍", "记录解释现场", "轻轻撒个娇", "耳朵卷心形", "安静调镜头", "整理吃瓜照片"],
@@ -280,6 +279,22 @@ const characterDefs = {
     memory: "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。"
   }
 };
+
+const characterIds = Object.keys(characterDefs);
+const earlyRiserRoll = intFor("early-riser-count", 10);
+const earlyRiserCount = earlyRiserRoll < 2 ? 0 : earlyRiserRoll === 9 ? 2 : 1;
+const earlyRiserIds = characterIds
+  .map(id => ({ id, rank: hashString(`${runDate}:early-riser:${id}`) }))
+  .sort((a, b) => a.rank - b.rank)
+  .slice(0, earlyRiserCount)
+  .map(item => item.id);
+const dailyEarlyRisers = new Map(earlyRiserIds.map((id, index) => [
+  id,
+  {
+    wakeTick: 240 + intFor(`early-wake:${id}:${index}`, 420),
+    restUntil: 2880
+  }
+]));
 
 const durationByPair = new Map();
 let currentPair = null;
@@ -769,16 +784,23 @@ function phaseContext(tick, seed) {
   };
 }
 
+const actionUseCount = new Map();
+
 function locationAction(char, def, location, tick, index, i) {
   const phase = phaseContext(tick, `${char}:${i}:${location}`);
   const options = locationActivities[location] || [];
-  const locationOption = options.length ? pickFor(`${char}:loc-action:${location}:${i}`, options) : null;
-  const useLocation = locationOption && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 68;
+  const useLocation = options.length && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72;
   if (!useLocation) return null;
-  return {
-    status: locationOption.status,
-    detail: decorate(locationOption.detail, char, def, index, phase)
-  };
+  const start = intFor(`${char}:loc-action:${location}:${i}`, options.length);
+  const decorated = options.map((option, optionIndex) => ({
+    status: option.status,
+    detail: decorate(option.detail, char, def, index, phase),
+    index: (optionIndex - start + options.length) % options.length
+  }));
+  decorated.sort((a, b) => (actionUseCount.get(a.detail) || 0) - (actionUseCount.get(b.detail) || 0) || a.index - b.index);
+  const selected = decorated[0];
+  actionUseCount.set(selected.detail, (actionUseCount.get(selected.detail) || 0) + 1);
+  return selected;
 }
 
 const dialogueUseCount = new Map();
@@ -876,11 +898,12 @@ function generateCharacterDay(char, def, index) {
   const moveOffset = intFor(`${char}:move-offset`, moveDetailsByChar[char].length);
   const tailOffset = intFor(`${char}:tail-offset`, actionTailsByChar[char].length);
   const birthdaySlot = intFor(`${char}:birthday-slot`, 12);
+  const earlyPlan = dailyEarlyRisers.get(char);
 
-  const sleepEnd = def.wakeTick;
+  const sleepEnd = earlyPlan?.wakeTick || def.wakeTick;
   tick = addAction(char, 0, sleepEnd, "困倦", "树屋里睡觉中", decorate(`${def.name}在树屋里睡觉，梦里有{dailyProp}和今天要用的小线索。`, char, def, index), "tree_house");
 
-  if (def.restUntil && def.restUntil > tick) {
+  if (earlyPlan && earlyPlan.restUntil > tick) {
     tick = addDialogue(char, tick + 4, def.mood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
     dialogueCount += 1;
     const firstTarget = nextDestination(def.route, current, routeIndex);
@@ -893,13 +916,13 @@ function generateCharacterDay(char, def, index) {
     tick = addDialogue(char, tick + 4, def.mood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
     dialogueCount += 1;
     const backDuration = travelDuration(current, "tree_house");
-    tick = addMove(char, Math.max(tick + 8, def.restUntil - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
+    tick = addMove(char, Math.max(tick + 8, earlyPlan.restUntil - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
     moveCount += 1;
     current = "tree_house";
-    tick = addAction(char, tick, def.restUntil - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
+    tick = addAction(char, tick, earlyPlan.restUntil - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
   }
 
-  tick = Math.max(tick, def.restUntil || def.wakeTick);
+  tick = Math.max(tick, earlyPlan?.restUntil || def.wakeTick);
   tick = addDialogue(char, tick + 4, def.mood, "准备出门巡游", birthdayText && daysUntilBirthday(runDate, def.birthday) === 0 ? "今天我生日呀。" : dialogueFor(char, def, current, tick + 4, -1, dialogueOffset + 2), current);
   dialogueCount += 1;
 
@@ -1072,7 +1095,7 @@ const memoryNotes = {
     "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。",
     "记得自己生日刚过不久，祝福还在岛上慢慢回响。",
     "记得星象小票、公告牌和咖啡馆杯垫都适合拍成安静证据。",
-    "记得在植物园、气象站、天文台之间记录光线和云影。",
+    "记得有些日期会由不同兔兔负责清晨巡游，自己不必每天半夜起床。",
     "记得耳朵卷成心形时要先调好曝光。",
     "记得海湾长镜头和灯塔光线可以留给晚上的故事。",
     "记得狗狗朋友会喜欢晓雪发带街拍和海湾光。",
@@ -1096,6 +1119,8 @@ const relationships = `relationships:
     rabbit_5:
       - 小悠米是杰拉德的灵感缪斯。
       - 小悠米找到稀有花、贝壳和地图线索时会想留给杰拉德画。
+    rabbit_7:
+      - Lino会把小悠米在海湾、灯塔和植物园发现的小线索拍下来。
   rabbit_2:
     rabbit_6:
       - 乔治喊“给我劳”会让劳伦斯误以为在叫他。
@@ -1150,6 +1175,8 @@ const relationships = `relationships:
       - 劳伦斯圣诞节会打包小泽咖啡馆甜点回北欧。
       - 小泽会帮劳伦斯预留适合打包的甜点和节目单灵感。
   rabbit_7:
+    rabbit_1:
+      - Lino会记录小悠米把花样本、贝壳和灯塔线索收进图鉴的过程。
     rabbit_4:
       - Lino常帮晓雪拍发带穿搭街拍。
       - Lino会把晓雪的发带、薄荷色和海湾光拍得很温柔。
