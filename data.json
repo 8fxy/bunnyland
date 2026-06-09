@@ -491,7 +491,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "继续系风向带",
-      "text": "我拍到小线索了。",
+      "text": "这张先不要删。",
       "location": "rabbit_mountain"
     },
     {
@@ -531,7 +531,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "听新消息",
-      "text": "我听见公告了。",
+      "text": "乔治刚才是在叫我吗。",
       "location": "mushroom_cafe"
     },
     {
@@ -551,7 +551,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢打包甜点",
-      "text": "咖啡香到路口。",
+      "text": "大葱蘸酱很有力量。",
       "location": "mushroom_cafe"
     },
     {
@@ -641,7 +641,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "保持忧郁气质",
-      "text": "这线索能接上。",
+      "text": "迷宫有新线索。",
       "location": "carrot_maze"
     },
     {
@@ -768,7 +768,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续吃煎饼果子",
-      "text": "广场消息好多。",
+      "text": "毛衣今天有点太厚。",
       "location": "carrot_square"
     },
     {
@@ -798,7 +798,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "轻轻拉花乔治脸",
-      "text": "门铃声音好远。",
+      "text": "午间消息来了。",
       "location": "lighthouse"
     },
     {
@@ -918,7 +918,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "慢慢扎染新发带",
-      "text": "午间消息来了。",
+      "text": "乔治，先喝咖啡。",
       "location": "botanical_garden"
     },
     {
@@ -1045,7 +1045,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细收小萝卜",
-      "text": "这线索能接上。",
+      "text": "农场有新线索。",
       "location": "timothy_farm"
     },
     {
@@ -1065,7 +1065,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在听潮声",
-      "text": "这朵给杰拉德画画。",
+      "text": "晚上我又变回兔兔啦。",
       "location": "shell_bay"
     },
     {
@@ -1075,7 +1075,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在看公告牌",
-      "text": "广场有新线索。",
+      "text": "我记下广场。",
       "location": "carrot_square"
     },
     {
@@ -1115,7 +1115,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在试做新甜点",
-      "text": "午间线索到了。",
+      "text": "广场也有关。",
       "location": "carrot_square"
     },
     {
@@ -1195,7 +1195,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "法语碎碎念",
-      "text": "我听见公告了。",
+      "text": "Mon dieu, George, tu es incroyable.",
       "location": "mushroom_cafe"
     },
     {
@@ -1205,7 +1205,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "正在浇薄荷田",
-      "text": "薄荷像蓝帽子。",
+      "text": "晓雪，这张很好看。",
       "location": "botanical_garden"
     },
     {
@@ -1215,7 +1215,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "正在整理吃瓜照片",
-      "text": "花样本要收好。",
+      "text": "我拍到解释现场了。",
       "location": "botanical_garden"
     },
     {
@@ -1321,7 +1321,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真试做新甜点",
-      "text": "我记下咖啡馆。",
+      "text": "今天的奶泡像乔治。",
       "location": "mushroom_cafe"
     },
     {
@@ -1341,7 +1341,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在换线索",
-      "text": "我找到新花线索啦。",
+      "text": "这页要画小星星。",
       "location": "carrot_square"
     },
     {
@@ -1351,7 +1351,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "慢慢看报听抓马",
-      "text": "午间消息来了。",
+      "text": "晓雪来拍新品吗？",
       "location": "mushroom_cafe"
     },
     {
@@ -1382,7 +1382,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "轻轻试飞",
-      "text": "我找到新花线索啦。",
+      "text": "这片叶子有路线。",
       "location": "carrot_square"
     },
     {
@@ -1392,7 +1392,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "慢慢法语碎碎念",
-      "text": "我听见公告了。",
+      "text": "这条发带颜色刚好。",
       "location": "carrot_square"
     },
     {
@@ -1402,7 +1402,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细递浓缩咖啡",
-      "text": "这线索能接上。",
+      "text": "Lino帮我拍一张好吗。",
       "location": "carrot_square"
     },
     {
@@ -1442,7 +1442,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢耳朵热耷拉",
-      "text": "我听见公告了。",
+      "text": "我记下工坊。",
       "location": "gear_workshop"
     },
     {
@@ -1452,7 +1452,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在认真养薄荷",
-      "text": "慢钟不是我的锅。",
+      "text": "给我劳，是表啦。",
       "location": "rabbit_mountain"
     },
     {
@@ -1462,7 +1462,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "听新消息",
-      "text": "午间消息来了。",
+      "text": "这段日常像史诗。",
       "location": "mushroom_cafe"
     },
     {
@@ -1472,7 +1472,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "继续润色鲜花图鉴",
-      "text": "晴朗适合咖啡馆。",
+      "text": "小悠米是我的缪斯。",
       "location": "mushroom_cafe"
     },
     {
@@ -1492,7 +1492,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻整理吃瓜照片",
-      "text": "我拍到解释现场了。",
+      "text": "耳朵不要自己卷呀。",
       "location": "observatory"
     },
     {
@@ -1502,7 +1502,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻拍发带街拍",
-      "text": "天文台收好星象小票。",
+      "text": "晴朗适合天文台。",
       "location": "observatory"
     },
     {
@@ -1598,7 +1598,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "继续递浓缩咖啡",
-      "text": "点心先留一块。",
+      "text": "兔耳山收好星象小票。",
       "location": "rabbit_mountain"
     },
     {
@@ -1618,7 +1618,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在试戴小发带",
-      "text": "Mon dieu, George, tu es incroyable.",
+      "text": "这色卡好温柔。",
       "location": "rabbit_mountain"
     },
     {
@@ -1679,7 +1679,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "认真采花样本",
-      "text": "毛衣今天有点太厚。",
+      "text": "圣诞甜点要预订。",
       "location": "botanical_garden"
     },
     {
@@ -1699,7 +1699,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真养薄荷",
-      "text": "门铃我会修一点。",
+      "text": "薄荷叶像帽子。",
       "location": "acorn_library"
     },
     {
@@ -1709,7 +1709,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻误会乔治话",
-      "text": "晴朗适合植物园。",
+      "text": "我可能误会了吗。",
       "location": "botanical_garden"
     },
     {
@@ -1739,7 +1739,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在大喊给我劳",
-      "text": "门铃我会修一点。",
+      "text": "晓雪别看我呀。",
       "location": "acorn_library"
     },
     {
@@ -1759,7 +1759,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "看报听抓马",
-      "text": "我听见公告了。",
+      "text": "咖啡馆消息很灵的。",
       "location": "botanical_garden"
     },
     {
@@ -1769,7 +1769,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻拍发带街拍",
-      "text": "雨量杯很乖。",
+      "text": "晴朗适合气象站。",
       "location": "weather_station"
     },
     {
@@ -1779,7 +1779,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真邀请晓雪拍照",
-      "text": "午间线索到了。",
+      "text": "劳伦斯又听错了吗。",
       "location": "botanical_garden"
     },
     {
@@ -1905,7 +1905,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "大喊给我劳",
-      "text": "午间线索到了。",
+      "text": "植物园收好星象小票。",
       "location": "botanical_garden"
     },
     {
@@ -1966,7 +1966,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细试戴小发带",
-      "text": "植物园也有关。",
+      "text": "慢一点也很好。",
       "location": "botanical_garden"
     },
     {
@@ -1976,7 +1976,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "认真盖咖啡章",
-      "text": "咖啡馆也有关。",
+      "text": "这份也给杰拉德。",
       "location": "mushroom_cafe"
     },
     {
@@ -1986,7 +1986,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "慢慢换线索",
-      "text": "劳伦斯又听错了吗。",
+      "text": "甜点给北欧也打包。",
       "location": "carrot_square"
     },
     {
@@ -2006,7 +2006,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "正在照顾杰拉德",
-      "text": "午间线索到了。",
+      "text": "我先确认一下。",
       "location": "mushroom_cafe"
     },
     {
@@ -2016,7 +2016,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真整理情报站",
-      "text": "今天的奶泡像乔治。",
+      "text": "今天情报有香气。",
       "location": "carrot_square"
     },
     {
@@ -2066,7 +2066,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "正在准备小惊喜",
-      "text": "点心先留一块。",
+      "text": "我只是安静吃瓜。",
       "location": "botanical_garden"
     },
     {
@@ -2076,7 +2076,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻撒个娇",
-      "text": "我记下植物园。",
+      "text": "再让我撒娇一下。",
       "location": "botanical_garden"
     },
     {
@@ -2172,7 +2172,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "继续排小演出",
-      "text": "音乐厅也有关。",
+      "text": "新品名我想好了。",
       "location": "chanson_hall"
     },
     {
@@ -2182,7 +2182,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "摆节目单",
-      "text": "这段日常像史诗。",
+      "text": "减肥也要保持气质。",
       "location": "chanson_hall"
     },
     {
@@ -2192,7 +2192,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "慢慢冲一杯咖啡",
-      "text": "新品叫海湾月光。",
+      "text": "咖啡章盖这里。",
       "location": "chanson_hall"
     },
     {
@@ -2202,7 +2202,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢保持忧郁气质",
-      "text": "晴朗适合音乐厅。",
+      "text": "我把它画成传说。",
       "location": "chanson_hall"
     },
     {
@@ -2232,7 +2232,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻看守小册",
-      "text": "灯罩擦亮啦。",
+      "text": "礼物要包稳一点。",
       "location": "lighthouse"
     },
     {
@@ -2313,7 +2313,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "慢慢听新消息",
-      "text": "这片叶子有路线。",
+      "text": "我把花样收好啦。",
       "location": "mushroom_cafe"
     },
     {
@@ -2323,7 +2323,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "继续扎染新发带",
-      "text": "这条发带颜色刚好。",
+      "text": "我听见你解释啦。",
       "location": "mushroom_cafe"
     },
     {
@@ -2353,7 +2353,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "认真试新点心",
-      "text": "咖啡香到路口。",
+      "text": "这张光很好。",
       "location": "mushroom_cafe"
     },
     {
@@ -2363,7 +2363,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "慢慢耳朵卷心形",
-      "text": "午间线索到了。",
+      "text": "先调一下曝光。",
       "location": "mushroom_cafe"
     },
     {
@@ -2469,7 +2469,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细打包甜点",
-      "text": "海湾收好星象小票。",
+      "text": "误会先放一放。",
       "location": "shell_bay"
     },
     {
@@ -2479,7 +2479,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "仔细记路牌",
-      "text": "晓雪你看这片叶子。",
+      "text": "植物园归我巡逻啦。",
       "location": "carrot_square"
     },
     {
@@ -2489,7 +2489,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻吃煎饼果子",
-      "text": "贝壳像小灯。",
+      "text": "大葱也能庆祝。",
       "location": "shell_bay"
     },
     {
@@ -2499,7 +2499,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真被递苦咖啡",
-      "text": "门铃我会修一点。",
+      "text": "广场消息好多。",
       "location": "carrot_square"
     },
     {
@@ -2539,7 +2539,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢保持忧郁气质",
-      "text": "这页适合加雾。",
+      "text": "灵感在灯塔那边。",
       "location": "mushroom_cafe"
     },
     {
@@ -2549,7 +2549,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "正在寻找冬天灵感",
-      "text": "点心先留一块。",
+      "text": "迷宫纹样会发光。",
       "location": "mushroom_cafe"
     },
     {
@@ -2559,7 +2559,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细查借阅卡",
-      "text": "我想画进图鉴。",
+      "text": "这条线通哪里。",
       "location": "acorn_library"
     },
     {
@@ -2579,7 +2579,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "轻轻查借阅卡",
-      "text": "图书馆有新线索。",
+      "text": "乔治，慢慢说。",
       "location": "acorn_library"
     },
     {
@@ -2589,7 +2589,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真采蜜",
-      "text": "我先勇敢一下。",
+      "text": "灯塔好高呀。",
       "location": "acorn_library"
     },
     {
@@ -2599,7 +2599,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "拉花乔治脸",
-      "text": "咖啡馆消息很灵的。",
+      "text": "先别告诉乔治。",
       "location": "mushroom_cafe"
     },
     {
@@ -2609,7 +2609,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在整理衣帽间",
-      "text": "图书馆有新线索。",
+      "text": "发带要配海风。",
       "location": "acorn_library"
     },
     {
@@ -2650,7 +2650,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "安静调镜头",
-      "text": "耳朵不要自己卷呀。",
+      "text": "海湾适合长镜头。",
       "location": "carrot_square"
     },
     {
@@ -2736,7 +2736,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细排小演出",
-      "text": "这线索能接上。",
+      "text": "毛衣确实有点热。",
       "location": "chanson_hall"
     },
     {
@@ -2756,7 +2756,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "仔细试门铃",
-      "text": "慢钟不是我的锅。",
+      "text": "钟慢了两拍。",
       "location": "gear_workshop"
     },
     {
@@ -2786,7 +2786,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真照看植物园",
-      "text": "我先去解释。",
+      "text": "齿轮会唱歌吗。",
       "location": "gear_workshop"
     },
     {
@@ -2816,7 +2816,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "查借阅卡",
-      "text": "这线索能接上。",
+      "text": "图书馆也有关。",
       "location": "acorn_library"
     },
     {
@@ -2826,7 +2826,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "摆节目单",
-      "text": "这色卡好温柔。",
+      "text": "节目单折整齐。",
       "location": "chanson_hall"
     },
     {
@@ -2836,7 +2836,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "认真寻找冬天灵感",
-      "text": "演出要有雪。",
+      "text": "海湾像插画边。",
       "location": "botanical_garden"
     },
     {
@@ -2846,7 +2846,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "仔细试做新甜点",
-      "text": "我记下图书馆。",
+      "text": "节目单别沾奶泡。",
       "location": "acorn_library"
     },
     {
@@ -2876,7 +2876,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真画鲜花图鉴",
-      "text": "贝壳也像花瓣。",
+      "text": "音乐厅会开花吗。",
       "location": "chanson_hall"
     },
     {
@@ -3053,7 +3053,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "仔细画奇幻冒险",
-      "text": "演出要有雪。",
+      "text": "转角要做记号。",
       "location": "carrot_maze"
     },
     {
@@ -3063,7 +3063,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "换线索",
-      "text": "我听见公告了。",
+      "text": "灯塔需要稳一点。",
       "location": "carrot_square"
     },
     {
@@ -3104,7 +3104,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "继续画鲜花图鉴",
-      "text": "我先勇敢一下。",
+      "text": "倒影反过来了。",
       "location": "rainbow_lake"
     },
     {
@@ -3124,7 +3124,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻整理吃瓜照片",
-      "text": "我在调曝光。",
+      "text": "我在听开场曲。",
       "location": "chanson_hall"
     },
     {
@@ -3230,7 +3230,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "采花样本",
-      "text": "晚上我又变回兔兔啦。",
+      "text": "世界鲜花还差好多页。",
       "location": "botanical_garden"
     },
     {
@@ -3250,7 +3250,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细听新消息",
-      "text": "毛衣今天有点太厚。",
+      "text": "我把礼物包好。",
       "location": "mushroom_cafe"
     },
     {
@@ -3260,7 +3260,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢捡亮贝壳",
-      "text": "减肥也要保持气质。",
+      "text": "请别端加餐。",
       "location": "rainbow_lake"
     },
     {
@@ -3270,7 +3270,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在递浓缩咖啡",
-      "text": "我听见你解释啦。",
+      "text": "Cette couleur est douce.",
       "location": "observatory"
     },
     {
@@ -3300,7 +3300,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在认真养薄荷",
-      "text": "植物园归我巡逻啦。",
+      "text": "这杯咖啡怎么这么苦。",
       "location": "chanson_hall"
     },
     {
@@ -3310,7 +3310,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "仔细看报听抓马",
-      "text": "劳伦斯又听错了吗。",
+      "text": "乔治又上新闻。",
       "location": "mushroom_cafe"
     },
     {
@@ -3447,7 +3447,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细看公告牌",
-      "text": "乔治刚才是在叫我吗。",
+      "text": "乔治是在说表。",
       "location": "carrot_square"
     },
     {
@@ -3467,7 +3467,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真试新点心",
-      "text": "慢钟又慢啦。",
+      "text": "晴朗适合咖啡馆。",
       "location": "mushroom_cafe"
     },
     {
@@ -3477,7 +3477,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "继续擦灯罩",
-      "text": "劳伦斯又听错了吗。",
+      "text": "这张小票有趣。",
       "location": "lighthouse"
     },
     {
@@ -3497,7 +3497,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢查借阅卡",
-      "text": "迷宫纹样会发光。",
+      "text": "灯塔像城堡。",
       "location": "acorn_library"
     },
     {
@@ -3517,7 +3517,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "听新消息",
-      "text": "这片叶子有路线。",
+      "text": "杯垫背面有字。",
       "location": "mushroom_cafe"
     },
     {
@@ -3527,7 +3527,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细试戴小发带",
-      "text": "这条发带颜色刚好。",
+      "text": "先别弄乱啦。",
       "location": "botanical_garden"
     },
     {
@@ -3558,7 +3558,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "系风向带",
-      "text": "兔耳山也有关。",
+      "text": "云影过山啦。",
       "location": "rabbit_mountain"
     },
     {
@@ -3664,7 +3664,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "轻轻解释手表梗",
-      "text": "这行字很关键。",
+      "text": "兔耳山有新线索。",
       "location": "rabbit_mountain"
     },
     {
@@ -3684,7 +3684,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真看公告牌",
-      "text": "今天的奶泡像乔治。",
+      "text": "情报先冷萃。",
       "location": "carrot_square"
     },
     {
@@ -3694,7 +3694,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢照顾杰拉德",
-      "text": "误会先放一放。",
+      "text": "田埂有小脚印。",
       "location": "timothy_farm"
     },
     {
@@ -3704,7 +3704,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "继续找海湾线索",
-      "text": "这片叶子有路线。",
+      "text": "潮声指向灯塔。",
       "location": "shell_bay"
     },
     {
@@ -3744,7 +3744,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢盖咖啡章",
-      "text": "旧地图有用。",
+      "text": "海湾那边见。",
       "location": "mushroom_cafe"
     },
     {
@@ -3911,7 +3911,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续擦齿轮",
-      "text": "乔治刚才是在叫我吗。",
+      "text": "工坊也有关。",
       "location": "gear_workshop"
     },
     {
@@ -3921,7 +3921,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细迷路后导航",
-      "text": "晚上我又变回兔兔啦。",
+      "text": "今天的风像路标。",
       "location": "carrot_square"
     },
     {
@@ -3941,7 +3941,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "擦灯罩",
-      "text": "海湾那边见。",
+      "text": "灯塔也有关。",
       "location": "lighthouse"
     },
     {
@@ -3992,7 +3992,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "继续耳朵卷心形",
-      "text": "慢钟又慢啦。",
+      "text": "植物园收好星象小票。",
       "location": "botanical_garden"
     },
     {
@@ -4128,7 +4128,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "收贝壳光",
-      "text": "灵感在灯塔那边。",
+      "text": "海湾收好星象小票。",
       "location": "shell_bay"
     },
     {
@@ -4138,7 +4138,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "认真整理衣帽间",
-      "text": "旧地图有用。",
+      "text": "晴朗适合兔耳山。",
       "location": "rabbit_mountain"
     },
     {
@@ -4295,7 +4295,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "安静调镜头",
-      "text": "耳朵不要自己卷呀。",
+      "text": "天文台也有关。",
       "location": "observatory"
     },
     {
@@ -4395,7 +4395,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "继续采花样本",
-      "text": "我想画进图鉴。",
+      "text": "薄荷像蓝帽子。",
       "location": "botanical_garden"
     },
     {
@@ -4426,7 +4426,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "继续整理吃瓜照片",
-      "text": "再让我撒娇一下。",
+      "text": "我记下气象站。",
       "location": "weather_station"
     },
     {
@@ -4542,7 +4542,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "仔细润色鲜花图鉴",
-      "text": "咖啡香到路口。",
+      "text": "杯垫背面有字。",
       "location": "mushroom_cafe"
     },
     {
@@ -4582,7 +4582,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "继续浇薄荷田",
-      "text": "公告肯定懂我。",
+      "text": "植物园有新线索。",
       "location": "botanical_garden"
     },
     {
@@ -4612,7 +4612,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "盖咖啡章",
-      "text": "我想画进图鉴。",
+      "text": "旧地图有用。",
       "location": "mushroom_cafe"
     },
     {
@@ -4719,7 +4719,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续收贝壳光",
-      "text": "误会先放一放。",
+      "text": "大葱也能庆祝。",
       "location": "shell_bay"
     },
     {
@@ -4729,7 +4729,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "认真认新叶子",
-      "text": "植物园有新线索。",
+      "text": "我拍到解释现场了。",
       "location": "botanical_garden"
     },
     {
@@ -4789,7 +4789,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在邀请晓雪拍照",
-      "text": "薄荷是乔治友情赞助。",
+      "text": "咖啡馆消息很灵的。",
       "location": "mushroom_cafe"
     },
     {
@@ -4809,7 +4809,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细找索引页",
-      "text": "小悠米的花很适合。",
+      "text": "乔治又只会点头了。",
       "location": "acorn_library"
     },
     {
@@ -4819,7 +4819,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细找索引页",
-      "text": "这条线通哪里。",
+      "text": "借阅卡翻过来。",
       "location": "acorn_library"
     },
     {
@@ -4829,7 +4829,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真试新点心",
-      "text": "晴朗适合咖啡馆。",
+      "text": "我记下咖啡馆。",
       "location": "mushroom_cafe"
     },
     {
@@ -5193,7 +5193,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻记路牌",
-      "text": "海湾那边见。",
+      "text": "广场收好星象小票。",
       "location": "carrot_square"
     },
     {
@@ -5213,7 +5213,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "轻轻记云层",
-      "text": "雨量杯很乖。",
+      "text": "气象站有新线索。",
       "location": "weather_station"
     },
     {
@@ -5223,7 +5223,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在擦齿轮",
-      "text": "海湾那边见。",
+      "text": "工坊有新线索。",
       "location": "gear_workshop"
     },
     {
@@ -5243,7 +5243,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "认真采花样本",
-      "text": "晴朗适合植物园。",
+      "text": "植物园也有关。",
       "location": "botanical_garden"
     },
     {
@@ -5390,7 +5390,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真浇薄荷田",
-      "text": "我想画进图鉴。",
+      "text": "花样本要收好。",
       "location": "botanical_garden"
     },
     {
@@ -5410,7 +5410,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢听新消息",
-      "text": "咖啡馆有新线索。",
+      "text": "乔治刚才是在叫我吗。",
       "location": "mushroom_cafe"
     },
     {
@@ -5420,7 +5420,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "认真画星象票",
-      "text": "Cette couleur est douce.",
+      "text": "星象票画好了。",
       "location": "observatory"
     },
     {
@@ -5430,7 +5430,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在浇薄荷田",
-      "text": "晓雪你看这片叶子。",
+      "text": "我真没那个意思啊。",
       "location": "botanical_garden"
     },
     {
@@ -5450,7 +5450,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "正在比对倒影",
-      "text": "这行字很关键。",
+      "text": "彩虹湖收好星象小票。",
       "location": "rainbow_lake"
     },
     {
@@ -5470,7 +5470,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "继续描迷宫纹",
-      "text": "午后线索到了。",
+      "text": "迷宫收好星象小票。",
       "location": "carrot_maze"
     },
     {
@@ -5597,7 +5597,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢比对倒影",
-      "text": "旧地图有用。",
+      "text": "彩虹湖有新线索。",
       "location": "rainbow_lake"
     },
     {
@@ -5607,7 +5607,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "继续擦灯罩",
-      "text": "新品名我想好了。",
+      "text": "灯塔有新线索。",
       "location": "lighthouse"
     },
     {
@@ -5617,7 +5617,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细记路牌",
-      "text": "大葱也能庆祝。",
+      "text": "毛衣确实有点热。",
       "location": "carrot_square"
     },
     {
@@ -5687,7 +5687,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "正在试开场曲",
-      "text": "公告肯定懂我。",
+      "text": "晴朗适合音乐厅。",
       "location": "chanson_hall"
     },
     {
@@ -5844,7 +5844,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续收小萝卜",
-      "text": "乔治是在说表。",
+      "text": "农具箱有线索。",
       "location": "timothy_farm"
     },
     {
@@ -5854,7 +5854,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "慢慢看报听抓马",
-      "text": "这消息值一杯。",
+      "text": "节目单别沾奶泡。",
       "location": "carrot_square"
     },
     {
@@ -5874,7 +5874,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "慢慢试新点心",
-      "text": "咖啡馆收好星象小票。",
+      "text": "咖啡馆也有关。",
       "location": "mushroom_cafe"
     },
     {
@@ -5884,7 +5884,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在找海湾线索",
-      "text": "这行字很关键。",
+      "text": "海湾有新线索。",
       "location": "shell_bay"
     },
     {
@@ -6041,7 +6041,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真换线索",
-      "text": "今天的风像路标。",
+      "text": "公告牌更新了。",
       "location": "carrot_square"
     },
     {
@@ -6081,7 +6081,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真听新消息",
-      "text": "咖啡馆消息很灵的。",
+      "text": "劳伦斯又听错了吗。",
       "location": "mushroom_cafe"
     },
     {
@@ -6101,7 +6101,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢修慢钟",
-      "text": "旧地图有用。",
+      "text": "工坊有新线索。",
       "location": "gear_workshop"
     },
     {
@@ -6217,7 +6217,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细听远处钟",
-      "text": "兔耳山有新线索。",
+      "text": "我记下兔耳山。",
       "location": "rabbit_mountain"
     },
     {
@@ -6268,7 +6268,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "认真浇薄荷田",
-      "text": "毛衣确实有点热。",
+      "text": "灯塔需要稳一点。",
       "location": "botanical_garden"
     },
     {
@@ -6288,7 +6288,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细擦灯罩",
-      "text": "这页要画小星星。",
+      "text": "门铃声音好远。",
       "location": "lighthouse"
     },
     {
@@ -6328,7 +6328,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真浇薄荷田",
-      "text": "节目单别沾奶泡。",
+      "text": "新品叫海湾月光。",
       "location": "botanical_garden"
     },
     {
@@ -6338,7 +6338,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真找索引页",
-      "text": "图书馆有新线索。",
+      "text": "晴朗适合图书馆。",
       "location": "acorn_library"
     },
     {
@@ -6444,7 +6444,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "慢慢认新叶子",
-      "text": "薄荷叶像帽子。",
+      "text": "谁又在传我啦。",
       "location": "botanical_garden"
     },
     {
@@ -6465,7 +6465,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "正在保持忧郁气质",
-      "text": "海湾也有关。",
+      "text": "晴朗适合海湾。",
       "location": "shell_bay"
     },
     {
@@ -6495,7 +6495,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "正在盖咖啡章",
-      "text": "我先确认一下。",
+      "text": "礼物要包稳一点。",
       "location": "mushroom_cafe"
     },
     {
@@ -6535,7 +6535,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在认新叶子",
-      "text": "慢钟又慢啦。",
+      "text": "这行字很关键。",
       "location": "botanical_garden"
     },
     {
@@ -6555,7 +6555,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "轻轻认新叶子",
-      "text": "晚上我又变回兔兔啦。",
+      "text": "海湾那边见。",
       "location": "botanical_garden"
     },
     {
@@ -6661,7 +6661,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢寻找冬天灵感",
-      "text": "我记下音乐厅。",
+      "text": "这段日常像史诗。",
       "location": "chanson_hall"
     },
     {
@@ -6722,7 +6722,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续看守小册",
-      "text": "慢钟又慢啦。",
+      "text": "灯塔有新线索。",
       "location": "lighthouse"
     },
     {
@@ -6742,7 +6742,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "轻轻盖咖啡章",
-      "text": "旧地图有用。",
+      "text": "这个梗能解释。",
       "location": "mushroom_cafe"
     },
     {
@@ -6752,7 +6752,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细盖咖啡章",
-      "text": "Cette couleur est douce.",
+      "text": "我把花色记下。",
       "location": "mushroom_cafe"
     },
     {
@@ -6888,7 +6888,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻蘸大葱酱",
-      "text": "误会先放一放。",
+      "text": "我把礼物包好。",
       "location": "shell_bay"
     },
     {
@@ -6898,7 +6898,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "继续照看植物园",
-      "text": "薄荷今天很精神。",
+      "text": "广场有新线索。",
       "location": "carrot_square"
     },
     {
@@ -6969,7 +6969,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真找索引页",
-      "text": "我先勇敢一下。",
+      "text": "旧地图接上了。",
       "location": "acorn_library"
     },
     {
@@ -6999,7 +6999,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "安静调镜头",
-      "text": "今天光线很软。",
+      "text": "我拍到小线索了。",
       "location": "weather_station"
     },
     {
@@ -7085,7 +7085,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻试开场曲",
-      "text": "音乐厅也有关。",
+      "text": "毛衣今天有点太厚。",
       "location": "chanson_hall"
     },
     {
@@ -7135,7 +7135,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真擦齿轮",
-      "text": "工坊有新线索。",
+      "text": "工坊收好星象小票。",
       "location": "gear_workshop"
     },
     {
@@ -7145,7 +7145,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在试开场曲",
-      "text": "我找到新花线索啦。",
+      "text": "节目单排好啦。",
       "location": "chanson_hall"
     },
     {
@@ -7216,7 +7216,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "继续浇薄荷田",
-      "text": "我拍到小线索了。",
+      "text": "这张先不要删。",
       "location": "botanical_garden"
     },
     {
@@ -7352,7 +7352,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "认真看公告牌",
-      "text": "公告牌更新了。",
+      "text": "广场消息好多。",
       "location": "carrot_square"
     },
     {
@@ -7362,7 +7362,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "轻轻记云层",
-      "text": "节目单折整齐。",
+      "text": "风向指音乐厅。",
       "location": "weather_station"
     },
     {
@@ -7372,7 +7372,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真看湖面光",
-      "text": "贝壳会反光。",
+      "text": "晴朗适合彩虹湖。",
       "location": "rainbow_lake"
     },
     {
@@ -7382,7 +7382,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "认真描迷宫纹",
-      "text": "我要把钟画歪。",
+      "text": "纹样像路线。",
       "location": "carrot_maze"
     },
     {
@@ -7413,7 +7413,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在比对倒影",
-      "text": "我把花样收好啦。",
+      "text": "贝壳会反光。",
       "location": "rainbow_lake"
     },
     {
@@ -7433,7 +7433,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻盖咖啡章",
-      "text": "我拍到解释现场了。",
+      "text": "耳朵不要自己卷呀。",
       "location": "mushroom_cafe"
     },
     {
@@ -7529,7 +7529,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢盖咖啡章",
-      "text": "咖啡馆收好星象小票。",
+      "text": "杰拉德再吃一口吧。",
       "location": "mushroom_cafe"
     },
     {
@@ -7559,7 +7559,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "认真画星象票",
-      "text": "Cette couleur est douce.",
+      "text": "望远镜对准啦。",
       "location": "observatory"
     },
     {
@@ -7579,7 +7579,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢捡亮贝壳",
-      "text": "这就是第二章。",
+      "text": "我要把钟画歪。",
       "location": "rainbow_lake"
     },
     {
@@ -7630,7 +7630,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "继续解释手表梗",
-      "text": "植物园归我巡逻啦。",
+      "text": "我记下音乐厅。",
       "location": "chanson_hall"
     },
     {
@@ -7640,7 +7640,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "认真换线索",
-      "text": "夜晚线索到了。",
+      "text": "我记下广场。",
       "location": "carrot_square"
     },
     {
@@ -7736,7 +7736,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "打包甜点",
-      "text": "这份给杰拉德。",
+      "text": "乔治是在说表。",
       "location": "carrot_square"
     },
     {
@@ -7796,7 +7796,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "擦灯罩",
-      "text": "灯塔亮起来了。",
+      "text": "晴朗适合灯塔。",
       "location": "lighthouse"
     },
     {
@@ -7837,7 +7837,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细试新点心",
-      "text": "音乐厅会开花吗。",
+      "text": "小演出开始啦。",
       "location": "mushroom_cafe"
     },
     {
@@ -7973,7 +7973,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢吃煎饼果子",
-      "text": "这份也给杰拉德。",
+      "text": "农场收好星象小票。",
       "location": "timothy_farm"
     },
     {
@@ -7993,7 +7993,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在看公告牌",
-      "text": "薄荷是乔治友情赞助。",
+      "text": "甜点给北欧也打包。",
       "location": "carrot_square"
     },
     {
@@ -8013,7 +8013,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "轻轻听潮声",
-      "text": "我把花样收好啦。",
+      "text": "贝壳像小灯。",
       "location": "shell_bay"
     },
     {
@@ -8043,7 +8043,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "仔细试新点心",
-      "text": "乔治又只会点头了。",
+      "text": "这色卡好温柔。",
       "location": "mushroom_cafe"
     },
     {
@@ -8084,7 +8084,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "继续摆节目单",
-      "text": "耳朵不要自己卷呀。",
+      "text": "我只是安静吃瓜。",
       "location": "chanson_hall"
     },
     {
@@ -8170,7 +8170,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真盖咖啡章",
-      "text": "新品名我想好了。",
+      "text": "先别告诉乔治。",
       "location": "mushroom_cafe"
     },
     {
@@ -8220,7 +8220,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "慢慢换线索",
-      "text": "小悠米的花很适合。",
+      "text": "慢一点也很好。",
       "location": "carrot_square"
     },
     {
@@ -8250,7 +8250,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "轻轻试门铃",
-      "text": "毛衣确实有点热。",
+      "text": "钟慢了两拍。",
       "location": "gear_workshop"
     },
     {
@@ -8270,7 +8270,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "轻轻找索引页",
-      "text": "晴朗适合图书馆。",
+      "text": "我记下图书馆。",
       "location": "acorn_library"
     },
     {
@@ -8301,7 +8301,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "安静调镜头",
-      "text": "我拍到小线索了。",
+      "text": "我在听开场曲。",
       "location": "mushroom_cafe"
     },
     {
@@ -8427,7 +8427,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续浇薄荷田",
-      "text": "今天可以收尾。",
+      "text": "植物园有新线索。",
       "location": "botanical_garden"
     },
     {
@@ -8447,7 +8447,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在听远处钟",
-      "text": "星星很清楚。",
+      "text": "兔耳山也有关。",
       "location": "rabbit_mountain"
     },
     {
@@ -8457,7 +8457,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "正在收贝壳光",
-      "text": "小悠米是我的缪斯。",
+      "text": "我记下海湾。",
       "location": "shell_bay"
     },
     {
@@ -8467,7 +8467,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "轻轻试飞",
-      "text": "世界鲜花还差好多页。",
+      "text": "灯罩擦亮啦。",
       "location": "lighthouse"
     },
     {
@@ -8518,7 +8518,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "看山路云",
-      "text": "晓雪，这张很好看。",
+      "text": "这张留给晓雪。",
       "location": "rabbit_mountain"
     },
     {
@@ -8674,7 +8674,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在试戴小发带",
-      "text": "Lino帮我拍一张好吗。",
+      "text": "我听见你解释啦。",
       "location": "botanical_garden"
     },
     {
@@ -8684,7 +8684,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "慢慢寻找稀有花",
-      "text": "今天的风像路标。",
+      "text": "灯塔亮起来了。",
       "location": "botanical_garden"
     },
     {
@@ -8704,7 +8704,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细听新消息",
-      "text": "我记下咖啡馆。",
+      "text": "圣诞甜点要预订。",
       "location": "mushroom_cafe"
     },
     {
@@ -8841,7 +8841,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在试开场曲",
-      "text": "节目单别沾奶泡。",
+      "text": "乔治又上新闻。",
       "location": "chanson_hall"
     },
     {
@@ -8851,7 +8851,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "认真试灯塔铃",
-      "text": "小演出开始啦。",
+      "text": "灯塔亮起来了。",
       "location": "lighthouse"
     },
     {
@@ -8911,7 +8911,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细整理树叶书",
-      "text": "不是迷路是发现。",
+      "text": "星星很清楚。",
       "location": "mushroom_cafe"
     },
     {
@@ -8974,7 +8974,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻采花样本",
-      "text": "植物园也有关。",
+      "text": "证据很安静。",
       "location": "botanical_garden"
     },
     {
@@ -9068,7 +9068,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "继续试新点心",
-      "text": "先别告诉乔治。",
+      "text": "情报先冷萃。",
       "location": "mushroom_cafe"
     },
     {
@@ -9088,7 +9088,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细找海湾线索",
-      "text": "毛衣确实有点热。",
+      "text": "潮声指向灯塔。",
       "location": "shell_bay"
     },
     {
@@ -9098,7 +9098,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "慢慢摆节目单",
-      "text": "我记下音乐厅。",
+      "text": "招牌要再梦幻一点。",
       "location": "chanson_hall"
     },
     {
@@ -9108,7 +9108,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细查借阅卡",
-      "text": "世界鲜花还差好多页。",
+      "text": "图书馆有新线索。",
       "location": "acorn_library"
     },
     {
@@ -9128,7 +9128,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "慢慢摊旧地图",
-      "text": "图书馆收好星象小票。",
+      "text": "晴朗适合图书馆。",
       "location": "acorn_library"
     },
     {
@@ -9255,7 +9255,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "轻轻看晨星",
-      "text": "夜晚线索到了。",
+      "text": "天文台收好星象小票。",
       "location": "observatory"
     },
     {
@@ -9275,7 +9275,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细吃煎饼果子",
-      "text": "乔治刚才是在叫我吗。",
+      "text": "我可能误会了吗。",
       "location": "chanson_hall"
     },
     {
@@ -9285,7 +9285,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "认真记路牌",
-      "text": "植物园归我巡逻啦。",
+      "text": "广场收好星象小票。",
       "location": "carrot_square"
     },
     {
@@ -9335,7 +9335,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "轻轻整理衣帽间",
-      "text": "小悠米的花很适合。",
+      "text": "乔治，慢慢说。",
       "location": "chanson_hall"
     },
     {
@@ -9345,7 +9345,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "认真采蜜",
-      "text": "我找到新花线索啦。",
+      "text": "音乐厅有新线索。",
       "location": "chanson_hall"
     },
     {
@@ -9386,7 +9386,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "慢慢读雨量杯",
-      "text": "我拍到公告了。",
+      "text": "风向指音乐厅。",
       "location": "weather_station"
     },
     {
@@ -9502,7 +9502,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "继续蘸大葱酱",
-      "text": "毛衣今天有点太厚。",
+      "text": "这份也给杰拉德。",
       "location": "carrot_square"
     },
     {
@@ -9522,7 +9522,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "慢慢看湖面光",
-      "text": "咖啡章盖这里。",
+      "text": "我记下彩虹湖。",
       "location": "rainbow_lake"
     },
     {
@@ -9532,7 +9532,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "慢慢擦齿轮",
-      "text": "齿轮会唱歌吗。",
+      "text": "晴朗适合工坊。",
       "location": "gear_workshop"
     },
     {
@@ -9542,7 +9542,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "正在法语碎碎念",
-      "text": "灯光好温柔。",
+      "text": "气象站收好星象小票。",
       "location": "weather_station"
     },
     {
@@ -9552,7 +9552,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "继续画奇幻冒险",
-      "text": "这就是第二章。",
+      "text": "这光线很忧郁。",
       "location": "botanical_garden"
     },
     {
@@ -9572,7 +9572,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "仔细看湖面光",
-      "text": "蜂蜜罐要拿稳一点。",
+      "text": "彩虹湖有新线索。",
       "location": "rainbow_lake"
     },
     {
@@ -9699,7 +9699,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢听新消息",
-      "text": "我可能误会了吗。",
+      "text": "乔治是在说表吧。",
       "location": "mushroom_cafe"
     },
     {
@@ -9729,7 +9729,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "采花样本",
-      "text": "这朵花我要记下来。",
+      "text": "我没有迷路，只是探险。",
       "location": "botanical_garden"
     },
     {
@@ -9739,7 +9739,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "继续看晨星",
-      "text": "Mon dieu, George, tu es incroyable.",
+      "text": "天文台收好星象小票。",
       "location": "observatory"
     },
     {
@@ -9749,7 +9749,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "浇薄荷田",
-      "text": "今天可以收尾。",
+      "text": "薄荷像蓝帽子。",
       "location": "botanical_garden"
     },
     {
@@ -9769,7 +9769,7 @@
       "type": "dialogue",
       "mood": "忧郁",
       "status": "描迷宫纹",
-      "text": "请别端加餐。",
+      "text": "晴朗适合迷宫。",
       "location": "carrot_maze"
     },
     {
@@ -9789,7 +9789,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真盖咖啡章",
-      "text": "甜点给北欧也打包。",
+      "text": "杯垫背面有线索。",
       "location": "mushroom_cafe"
     },
     {
@@ -9916,7 +9916,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "慢慢误会乔治话",
-      "text": "毛衣确实有点热。",
+      "text": "晴朗适合广场。",
       "location": "carrot_square"
     },
     {
@@ -9956,7 +9956,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "正在擦灯罩",
-      "text": "晴朗适合灯塔。",
+      "text": "我记下灯塔。",
       "location": "lighthouse"
     },
     {
@@ -9966,7 +9966,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "轻轻寻找稀有花",
-      "text": "星星很清楚。",
+      "text": "咖啡馆有新线索。",
       "location": "mushroom_cafe"
     },
     {
@@ -9996,7 +9996,7 @@
       "type": "dialogue",
       "mood": "调皮",
       "status": "轻轻排小演出",
-      "text": "小演出开始啦。",
+      "text": "音乐厅也有关。",
       "location": "chanson_hall"
     },
     {
@@ -10006,7 +10006,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "认真浇薄荷田",
-      "text": "乔治，先喝咖啡。",
+      "text": "Mon dieu, George, tu es incroyable.",
       "location": "botanical_garden"
     },
     {
@@ -10048,7 +10048,7 @@
       "type": "dialogue",
       "mood": "温顺",
       "status": "正在拍发带街拍",
-      "text": "广场有新线索。",
+      "text": "广场也有关。",
       "location": "carrot_square"
     },
     {
@@ -10163,7 +10163,7 @@
       "type": "dialogue",
       "mood": "沉稳",
       "status": "仔细照顾杰拉德",
-      "text": "毛衣今天有点太厚。",
+      "text": "晴朗适合农场。",
       "location": "timothy_farm"
     },
     {
@@ -10193,7 +10193,7 @@
       "type": "dialogue",
       "mood": "勇敢",
       "status": "正在听潮声",
-      "text": "今天的风像路标。",
+      "text": "夜晚线索到了。",
       "location": "shell_bay"
     },
     {
@@ -10203,7 +10203,7 @@
       "type": "dialogue",
       "mood": "精致",
       "status": "认真看公告牌",
-      "text": "先别告诉乔治。",
+      "text": "公告牌更新了。",
       "location": "carrot_square"
     },
     {
@@ -10223,7 +10223,7 @@
       "type": "dialogue",
       "mood": "乖巧",
       "status": "安静拍穿搭",
-      "text": "Cette couleur est douce.",
+      "text": "灯光好温柔。",
       "location": "mushroom_cafe"
     },
     {
