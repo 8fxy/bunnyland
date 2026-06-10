@@ -328,13 +328,13 @@ const dailyWeather = [
 ];
 
 const dailyRumors = [
-  "咖啡馆今天流传一张新菜单草稿",
-  "植物园的薄荷长出一片很像帽子的叶子",
-  "香颂音乐厅在试一段很轻的开场曲",
-  "灯塔门口多了一本等人认领的小册子",
-  "图书馆借阅卡背面出现一行铅笔字",
-  "彩虹湖边有人看见会反光的小贝壳",
-  "齿轮工坊的钟今天慢了整整两拍"
+  "咖啡馆吧台压着一张沾奶泡的新菜单",
+  "植物园薄荷田冒出一片歪歪的小帽叶",
+  "香颂音乐厅有人反复试弹前三个音",
+  "灯塔门口放着一本被海风翻皱的小册子",
+  "图书馆借阅卡背面留着一行淡铅笔字",
+  "彩虹湖边有枚贝壳把日光晃到草丛里",
+  "齿轮工坊的慢钟今天总是晚两下响"
 ];
 
 const sharedProps = [
@@ -343,7 +343,7 @@ const sharedProps = [
   "发带色卡",
   "咖啡印章",
   "旧地图角",
-  "星象小票",
+  "星象纸条",
   "灯塔钥匙扣",
   "音乐厅节目单"
 ];
@@ -399,10 +399,10 @@ const moveDetailsByChar = {
     "{name}把树叶图鉴夹好，勇敢地往{place}继续探险。",
     "{name}飞过路口时绕了一圈，确认这不是迷路而是探索。",
     "{name}带着一朵稀有小花去{place}，准备晚点给杰拉德看。",
-    "{name}沿着{dailyProp}留下的小标记去{place}，每一步都像新发现。",
+    "{name}沿着{dailyProp}旁边的小爪印去{place}，一路把路牌看了两遍。",
     "{name}听说{dailyRumor}，立刻把{place}列进今日探险。",
     "{name}把翅膀抖得亮亮的，趁着{weatherMood}去{place}找花。",
-    "{name}路过一片会发光的草叶，认真决定先飞去{place}。"
+    "{name}路过一片会发光的草叶，把它夹进图鉴后飞去{place}。"
   ],
   rabbit_2: [
     "{name}戴着蓝帽子去{place}，嘴里还念着新看的手表型号。",
@@ -421,10 +421,10 @@ const moveDetailsByChar = {
     "{name}路过植物园时拿到薄荷，心里已经想好新品名字。",
     "{name}把报纸夹在手边，优雅地往{place}继续移动。",
     "{name}去{place}前打包了几块甜点，准备留给劳伦斯过节。",
-    "{name}把{dailyProp}压在账本里，带着新线索去{place}。",
-    "{name}听说{dailyRumor}，决定亲自去{place}确认消息源。",
+    "{name}把{dailyProp}压在账本里，慢慢往{place}走。",
+    "{name}听说{dailyRumor}，把围裙理平后去{place}看一眼。",
     "{name}顺着{weatherMood}的气味调整咖啡配方，再慢慢去{place}。",
-    "{name}把今日情报写成小票，轻轻夹好后前往{place}。"
+    "{name}把今日情报写在账单角上，轻轻夹好后前往{place}。"
   ],
   rabbit_4: [
     "{name}戴着新发带去{place}，薄荷绿色耳朵安静垂着。",
@@ -433,7 +433,7 @@ const moveDetailsByChar = {
     "{name}往{place}走得很乖，法语吐槽却已经在心里排队。",
     "{name}整理好小裙子，准备去{place}让Lino再拍一张。",
     "{name}把{dailyProp}别在发带盒上，安静地去{place}配色。",
-    "{name}听到{dailyRumor}后轻轻点头，决定去{place}看看。",
+    "{name}听到{dailyRumor}后轻轻点头，提着小盒子去{place}。",
     "{name}趁{weatherMood}把裙摆整理好，像一小阵薄荷风走向{place}。",
     "{name}带着新色卡去{place}，每一步都很乖很有主意。"
   ],
@@ -442,7 +442,7 @@ const moveDetailsByChar = {
     "{name}带着小悠米的花稿去{place}，准备给图鉴润色。",
     "{name}一边往{place}走，一边思考忧郁艺术家能不能少吃鲁菜。",
     "{name}把今天的路线画成冒险地图，兴致很高又很忧郁。",
-    "{name}去{place}前看了看冬天色卡，决定给故事加一点雪。",
+    "{name}去{place}前看了看冬天色卡，给故事页角添了一点雪。",
     "{name}把{dailyProp}画成传奇道具，抱着画本走去{place}。",
     "{name}听说{dailyRumor}，马上觉得这是一段奇幻支线。",
     "{name}在{weatherMood}里寻找阴影形状，慢慢走向{place}。",
@@ -454,7 +454,7 @@ const moveDetailsByChar = {
     "{name}听见乔治的声音后沉默了一下，才继续往{place}走。",
     "{name}把给杰拉德的加餐收好，步子沉稳地去{place}。",
     "{name}路过咖啡馆时预订甜点，想着圣诞节要带回北欧。",
-    "{name}把{dailyProp}收进口袋，像保管一份重要礼物。",
+    "{name}把{dailyProp}收进口袋，像保管一块刚包好的糖。",
     "{name}听见{dailyRumor}后认真判断，也许应该去{place}帮忙。",
     "{name}顶着{weatherMood}继续前进，毛衣和责任感都很厚。",
     "{name}带着给杰拉德的备用餐盒，稳稳走向{place}。"
@@ -466,7 +466,7 @@ const moveDetailsByChar = {
     "{name}把镜头抱好，轻轻往{place}走，像怕惊动照片。",
     "{name}想起狗狗朋友会喜欢这张照片，脚步也软了一点。",
     "{name}把{dailyProp}放进相机包，准备去{place}拍今日光线。",
-    "{name}听说{dailyRumor}，安静地决定去{place}取景。",
+    "{name}听说{dailyRumor}，安静地把镜头转向{place}。",
     "{name}趁着{weatherMood}调整曝光，慢慢走向{place}。",
     "{name}在路边试拍一张空镜，确认下一站就是{place}。"
   ]
@@ -476,7 +476,7 @@ const actionTailsByChar = {
   rabbit_1: [
     "她在旁边标注：可能是世界上第很多很多号花。",
     "蜂蜜罐晃了一下，但她勇敢地稳住了。",
-    "她决定晚上把这页讲给杰拉德听。",
+    "她打算晚上把这页讲给杰拉德听。",
     "她觉得这次迷路也很有旅行家的气质。",
     "她把“{weatherNote}”也画成一条小箭头。",
     "她把{dailyProp}夹进图鉴，假装这是探险徽章。",
@@ -489,7 +489,7 @@ const actionTailsByChar = {
     "远处的劳伦斯听见后，表情又复杂了一点。",
     "他觉得“{weatherNote}”让帽檐看起来更有戏。",
     "他把{dailyProp}当成新梗道具，差点又解释不清。",
-    "听见{dailyRumor}后，他决定先装作自己早就知道。"
+    "听见{dailyRumor}后，他先压低帽檐装作早就知道。"
   ],
   rabbit_3: [
     "咖啡香绕过桌角，带回两条新八卦。",
@@ -511,7 +511,7 @@ const actionTailsByChar = {
   ],
   rabbit_5: [
     "画面里每只兔兔都像要踏上冒险。",
-    "他决定把自己画瘦一点，但不失忧郁。",
+    "他把自己的围巾画长一点，好显得更忧郁。",
     "劳伦斯的加餐阴影暂时被他画成山脉。",
     "小悠米带来的花让整页都亮起来。",
     "他把“{weatherNote}”画成一层柔软阴影。",
@@ -521,7 +521,7 @@ const actionTailsByChar = {
   rabbit_6: [
     "他认真考虑要不要把毛衣换薄一点。",
     "他把大葱蘸酱的味道记成山东生活重点。",
-    "他想着杰拉德太瘦，决定晚点再端一盘菜。",
+    "他想着杰拉德太瘦，晚点也许还要添一小碟。",
     "他又问了一遍：乔治真的不是在叫我吗。",
     "他看着“{weatherNote}”，觉得应该多带一件围巾，又觉得不太对。",
     "他把{dailyProp}仔细包好，准备当作备用礼物。",
@@ -534,7 +534,7 @@ const actionTailsByChar = {
     "他给晓雪留了一张最温柔的底片。",
     "他拍下“{weatherNote}”，照片边缘像被轻轻擦亮。",
     "他把{dailyProp}放在镜头旁边，当作今日色彩参考。",
-    "听见{dailyRumor}后，他决定拍一组沉默证据。"
+    "听见{dailyRumor}后，他把快门声调得更轻。"
   ]
 };
 
@@ -553,11 +553,11 @@ const phaseBeats = {
     label: "午间",
     details: [
       "咖啡馆的点心香气绕过主路。",
-      "午后的公告让几条线索碰到一起。",
+      "午后的公告把几张纸条钉在同一块板上。",
       "薄荷、旧地图和节目单都被摆上桌。",
       "大家在广场附近短短交换消息。"
     ],
-    dialogues: ["午间消息来了。", "点心先留一块。", "这线索能接上。", "我听见公告了。"]
+    dialogues: ["午间消息来了。", "点心先留一块。", "这张纸先留着。", "我听见公告了。"]
   },
   afternoon: {
     label: "午后",
@@ -575,7 +575,7 @@ const phaseBeats = {
       "香颂音乐厅亮起一排小灯。",
       "灯塔和天文台把夜色分成两种光。",
       "海湾的贝壳把星光反射到节目单上。",
-      "夜深后大家把今天的线索收进包里。"
+      "夜深后大家把纸条、贝壳和节目单各自收好。"
     ],
     dialogues: ["小演出开始啦。", "灯塔亮起来了。", "星星很清楚。", "今天可以收尾。"]
   }
@@ -583,18 +583,18 @@ const phaseBeats = {
 
 const locationActivities = {
   tree_house: [
-    { status: "整理背包", detail: "{name}在树屋门口清点{dailyProp}，把今日线索按颜色排好。" },
+    { status: "整理背包", detail: "{name}在树屋门口清点{dailyProp}，把皱角纸条按颜色排好。" },
     { status: "贴小便签", detail: "{name}把一张小便签贴在树屋扶手上，提醒大家晚上23:50回家。" },
     { status: "看开园表", detail: "{name}看了看开园表，发现{phaseDetail}" }
   ],
   carrot_square: [
     { status: "看公告牌", detail: "{name}在胡萝卜广场读公告，公告上写着：{dailyRumor}。" },
-    { status: "换线索", detail: "{name}把{dailyProp}放到公告牌下，换到一条去海湾的小线索。" },
+    { status: "换纸条", detail: "{name}把{dailyProp}压在公告牌下，顺手取走一张写着海湾方向的纸条。" },
     { status: "记路牌", detail: "{name}沿着广场路牌重新确认去农场、山路和海湾的方向。" }
   ],
   mushroom_cafe: [
     { status: "试新点心", detail: "{name}在蘑菇咖啡馆试了一小口点心，旁边的杯垫写着{phaseLabel}暗号。" },
-    { status: "听新消息", detail: "{name}听见咖啡机旁传来新消息，和{dailyRumor}正好对上。" },
+    { status: "听吧台话", detail: "{name}听见咖啡机旁的低声聊天，正好提到{dailyRumor}。" },
     { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" }
   ],
   timothy_farm: [
@@ -610,7 +610,7 @@ const locationActivities = {
   acorn_library: [
     { status: "查借阅卡", detail: "{name}在橡果图书馆翻到借阅卡，背面的铅笔字指向迷宫。" },
     { status: "摊旧地图", detail: "{name}把旧地图摊开，发现海湾、灯塔和音乐厅被同一条虚线连着。" },
-    { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}的编号，轻轻夹进书签。" }
+    { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}旁边的编号，轻轻夹进书签。" }
   ],
   botanical_garden: [
     { status: "认新叶子", detail: "{name}在植物园认出一片像蓝帽子的薄荷叶，忍不住多看两眼。" },
@@ -628,7 +628,7 @@ const locationActivities = {
     { status: "找出口箭头", detail: "{name}发现墙边有个小箭头，正好指向旧地图缺口。" }
   ],
   rabbit_mountain: [
-    { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，决定把天气写得更准确。" },
+    { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，把天气记得更细了一点。" },
     { status: "听远处钟", detail: "{name}在山路上听见工坊慢钟，声音轻轻飘到云里。" },
     { status: "系风向带", detail: "{name}把风向缎带系在路牌上，给去气象站的兔兔看。" }
   ],
@@ -639,11 +639,11 @@ const locationActivities = {
   ],
   observatory: [
     { status: "调望远镜", detail: "{name}在星光天文台调望远镜，把夜里的路线提前对准。" },
-    { status: "画星象票", detail: "{name}画了一张星象小票，准备晚上拿去海湾对星光。" },
+    { status: "画星象纸", detail: "{name}画了一张星象纸条，准备晚上拿去海湾对星光。" },
     { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" }
   ],
   shell_bay: [
-    { status: "找海湾线索", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
+    { status: "翻小贝壳", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
     { status: "听潮声", detail: "{name}听潮声把灯塔方向说得很轻，像一条不会消失的路线。" },
     { status: "收贝壳光", detail: "{name}把贝壳光收进小盒子，准备带去音乐厅当舞台灵感。" }
   ],
@@ -660,11 +660,11 @@ const locationActivities = {
 };
 
 const charExtraDialogues = {
-  rabbit_1: ["这片叶子有路线。", "我把花样收好啦。", "不是迷路是发现。", "贝壳也像花瓣。", "灯塔好高呀。", "我想画进图鉴。", "这条线通哪里。", "音乐厅会开花吗。"],
+  rabbit_1: ["这片叶子会带路。", "我把花样收好啦。", "我真的没走丢。", "贝壳边边好亮。", "灯塔好高呀。", "我想画进图鉴。", "这条路有弯弯。", "音乐厅会开花吗。"],
   rabbit_2: ["慢钟不是我的锅。", "门铃我会修一点。", "给我劳，是表啦。", "薄荷叶像帽子。", "晓雪别看我呀。", "我先去解释。", "公告肯定懂我。", "这齿轮很乔老爷。"],
-  rabbit_3: ["这消息值一杯。", "节目单别沾奶泡。", "新品叫海湾月光。", "咖啡章盖这里。", "乔治又上新闻。", "甜点留到晚上。", "这张小票有趣。", "情报先冷萃。"],
+  rabbit_3: ["这消息值一杯。", "节目单别沾奶泡。", "新品叫海湾月光。", "咖啡章盖这里。", "乔治又上新闻。", "甜点留到晚上。", "这张纸条有趣。", "情报先冷萃。"],
   rabbit_4: ["这颜色很适合。", "乔治，慢慢说。", "发带要配海风。", "节目单折整齐。", "Cette couleur est douce.", "我把花色记下。", "灯光好温柔。", "先别弄乱啦。"],
-  rabbit_5: ["这就是第二章。", "迷宫纹样会发光。", "我要把钟画歪。", "海湾像插画边。", "请别端加餐。", "这光线很忧郁。", "灯塔像城堡。", "演出要有雪。"],
+  rabbit_5: ["这就是第二章。", "迷宫纹样会发光。", "我要把钟画歪。", "海湾适合压暗。", "请别端加餐。", "这光线很忧郁。", "灯塔像城堡。", "演出要有雪。"],
   rabbit_6: ["我来检查门铃。", "这份给杰拉德。", "误会先放一放。", "大葱也能庆祝。", "毛衣确实有点热。", "灯塔需要稳一点。", "我把礼物包好。", "乔治是在说表。"],
   rabbit_7: ["这张光很好。", "我拍到公告了。", "先调一下曝光。", "海湾适合长镜头。", "耳朵别卷太快。", "我在听开场曲。", "这张留给晓雪。", "证据很安静。"]
 };
@@ -673,16 +673,16 @@ const locationDialogues = {
   tree_house: ["晚上记得回家。", "背包已经好了。"],
   carrot_square: ["公告牌更新了。", "广场消息好多。"],
   mushroom_cafe: ["咖啡香到路口。", "杯垫背面有字。"],
-  timothy_farm: ["田埂有小脚印。", "农具箱有线索。"],
+  timothy_farm: ["田埂有小脚印。", "农具箱夹着纸。"],
   gear_workshop: ["钟慢了两拍。", "齿轮会唱歌吗。"],
   acorn_library: ["借阅卡翻过来。", "旧地图接上了。"],
-  botanical_garden: ["薄荷像蓝帽子。", "花样本要收好。"],
+  botanical_garden: ["薄荷歪着长。", "花样本要收好。"],
   rainbow_lake: ["倒影反过来了。", "贝壳会反光。"],
-  carrot_maze: ["转角要做记号。", "纹样像路线。"],
+  carrot_maze: ["转角要做记号。", "纹样贴着墙走。"],
   rabbit_mountain: ["云影过山啦。", "山路风好清楚。"],
   weather_station: ["风向指音乐厅。", "雨量杯很乖。"],
-  observatory: ["星象票画好了。", "望远镜对准啦。"],
-  shell_bay: ["潮声指向灯塔。", "贝壳像小灯。"],
+  observatory: ["星象纸条画好了。", "望远镜对准啦。"],
+  shell_bay: ["潮声往灯塔去。", "贝壳边缘亮。"],
   lighthouse: ["门铃声音好远。", "灯罩擦亮啦。"],
   chanson_hall: ["开场曲好轻。", "节目单排好啦。"]
 };
@@ -785,6 +785,22 @@ function phaseContext(tick, seed) {
 }
 
 const actionUseCount = new Map();
+const groundedTails = [
+  "旁边的小杯子轻轻碰了一下桌沿。",
+  "纸角被风掀起，又被他按了回去。",
+  "她顺手把路牌上的灰擦掉一点。",
+  "远处传来很短的一声门铃。",
+  "脚边有片叶子翻了个面。",
+  "节目单边缘沾了一点咖啡香。",
+  "贝壳在口袋里轻轻磕了一下。",
+  "慢钟又晚了一拍，大家都假装没听见。",
+  "他把铅笔头转了半圈才继续写。",
+  "她把发带尾巴重新抚平。"
+];
+
+function groundedTail(seed) {
+  return pickFor(seed, groundedTails);
+}
 
 function locationAction(char, def, location, tick, index, i) {
   const phase = phaseContext(tick, `${char}:${i}:${location}`);
@@ -794,7 +810,7 @@ function locationAction(char, def, location, tick, index, i) {
   const start = intFor(`${char}:loc-action:${location}:${i}`, options.length);
   const decorated = options.map((option, optionIndex) => ({
     status: option.status,
-    detail: decorate(option.detail, char, def, index, phase),
+    detail: `${decorate(option.detail, char, def, index, phase)}${groundedTail(`${char}:grounded-tail:${location}:${i}:${optionIndex}`)}`,
     index: (optionIndex - start + options.length) % options.length
   }));
   decorated.sort((a, b) => (actionUseCount.get(a.detail) || 0) - (actionUseCount.get(b.detail) || 0) || a.index - b.index);
@@ -813,12 +829,12 @@ function dialogueFor(char, def, location, tick, i, offset) {
     ...(charExtraDialogues[char] || []),
     ...(locationDialogues[location] || []),
     ...(phaseBeats[phase]?.dialogues || []),
-    "{placeShort}有新线索。",
-    "{phaseLabel}线索到了。",
-    "{placeShort}收好{dailyProp}。",
+    "{placeShort}那边有动静。",
+    "{phaseLabel}这会儿刚好。",
+    "{placeShort}先放{dailyProp}。",
     "{weatherMood}适合{placeShort}。",
     "我记下{placeShort}。",
-    "{placeShort}也有关。"
+    "等下再去{placeShort}。"
   ];
   const pool = rawPool
     .map(line => decorate(line, char, def, 0, {
@@ -1034,7 +1050,7 @@ const memoryNotes = {
   rabbit_1: [
     "记得白天穿蜜蜂服采蜜，晚上整理树叶鲜花图鉴。",
     "记得植物园、蘑菇咖啡馆和海湾经常串成自己的探险路线。",
-    "记得把星象小票、借阅卡线索和灯塔小册子都当作图鉴素材。",
+    "记得把星象纸条、借阅卡铅笔字和灯塔小册子都当作图鉴素材。",
     "记得贝壳像花瓣，海湾潮声会把灯塔方向说得很轻。",
     "记得给杰拉德留稀有花，也会把花样本交给晓雪做发带。",
     "记得自己不是迷路，而是在发现新路线。",
@@ -1064,7 +1080,7 @@ const memoryNotes = {
   rabbit_4: [
     "记得自己喜欢乔治，也记得用法语和浓缩咖啡治住他。",
     "记得小悠米带来的花样本适合扎染发带和整理色卡。",
-    "记得星象小票、节目单和海湾光线都能变成穿搭灵感。",
+    "记得星象纸条、节目单和海湾光线都能变成穿搭灵感。",
     "记得经常请Lino拍发带街拍，也会给他留最温柔的光线。",
     "记得乔治解释“给我劳”时需要慢慢说，自己会先把咖啡端稳。",
     "记得气象站、天文台和兔耳山的云影能帮助配色。",
@@ -1094,7 +1110,7 @@ const memoryNotes = {
   rabbit_7: [
     "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。",
     "记得自己生日刚过不久，祝福还在岛上慢慢回响。",
-    "记得星象小票、公告牌和咖啡馆杯垫都适合拍成安静证据。",
+    "记得星象纸条、公告牌和咖啡馆杯垫都适合拍成安静证据。",
     "记得有些日期会由不同兔兔负责清晨巡游，自己不必每天半夜起床。",
     "记得耳朵卷成心形时要先调好曝光。",
     "记得海湾长镜头和灯塔光线可以留给晚上的故事。",
@@ -1128,6 +1144,7 @@ const relationships = `relationships:
     rabbit_3:
       - 乔治给小泽咖啡馆友情提供植物园薄荷。
       - 小泽常把乔治吃瘪的表情做成咖啡奶泡。
+      - 小泽会把乔治“又上新闻”的小插曲收进咖啡馆闲谈。
     rabbit_4:
       - 乔治喜欢晓雪，也只有晓雪能治住他。
       - 晓雪会用法语和浓缩咖啡让乔治慢慢解释。
