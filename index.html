@@ -547,17 +547,18 @@
       background: #ffffff;
       padding: 8px;
       display: grid;
-      grid-template-columns: 18px 1fr;
+      grid-template-columns: 34px 1fr;
       gap: 6px 8px;
       align-items: start;
     }
 
-    .status-dot {
-      width: 18px;
-      height: 18px;
+    .status-avatar {
+      width: 34px;
+      height: 34px;
       border: 3px solid var(--ink);
-      background: var(--char-color);
-      margin-top: 2px;
+      background: var(--char-color) var(--status-sprite, none) center bottom / contain no-repeat;
+      image-rendering: pixelated;
+      align-self: center;
     }
 
     .status-name {
@@ -591,7 +592,7 @@
       color: #fff2b8;
     }
 
-    body.night-mode .status-dot {
+    body.night-mode .status-avatar {
       border-color: #101820;
       box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
     }
@@ -641,6 +642,11 @@
       .status-card {
         min-height: 68px;
         padding: 7px;
+        grid-template-columns: 30px 1fr;
+      }
+      .status-avatar {
+        width: 30px;
+        height: 30px;
       }
       .log-panel {
         height: 150px;
@@ -2598,8 +2604,11 @@
         const card = document.createElement("article");
         card.className = "status-card";
         card.style.setProperty("--char-color", charData.color);
+        if (charData.sprite?.src) {
+          card.style.setProperty("--status-sprite", `url("${charData.sprite.src}")`);
+        }
         card.innerHTML = `
-          <div class="status-dot"></div>
+          <div class="status-avatar" aria-hidden="true"></div>
           <div class="status-name">${escapeHtml(charData.name)}</div>
           <div class="status-text"></div>
         `;
