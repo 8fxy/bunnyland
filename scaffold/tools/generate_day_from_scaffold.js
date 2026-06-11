@@ -1085,6 +1085,18 @@ const data = {
 
 fs.writeFileSync(path.join(root, "data.json"), `${JSON.stringify(data, null, 2)}\n`);
 
+const indexPath = path.join(root, "index.html");
+if (fs.existsSync(indexPath)) {
+  const indexHtml = fs.readFileSync(indexPath, "utf8");
+  const nextIndexHtml = indexHtml.replace(
+    /const DATA_VERSION = "\d{4}-\d{2}-\d{2}";/,
+    `const DATA_VERSION = "${runDate}";`
+  );
+  if (nextIndexHtml !== indexHtml) {
+    fs.writeFileSync(indexPath, nextIndexHtml);
+  }
+}
+
 const memoryNotes = {
   rabbit_1: [
     "记得白天穿蜜蜂服采蜜，晚上整理树叶鲜花图鉴。",
