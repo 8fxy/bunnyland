@@ -238,11 +238,16 @@
       right: 14px;
       bottom: 14px;
       z-index: 950;
+      display: none;
       height: 34px;
       min-width: 84px;
       padding: 0 10px;
       background: #7bdff2;
       font-size: 13px;
+    }
+
+    body.debug-ready .debug-toggle {
+      display: block;
     }
 
     .debug-layer {
@@ -714,7 +719,9 @@
       这个文件只负责播放和渲染；24小时剧本数据放在 data.json。
       你可以替换 data.json，只要保留 config / characters / timeline 这些字段即可。
     */
-    const DATA_URL = "data.json";
+    const DATA_VERSION = "2026-06-13";
+    const DATA_URL = `data.json?v=${DATA_VERSION}`;
+    const DEBUG_ENABLED = ["localhost", "127.0.0.1", ""].includes(location.hostname) || location.search.includes("debug=1");
     const SECONDS_PER_DAY = 24 * 60 * 60;
     // 每个 move 事件的视觉行走统一用 10 ticks；到达后在地点内活动，直到下一次 move 开始。
     const FALLBACK_MOVE_VISUAL_TICKS = 10;
@@ -1028,6 +1035,11 @@
     const statusBoard = document.querySelector("#statusBoard");
     const pauseBtn = document.querySelector("#pauseBtn");
     const notice = document.querySelector("#notice");
+
+    if (!DEBUG_ENABLED) {
+      debugToggle?.remove();
+      debugLayer?.remove();
+    }
     const speedButtons = [...document.querySelectorAll("[data-speed]")];
 
     let storyData = null;
@@ -1374,7 +1386,7 @@
 
     async function loadStoryData() {
       try {
-        const response = await fetch(DATA_URL, { cache: "no-store" });
+        const response = await fetch(DATA_URL);
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -1797,6 +1809,7 @@
     }
 
     function createActivityDebugOverlay() {
+      if (!debugLayer) return;
       debugLayer.innerHTML = "";
       createRoadDebugOverlay();
 
@@ -1865,6 +1878,7 @@
     }
 
     function setDebugMode(enabled) {
+      if (!debugToggle || !debugLayer) return;
       debugMode = enabled;
       if (!debugMode) stopDebugDrag();
       document.body.classList.toggle("debug-mode", debugMode);
@@ -2614,6 +2628,13 @@
         resetStateToTick(Number(event.target.value));
       });
 
+    }
+
+    window.enableBunnylandDebug = function enableBunnylandDebug() {
+      if (!DEBUG_ENABLED || !debugToggle || !debugLayer || debugToggle.dataset.debugReady === "true") return;
+      debugToggle.dataset.debugReady = "true";
+      document.body.classList.add("debug-ready");
+
       debugToggle.addEventListener("click", () => {
         setDebugMode(!debugMode);
       });
@@ -2627,7 +2648,9 @@
       window.addEventListener("pointercancel", stopDebugDrag);
       window.addEventListener("mousemove", updateDebugDrag);
       window.addEventListener("mouseup", stopDebugDrag);
-    }
+
+      createActivityDebugOverlay();
+    };
 
     async function init() {
       storyData = normalizeStoryData(await loadStoryData());
@@ -2641,10 +2664,14 @@
       tickRange.max = String(maxTick);
       progressLabel.textContent = `剧情进度 00:00 - ${formatTickTime(maxTick)}`;
 
-      createActivityDebugOverlay();
       createCharacters();
       createStatusCards();
       bindControls();
+      if (DEBUG_ENABLED) {
+        const debugScript = document.createElement("script");
+        debugScript.src = "debug.js";
+        document.body.appendChild(debugScript);
+      }
       updateStageScale();
       stageResizeObserver = new ResizeObserver(updateStageScale);
       stageResizeObserver.observe(stage.parentElement);
