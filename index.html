@@ -150,7 +150,7 @@
       height: var(--stage-h);
       overflow: hidden;
       image-rendering: pixelated;
-      background: var(--grass) var(--map-image, url("assets/map_day.png")) center / 800px 600px no-repeat;
+      background: var(--grass) var(--map-image, url("assets/map_day.webp")) center / 800px 600px no-repeat;
       transform: scale(var(--stage-scale));
       transform-origin: left top;
     }
@@ -1447,7 +1447,7 @@
 
     function updateMapTheme(hour) {
       const isNight = hour < 6 || hour >= 19;
-      stage.style.setProperty("--map-image", `url("assets/${isNight ? "map_night.png" : "map_day.png"}")`);
+      stage.style.setProperty("--map-image", `url("assets/${isNight ? "map_night.webp" : "map_day.webp"}")`);
       document.body.classList.toggle("night-mode", isNight);
     }
 
