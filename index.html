@@ -40,9 +40,9 @@
     .status-board,
     .log-panel,
     .notice {
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--panel);
-      box-shadow: 5px 5px 0 var(--shadow);
+      box-shadow: 3px 3px 0 var(--shadow);
     }
 
     .topbar {
@@ -63,7 +63,7 @@
 
     .time-box {
       height: 44px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: #1f2a32;
       color: #d8ff99;
       display: grid;
@@ -83,18 +83,18 @@
     button {
       height: 38px;
       min-width: 54px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: #f5cb5c;
       color: var(--ink);
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 3px 3px 0 var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
       transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
     }
 
     button:hover {
       transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
     }
 
     button.active { background: #7bdff2; }
@@ -136,10 +136,10 @@
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
-      border: 4px solid var(--ink);
+      border: 2px solid var(--ink);
       background: #b7dfb0;
-      box-shadow: 7px 7px 0 var(--shadow);
-      height: calc(var(--stage-h) * var(--stage-scale) + 8px);
+      box-shadow: 4px 4px 0 var(--shadow);
+      height: calc(var(--stage-h) * var(--stage-scale) + 4px);
       overflow: hidden;
       contain: layout paint;
     }
@@ -172,12 +172,12 @@
       position: relative;
       width: 78px;
       height: 78px;
-      border: 4px solid #2b241d;
+      border: 2px solid #2b241d;
       border-radius: 50%;
       background:
         radial-gradient(circle at center, #2b241d 0 4px, transparent 5px),
         radial-gradient(circle at center, #fff9dd 0 58%, #f2cf83 59% 100%);
-      box-shadow: 3px 4px 0 rgba(36, 49, 58, 0.28), inset 0 0 0 3px rgba(255,255,255,0.42);
+      box-shadow: 2px 2px 0 rgba(36, 49, 58, 0.22), inset 0 0 0 2px rgba(255,255,255,0.42);
     }
 
     .clock-face::before,
@@ -224,7 +224,7 @@
     .clock-readout {
       min-width: 72px;
       padding: 2px 6px;
-      border: 3px solid #2b241d;
+      border: 2px solid #2b241d;
       background: rgba(255, 249, 221, 0.94);
       font-family: "Courier New", monospace;
       font-size: 14px;
@@ -504,13 +504,13 @@
       width: max-content;
       max-width: 230px;
       padding: 8px 10px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: #fff;
       color: var(--ink);
       font-size: 14px;
       line-height: 1.45;
       font-weight: 800;
-      box-shadow: 4px 4px 0 rgba(38, 50, 56, 0.2);
+      box-shadow: 2px 2px 0 rgba(38, 50, 56, 0.18);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.12s ease, transform 0.12s ease;
@@ -529,8 +529,8 @@
       width: 14px;
       height: 14px;
       background: #fff;
-      border-right: 3px solid var(--ink);
-      border-bottom: 3px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
       transform: translateX(-50%) rotate(45deg);
     }
 
@@ -543,7 +543,7 @@
 
     .status-card {
       min-height: 74px;
-      border: 3px solid var(--ink);
+      border: 1px solid rgba(36, 49, 58, 0.42);
       background: #ffffff;
       padding: 8px;
       display: grid;
@@ -555,8 +555,12 @@
     .status-avatar {
       width: 34px;
       height: 34px;
-      border: 3px solid var(--ink);
-      background: var(--char-color) var(--status-sprite, none) center bottom / contain no-repeat;
+      border: 0;
+      border-radius: 6px;
+      background:
+        var(--status-sprite, none) center bottom / contain no-repeat,
+        radial-gradient(circle at 50% 76%, rgba(255,255,255,0.88) 0 58%, transparent 59%),
+        var(--char-color);
       image-rendering: pixelated;
       align-self: center;
     }
@@ -575,13 +579,13 @@
 
     body.night-mode .status-board {
       background: #182532;
-      box-shadow: 5px 5px 0 rgba(2, 8, 15, 0.72);
+      box-shadow: 3px 3px 0 rgba(2, 8, 15, 0.72);
     }
 
     body.night-mode .status-card {
       background: #223243;
       color: #f4ecd5;
-      border-color: #17202b;
+      border-color: rgba(223, 231, 255, 0.18);
     }
 
     body.night-mode .status-text {
@@ -593,8 +597,7 @@
     }
 
     body.night-mode .status-avatar {
-      border-color: #101820;
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12);
     }
 
     .log-panel {
