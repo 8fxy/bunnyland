@@ -6,6 +6,8 @@ const travelText = fs.readFileSync(path.join(root, "scaffold/world/travel_times.
 
 const MAX_TICK = 8640;
 const RETURN_HOME_TICK = 8580; // 23:50
+const MEMORY_LIMIT = 20;
+const RELATIONSHIP_LIMIT = 20;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 function formatDate(date) {
@@ -54,6 +56,29 @@ function intFor(seedText, max) {
 
 function pickFor(seedText, items) {
   return items[intFor(seedText, items.length)];
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function jitterFor(seedText, radius) {
+  return intFor(seedText, radius * 2 + 1) - radius;
+}
+
+function regularWakeTickFor(char, def, index) {
+  return clamp(def.wakeTick + jitterFor(`${char}:regular-wake:${index}`, 150), 2700, 3120);
+}
+
+function bedtimeReturnTickFor(char, index) {
+  return clamp(RETURN_HOME_TICK + jitterFor(`${char}:bedtime-return:${index}`, 100), 8460, 8620);
+}
+
+function formatTickClock(tick) {
+  const totalMinutes = Math.floor(tick / 6);
+  const hours = Math.floor(totalMinutes / 60) % 24;
+  const minutes = totalMinutes % 60;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
 }
 
 const locations = {
@@ -291,8 +316,7 @@ const earlyRiserIds = characterIds
 const dailyEarlyRisers = new Map(earlyRiserIds.map((id, index) => [
   id,
   {
-    wakeTick: 240 + intFor(`early-wake:${id}:${index}`, 420),
-    restUntil: 2880
+    wakeTick: 240 + intFor(`early-wake:${id}:${index}`, 420)
   }
 ]));
 
@@ -324,7 +348,11 @@ const dailyWeather = [
   { mood: "多云", note: "云影慢慢经过广场", prop: "云朵贴纸" },
   { mood: "有风", note: "风把发带和地图角吹起来", prop: "风向缎带" },
   { mood: "薄雾", note: "湖边和灯塔都有一点朦胧", prop: "雾色明信片" },
-  { mood: "星晴", note: "夜里天文台的星星格外清楚", prop: "星星糖" }
+  { mood: "星晴", note: "夜里天文台的星星格外清楚", prop: "星星糖" },
+  { mood: "潮湿", note: "贝壳边缘沾着一点盐味水汽", prop: "盐风纸夹" },
+  { mood: "闷热", note: "广场石板晒得像刚烤过的饼皮", prop: "凉薄荷贴" },
+  { mood: "凉爽", note: "树屋影子把路口遮成一小片蓝", prop: "树影书签" },
+  { mood: "阵雨后", note: "每个小水坑都倒着一截兔耳山", prop: "雨后玻璃珠" }
 ];
 
 const dailyRumors = [
@@ -334,7 +362,12 @@ const dailyRumors = [
   "灯塔门口放着一本被海风翻皱的小册子",
   "图书馆借阅卡背面留着一行淡铅笔字",
   "彩虹湖边有枚贝壳把日光晃到草丛里",
-  "齿轮工坊的慢钟今天总是晚两下响"
+  "齿轮工坊的慢钟今天总是晚两下响",
+  "农场田埂上排着一串像箭头的小萝卜",
+  "气象站雨量杯旁多了一枚咖啡印章",
+  "兔耳山路牌被风吹得只剩半句提示",
+  "蘑菇咖啡馆后门有张没署名的甜点订单",
+  "音乐厅后台的座位表夹着一片薄荷叶"
 ];
 
 const sharedProps = [
@@ -345,7 +378,12 @@ const sharedProps = [
   "旧地图角",
   "星象纸条",
   "灯塔钥匙扣",
-  "音乐厅节目单"
+  "音乐厅节目单",
+  "贝壳票根",
+  "薄荷色夹子",
+  "雨量杯刻度纸",
+  "小萝卜箭头",
+  "半截风向牌"
 ];
 
 function parseBirthday(text) {
@@ -545,9 +583,11 @@ const phaseBeats = {
       "开园前的路牌还带着露水。",
       "第一批脚印从树屋慢慢散开。",
       "广场公告牌被擦得很亮。",
-      "大家把今天的小任务别在包带上。"
+      "大家把今天的小任务别在包带上。",
+      "树屋台阶边有一排没干透的小脚印。",
+      "咖啡馆窗缝先飘出一点甜味。"
     ],
-    dialogues: ["早安，开园啦。", "露水还在叶尖。", "今天先看路牌。", "我带了小清单。"]
+    dialogues: ["早安，开园啦。", "露水还在叶尖。", "今天先看路牌。", "我带了小清单。", "鞋尖有点湿。", "先别吵醒大家。"]
   },
   noon: {
     label: "午间",
@@ -555,9 +595,11 @@ const phaseBeats = {
       "咖啡馆的点心香气绕过主路。",
       "午后的公告把几张纸条钉在同一块板上。",
       "薄荷、旧地图和节目单都被摆上桌。",
-      "大家在广场附近短短交换消息。"
+      "大家在广场附近短短交换消息。",
+      "杯垫被压在账本底下，只露出半个角。",
+      "树影慢慢移过胡萝卜广场的边线。"
     ],
-    dialogues: ["午间消息来了。", "点心先留一块。", "这张纸先留着。", "我听见公告了。"]
+    dialogues: ["午间消息来了。", "点心先留一块。", "这张纸先留着。", "我听见公告了。", "杯垫别弄丢。", "先喝口水。"]
   },
   afternoon: {
     label: "午后",
@@ -565,9 +607,11 @@ const phaseBeats = {
       "旧地图把迷宫、海湾和灯塔连成一条线。",
       "海湾风把音乐厅节目单翻开一角。",
       "齿轮工坊的慢钟让大家重新对表。",
-      "图书馆借阅卡背面那行字变得更清楚。"
+      "图书馆借阅卡背面那行字变得更清楚。",
+      "兔耳山的云影把路线分成深浅两段。",
+      "农场小萝卜排成的箭头被重新摆正。"
     ],
-    dialogues: ["旧地图有用。", "海湾那边见。", "慢钟又慢啦。", "这行字很关键。"]
+    dialogues: ["旧地图有用。", "海湾那边见。", "慢钟又慢啦。", "这行字很关键。", "箭头摆反啦。", "风把纸吹走了。"]
   },
   night: {
     label: "夜晚",
@@ -575,87 +619,104 @@ const phaseBeats = {
       "香颂音乐厅亮起一排小灯。",
       "灯塔和天文台把夜色分成两种光。",
       "海湾的贝壳把星光反射到节目单上。",
-      "夜深后大家把纸条、贝壳和节目单各自收好。"
+      "夜深后大家把纸条、贝壳和节目单各自收好。",
+      "咖啡馆最后一盏小灯还照着吧台边。",
+      "树屋窗口一格一格亮起来，又慢慢暗下去。"
     ],
-    dialogues: ["小演出开始啦。", "灯塔亮起来了。", "星星排得好齐。", "今天可以收尾。"]
+    dialogues: ["小演出开始啦。", "灯塔亮起来了。", "星星排得好齐。", "今天可以收尾。", "门口风小一点。", "回家前数人数。"]
   }
 };
 
 const locationActivities = {
   tree_house: [
     { status: "整理背包", detail: "{name}在树屋门口清点{dailyProp}，把皱角纸条按颜色排好。" },
-    { status: "贴小便签", detail: "{name}把一张小便签贴在树屋扶手上，提醒大家晚上23:50回家。" },
-    { status: "看开园表", detail: "{name}看了看开园表，发现{phaseDetail}" }
+    { status: "贴小便签", detail: "{name}把一张小便签贴在树屋扶手上，提醒大家看当天钟点回家。" },
+    { status: "看开园表", detail: "{name}看了看开园表，发现{phaseDetail}" },
+    { status: "收小拖鞋", detail: "{name}把门口歪掉的小拖鞋摆齐，顺手摸到一张夹在鞋底的纸条。" }
   ],
   carrot_square: [
     { status: "看公告牌", detail: "{name}在胡萝卜广场读公告，公告上写着：{dailyRumor}。" },
     { status: "换纸条", detail: "{name}把{dailyProp}压在公告牌下，顺手取走一张写着海湾方向的纸条。" },
-    { status: "记路牌", detail: "{name}沿着广场路牌重新确认去农场、山路和海湾的方向。" }
+    { status: "记路牌", detail: "{name}沿着广场路牌重新确认去农场、山路和海湾的方向。" },
+    { status: "数小萝卜", detail: "{name}数了数广场边的小萝卜箭头，发现第三个箭头被谁悄悄转了半圈。" }
   ],
   mushroom_cafe: [
     { status: "试新点心", detail: "{name}在蘑菇咖啡馆试了一小口点心，旁边的杯垫写着{phaseLabel}暗号。" },
     { status: "听吧台话", detail: "{name}听见咖啡机旁的低声聊天，正好提到{dailyRumor}。" },
-    { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" }
+    { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" },
+    { status: "擦糖罐", detail: "{name}把糖罐盖擦亮，里面映出一截刚被藏好的路线。" }
   ],
   timothy_farm: [
     { status: "查农具箱", detail: "{name}在提摩西农场检查农具箱，里面夹着一片薄荷糖纸。" },
     { status: "看田埂", detail: "{name}沿田埂看了看脚印，确认这条路会通往齿轮工坊。" },
-    { status: "收小萝卜", detail: "{name}把小萝卜排成箭头，给后面来的兔兔指路。" }
+    { status: "收小萝卜", detail: "{name}把小萝卜排成箭头，给后面来的兔兔指路。" },
+    { status: "拍泥点", detail: "{name}发现田埂泥点排得像省略号，于是把后半句留给下一站。" }
   ],
   gear_workshop: [
     { status: "修慢钟", detail: "{name}在齿轮工坊听慢了两拍的钟，认真把时间重新校准。" },
     { status: "试门铃", detail: "{name}试了试灯塔门铃备用齿轮，声音清脆地滚到台阶下。" },
-    { status: "擦齿轮", detail: "{name}把齿轮擦亮，发现里面映出一小段旧地图线。" }
+    { status: "擦齿轮", detail: "{name}把齿轮擦亮，发现里面映出一小段旧地图线。" },
+    { status: "找小螺丝", detail: "{name}从工作台边捡起一枚小螺丝，发现它刚好卡住慢钟的第三声。" }
   ],
   acorn_library: [
     { status: "查借阅卡", detail: "{name}在橡果图书馆翻到借阅卡，背面的铅笔字指向迷宫。" },
     { status: "摊旧地图", detail: "{name}把旧地图摊开，发现海湾、灯塔和音乐厅被同一条虚线连着。" },
-    { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}旁边的编号，轻轻夹进书签。" }
+    { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}旁边的编号，轻轻夹进书签。" },
+    { status: "吹书页灰", detail: "{name}轻轻吹掉书页灰，灰尘落下时刚好露出半个地点名。" }
   ],
   botanical_garden: [
     { status: "认新叶子", detail: "{name}在植物园认出一片歪成蓝帽子角度的薄荷叶，忍不住多看两眼。" },
     { status: "采花样本", detail: "{name}把花样本装进小纸袋，准备给发带和图鉴都留一份。" },
-    { status: "浇薄荷田", detail: "{name}给薄荷田浇水，水珠在{weatherMood}里亮了一下。" }
+    { status: "浇薄荷田", detail: "{name}给薄荷田浇水，水珠在{weatherMood}里亮了一下。" },
+    { status: "绑植物牌", detail: "{name}把松开的植物牌重新绑好，牌背后写着一行很小的方向。" }
   ],
   rainbow_lake: [
     { status: "比对倒影", detail: "{name}在彩虹湖边比对倒影，发现迷宫纹样在水面上反过来了。" },
     { status: "捡亮贝壳", detail: "{name}捡到一枚会反光的小贝壳，先在袖口上擦了擦。" },
-    { status: "看湖面光", detail: "{name}看湖面把{weatherNote}揉成一条很软的彩带。" }
+    { status: "看湖面光", detail: "{name}看着湖面把今天的光影揉成一条很软的彩带。" },
+    { status: "压住倒影", detail: "{name}用指尖轻轻碰了碰水面，倒影散开前露出一截路标颜色。" }
   ],
   carrot_maze: [
     { status: "描迷宫纹", detail: "{name}在地下胡萝卜迷宫描下一段奇怪纹样，线条最后拐向灯塔。" },
     { status: "数转角", detail: "{name}一边数转角一边做记号，避免把探险写成迷路。" },
-    { status: "找出口箭头", detail: "{name}发现墙边有个小箭头，正好指向旧地图缺口。" }
+    { status: "找出口箭头", detail: "{name}发现墙边有个小箭头，正好指向旧地图缺口。" },
+    { status: "贴面包屑", detail: "{name}把碎纸片贴在转角上，回头看时像一串很小的星座。" }
   ],
   rabbit_mountain: [
     { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，把天气记得更细了一点。" },
     { status: "听远处钟", detail: "{name}在山路上听见工坊慢钟，声音轻轻飘到云里。" },
-    { status: "系风向带", detail: "{name}把风向缎带系在路牌上，给去气象站的兔兔看。" }
+    { status: "系风向带", detail: "{name}把风向缎带系在路牌上，给去气象站的兔兔看。" },
+    { status: "擦山路牌", detail: "{name}把山路牌上的雾擦掉，发现底下还有一层旧箭头。" }
   ],
   weather_station: [
     { status: "记云层", detail: "{name}在云朵气象站记录云层，旁边标注今天是{weatherMood}。" },
     { status: "读雨量杯", detail: "{name}读了读雨量杯，又把数据抄到节目单背面。" },
-    { status: "校风向仪", detail: "{name}校准风向仪，发现指针短短指向香颂音乐厅。" }
+    { status: "校风向仪", detail: "{name}校准风向仪，发现指针短短指向香颂音乐厅。" },
+    { status: "晾小纸条", detail: "{name}把被雨气打湿的小纸条晾在仪器旁，字迹慢慢清楚起来。" }
   ],
   observatory: [
     { status: "调望远镜", detail: "{name}在星光天文台调望远镜，把夜里的路线提前对准。" },
     { status: "画星象纸", detail: "{name}画了一张星象纸条，准备晚上拿去海湾对星光。" },
-    { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" }
+    { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" },
+    { status: "擦镜片", detail: "{name}擦了擦望远镜镜片，镜面里短短闪过灯塔的光。" }
   ],
   shell_bay: [
     { status: "翻小贝壳", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
     { status: "听潮声", detail: "{name}听潮声一下一下推向灯塔方向，脚边沙粒也跟着动。" },
-    { status: "收贝壳光", detail: "{name}把贝壳光收进小盒子，准备带去音乐厅当舞台灵感。" }
+    { status: "收贝壳光", detail: "{name}把贝壳光收进小盒子，准备带去音乐厅当舞台灵感。" },
+    { status: "抖沙口袋", detail: "{name}把口袋里的细沙抖出来，沙粒排成一条弯弯路线。" }
   ],
   lighthouse: [
     { status: "试灯塔铃", detail: "{name}在灯塔门口试门铃，声音一路滚到海湾边。" },
     { status: "擦灯罩", detail: "{name}把灯塔灯罩擦亮，发现光线能照出旧地图的一角。" },
-    { status: "看守小册", detail: "{name}翻开等人认领的小册子，第一页夹着{dailyProp}。" }
+    { status: "看守小册", detail: "{name}翻开等人认领的小册子，第一页夹着{dailyProp}。" },
+    { status: "扶小台阶", detail: "{name}扶正门口有点松的小台阶，台阶缝里藏着半枚票根。" }
   ],
   chanson_hall: [
     { status: "排小演出", detail: "{name}在香颂音乐厅帮忙排小演出，节目单边角闪着贝壳光。" },
     { status: "试开场曲", detail: "{name}听见一段很轻的开场曲，觉得今天的故事终于接上了。" },
-    { status: "摆节目单", detail: "{name}把音乐厅节目单摆整齐，给晚上的兔兔们留好座位。" }
+    { status: "摆节目单", detail: "{name}把音乐厅节目单摆整齐，给晚上的兔兔们留好座位。" },
+    { status: "数座位号", detail: "{name}数了数前排座位号，发现少掉的那张刚好夹在后台门边。" }
   ]
 };
 
@@ -954,11 +1015,13 @@ function generateCharacterDay(char, def, index) {
   const tailOffset = intFor(`${char}:tail-offset`, actionTailsByChar[char].length);
   const birthdaySlot = intFor(`${char}:birthday-slot`, 12);
   const earlyPlan = dailyEarlyRisers.get(char);
+  const regularWakeTick = regularWakeTickFor(char, def, index);
+  const sleepReturnTick = bedtimeReturnTickFor(char, index);
 
-  const sleepEnd = earlyPlan?.wakeTick || def.wakeTick;
+  const sleepEnd = earlyPlan?.wakeTick || regularWakeTick;
   tick = addAction(char, 0, sleepEnd, "困倦", "树屋里睡觉中", decorate(`${def.name}在树屋里睡觉，梦里有{dailyProp}和今天要用的小线索。`, char, def, index), "tree_house");
 
-  if (earlyPlan && earlyPlan.restUntil > tick) {
+  if (earlyPlan && regularWakeTick > tick) {
     tick = addDialogue(char, tick + 4, def.mood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
     dialogueCount += 1;
     const firstTarget = nextDestination(def.route, current, routeIndex);
@@ -971,20 +1034,20 @@ function generateCharacterDay(char, def, index) {
     tick = addDialogue(char, tick + 4, def.mood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
     dialogueCount += 1;
     const backDuration = travelDuration(current, "tree_house");
-    tick = addMove(char, Math.max(tick + 8, earlyPlan.restUntil - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
+    tick = addMove(char, Math.max(tick + 8, regularWakeTick - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
     moveCount += 1;
     current = "tree_house";
-    tick = addAction(char, tick, earlyPlan.restUntil - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
+    tick = addAction(char, tick, regularWakeTick - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
   }
 
-  tick = Math.max(tick, earlyPlan?.restUntil || def.wakeTick);
+  tick = Math.max(tick, regularWakeTick);
   tick = addDialogue(char, tick + 4, def.mood, "准备出门巡游", birthdayText && daysUntilBirthday(runDate, def.birthday) === 0 ? "今天我生日呀。" : dialogueFor(char, def, current, tick + 4, -1, dialogueOffset + 2), current);
   dialogueCount += 1;
 
   const regularMovesNeeded = 43 - moveCount;
   const dialogueExtrasNeeded = def.dialogueTarget - dialogueCount - regularMovesNeeded;
   const loopStart = tick + 8;
-  const available = RETURN_HOME_TICK - loopStart - 80;
+  const available = sleepReturnTick - loopStart - 80;
   const interval = Math.floor(available / regularMovesNeeded);
   if (interval < 40) throw new Error(`Schedule too tight for ${char}`);
 
@@ -1027,13 +1090,15 @@ function generateCharacterDay(char, def, index) {
 
   if (current === "tree_house") {
     const target = nextDestination(def.route, current, routeIndex);
-    const start = Math.min(tick + 8, RETURN_HOME_TICK - travelDuration(target, "tree_house") - travelDuration(current, target) - 2);
+    const start = Math.min(tick + 8, sleepReturnTick - travelDuration(target, "tree_house") - travelDuration(current, target) - 2);
     tick = addMove(char, start, current, target, def.mood, decorate(`${def.name}在睡前又去${locations[target].name}确认最后一个细节，顺手带上{dailyProp}。`, char, def, index));
     moveCount += 1;
     current = target;
   }
 
-  tick = addMove(char, RETURN_HOME_TICK, current, "tree_house", "困倦", decorate(`${def.name}等到23:50才进入回家睡觉阶段，带着{weatherMood}的一天沿道路回到巨树树屋区。`, char, def, index));
+  const finalReturnStart = Math.min(sleepReturnTick, MAX_TICK - travelDuration(current, "tree_house") - 1);
+  const finalSleepClock = formatTickClock(finalReturnStart);
+  tick = addMove(char, finalReturnStart, current, "tree_house", "困倦", decorate(`${def.name}差不多${finalSleepClock}才进入回家睡觉阶段，带着{weatherMood}的一天沿道路回到巨树树屋区。`, char, def, index));
   moveCount += 1;
   current = "tree_house";
   tick = addAction(char, tick, MAX_TICK - tick, "困倦", "树屋里睡觉中", decorate(`${def.name}回到树屋，把{dailyRumor}和今天的故事都收进梦里。`, char, def, index), current);
@@ -1106,7 +1171,13 @@ const memoryNotes = {
     "记得给杰拉德留稀有花，也会把花样本交给晓雪做发带。",
     "记得自己不是迷路，而是在发现新路线。",
     "记得音乐厅开场曲、慢钟和旧地图都可能藏着新花线索。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得清晨如果被选中巡游，要把错过的路牌、节目单和小贝壳补进图鉴。",
+    "记得胡萝卜广场的小萝卜箭头有时会被转半圈，不能只看第一眼。",
+    "记得彩虹湖倒影会把迷宫纹样反过来，要把水面和纸面都画一遍。",
+    "记得灯塔台阶缝、树屋拖鞋底和咖啡馆糖罐都可能藏纸条。",
+    "记得自己生日在3月28日，春天的花样最适合当图鉴封面。",
+    "记得新的睡觉时间每天会有一点偏差，回家前要听当天提醒。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_2: [
     "记得自己喜欢晓雪，也记得“给我劳”会让劳伦斯误会。",
@@ -1116,7 +1187,13 @@ const memoryNotes = {
     "记得晓雪的法语和浓缩咖啡能让自己先冷静解释。",
     "记得公告牌不一定懂自己，但公告线索总能把大家聚到广场。",
     "记得修门铃时要先说明自己说的是手表，不是叫劳伦斯。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得薄荷叶、慢钟、小螺丝和门铃声都可能把自己卷进新误会。",
+    "记得劳伦斯听见“给我劳”会先沉默，所以解释要比玩笑更快。",
+    "记得晓雪让自己慢慢说时，先喝咖啡比继续喊更有用。",
+    "记得小泽会把自己上新闻的瞬间收进咖啡馆闲谈和奶泡。",
+    "记得自己的生日是11月3日，帽檐和薄荷色很适合当天布置。",
+    "记得每天起床和回家时间会有一点浮动，别把钟修得太死。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_3: [
     "记得咖啡馆是Bunnyland情报站，新品要请晓雪拍照。",
@@ -1126,7 +1203,13 @@ const memoryNotes = {
     "记得香颂音乐厅小演出需要提前留甜点和座位。",
     "记得劳伦斯常把甜点打包回北欧，也常听错乔治的口头禅。",
     "记得自己的生日进入远远倒数时，大家会冒出礼物灵感。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得咖啡馆糖罐、杯垫背面和后门甜点订单都适合藏情报。",
+    "记得乔治的薄荷叶和晓雪的新品照片位能让一天热闹起来。",
+    "记得音乐厅节目单如果沾到奶泡，也许反而能留下线索。",
+    "记得Lino的安静照片可以帮自己把传闻变成证据。",
+    "记得自己的生日是7月12日，新品菜单可以提前写一页生日口味。",
+    "记得夜里不一定固定23:50收摊，要看当天兔兔们的回家时间。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_4: [
     "记得自己喜欢乔治，也记得用法语和浓缩咖啡治住他。",
@@ -1136,7 +1219,13 @@ const memoryNotes = {
     "记得乔治解释“给我劳”时需要慢慢说，自己会先把咖啡端稳。",
     "记得气象站、天文台和兔耳山的云影能帮助配色。",
     "记得音乐厅节目单要折整齐，开场曲适合温柔颜色。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得Lino拍街拍时会等自己把发带、裙摆和海湾光都整理好。",
+    "记得小悠米的花样本、雨后玻璃珠和树影书签都可以进色卡。",
+    "记得乔治一急就会把解释说乱，自己可以先递咖啡再让他开口。",
+    "记得劳伦斯误会时不需要急着否认，可以把事实慢慢讲清楚。",
+    "记得自己的生日是10月9日，薄荷绿和浅色发带适合当天。",
+    "记得起床时间每天有小偏差，衣帽间清单要留一点弹性。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_5: [
     "记得小悠米是灵感缪斯，也记得劳伦斯总把自己当弟弟投喂。",
@@ -1146,7 +1235,13 @@ const memoryNotes = {
     "记得小悠米带来的花会让图鉴页亮起来。",
     "记得劳伦斯的加餐阴影可以画成山脉，但自己还是想保持气质。",
     "记得慢钟和门铃声都可以被画进冒险地图。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得咖啡馆招牌、音乐厅座位号和灯塔票根都能变成第二章线索。",
+    "记得小悠米发现贝壳光时，画面要亮一点，别只保持忧郁。",
+    "记得劳伦斯的关心很重，但餐盒可以被画成可靠补给。",
+    "记得彩虹湖倒影、胡萝卜迷宫纹样和兔耳山云影能组成冒险地图。",
+    "记得自己的生日是12月7日，冬天灵感和雪色边框可以提前准备。",
+    "记得睡前回树屋时间会浮动，收画稿要给最后一站留空白。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_6: [
     "记得山东美食很好，也记得乔治的“给我劳”可能只是手表。",
@@ -1156,7 +1251,13 @@ const memoryNotes = {
     "记得胡萝卜广场、提摩西农场和海湾路线要重新确认。",
     "记得晓雪能温柔解释乔治造成的误会。",
     "记得海湾贝壳和音乐厅节目单可以作为圣诞礼物灵感。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得给杰拉德加餐前先看他的表情，不要把关心端得太满。",
+    "记得乔治的手表梗、慢钟和门铃都要分开判断，别又误会。",
+    "记得小泽咖啡馆的甜点订单适合打包回北欧，也适合留给大家。",
+    "记得农场田埂、小萝卜箭头和灯塔台阶都需要稳稳检查。",
+    "记得自己的生日是1月18日，冬天礼物和围巾都可以提前准备。",
+    "记得每日回家睡觉时间会有偏差，太晚时要先确认大家都到齐。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_7: [
     "记得帮晓雪拍发带街拍，也记得拍下乔治向劳伦斯解释现场。",
@@ -1166,16 +1267,41 @@ const memoryNotes = {
     "记得耳朵卷成心形时要先调好曝光。",
     "记得海湾长镜头和灯塔光线可以留给晚上的故事。",
     "记得狗狗朋友会喜欢晓雪发带街拍和海湾光。",
-    "记得这一天一直活动到23:50才开始回树屋睡觉。"
+    "记得自己是男生，撒娇、安静吃瓜和温顺拍照都不改变这点。",
+    "记得小泽杯垫、公告牌和咖啡馆后门订单都适合拍成证据链。",
+    "记得乔治解释、晓雪递咖啡、劳伦斯沉默这三个瞬间要连拍。",
+    "记得小悠米清晨巡游时，自己可以补拍她错过的路牌。",
+    "记得自己的生日是6月2日，刚过不久的祝福还可以留在相册里。",
+    "记得起床与就寝每天有小偏差，镜头时间戳要跟着当天走。",
+    "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ]
 };
 
 const longMemory = `long_term_memory:
 ${Object.entries(memoryNotes).map(([id, notes]) => `  ${id}:
-${notes.map(note => `    - ${note}`).join("\n")}`).join("\n")}
+${notes.slice(0, MEMORY_LIMIT).map(note => `    - ${note}`).join("\n")}`).join("\n")}
 `;
 
-const relationships = `relationships:
+function limitRelationshipYaml(yaml) {
+  let currentRabbit = null;
+  let count = 0;
+  const lines = yaml.trimEnd().split("\n").filter(line => {
+    const owner = line.match(/^  (rabbit_\d+):$/);
+    if (owner) {
+      currentRabbit = owner[1];
+      count = 0;
+      return true;
+    }
+    if (currentRabbit && /^      - /.test(line)) {
+      count += 1;
+      return count <= RELATIONSHIP_LIMIT;
+    }
+    return true;
+  });
+  return `${lines.join("\n")}\n`;
+}
+
+const relationships = limitRelationshipYaml(`relationships:
   rabbit_1:
     rabbit_3:
       - 小悠米容易飞到小泽咖啡馆的糖罐上。
@@ -1186,13 +1312,16 @@ const relationships = `relationships:
     rabbit_5:
       - 小悠米是杰拉德的灵感缪斯。
       - 小悠米找到稀有花、贝壳和地图线索时会想留给杰拉德画。
+      - 杰拉德会把小悠米的清晨巡游和花样本画成冒险章节。
     rabbit_7:
       - Lino会把小悠米在海湾、灯塔和植物园发现的小线索拍下来。
       - 小悠米偶尔清晨出门时，Lino会补拍她错过的路牌和节目单。
+      - Lino会用安静镜头帮小悠米确认自己不是迷路。
   rabbit_2:
     rabbit_6:
       - 乔治喊“给我劳”会让劳伦斯误以为在叫他。
       - 乔治修门铃和讲手表梗时，需要先向劳伦斯解释清楚。
+      - 劳伦斯沉默时，乔治最好先把手表梗说完整。
     rabbit_3:
       - 乔治给小泽咖啡馆友情提供植物园薄荷。
       - 小泽常把乔治吃瘪的表情做成咖啡奶泡。
@@ -1200,6 +1329,7 @@ const relationships = `relationships:
     rabbit_4:
       - 乔治喜欢晓雪，也只有晓雪能治住他。
       - 晓雪会用法语和浓缩咖啡让乔治慢慢解释。
+      - 晓雪递咖啡时，乔治会短暂收起调皮劲。
   rabbit_3:
     rabbit_5:
       - 小泽咖啡馆的招牌是杰拉德画的。
@@ -1207,6 +1337,7 @@ const relationships = `relationships:
     rabbit_7:
       - 小泽知道Lino总能拍到最关键的吃瓜现场。
       - 小泽会把杯垫背面的线索留给Lino拍成证据。
+      - Lino拍到的安静证据常被小泽整理成咖啡馆情报。
     rabbit_4:
       - 小泽推出新品时总邀请晓雪拍照推广。
       - 小泽会给晓雪预留新品照片位和温柔灯光。
@@ -1214,6 +1345,7 @@ const relationships = `relationships:
     rabbit_7:
       - 晓雪经常请Lino拍发带穿搭街拍照。
       - Lino会帮晓雪记录发带、海湾光和音乐厅节目单。
+      - Lino是男生，晓雪习惯把他的温顺镜头当作可靠街拍。
     rabbit_6:
       - 晓雪知道劳伦斯误会乔治时需要一点温柔解释。
       - 晓雪尊重劳伦斯照顾大家，也会提醒他别让误会变重。
@@ -1227,6 +1359,7 @@ const relationships = `relationships:
     rabbit_6:
       - 杰拉德被劳伦斯当亲弟弟过度保护和投喂。
       - 杰拉德想保持忧郁气质时，会悄悄躲开劳伦斯加餐。
+      - 劳伦斯的餐盒对杰拉德既是补给，也是需要适量的压力。
     rabbit_3:
       - 杰拉德给小泽咖啡馆设计了招牌。
       - 杰拉德会从小泽咖啡馆听来的情报里找第二章灵感。
@@ -1240,6 +1373,7 @@ const relationships = `relationships:
     rabbit_5:
       - 劳伦斯把杰拉德当亲弟弟照顾。
       - 劳伦斯会给杰拉德准备餐盒和礼物，但需要记得适量。
+      - 杰拉德保持忧郁气质时，劳伦斯要先问再投喂。
     rabbit_3:
       - 劳伦斯圣诞节会打包小泽咖啡馆甜点回北欧。
       - 小泽会帮劳伦斯预留适合打包的甜点和节目单灵感。
@@ -1249,13 +1383,14 @@ const relationships = `relationships:
     rabbit_4:
       - Lino常帮晓雪拍发带穿搭街拍。
       - Lino会把晓雪的发带、薄荷色和海湾光拍得很温柔。
+      - 晓雪知道Lino是温顺男生，会放心请他记录穿搭细节。
     rabbit_3:
       - Lino会在小泽咖啡馆安静整理吃瓜照片。
       - Lino会把小泽杯垫、公告牌和节目单拍成安静证据。
     rabbit_2:
       - Lino拍到过乔治向劳伦斯解释“给我劳”的现场。
       - Lino常用镜头记录乔治解释、晓雪递咖啡和劳伦斯误会的瞬间。
-`;
+`);
 
 fs.writeFileSync(path.join(root, "scaffold/memory/long_memory.yaml"), longMemory);
 fs.writeFileSync(path.join(root, "scaffold/memory/relationships.yaml"), relationships);
