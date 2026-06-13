@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI剧剧场 - 24小时像素剧场</title>
+  <title>兔兔王国 - BunnyLand</title>
+  <link rel="icon" type="image/png" href="assets/characters/george-v3-stage.png" />
   <style>
     :root {
       --stage-w: 800px;
@@ -558,7 +559,7 @@
       border: 0;
       border-radius: 6px;
       background:
-        var(--status-sprite, none) center bottom / contain no-repeat,
+        var(--status-sprite, none) center bottom / auto var(--status-sprite-height, 28px) no-repeat,
         radial-gradient(circle at 50% 76%, rgba(255,255,255,0.88) 0 58%, transparent 59%),
         var(--char-color);
       image-rendering: pixelated;
@@ -2609,6 +2610,7 @@
         card.style.setProperty("--char-color", charData.color);
         if (charData.sprite?.src) {
           card.style.setProperty("--status-sprite", `url("${charData.sprite.src}")`);
+          card.style.setProperty("--status-sprite-height", `${Math.min(28, charData.sprite.height)}px`);
         }
         card.innerHTML = `
           <div class="status-avatar" aria-hidden="true"></div>
