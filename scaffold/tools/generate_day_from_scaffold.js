@@ -386,6 +386,32 @@ const sharedProps = [
   "半截风向牌"
 ];
 
+const tinyMesses = [
+  "纸角被风掀起又按回去",
+  "杯沿轻轻响了一下",
+  "路牌灰被蹭掉半指宽",
+  "口袋里的贝壳碰到钥匙扣",
+  "小票根粘在爪垫边",
+  "铅笔芯忽然短了一截",
+  "薄荷叶贴在本子封面",
+  "节目单边缘翘起来",
+  "门铃声滚过半条路",
+  "树影正好盖住脚尖"
+];
+
+const routeTails = [
+  "路边有一小截纸条贴在石缝里。",
+  "风把身后的脚印吹淡了一点。",
+  "转角处的路牌轻轻晃了两下。",
+  "一枚小贝壳在路边亮了一瞬。",
+  "草叶擦过包带，发出很轻的沙沙声。",
+  "远处慢钟响得不太准，像少数了一拍。",
+  "咖啡香从另一条路拐过来，又很快散掉。",
+  "树屋方向的灯还没完全暗下去。",
+  "脚边的小萝卜箭头像是刚被摆正。",
+  "有张节目单被压在石头下面，只露出一角。"
+];
+
 function parseBirthday(text) {
   const match = text.match(/^(\d{1,2})月(\d{1,2})日$/);
   if (!match) return null;
@@ -632,7 +658,7 @@ const locationActivities = {
     { status: "整理背包", detail: "{name}在树屋门口清点{dailyProp}，把皱角纸条按颜色排好。" },
     { status: "贴小便签", detail: "{name}把一张小便签贴在树屋扶手上，提醒大家看当天钟点回家。" },
     { status: "看开园表", detail: "{name}看了看开园表，发现{phaseDetail}" },
-    { status: "收小拖鞋", detail: "{name}把门口歪掉的小拖鞋摆齐，顺手摸到一张夹在鞋底的纸条。" }
+    { status: "收小拖鞋", detail: "{name}把门口歪掉的小拖鞋摆齐，顺手摸到一张夹在鞋底的纸条，旁边{tinyMess}。" }
   ],
   carrot_square: [
     { status: "看公告牌", detail: "{name}在胡萝卜广场读公告，公告上写着：{dailyRumor}。" },
@@ -644,7 +670,7 @@ const locationActivities = {
     { status: "试新点心", detail: "{name}在蘑菇咖啡馆试了一小口点心，旁边的杯垫写着{phaseLabel}暗号。" },
     { status: "听吧台话", detail: "{name}听见咖啡机旁的低声聊天，正好提到{dailyRumor}。" },
     { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" },
-    { status: "擦糖罐", detail: "{name}把糖罐盖擦亮，里面映出一截刚被藏好的路线。" }
+    { status: "擦糖罐", detail: "{name}把糖罐盖擦亮，里面映出一截刚被藏好的路线，吧台边{tinyMess}。" }
   ],
   timothy_farm: [
     { status: "查农具箱", detail: "{name}在提摩西农场检查农具箱，里面夹着一片薄荷糖纸。" },
@@ -656,13 +682,13 @@ const locationActivities = {
     { status: "修慢钟", detail: "{name}在齿轮工坊听慢了两拍的钟，认真把时间重新校准。" },
     { status: "试门铃", detail: "{name}试了试灯塔门铃备用齿轮，声音清脆地滚到台阶下。" },
     { status: "擦齿轮", detail: "{name}把齿轮擦亮，发现里面映出一小段旧地图线。" },
-    { status: "找小螺丝", detail: "{name}从工作台边捡起一枚小螺丝，发现它刚好卡住慢钟的第三声。" }
+    { status: "找小螺丝", detail: "{name}从工作台边捡起一枚小螺丝，发现它刚好卡住慢钟的第三声，地上{tinyMess}。" }
   ],
   acorn_library: [
     { status: "查借阅卡", detail: "{name}在橡果图书馆翻到借阅卡，背面的铅笔字指向迷宫。" },
     { status: "摊旧地图", detail: "{name}把旧地图摊开，发现海湾、灯塔和音乐厅被同一条虚线连着。" },
     { status: "找索引页", detail: "{name}在索引页里找到{dailyProp}旁边的编号，轻轻夹进书签。" },
-    { status: "吹书页灰", detail: "{name}轻轻吹掉书页灰，灰尘落下时刚好露出半个地点名。" }
+    { status: "吹书页灰", detail: "{name}轻轻吹掉书页灰，灰尘落下时刚好露出半个地点名，书桌上{tinyMess}。" }
   ],
   botanical_garden: [
     { status: "认新叶子", detail: "{name}在植物园认出一片歪成蓝帽子角度的薄荷叶，忍不住多看两眼。" },
@@ -674,13 +700,13 @@ const locationActivities = {
     { status: "比对倒影", detail: "{name}在彩虹湖边比对倒影，发现迷宫纹样在水面上反过来了。" },
     { status: "捡亮贝壳", detail: "{name}捡到一枚会反光的小贝壳，先在袖口上擦了擦。" },
     { status: "看湖面光", detail: "{name}看着湖面把今天的光影揉成一条很软的彩带。" },
-    { status: "压住倒影", detail: "{name}用指尖轻轻碰了碰水面，倒影散开前露出一截路标颜色。" }
+    { status: "压住倒影", detail: "{name}用指尖轻轻碰了碰水面，倒影散开前露出一截路标颜色，湖边{tinyMess}。" }
   ],
   carrot_maze: [
     { status: "描迷宫纹", detail: "{name}在地下胡萝卜迷宫描下一段奇怪纹样，线条最后拐向灯塔。" },
     { status: "数转角", detail: "{name}一边数转角一边做记号，避免把探险写成迷路。" },
     { status: "找出口箭头", detail: "{name}发现墙边有个小箭头，正好指向旧地图缺口。" },
-    { status: "贴面包屑", detail: "{name}把碎纸片贴在转角上，回头看时像一串很小的星座。" }
+    { status: "贴面包屑", detail: "{name}把碎纸片贴在转角上，回头看时像一串很小的星座，墙边{tinyMess}。" }
   ],
   rabbit_mountain: [
     { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，把天气记得更细了一点。" },
@@ -710,7 +736,7 @@ const locationActivities = {
     { status: "试灯塔铃", detail: "{name}在灯塔门口试门铃，声音一路滚到海湾边。" },
     { status: "擦灯罩", detail: "{name}把灯塔灯罩擦亮，发现光线能照出旧地图的一角。" },
     { status: "看守小册", detail: "{name}翻开等人认领的小册子，第一页夹着{dailyProp}。" },
-    { status: "扶小台阶", detail: "{name}扶正门口有点松的小台阶，台阶缝里藏着半枚票根。" }
+    { status: "扶小台阶", detail: "{name}扶正门口有点松的小台阶，台阶缝里藏着半枚票根，门边{tinyMess}。" }
   ],
   chanson_hall: [
     { status: "排小演出", detail: "{name}在香颂音乐厅帮忙排小演出，节目单边角闪着贝壳光。" },
@@ -821,6 +847,7 @@ function decorate(text, char, def, index, extra = {}) {
     weatherNote: dailyContext.weather.note,
     dailyProp: dailyContext.prop,
     dailyRumor: extra.dailyRumor || pickFor(`rumor:${char}:${index}:${text}:${extra.phaseLabel || ""}:${extra.place || ""}`, dailyRumors),
+    tinyMess: pickFor(`tiny-mess:${char}:${index}:${text}:${extra.phaseLabel || ""}`, tinyMesses),
     birthdayNote: birthdayNote(def),
     phaseLabel: extra.phaseLabel || "",
     phaseDetail: extra.phaseDetail || "",
@@ -856,7 +883,12 @@ const groundedTails = [
   "贝壳在口袋里轻轻磕了一下。",
   "慢钟又晚了一拍，大家都假装没听见。",
   "铅笔头被转了半圈，才继续写下去。",
-  "发带尾巴被重新抚平。"
+  "发带尾巴被重新抚平。",
+  "旁边谁也没说话，只把那行字又看了一遍。",
+  "小纸片在桌面上滑了半寸才停下。",
+  "影子压过脚边，又慢慢退回去。",
+  "这件事很小，却被认真记到了页角。",
+  "空气里留着一点刚刚发生过的声音。"
 ];
 
 const groundedTailsByChar = {
@@ -900,6 +932,10 @@ const groundedTailsByChar = {
 function groundedTail(seed, char) {
   const pool = [...(groundedTailsByChar[char] || []), ...groundedTails];
   return pickFor(seed, pool);
+}
+
+function routeTail(seed) {
+  return pickFor(seed, routeTails);
 }
 
 function locationAction(char, def, location, tick, index, i) {
@@ -988,6 +1024,7 @@ function addDialogue(char, start, mood, status, text, location) {
 
 function addMove(char, start, from, to, mood, detail) {
   const duration = travelDuration(from, to);
+  const travelDetail = `${detail}${routeTail(`${char}:route-tail:${from}:${to}:${start}`)}`;
   push({
     start_tick: start,
     end_tick: start + duration,
@@ -997,7 +1034,7 @@ function addMove(char, start, from, to, mood, detail) {
     to,
     mood,
     status: `沿路前往${locations[to].short}`,
-    detail
+    detail: travelDetail
   });
   return start + duration;
 }
@@ -1177,6 +1214,7 @@ const memoryNotes = {
     "记得灯塔台阶缝、树屋拖鞋底和咖啡馆糖罐都可能藏纸条。",
     "记得自己生日在3月28日，春天的花样最适合当图鉴封面。",
     "记得新的睡觉时间每天会有一点偏差，回家前要听当天提醒。",
+    "记得自己在清晨去过香颂音乐厅，节目单边角的贝壳光适合贴进图鉴。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_2: [
@@ -1193,6 +1231,7 @@ const memoryNotes = {
     "记得小泽会把自己上新闻的瞬间收进咖啡馆闲谈和奶泡。",
     "记得自己的生日是11月3日，帽檐和薄荷色很适合当天布置。",
     "记得每天起床和回家时间会有一点浮动，别把钟修得太死。",
+    "记得自己在工坊捡到过卡住慢钟第三声的小螺丝，解释手表梗前要先看钟。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_3: [
@@ -1209,6 +1248,7 @@ const memoryNotes = {
     "记得Lino的安静照片可以帮自己把传闻变成证据。",
     "记得自己的生日是7月12日，新品菜单可以提前写一页生日口味。",
     "记得夜里不一定固定23:50收摊，要看当天兔兔们的回家时间。",
+    "记得自己的生日远远倒数开始时，咖啡馆情报等级会悄悄升一格。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_4: [
@@ -1225,6 +1265,7 @@ const memoryNotes = {
     "记得劳伦斯误会时不需要急着否认，可以把事实慢慢讲清楚。",
     "记得自己的生日是10月9日，薄荷绿和浅色发带适合当天。",
     "记得起床时间每天有小偏差，衣帽间清单要留一点弹性。",
+    "记得风向带、发带尾巴和节目单纸角都要按回原处，画面才会温柔。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_5: [
@@ -1241,6 +1282,7 @@ const memoryNotes = {
     "记得彩虹湖倒影、胡萝卜迷宫纹样和兔耳山云影能组成冒险地图。",
     "记得自己的生日是12月7日，冬天灵感和雪色边框可以提前准备。",
     "记得睡前回树屋时间会浮动，收画稿要给最后一站留空白。",
+    "记得座位号、碎纸片星座和糖罐倒影都能被画成第二章的入口。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_6: [
@@ -1257,6 +1299,7 @@ const memoryNotes = {
     "记得农场田埂、小萝卜箭头和灯塔台阶都需要稳稳检查。",
     "记得自己的生日是1月18日，冬天礼物和围巾都可以提前准备。",
     "记得每日回家睡觉时间会有偏差，太晚时要先确认大家都到齐。",
+    "记得田埂泥点像省略号，慢钟第三声和门铃声都要分开检查。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_7: [
@@ -1273,6 +1316,7 @@ const memoryNotes = {
     "记得小悠米清晨巡游时，自己可以补拍她错过的路牌。",
     "记得自己的生日是6月2日，刚过不久的祝福还可以留在相册里。",
     "记得起床与就寝每天有小偏差，镜头时间戳要跟着当天走。",
+    "记得灯塔灯罩、望远镜镜片和发带尾巴都能反光，拍照前要先调曝光。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ]
 };
@@ -1326,6 +1370,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 乔治给小泽咖啡馆友情提供植物园薄荷。
       - 小泽常把乔治吃瘪的表情做成咖啡奶泡。
       - 小泽会把乔治“又上新闻”的小插曲收进咖啡馆闲谈。
+      - 小泽生日倒数时，乔治的薄荷和吃瘪脸都会变成新品灵感。
     rabbit_4:
       - 乔治喜欢晓雪，也只有晓雪能治住他。
       - 晓雪会用法语和浓缩咖啡让乔治慢慢解释。
@@ -1338,6 +1383,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 小泽知道Lino总能拍到最关键的吃瓜现场。
       - 小泽会把杯垫背面的线索留给Lino拍成证据。
       - Lino拍到的安静证据常被小泽整理成咖啡馆情报。
+      - Lino的照片会帮小泽把零散传闻排成可讲的顺序。
     rabbit_4:
       - 小泽推出新品时总邀请晓雪拍照推广。
       - 小泽会给晓雪预留新品照片位和温柔灯光。
@@ -1346,6 +1392,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 晓雪经常请Lino拍发带穿搭街拍照。
       - Lino会帮晓雪记录发带、海湾光和音乐厅节目单。
       - Lino是男生，晓雪习惯把他的温顺镜头当作可靠街拍。
+      - 晓雪整理发带尾巴时，Lino会等光线稳定再按快门。
     rabbit_6:
       - 晓雪知道劳伦斯误会乔治时需要一点温柔解释。
       - 晓雪尊重劳伦斯照顾大家，也会提醒他别让误会变重。
@@ -1360,6 +1407,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 杰拉德被劳伦斯当亲弟弟过度保护和投喂。
       - 杰拉德想保持忧郁气质时，会悄悄躲开劳伦斯加餐。
       - 劳伦斯的餐盒对杰拉德既是补给，也是需要适量的压力。
+      - 杰拉德把劳伦斯的加餐阴影画成山脉，也会把餐盒画成补给。
     rabbit_3:
       - 杰拉德给小泽咖啡馆设计了招牌。
       - 杰拉德会从小泽咖啡馆听来的情报里找第二章灵感。
