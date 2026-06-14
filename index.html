@@ -2691,7 +2691,9 @@
       stageResizeObserver.observe(stage.parentElement);
       window.addEventListener("resize", updateStageScale);
       resetStateToTick(systemTimeToTick());
-      appendLog(`已按系统时间从 ${formatTickTime(currentTick, true)} / Tick ${currentTick} 开始播放。`, currentTick);
+      if (DEBUG_ENABLED) {
+        appendLog(`已按系统时间从 ${formatTickTime(currentTick, true)} / Tick ${currentTick} 开始播放。`, currentTick);
+      }
     }
 
     init();
