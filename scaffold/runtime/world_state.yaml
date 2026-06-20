@@ -1,3 +1,46 @@
-day_id: Day_001
-weather: 晴
-season: 春
+day_id: 2026-06-21
+weather: 初夏晴间多云
+season: 初夏
+
+seasonal_world:
+  rainbow_lake:
+    - 荷花开始沿湖畔开放，清晨花瓣上会留一点露水。
+    - 兔兔们会相约赏荷、画荷花、收集倒影和湖风。
+  rabbit_mountain:
+    - 森林进入郁郁葱葱的初夏，树荫明显变深。
+    - 兔兔们偶尔结伴露营、溯溪、野餐和观星。
+  group_activities:
+    - 露营
+    - 溯溪
+    - 赏荷
+    - 观星
+
+world_cup_2026:
+  status: 小组赛进行中
+  tournament_dates: 2026-06-11 至 2026-07-19
+  evening_watch_location: mushroom_cafe
+  watch_party_note: 蘑菇咖啡馆夜间会收起部分甜点桌，变成一起看球和讨论比赛的地方。
+  verified_through: 2026-06-19
+  confirmed_results:
+    - date: 2026-06-19
+      match: 巴西 3-0 海地
+    - date: 2026-06-19
+      match: 美国 2-0 澳大利亚
+      note: 美国提前晋级淘汰赛。
+    - date: 2026-06-14
+      match: 荷兰 2-2 日本
+    - date: 2026-06-15
+      match: 比利时 1-1 埃及
+  pending_fixtures:
+    - date: 2026-06-20
+      matches: [德国 vs 科特迪瓦, 厄瓜多尔 vs 库拉索, 荷兰 vs 瑞典, 突尼斯 vs 日本]
+    - date: 2026-06-21
+      matches: [乌拉圭 vs 佛得角, 西班牙 vs 沙特, 比利时 vs 伊朗, 新西兰 vs 埃及]
+  supporters:
+    rabbit_1: { team: 巴西, reason: 喜欢鲜艳球衣、自由进攻和像旅行一样展开的比赛。 }
+    rabbit_2: { team: 美国, reason: 喜欢主场气氛、快速推进和赢球后很有派头的庆祝。 }
+    rabbit_3: { team: 比利时, reason: 喜欢巧克力、咖啡和低调但讲究的比赛气质。 }
+    rabbit_4: { team: 法国, reason: 法语和法式审美让她自然支持法国。 }
+    rabbit_5: { team: 荷兰, reason: 喜欢荷兰绘画传统、橙色看台和富有想象力的进攻。 }
+    rabbit_6: { team: 挪威, reason: 来自北欧，会沉稳地支持挪威。 }
+    rabbit_7: { team: 日本, reason: 欣赏细腻配合、纪律和安静坚持到最后的韧性。 }
