@@ -553,6 +553,85 @@ const dailyContext = {
   prop: pickFor("prop", sharedProps)
 };
 
+const worldCupProfiles = {
+  rabbit_1: {
+    team: "巴西",
+    reactionMood: "雀跃",
+    latestResult: "巴西3比0战胜海地",
+    reaction: "她把三个进球画成三朵开得很亮的小花。",
+    dialogues: ["巴西进了三球呀。", "这比分像三朵花。", "黄绿色很好看。"]
+  },
+  rabbit_2: {
+    team: "美国",
+    reactionMood: "得意",
+    latestResult: "美国2比0战胜澳大利亚并提前晋级",
+    reaction: "他把蓝帽子扶得更正，今天走路都比平时神气一点。",
+    dialogues: ["美国队提前晋级啦。", "二比零，很有派头。", "主场声音真大。"]
+  },
+  rabbit_3: {
+    team: "比利时",
+    reactionMood: "期待",
+    latestResult: "比利时首战1比1战平埃及",
+    upcoming: "6月21日对阵伊朗",
+    reaction: "他把平局写在杯垫背面，给下一场留出一整行。",
+    dialogues: ["比利时下一场要稳。", "一比一先记杯垫。", "今晚给红魔留甜点。"]
+  },
+  rabbit_4: {
+    team: "法国",
+    reactionMood: "从容",
+    upcoming: "6月22日对阵伊拉克",
+    reaction: "她把法国队的赛程夹进发带色卡，用法语轻声点评阵形。",
+    dialogues: ["Allez les Bleus.", "法国队要慢慢组织。", "先看阵形，再吐槽。"]
+  },
+  rabbit_5: {
+    team: "荷兰",
+    reactionMood: "忐忑",
+    latestResult: "荷兰首战2比2战平日本",
+    pending: "6月20日对阵瑞典的赛果尚待确认",
+    reaction: "他觉得两次领先又被追平很适合画成一张橙色的忧郁双页。",
+    dialogues: ["二比二很适合双页。", "橙色也可以忧郁。", "等赛果确认再落笔。"]
+  },
+  rabbit_6: {
+    team: "挪威",
+    reactionMood: "沉稳",
+    upcoming: "6月22日对阵塞内加尔",
+    reaction: "他提前把看球零食、围巾和战术纸分开放好。",
+    dialogues: ["挪威下一场要稳。", "零食和战术分开放。", "先别急着下结论。"]
+  },
+  rabbit_7: {
+    team: "日本",
+    reactionMood: "振奋",
+    latestResult: "日本首战2比2战平荷兰",
+    pending: "6月20日对阵突尼斯的赛果尚待确认",
+    reaction: "他反复看了绝平前后的照片，觉得坚持到最后的光线最难拍。",
+    dialogues: ["二比二追得很漂亮。", "日本队坚持到最后。", "赛果确认后再整理。"]
+  }
+};
+
+const worldCupFixtures = {
+  "2026-06-20": ["德国对科特迪瓦", "厄瓜多尔对库拉索", "荷兰对瑞典", "突尼斯对日本"],
+  "2026-06-21": ["乌拉圭对佛得角", "西班牙对沙特", "比利时对伊朗", "新西兰对埃及"]
+};
+
+const summerGroupDialogues = [
+  "荷花开到湖边啦。",
+  "下午去溯溪吗。",
+  "露营灯记得带。",
+  "兔耳山树荫变深了。",
+  "今晚看完球再观星。",
+  "溪水边要慢慢走。"
+];
+
+function worldCupText(char) {
+  const profile = worldCupProfiles[char];
+  const parts = [profile.latestResult, profile.upcoming, profile.pending].filter(Boolean);
+  return parts.join("；");
+}
+
+function moodFor(char, fallback) {
+  return worldCupProfiles[char]?.reactionMood || fallback;
+}
+
 function dailyDetail(seed, fragments) {
   return pickFor(seed, fragments);
 }
@@ -771,7 +850,10 @@ const locationActivities = {
     { status: "试新点心", detail: "{name}在蘑菇咖啡馆试了一小口点心，旁边的杯垫写着{phaseLabel}暗号，{handMotion}。" },
     { status: "听吧台话", detail: "{name}听见咖啡机旁的低声聊天，正好提到{dailyRumor}。" },
     { status: "盖咖啡章", detail: "{name}在节目单角落盖了咖啡印章，香味一路飘到广场。" },
-    { status: "擦糖罐", detail: "{name}把糖罐盖擦亮，里面映出一截刚被藏好的路线，吧台边{tinyMess}。" }
+    { status: "擦糖罐", detail: "{name}把糖罐盖擦亮，里面映出一截刚被藏好的路线，吧台边{tinyMess}。" },
+    { status: "布置看球桌", detail: "{name}把咖啡馆晚上的桌子朝投影方向挪好，为支持的{team}留下一张小旗。" },
+    { status: "讨论世界杯", detail: "{name}和大家核对世界杯消息：{footballUpdate}。{footballReaction}" },
+    { status: "准备看球点心", detail: "{name}给夜间看球准备点心，杯垫上写着今天的赛程：{fixtureList}。" }
   ],
   timothy_farm: [
     { status: "查农具箱", detail: "{name}在提摩西农场检查农具箱，里面夹着一片薄荷糖纸，{handMotion}。" },
@@ -801,7 +883,9 @@ const locationActivities = {
     { status: "比对倒影", detail: "{name}在彩虹湖边比对倒影，发现迷宫纹样在水面上反过来了。" },
     { status: "捡亮贝壳", detail: "{name}捡到一枚会反光的小贝壳，先在袖口上擦了擦，{handMotion}。" },
     { status: "看湖面光", detail: "{name}看着湖面把今天的光影揉成一条很软的彩带。" },
-    { status: "压住倒影", detail: "{name}用指尖轻轻碰了碰水面，倒影散开前露出一截路标颜色，湖边{tinyMess}。" }
+    { status: "压住倒影", detail: "{name}用指尖轻轻碰了碰水面，倒影散开前露出一截路标颜色，湖边{tinyMess}。" },
+    { status: "看初夏荷花", detail: "{name}沿彩虹湖畔慢慢看新开的荷花，花瓣上的露水还没有完全干。" },
+    { status: "约大家赏荷", detail: "{name}在湖边给大家留下一张赏荷便签，约好傍晚一起看荷花倒影。" }
   ],
   carrot_maze: [
     { status: "描迷宫纹", detail: "{name}在地下胡萝卜迷宫描下一段奇怪纹样，线条最后拐向灯塔。" },
@@ -813,7 +897,10 @@ const locationActivities = {
     { status: "看山路云", detail: "{name}在兔耳山看云影经过山路，把天气记得更细了一点。" },
     { status: "听远处钟", detail: "{name}在山路上听见工坊慢钟，声音轻轻飘到云里。" },
     { status: "系风向带", detail: "{name}把风向缎带系在路牌上，给去气象站的兔兔看。" },
-    { status: "擦山路牌", detail: "{name}把山路牌上的雾擦掉，发现底下还有一层旧箭头，{handMotion}。" }
+    { status: "擦山路牌", detail: "{name}把山路牌上的雾擦掉，发现底下还有一层旧箭头，{handMotion}。" },
+    { status: "踩初夏溪水", detail: "{name}和同伴沿森林里的浅溪慢慢走，树荫已经浓得盖住半条水面。" },
+    { status: "选露营空地", detail: "{name}在郁郁葱葱的森林边挑了一块平整空地，准备下次一起露营。" },
+    { status: "整理露营绳", detail: "{name}把露营绳和小灯分开放好，约大家看完球再上山观星。" }
   ],
   weather_station: [
     { status: "记云层", detail: "{name}在云朵气象站记录云层，旁边标注今天是{weatherMood}。" },
@@ -825,7 +912,8 @@ const locationActivities = {
     { status: "调望远镜", detail: "{name}在星光天文台调望远镜，把夜里的路线提前对准。" },
     { status: "画星象纸", detail: "{name}画了一张星象纸条，准备晚上拿去海湾对星光。" },
     { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" },
-    { status: "擦镜片", detail: "{name}擦了擦望远镜镜片，镜面里短短闪过灯塔的光，{handMotion}。" }
+    { status: "擦镜片", detail: "{name}擦了擦望远镜镜片，镜面里短短闪过灯塔的光，{handMotion}。" },
+    { status: "约夜间观星", detail: "{name}把初夏观星时间写在纸条上，约大家看完世界杯后再来天文台。" }
   ],
   shell_bay: [
     { status: "翻小贝壳", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
@@ -942,6 +1030,7 @@ function travelDuration(from, to) {
 }
 
 function decorate(text, char, def, index, extra = {}) {
+  const football = worldCupProfiles[char];
   return template(text, {
     name: def.name,
     weatherMood: dailyContext.weather.mood,
@@ -950,6 +1039,10 @@ function decorate(text, char, def, index, extra = {}) {
     dailyRumor: extra.dailyRumor || pickFor(`rumor:${char}:${index}:${text}:${extra.phaseLabel || ""}:${extra.place || ""}`, dailyRumors),
     tinyMess: pickFor(`tiny-mess:${char}:${index}:${text}:${extra.phaseLabel || ""}`, tinyMesses),
     handMotion: pickFor(`hand-motion:${char}:${index}:${text}:${extra.phaseLabel || ""}`, handMotions),
+    team: football.team,
+    footballUpdate: worldCupText(char),
+    footballReaction: football.reaction,
+    fixtureList: (worldCupFixtures[runDate] || []).join("、"),
     birthdayNote: birthdayNote(def),
     phaseLabel: extra.phaseLabel || "",
     phaseDetail: extra.phaseDetail || "",
@@ -975,6 +1068,7 @@ function phaseContext(tick, seed) {
 }
 
 const actionUseCount = new Map();
+const worldCupWatchUseCount = new Map();
 const groundedTails = [
   "旁边的小杯子轻轻碰了一下桌沿。",
   "纸角被风掀起，又被轻轻按了回去。",
@@ -1049,8 +1143,16 @@ function routeTail(seed) {
 
 function locationAction(char, def, location, tick, index, i) {
   const phase = phaseContext(tick, `${char}:${i}:${location}`);
-  const options = locationActivities[location] || [];
-  const useLocation = options.length && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72;
+  const allOptions = locationActivities[location] || [];
+  const isNightCafe = location === "mushroom_cafe" && phase.phase === "night";
+  const watchCount = worldCupWatchUseCount.get(char) || 0;
+  const preferWorldCup = isNightCafe && (watchCount === 0 || intFor(`${char}:extra-world-cup-watch:${i}`, 100) < 28);
+  const isWorldCupOption = option => ["布置看球桌", "讨论世界杯", "准备看球点心"].includes(option.status);
+  const options = preferWorldCup
+    ? allOptions.filter(isWorldCupOption)
+    : (location === "mushroom_cafe" ? allOptions.filter(option => !isWorldCupOption(option)) : allOptions);
+  const forceNightWatch = isNightCafe && watchCount === 0;
+  const useLocation = options.length && (forceNightWatch || intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72);
   if (!useLocation) return null;
   const start = intFor(`${char}:loc-action:${location}:${i}`, options.length);
   const decorated = options.map((option, optionIndex) => ({
@@ -1061,6 +1163,9 @@ function locationAction(char, def, location, tick, index, i) {
   decorated.sort((a, b) => (actionUseCount.get(a.detail) || 0) - (actionUseCount.get(b.detail) || 0) || a.index - b.index);
   const selected = decorated[0];
   actionUseCount.set(selected.detail, (actionUseCount.get(selected.detail) || 0) + 1);
+  if (isWorldCupOption(selected)) {
+    worldCupWatchUseCount.set(char, watchCount + 1);
+  }
   return selected;
 }
 
@@ -1073,6 +1178,8 @@ function dialogueFor(char, def, location, tick, i, offset) {
     ...def.dialogues,
     ...(charExtraDialogues[char] || []),
     ...(characterWhispers[char] || []),
+    ...(worldCupProfiles[char]?.dialogues || []),
+    ...summerGroupDialogues,
     ...(locationWhispers[location] || []),
     ...(locationDialogues[location] || []),
     ...(phaseBeats[phase]?.dialogues || []),
@@ -1158,6 +1265,7 @@ function addMove(char, start, from, to, mood, detail) {
 function generateCharacterDay(char, def, index) {
   let current = "tree_house";
   let tick = 0;
+  const dailyMood = moodFor(char, def.mood);
   let routeIndex = index + intFor(`${char}:route-offset`, def.route.length);
   let dialogueCount = 0;
   let moveCount = 0;
@@ -1175,16 +1283,16 @@ function generateCharacterDay(char, def, index) {
   tick = addAction(char, 0, sleepEnd, "困倦", "树屋里睡觉中", decorate(`${def.name}在树屋里睡觉，梦里有{dailyProp}和今天要用的小线索。`, char, def, index), "tree_house");
 
   if (earlyPlan && regularWakeTick > tick) {
-    tick = addDialogue(char, tick + 4, def.mood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
+    tick = addDialogue(char, tick + 4, dailyMood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
     dialogueCount += 1;
     const firstTarget = nextDestination(def.route, current, routeIndex);
     routeIndex += 1;
-    tick = addMove(char, tick + 4, current, firstTarget, def.mood, decorate(`${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。{phaseDetail}`, char, def, index, phaseContext(tick + 4, `${char}:early`)));
+    tick = addMove(char, tick + 4, current, firstTarget, dailyMood, decorate(`${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。{phaseDetail}`, char, def, index, phaseContext(tick + 4, `${char}:early`)));
     moveCount += 1;
     current = firstTarget;
     const earlyLocationAction = locationAction(char, def, current, tick, index, -2);
-    tick = addAction(char, tick, 28, def.mood, earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length], earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)), current);
-    tick = addDialogue(char, tick + 4, def.mood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
+    tick = addAction(char, tick, 28, dailyMood, earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length], earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)), current);
+    tick = addDialogue(char, tick + 4, dailyMood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
     dialogueCount += 1;
     const backDuration = travelDuration(current, "tree_house");
     tick = addMove(char, Math.max(tick + 8, regularWakeTick - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
@@ -1194,7 +1302,7 @@ function generateCharacterDay(char, def, index) {
   }
 
   tick = Math.max(tick, regularWakeTick);
-  tick = addDialogue(char, tick + 4, def.mood, "准备出门巡游", birthdayText && daysUntilBirthday(runDate, def.birthday) === 0 ? "今天我生日呀。" : dialogueFor(char, def, current, tick + 4, -1, dialogueOffset + 2), current);
+  tick = addDialogue(char, tick + 4, dailyMood, "准备出门巡游", birthdayText && daysUntilBirthday(runDate, def.birthday) === 0 ? "今天我生日呀。" : dialogueFor(char, def, current, tick + 4, -1, dialogueOffset + 2), current);
   dialogueCount += 1;
 
   const regularMovesNeeded = 43 - moveCount;
@@ -1213,7 +1321,7 @@ function generateCharacterDay(char, def, index) {
       plannedStart,
       current,
       target,
-      def.mood,
+      dailyMood,
       decorate(moveDetailsByChar[char][(i + moveOffset) % moveDetailsByChar[char].length], char, def, index, {
         place: locations[target].name,
         short: locations[target].short,
@@ -1228,15 +1336,15 @@ function generateCharacterDay(char, def, index) {
     const actionStatus = isBirthdayBeat ? (daysUntilBirthday(runDate, def.birthday) === 0 ? "生日小派对" : "准备小惊喜") : (locAction?.status || def.actionStatuses[(i + actionOffset) % def.actionStatuses.length]);
     const baseDetail = locAction?.detail || decorate(`${def.actionDetails[(i + actionOffset) % def.actionDetails.length]}${actionTailsByChar[char][(i + tailOffset) % actionTailsByChar[char].length]}`, char, def, index, phaseContext(tick, `${char}:action:${i}`));
     const actionDetail = `${baseDetail}${isBirthdayBeat ? birthdayText : ""}`;
-    tick = addAction(char, tick, 8 + (i % 4), def.mood, actionStatus, actionDetail, current);
+    tick = addAction(char, tick, 8 + (i % 4), dailyMood, actionStatus, actionDetail, current);
 
     const line = dialogueFor(char, def, current, tick + 2, i, dialogueOffset);
-    tick = addDialogue(char, tick + 2, def.mood, actionStatus, line, current);
+    tick = addDialogue(char, tick + 2, dailyMood, actionStatus, line, current);
     dialogueCount += 1;
 
     if (i < dialogueExtrasNeeded) {
       const extraLine = dialogueFor(char, def, current, tick + 2, i, dialogueOffset + 3);
-      tick = addDialogue(char, tick + 2, def.mood, def.actionStatuses[(i + actionOffset + 1) % def.actionStatuses.length], extraLine, current);
+      tick = addDialogue(char, tick + 2, dailyMood, def.actionStatuses[(i + actionOffset + 1) % def.actionStatuses.length], extraLine, current);
       dialogueCount += 1;
     }
   }
@@ -1244,7 +1352,7 @@ function generateCharacterDay(char, def, index) {
   if (current === "tree_house") {
     const target = nextDestination(def.route, current, routeIndex);
     const start = Math.min(tick + 8, sleepReturnTick - travelDuration(target, "tree_house") - travelDuration(current, target) - 2);
-    tick = addMove(char, start, current, target, def.mood, decorate(`${def.name}在睡前又去${locations[target].name}确认最后一个细节，顺手带上{dailyProp}。`, char, def, index));
+    tick = addMove(char, start, current, target, dailyMood, decorate(`${def.name}在睡前又去${locations[target].name}确认最后一个细节，顺手带上{dailyProp}。`, char, def, index));
     moveCount += 1;
     current = target;
   }
@@ -1335,7 +1443,7 @@ const memoryNotes = {
     "记得索引页里薄荷糖纸旁边的编号会指向下一站，图书馆动静要先画下来。",
     "记得海湾沙粒排成弯弯路线时，先停下来听半拍，再决定是不是迷路。",
     "记得薄雾里的薄荷水珠和糖罐路线都不一定是线索，但可以先收好。",
-    "记得灯塔门铃、蓝帽薄荷叶和节目单边角都可能是同一条花线索。",
+    "记得初夏荷花开时支持巴西；巴西3比0赢球后，可以把三个进球画成三朵花。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_2: [
@@ -1357,7 +1465,7 @@ const memoryNotes = {
     "记得有些清晨自己也会被选中短巡，回来补觉前要把手表梗解释清楚。",
     "记得灯塔小册、门铃齿轮和广场公告会把手表解释推到大家面前。",
     "记得音乐厅座位号被换顺序时，先扶正蓝帽子，再确认不是新恶作剧。",
-    "记得门铃响两次不代表有人叫劳伦斯，先看齿轮再开口解释。",
+    "记得自己支持美国；美国2比0赢球并提前晋级后，蓝帽子也可以更有派头。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_3: [
@@ -1379,7 +1487,7 @@ const memoryNotes = {
     "记得胡萝卜广场的小萝卜箭头也能和杯垫小字接上，不只咖啡馆有情报。",
     "记得糖罐底下折过三次的小票值得收进账本，别让奶泡盖住。",
     "记得植物牌背面小方向、贝壳票根和广场纸条可以拼成当天路线。",
-    "记得第一排少掉的座位号和糖罐小票都要先收好，再决定值几杯咖啡。",
+    "记得自己支持比利时；首战1比1先写在杯垫上，下一场对伊朗要留整行。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_4: [
@@ -1401,7 +1509,7 @@ const memoryNotes = {
     "记得乔治只会点头时不用急，先把花样本和发带盒收稳再说。",
     "记得星光天文台的路线、气象站纸角和乔治呼吸节奏都要慢慢对齐。",
     "记得对乔治说先呼吸以后，再整理路牌、发带和小票背面的细节。",
-    "记得晾干气象站纸条时不要急着翻页，贝壳光和发带色要分开看。",
+    "记得自己支持法国；初夏赏荷和观星时，也会把法国队赛程夹进发带色卡。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_5: [
@@ -1423,7 +1531,7 @@ const memoryNotes = {
     "记得彩虹湖倒影、咖啡香节目单和门铃短声能让忧郁画面不那么空。",
     "记得清晨短巡到音乐厅时，开场曲可以先接上故事，再回树屋补觉。",
     "记得灯塔门铃、反字贝壳和第一排座位号能连成不需要旁白的一页。",
-    "记得书页灰、灯塔票根和没有说完的半句都可以留作画面空白。",
+    "记得自己支持荷兰；首战2比2的两次领先与追平适合画成橙色忧郁双页。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_6: [
@@ -1445,7 +1553,7 @@ const memoryNotes = {
     "记得香颂音乐厅前三个音会让误会和事实都需要重新分栏。",
     "记得齿轮里映出旧地图线时，要先扣好餐盒，再判断是不是乔治的误会。",
     "记得工坊第三声卡住时，地上的小齿轮要先捡起，误会可以晚一点处理。",
-    "记得借阅卡铅笔字出现时先听完吧台话，别急着把乔治归进误会那栏。",
+    "记得自己支持挪威；初夏露营时负责装备，看球前也要把零食和战术分开放。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_7: [
@@ -1467,7 +1575,7 @@ const memoryNotes = {
     "记得乔治解释现场、晓雪发带和风向带可以在同一天形成一组照片。",
     "记得面包屑星座和乔治解释现场都适合轻快门，不要把耳朵卷太快。",
     "记得借阅卡铅笔字、山路云影和晓雪发带可以分别用不同焦距记录。",
-    "记得清晨读雨量杯后要回树屋补觉，正式出门时再拍晓雪和半句便签。",
+    "记得自己支持日本；首战2比2追平荷兰后，更想拍下坚持到最后的安静瞬间。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ]
 };
@@ -1503,6 +1611,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 小悠米会把咖啡馆杯垫和甜点消息当成探险线索。
       - 小悠米找到索引页编号时，小泽会帮她判断是不是咖啡馆线索。
       - 小悠米听到吧台话时，小泽会提醒她把座位表薄荷叶也画进图鉴。
+      - 巴西赢球后，小泽会给小悠米准备三朵花形点心庆祝3比0。
     rabbit_4:
       - 小悠米把采蜜带回来的花给晓雪扎染发带。
       - 小悠米会把花样本交给晓雪做发带色卡。
@@ -1536,6 +1645,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 晓雪递咖啡时，乔治会短暂收起调皮劲。
       - 乔治清晨短巡回来补觉前，晓雪会提醒他别把解释留到晚上。
       - 乔治把门铃齿轮弄响时，晓雪会先让他呼吸再解释。
+      - 乔治支持美国、晓雪支持法国，看球争论太快时仍由晓雪先递咖啡。
   rabbit_3:
     rabbit_5:
       - 小泽咖啡馆的招牌是杰拉德画的。
@@ -1549,6 +1659,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - Lino的照片会帮小泽把零散传闻排成可讲的顺序。
       - 小泽翻到杯垫小字时，会提醒Lino补拍灯塔门铃声传来的方向。
       - Lino清晨拍到雨量杯后，小泽会把时间和杯垫消息排在同一页。
+      - 小泽会把比利时赛程写在杯垫上，请支持日本的Lino拍夜间看球照片。
     rabbit_4:
       - 小泽推出新品时总邀请晓雪拍照推广。
       - 小泽会给晓雪预留新品照片位和温柔灯光。
@@ -1579,6 +1690,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 杰拉德把劳伦斯的加餐阴影画成山脉，也会把餐盒画成补给。
       - 杰拉德听见门铃声时，劳伦斯会先检查是不是又需要帮忙。
       - 杰拉德凌晨短巡后补觉时，劳伦斯会把加餐先扣好不打扰他。
+      - 杰拉德支持荷兰、劳伦斯支持挪威，露营看球时会各自带橙色画纸和北欧围巾。
     rabbit_3:
       - 杰拉德给小泽咖啡馆设计了招牌。
       - 杰拉德会从小泽咖啡馆听来的情报里找第二章灵感。
@@ -1607,6 +1719,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - Lino会把晓雪的发带、薄荷色和海湾光拍得很温柔。
       - 晓雪知道Lino是温顺男生，会放心请他记录穿搭细节。
       - Lino拍晓雪时会把路牌、云影和发带分成不同焦距，不抢她整理的节奏。
+      - 初夏赏荷和观星时，Lino会拍晓雪的法国队发带与湖面荷花倒影。
     rabbit_3:
       - Lino会在小泽咖啡馆安静整理吃瓜照片。
       - Lino会把小泽杯垫、公告牌和节目单拍成安静证据。
