@@ -570,48 +570,72 @@ const worldCupProfiles = {
   },
   rabbit_3: {
     team: "比利时",
-    reactionMood: "期待",
+    reactionMood: "紧张期待",
     latestResult: "比利时首战1比1战平埃及",
-    upcoming: "6月21日对阵伊朗",
-    reaction: "他把平局写在杯垫背面，给下一场留出一整行。",
-    dialogues: ["比利时下一场要稳。", "一比一先记杯垫。", "今晚给红魔留甜点。"]
+    upcoming: "上海时间6月22日03:00对阵伊朗",
+    reaction: "他把平局写在杯垫背面，又把03:00的闹钟压在咖啡机旁。",
+    dialogues: ["三点准时开球。", "一比一先记杯垫。", "红魔点心先备好。"]
   },
   rabbit_4: {
     team: "法国",
-    reactionMood: "从容",
-    upcoming: "6月22日对阵伊拉克",
-    reaction: "她把法国队的赛程夹进发带色卡，用法语轻声点评阵形。",
-    dialogues: ["Allez les Bleus.", "法国队要慢慢组织。", "先看阵形，再吐槽。"]
+    reactionMood: "愉快",
+    latestResult: "法国3比1战胜塞内加尔",
+    upcoming: "上海时间6月23日05:00对阵伊拉克",
+    reaction: "她把3比1写进发带色卡，又用法语记下05:00的开球时间。",
+    dialogues: ["Allez les Bleus.", "三比一踢得漂亮。", "五点再看法国队。"]
   },
   rabbit_5: {
     team: "荷兰",
-    reactionMood: "忐忑",
-    latestResult: "荷兰首战2比2战平日本",
-    pending: "6月20日对阵瑞典的赛果尚待确认",
-    reaction: "他觉得两次领先又被追平很适合画成一张橙色的忧郁双页。",
-    dialogues: ["二比二很适合双页。", "橙色也可以忧郁。", "等赛果确认再落笔。"]
+    reactionMood: "振奋",
+    latestResult: "荷兰5比1战胜瑞典",
+    reaction: "他把五个进球排成橙色画格，忧郁边框也亮了一点。",
+    dialogues: ["五比一要画五格。", "橙色今天很明亮。", "这场可以少一点雾。"]
   },
   rabbit_6: {
     team: "挪威",
-    reactionMood: "沉稳",
-    upcoming: "6月22日对阵塞内加尔",
-    reaction: "他提前把看球零食、围巾和战术纸分开放好。",
-    dialogues: ["挪威下一场要稳。", "零食和战术分开放。", "先别急着下结论。"]
+    reactionMood: "踏实",
+    latestResult: "挪威4比1战胜伊拉克",
+    upcoming: "上海时间6月23日08:00对阵塞内加尔",
+    reaction: "他把4比1和08:00开球分别写在战术纸两栏。",
+    dialogues: ["四比一很踏实。", "八点看挪威队。", "零食和战术分开放。"]
   },
   rabbit_7: {
     team: "日本",
-    reactionMood: "振奋",
-    latestResult: "日本首战2比2战平荷兰",
-    pending: "6月20日对阵突尼斯的赛果尚待确认",
-    reaction: "他反复看了绝平前后的照片，觉得坚持到最后的光线最难拍。",
-    dialogues: ["二比二追得很漂亮。", "日本队坚持到最后。", "赛果确认后再整理。"]
+    reactionMood: "雀跃",
+    latestResult: "日本4比0战胜突尼斯",
+    reaction: "他把四个进球的瞬间排成一组，快门声都比平时轻快。",
+    dialogues: ["四比零很漂亮。", "日本队踢得很完整。", "四张照片排一组。"]
   }
 };
 
-const worldCupFixtures = {
-  "2026-06-20": ["德国对科特迪瓦", "厄瓜多尔对库拉索", "荷兰对瑞典", "突尼斯对日本"],
-  "2026-06-21": ["乌拉圭对佛得角", "西班牙对沙特", "比利时对伊朗", "新西兰对埃及"]
+const worldCupMatchesByShanghaiDate = {
+  "2026-06-22": [
+    { kickoff: "00:00", kickoffTick: 0, home: "西班牙", away: "沙特" },
+    { kickoff: "03:00", kickoffTick: 1080, home: "比利时", away: "伊朗" },
+    { kickoff: "06:00", kickoffTick: 2160, home: "乌拉圭", away: "佛得角" },
+    { kickoff: "09:00", kickoffTick: 3240, home: "新西兰", away: "埃及" }
+  ],
+  "2026-06-23": [
+    { kickoff: "01:00", kickoffTick: 360, home: "阿根廷", away: "奥地利" },
+    { kickoff: "05:00", kickoffTick: 1800, home: "法国", away: "伊拉克" },
+    { kickoff: "08:00", kickoffTick: 2880, home: "挪威", away: "塞内加尔" },
+    { kickoff: "11:00", kickoffTick: 3960, home: "约旦", away: "阿尔及利亚" }
+  ],
+  "2026-06-25": [
+    { kickoff: "06:00", kickoffTick: 2160, home: "苏格兰", away: "巴西" }
+  ],
+  "2026-06-26": [
+    { kickoff: "07:00", kickoffTick: 2520, home: "突尼斯", away: "荷兰" },
+    { kickoff: "07:00", kickoffTick: 2520, home: "日本", away: "瑞典" },
+    { kickoff: "10:00", kickoffTick: 3600, home: "土耳其", away: "美国" }
+  ],
+  "2026-06-27": [
+    { kickoff: "03:00", kickoffTick: 1080, home: "挪威", away: "法国" },
+    { kickoff: "11:00", kickoffTick: 3960, home: "新西兰", away: "比利时" }
+  ]
 };
+
+const MATCH_WATCH_TICKS = 600;
 
 const summerGroupDialogues = [
   "荷花开到湖边啦。",
@@ -626,6 +650,21 @@ function worldCupText(char) {
   const profile = worldCupProfiles[char];
   const parts = [profile.latestResult, profile.upcoming, profile.pending].filter(Boolean);
   return parts.join("；");
+}
+
+function matchesForRunDate() {
+  return worldCupMatchesByShanghaiDate[runDate] || [];
+}
+
+function scheduledMatchFor(char) {
+  const team = worldCupProfiles[char]?.team;
+  return matchesForRunDate().find(match => match.home === team || match.away === team) || null;
+}
+
+function fixtureListForRunDate() {
+  return matchesForRunDate()
+    .map(match => `${match.kickoff} ${match.home}对${match.away}`)
+    .join("、");
 }
 
 function moodFor(char, fallback) {
@@ -1042,7 +1081,7 @@ function decorate(text, char, def, index, extra = {}) {
     team: football.team,
     footballUpdate: worldCupText(char),
     footballReaction: football.reaction,
-    fixtureList: (worldCupFixtures[runDate] || []).join("、"),
+    fixtureList: fixtureListForRunDate(),
     birthdayNote: birthdayNote(def),
     phaseLabel: extra.phaseLabel || "",
     phaseDetail: extra.phaseDetail || "",
@@ -1068,7 +1107,6 @@ function phaseContext(tick, seed) {
 }
 
 const actionUseCount = new Map();
-const worldCupWatchUseCount = new Map();
 const groundedTails = [
   "旁边的小杯子轻轻碰了一下桌沿。",
   "纸角被风掀起，又被轻轻按了回去。",
@@ -1144,15 +1182,11 @@ function routeTail(seed) {
 function locationAction(char, def, location, tick, index, i) {
   const phase = phaseContext(tick, `${char}:${i}:${location}`);
   const allOptions = locationActivities[location] || [];
-  const isNightCafe = location === "mushroom_cafe" && phase.phase === "night";
-  const watchCount = worldCupWatchUseCount.get(char) || 0;
-  const preferWorldCup = isNightCafe && (watchCount === 0 || intFor(`${char}:extra-world-cup-watch:${i}`, 100) < 28);
   const isWorldCupOption = option => ["布置看球桌", "讨论世界杯", "准备看球点心"].includes(option.status);
-  const options = preferWorldCup
-    ? allOptions.filter(isWorldCupOption)
-    : (location === "mushroom_cafe" ? allOptions.filter(option => !isWorldCupOption(option)) : allOptions);
-  const forceNightWatch = isNightCafe && watchCount === 0;
-  const useLocation = options.length && (forceNightWatch || intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72);
+  const options = location === "mushroom_cafe"
+    ? allOptions.filter(option => !isWorldCupOption(option))
+    : allOptions;
+  const useLocation = options.length && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72;
   if (!useLocation) return null;
   const start = intFor(`${char}:loc-action:${location}:${i}`, options.length);
   const decorated = options.map((option, optionIndex) => ({
@@ -1163,9 +1197,6 @@ function locationAction(char, def, location, tick, index, i) {
   decorated.sort((a, b) => (actionUseCount.get(a.detail) || 0) - (actionUseCount.get(b.detail) || 0) || a.index - b.index);
   const selected = decorated[0];
   actionUseCount.set(selected.detail, (actionUseCount.get(selected.detail) || 0) + 1);
-  if (isWorldCupOption(selected)) {
-    worldCupWatchUseCount.set(char, watchCount + 1);
-  }
   return selected;
 }
 
@@ -1275,8 +1306,21 @@ function generateCharacterDay(char, def, index) {
   const moveOffset = intFor(`${char}:move-offset`, moveDetailsByChar[char].length);
   const tailOffset = intFor(`${char}:tail-offset`, actionTailsByChar[char].length);
   const birthdaySlot = intFor(`${char}:birthday-slot`, 12);
-  const earlyPlan = dailyEarlyRisers.get(char);
-  const regularWakeTick = regularWakeTickFor(char, def, index);
+  const scheduledMatch = scheduledMatchFor(char);
+  const cafeTravelTicks = travelDuration("tree_house", "mushroom_cafe");
+  const scheduledWakeTick = scheduledMatch
+    ? Math.max(0, scheduledMatch.kickoffTick - cafeTravelTicks - 10)
+    : null;
+  const earlyPlan = scheduledMatch && scheduledMatch.kickoffTick > 0
+    ? { wakeTick: scheduledWakeTick, match: scheduledMatch }
+    : dailyEarlyRisers.get(char);
+  let regularWakeTick = regularWakeTickFor(char, def, index);
+  if (scheduledMatch && scheduledMatch.kickoffTick > 0) {
+    regularWakeTick = Math.max(
+      regularWakeTick,
+      scheduledMatch.kickoffTick + MATCH_WATCH_TICKS + cafeTravelTicks + 130
+    );
+  }
   const sleepReturnTick = bedtimeReturnTickFor(char, index);
 
   const sleepEnd = earlyPlan?.wakeTick || regularWakeTick;
@@ -1285,17 +1329,33 @@ function generateCharacterDay(char, def, index) {
   if (earlyPlan && regularWakeTick > tick) {
     tick = addDialogue(char, tick + 4, dailyMood, "揉揉眼睛醒来", dialogueFor(char, def, current, tick + 4, -3, dialogueOffset), current);
     dialogueCount += 1;
-    const firstTarget = nextDestination(def.route, current, routeIndex);
-    routeIndex += 1;
-    tick = addMove(char, tick + 4, current, firstTarget, dailyMood, decorate(`${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。{phaseDetail}`, char, def, index, phaseContext(tick + 4, `${char}:early`)));
+    const firstTarget = earlyPlan.match ? "mushroom_cafe" : nextDestination(def.route, current, routeIndex);
+    if (!earlyPlan.match) routeIndex += 1;
+    const earlyMoveDetail = earlyPlan.match
+      ? `${def.name}按上海时间闹钟起床，赶去蘑菇咖啡馆看${earlyPlan.match.home}对${earlyPlan.match.away}。`
+      : decorate(`${def.name}趁天还没亮，沿道路去${locations[firstTarget].name}收集第一段线索。{phaseDetail}`, char, def, index, phaseContext(tick + 4, `${char}:early`));
+    tick = addMove(char, tick + 4, current, firstTarget, dailyMood, earlyMoveDetail);
     moveCount += 1;
     current = firstTarget;
-    const earlyLocationAction = locationAction(char, def, current, tick, index, -2);
-    tick = addAction(char, tick, 28, dailyMood, earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length], earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)), current);
-    tick = addDialogue(char, tick + 4, dailyMood, def.actionStatuses[(actionOffset + 1) % def.actionStatuses.length], dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1), current);
+    const earlyLocationAction = earlyPlan.match ? null : locationAction(char, def, current, tick, index, -2);
+    const earlyStatus = earlyPlan.match ? `直播看${worldCupProfiles[char].team}` : (earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length]);
+    const earlyDetail = earlyPlan.match
+      ? `${def.name}从上海时间${earlyPlan.match.kickoff}开始直播观看${earlyPlan.match.home}对${earlyPlan.match.away}，咖啡馆投影和官方开球时间完全同步。${worldCupProfiles[char].reaction}`
+      : (earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)));
+    tick = addAction(char, tick, earlyPlan.match ? MATCH_WATCH_TICKS : 28, dailyMood, earlyStatus, earlyDetail, current);
+    const earlyDialogue = earlyPlan.match
+      ? `${worldCupProfiles[char].team}这场${earlyPlan.match.kickoff}开球。`
+      : dialogueFor(char, def, current, tick + 4, -2, dialogueOffset + 1);
+    tick = addDialogue(char, tick + 4, dailyMood, earlyStatus, earlyDialogue, current);
     dialogueCount += 1;
     const backDuration = travelDuration(current, "tree_house");
-    tick = addMove(char, Math.max(tick + 8, regularWakeTick - backDuration - 120), current, "tree_house", "安静", decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index));
+    const returnDetail = earlyPlan.match
+      ? `${def.name}看完开球后的主要比赛时段，把比分记录交给小泽咖啡馆后沿道路回树屋补觉。`
+      : decorate(`${def.name}把清晨记录和{dailyProp}收好，沿原路回树屋休息到正式开园。`, char, def, index);
+    const earlyReturnStart = earlyPlan.match
+      ? tick + 8
+      : Math.max(tick + 8, regularWakeTick - backDuration - 120);
+    tick = addMove(char, earlyReturnStart, current, "tree_house", "安静", returnDetail);
     moveCount += 1;
     current = "tree_house";
     tick = addAction(char, tick, regularWakeTick - tick, "困倦", "树屋里补个觉", decorate(`${def.name}回到树屋短短打了个盹，把{weatherMood}的早晨藏进心里。`, char, def, index), current);
@@ -1487,7 +1547,7 @@ const memoryNotes = {
     "记得胡萝卜广场的小萝卜箭头也能和杯垫小字接上，不只咖啡馆有情报。",
     "记得糖罐底下折过三次的小票值得收进账本，别让奶泡盖住。",
     "记得植物牌背面小方向、贝壳票根和广场纸条可以拼成当天路线。",
-    "记得自己支持比利时；首战1比1先写在杯垫上，下一场对伊朗要留整行。",
+    "记得自己支持比利时；上海时间6月22日03:00对伊朗，闹钟和咖啡机必须同时准时。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_4: [
@@ -1509,7 +1569,7 @@ const memoryNotes = {
     "记得乔治只会点头时不用急，先把花样本和发带盒收稳再说。",
     "记得星光天文台的路线、气象站纸角和乔治呼吸节奏都要慢慢对齐。",
     "记得对乔治说先呼吸以后，再整理路牌、发带和小票背面的细节。",
-    "记得自己支持法国；初夏赏荷和观星时，也会把法国队赛程夹进发带色卡。",
+    "记得自己支持法国；3比1战胜塞内加尔后，要在上海时间6月23日05:00看法国对伊拉克。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_5: [
@@ -1531,7 +1591,7 @@ const memoryNotes = {
     "记得彩虹湖倒影、咖啡香节目单和门铃短声能让忧郁画面不那么空。",
     "记得清晨短巡到音乐厅时，开场曲可以先接上故事，再回树屋补觉。",
     "记得灯塔门铃、反字贝壳和第一排座位号能连成不需要旁白的一页。",
-    "记得自己支持荷兰；首战2比2的两次领先与追平适合画成橙色忧郁双页。",
+    "记得自己支持荷兰；5比1战胜瑞典后，橙色画格可以明亮五次。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_6: [
@@ -1553,7 +1613,7 @@ const memoryNotes = {
     "记得香颂音乐厅前三个音会让误会和事实都需要重新分栏。",
     "记得齿轮里映出旧地图线时，要先扣好餐盒，再判断是不是乔治的误会。",
     "记得工坊第三声卡住时，地上的小齿轮要先捡起，误会可以晚一点处理。",
-    "记得自己支持挪威；初夏露营时负责装备，看球前也要把零食和战术分开放。",
+    "记得自己支持挪威；4比1战胜伊拉克后，要在上海时间6月23日08:00看挪威对塞内加尔。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_7: [
@@ -1575,7 +1635,7 @@ const memoryNotes = {
     "记得乔治解释现场、晓雪发带和风向带可以在同一天形成一组照片。",
     "记得面包屑星座和乔治解释现场都适合轻快门，不要把耳朵卷太快。",
     "记得借阅卡铅笔字、山路云影和晓雪发带可以分别用不同焦距记录。",
-    "记得自己支持日本；首战2比2追平荷兰后，更想拍下坚持到最后的安静瞬间。",
+    "记得自己支持日本；4比0战胜突尼斯后，把四个进球排成一组轻快照片。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ]
 };
@@ -1660,6 +1720,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 小泽翻到杯垫小字时，会提醒Lino补拍灯塔门铃声传来的方向。
       - Lino清晨拍到雨量杯后，小泽会把时间和杯垫消息排在同一页。
       - 小泽会把比利时赛程写在杯垫上，请支持日本的Lino拍夜间看球照片。
+      - 比利时凌晨03:00开球前，Lino会帮小泽校准投影时间再回树屋休息。
     rabbit_4:
       - 小泽推出新品时总邀请晓雪拍照推广。
       - 小泽会给晓雪预留新品照片位和温柔灯光。
@@ -1675,6 +1736,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 晓雪知道劳伦斯误会乔治时需要一点温柔解释。
       - 晓雪尊重劳伦斯照顾大家，也会提醒他别让误会变重。
       - 晓雪晾气象站纸条时，劳伦斯会安静等字迹清楚再判断路线。
+      - 法国05:00与挪威08:00比赛相邻时，晓雪和劳伦斯会轮流守咖啡馆投影。
     rabbit_2:
       - 晓雪会用法语吐槽和浓缩咖啡治住乔治。
       - 乔治调皮时晓雪会先端稳咖啡，再让他解释。
@@ -1691,6 +1753,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 杰拉德听见门铃声时，劳伦斯会先检查是不是又需要帮忙。
       - 杰拉德凌晨短巡后补觉时，劳伦斯会把加餐先扣好不打扰他。
       - 杰拉德支持荷兰、劳伦斯支持挪威，露营看球时会各自带橙色画纸和北欧围巾。
+      - 荷兰5比1赢球后，劳伦斯会把第五格橙色画纸留给杰拉德。
     rabbit_3:
       - 杰拉德给小泽咖啡馆设计了招牌。
       - 杰拉德会从小泽咖啡馆听来的情报里找第二章灵感。
@@ -1724,6 +1787,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - Lino会在小泽咖啡馆安静整理吃瓜照片。
       - Lino会把小泽杯垫、公告牌和节目单拍成安静证据。
       - Lino拍到面包屑星座后，会把照片交给小泽整理成咖啡馆传闻。
+      - 日本4比0赢球后，小泽会给Lino留四块小点心配四张进球照片。
     rabbit_2:
       - Lino拍到过乔治向劳伦斯解释“给我劳”的现场。
       - Lino常用镜头记录乔治解释、晓雪递咖啡和劳伦斯误会的瞬间。
