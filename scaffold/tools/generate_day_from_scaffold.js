@@ -377,7 +377,13 @@ const dailyRumors = [
   "海湾沙粒排成一条很像路线的弯线",
   "树屋门口的小拖鞋底下露出半截铅笔字",
   "音乐厅第一排座位号被谁悄悄换了顺序",
-  "植物园牌背面画着一个很小的杯垫记号"
+  "植物园牌背面画着一个很小的杯垫记号",
+  "彩虹湖荷叶下夹着一枚没写完的座位贴",
+  "兔耳山浅溪边有一串被水冲淡的小脚印",
+  "咖啡馆投影布今天只在真实开球时放下来",
+  "天文台登记本上多了几颗没连线的小星星",
+  "露营绳结上夹着一片干掉的薄荷叶",
+  "灯塔台阶旁的小水洼映出倒着的比分牌"
 ];
 
 const sharedProps = [
@@ -403,7 +409,13 @@ const sharedProps = [
   "小齿轮垫片",
   "海湾沙线",
   "座位号贴纸",
-  "杯垫记号"
+  "杯垫记号",
+  "荷叶便签",
+  "溪水小石头",
+  "露营绳结",
+  "投影遥控器",
+  "未连线星图",
+  "薄荷冰贴"
 ];
 
 const tinyMesses = [
@@ -417,6 +429,45 @@ const tinyMesses = [
   "节目单边缘翘起来",
   "一小枚齿轮滚到脚边",
   "树影正好盖住脚尖"
+];
+
+const smallWeatherDetails = [
+  "树叶背面还挂着一点没落下来的水",
+  "远处的热气把路牌边缘烫得软软的",
+  "有阵风先从湖面过来，又钻进树影里",
+  "地上的光斑被脚步踩散，又慢慢合回去",
+  "云影正好遮住肩膀，像短短休息了一下",
+  "荷叶边的小水珠滚了半圈，没有掉下去",
+  "浅溪的声音把后半句话冲得更轻",
+  "咖啡馆窗上起了一层很薄的甜雾",
+  "山路树荫深得像把句号写重了",
+  "天文台玻璃反出一枚很淡的白星"
+];
+
+const objectCloseups = [
+  "纸角上有一粒干掉的咖啡沫",
+  "杯垫边缘被爪尖压出浅浅一道弧",
+  "旧地图折痕里藏着一点蓝色蜡笔",
+  "发带色卡最浅那格被多看了两眼",
+  "小齿轮的齿缝里卡着半根草",
+  "节目单背面有一块被雨气润开的墨",
+  "贝壳票根反面粘着一粒细沙",
+  "露营绳结被系成一个不太标准的小圆",
+  "投影遥控器贴着一张写了时间的小纸",
+  "荷叶便签上的字被水汽晕开一点"
+];
+
+const bodilyBeats = [
+  "他停了一下，把呼吸放慢再继续",
+  "她把耳朵轻轻抖了抖，像甩掉一个小问号",
+  "对话没有马上往下走，只先听见杯沿轻响",
+  "脚步在门口顿了一拍，才选定下一条路",
+  "爪尖把那行字遮住又挪开，确认不是看错",
+  "包带滑下来一点，很快又被推回肩上",
+  "尾音收得很轻，像怕惊动还没干的纸条",
+  "大家都没急，先让风把纸页翻到下一面",
+  "那一下笑意很短，刚露出来就收好了",
+  "影子从脚边挪开时，决定也跟着变清楚了"
 ];
 
 const routeTails = [
@@ -556,55 +607,66 @@ const dailyContext = {
 const worldCupProfiles = {
   rabbit_1: {
     team: "巴西",
-    reactionMood: "雀跃",
+    reactionMood: runDate === "2026-06-25" ? "期待" : "雀跃",
     latestResult: "巴西3比0战胜海地",
+    upcoming: "上海时间6月25日06:00对阵苏格兰",
     reaction: "她把三个进球画成三朵开得很亮的小花。",
-    dialogues: ["巴西进了三球呀。", "这比分像三朵花。", "黄绿色很好看。"]
+    liveReaction: "她把黄绿色小旗压在杯垫边，只记录已经发生的镜头。",
+    dialogues: ["巴西进了三球呀。", "这比分像三朵花。", "黄绿色很好看。", "六点要看巴西。"]
   },
   rabbit_2: {
     team: "美国",
     reactionMood: "得意",
     latestResult: "美国2比0战胜澳大利亚并提前晋级",
+    upcoming: "上海时间6月26日10:00对阵土耳其",
     reaction: "他把蓝帽子扶得更正，今天走路都比平时神气一点。",
-    dialogues: ["美国队提前晋级啦。", "二比零，很有派头。", "主场声音真大。"]
+    liveReaction: "他把蓝帽子扶正，等哨声以后才把比分写进便签。",
+    dialogues: ["美国队提前晋级啦。", "二比零，很有派头。", "主场声音真大。", "十点看美国队。"]
   },
   rabbit_3: {
     team: "比利时",
-    reactionMood: "紧张期待",
-    latestResult: "比利时首战1比1战平埃及",
-    upcoming: "上海时间6月22日03:00对阵伊朗",
-    reaction: "他把平局写在杯垫背面，又把03:00的闹钟压在咖啡机旁。",
-    dialogues: ["三点准时开球。", "一比一先记杯垫。", "红魔点心先备好。"]
+    reactionMood: "谨慎",
+    latestResult: "比利时0比0战平伊朗",
+    upcoming: "上海时间6月27日11:00对阵新西兰",
+    reaction: "他把两个平局叠在杯垫背面，决定下一场只在真开球时打开投影。",
+    liveReaction: "他把咖啡机时间和投影时间对齐，杯垫先留空不写比分。",
+    dialogues: ["零比零也要记。", "十一点看比利时。", "杯垫先别丢。"]
   },
   rabbit_4: {
     team: "法国",
-    reactionMood: "愉快",
-    latestResult: "法国3比1战胜塞内加尔",
-    upcoming: "上海时间6月23日05:00对阵伊拉克",
-    reaction: "她把3比1写进发带色卡，又用法语记下05:00的开球时间。",
-    dialogues: ["Allez les Bleus.", "三比一踢得漂亮。", "五点再看法国队。"]
+    reactionMood: "明亮",
+    latestResult: "法国3比0战胜伊拉克",
+    upcoming: "上海时间6月27日03:00对阵挪威",
+    reaction: "她把3比0写进浅色发带，想到下一场要和劳伦斯一起看就笑了一下。",
+    liveReaction: "她把法国队小旗别在发带盒旁，比分栏先空着。",
+    dialogues: ["Allez les Bleus.", "三比零很漂亮。", "三点看法国队。"]
   },
   rabbit_5: {
     team: "荷兰",
     reactionMood: "振奋",
     latestResult: "荷兰5比1战胜瑞典",
+    upcoming: "上海时间6月26日07:00对阵突尼斯",
     reaction: "他把五个进球排成橙色画格，忧郁边框也亮了一点。",
-    dialogues: ["五比一要画五格。", "橙色今天很明亮。", "这场可以少一点雾。"]
+    liveReaction: "他先画一条橙色边框，等比赛结束后再决定明暗。",
+    dialogues: ["五比一要画五格。", "橙色今天很明亮。", "这场可以少一点雾。", "七点看荷兰。"]
   },
   rabbit_6: {
     team: "挪威",
     reactionMood: "踏实",
-    latestResult: "挪威4比1战胜伊拉克",
-    upcoming: "上海时间6月23日08:00对阵塞内加尔",
-    reaction: "他把4比1和08:00开球分别写在战术纸两栏。",
-    dialogues: ["四比一很踏实。", "八点看挪威队。", "零食和战术分开放。"]
+    latestResult: "挪威3比2战胜塞内加尔",
+    upcoming: "上海时间6月27日03:00对阵法国",
+    reaction: "他把3比2写在战术纸最稳的一栏，又给法国那栏留出晓雪的位置。",
+    liveReaction: "他把战术纸分成两栏，开球后只记真实发生的推进。",
+    dialogues: ["三比二很紧。", "三点看挪威队。", "零食和战术分开放。"]
   },
   rabbit_7: {
     team: "日本",
     reactionMood: "雀跃",
     latestResult: "日本4比0战胜突尼斯",
+    upcoming: "上海时间6月26日07:00对阵瑞典",
     reaction: "他把四个进球的瞬间排成一组，快门声都比平时轻快。",
-    dialogues: ["四比零很漂亮。", "日本队踢得很完整。", "四张照片排一组。"]
+    liveReaction: "他把曝光调低一点，等画面出现再轻轻按快门。",
+    dialogues: ["四比零很漂亮。", "日本队踢得很完整。", "四张照片排一组。", "七点看日本。"]
   }
 };
 
@@ -622,15 +684,27 @@ const worldCupMatchesByShanghaiDate = {
     { kickoff: "11:00", kickoffTick: 3960, home: "约旦", away: "阿尔及利亚" }
   ],
   "2026-06-25": [
-    { kickoff: "06:00", kickoffTick: 2160, home: "苏格兰", away: "巴西" }
+    { kickoff: "03:00", kickoffTick: 1080, home: "瑞士", away: "加拿大" },
+    { kickoff: "03:00", kickoffTick: 1080, home: "波黑", away: "卡塔尔" },
+    { kickoff: "06:00", kickoffTick: 2160, home: "摩洛哥", away: "海地" },
+    { kickoff: "06:00", kickoffTick: 2160, home: "苏格兰", away: "巴西" },
+    { kickoff: "09:00", kickoffTick: 3240, home: "南非", away: "韩国" },
+    { kickoff: "09:00", kickoffTick: 3240, home: "捷克", away: "墨西哥" }
   ],
   "2026-06-26": [
+    { kickoff: "04:00", kickoffTick: 1440, home: "库拉索", away: "科特迪瓦" },
+    { kickoff: "04:00", kickoffTick: 1440, home: "厄瓜多尔", away: "德国" },
     { kickoff: "07:00", kickoffTick: 2520, home: "突尼斯", away: "荷兰" },
     { kickoff: "07:00", kickoffTick: 2520, home: "日本", away: "瑞典" },
-    { kickoff: "10:00", kickoffTick: 3600, home: "土耳其", away: "美国" }
+    { kickoff: "10:00", kickoffTick: 3600, home: "土耳其", away: "美国" },
+    { kickoff: "10:00", kickoffTick: 3600, home: "巴拉圭", away: "澳大利亚" }
   ],
   "2026-06-27": [
     { kickoff: "03:00", kickoffTick: 1080, home: "挪威", away: "法国" },
+    { kickoff: "03:00", kickoffTick: 1080, home: "塞内加尔", away: "伊拉克" },
+    { kickoff: "08:00", kickoffTick: 2880, home: "佛得角", away: "沙特" },
+    { kickoff: "08:00", kickoffTick: 2880, home: "乌拉圭", away: "西班牙" },
+    { kickoff: "11:00", kickoffTick: 3960, home: "埃及", away: "伊朗" },
     { kickoff: "11:00", kickoffTick: 3960, home: "新西兰", away: "比利时" }
   ]
 };
@@ -952,7 +1026,7 @@ const locationActivities = {
     { status: "画星象纸", detail: "{name}画了一张星象纸条，准备晚上拿去海湾对星光。" },
     { status: "看晨星", detail: "{name}看见一颗迟到的晨星，把它记成今天的小坐标。" },
     { status: "擦镜片", detail: "{name}擦了擦望远镜镜片，镜面里短短闪过灯塔的光，{handMotion}。" },
-    { status: "约夜间观星", detail: "{name}把初夏观星时间写在纸条上，约大家看完世界杯后再来天文台。" }
+    { status: "约夜间观星", detail: "{name}把初夏观星时间写在纸条上，约大家收好当天小事后再来天文台。" }
   ],
   shell_bay: [
     { status: "翻小贝壳", detail: "{name}在贝壳海湾翻看贝壳，找到一枚能反射节目单字迹的。" },
@@ -1078,6 +1152,9 @@ function decorate(text, char, def, index, extra = {}) {
     dailyRumor: extra.dailyRumor || pickFor(`rumor:${char}:${index}:${text}:${extra.phaseLabel || ""}:${extra.place || ""}`, dailyRumors),
     tinyMess: pickFor(`tiny-mess:${char}:${index}:${text}:${extra.phaseLabel || ""}`, tinyMesses),
     handMotion: pickFor(`hand-motion:${char}:${index}:${text}:${extra.phaseLabel || ""}`, handMotions),
+    smallWeather: pickFor(`small-weather:${char}:${index}:${text}:${extra.phaseLabel || ""}`, smallWeatherDetails),
+    objectCloseup: pickFor(`object-closeup:${char}:${index}:${text}:${extra.phaseLabel || ""}`, objectCloseups),
+    bodilyBeat: pickFor(`body-beat:${char}:${index}:${text}:${extra.phaseLabel || ""}`, bodilyBeats),
     team: football.team,
     footballUpdate: worldCupText(char),
     footballReaction: football.reaction,
@@ -1123,6 +1200,17 @@ const groundedTails = [
   "影子压过脚边，又慢慢退回去。",
   "这件事很小，却被认真记到了页角。",
   "空气里留着一点刚刚发生过的声音。"
+];
+
+const groundedTailOpeners = [
+  "{smallWeather}",
+  "{objectCloseup}",
+  "{bodilyBeat}",
+  "旁边的{dailyProp}被重新放正。",
+  "{phaseDetail}",
+  "没有谁急着解释，{bodilyBeat}。",
+  "这不是大事，只是{objectCloseup}。",
+  "一小阵{weatherMood}从路口过来，{smallWeather}。"
 ];
 
 const groundedTailsByChar = {
@@ -1175,6 +1263,10 @@ function groundedTail(seed, char) {
   return pickFor(seed, pool);
 }
 
+function sentenceEnd(text) {
+  return /[。！？.!?]$/.test(text) ? text : `${text}。`;
+}
+
 function routeTail(seed) {
   return pickFor(seed, routeTails);
 }
@@ -1189,11 +1281,20 @@ function locationAction(char, def, location, tick, index, i) {
   const useLocation = options.length && intFor(`${char}:use-loc-action:${location}:${i}`, 100) < 72;
   if (!useLocation) return null;
   const start = intFor(`${char}:loc-action:${location}:${i}`, options.length);
-  const decorated = options.map((option, optionIndex) => ({
-    status: option.status,
-    detail: `${decorate(option.detail, char, def, index, phase)}${groundedTail(`${char}:grounded-tail:${location}:${i}:${optionIndex}`, char)}`,
-    index: (optionIndex - start + options.length) % options.length
-  }));
+  const decorated = options.map((option, optionIndex) => {
+    const tailIntro = sentenceEnd(decorate(
+      pickFor(`${char}:tail-opener:${location}:${i}:${optionIndex}`, groundedTailOpeners),
+      char,
+      def,
+      index,
+      phase
+    ));
+    return {
+      status: option.status,
+      detail: `${decorate(option.detail, char, def, index, phase)}${tailIntro}${groundedTail(`${char}:grounded-tail:${location}:${i}:${optionIndex}`, char)}`,
+      index: (optionIndex - start + options.length) % options.length
+    };
+  });
   decorated.sort((a, b) => (actionUseCount.get(a.detail) || 0) - (actionUseCount.get(b.detail) || 0) || a.index - b.index);
   const selected = decorated[0];
   actionUseCount.set(selected.detail, (actionUseCount.get(selected.detail) || 0) + 1);
@@ -1340,7 +1441,7 @@ function generateCharacterDay(char, def, index) {
     const earlyLocationAction = earlyPlan.match ? null : locationAction(char, def, current, tick, index, -2);
     const earlyStatus = earlyPlan.match ? `直播看${worldCupProfiles[char].team}` : (earlyLocationAction?.status || def.actionStatuses[actionOffset % def.actionStatuses.length]);
     const earlyDetail = earlyPlan.match
-      ? `${def.name}从上海时间${earlyPlan.match.kickoff}开始直播观看${earlyPlan.match.home}对${earlyPlan.match.away}，咖啡馆投影和官方开球时间完全同步。${worldCupProfiles[char].reaction}`
+      ? `${def.name}从上海时间${earlyPlan.match.kickoff}开始直播观看${earlyPlan.match.home}对${earlyPlan.match.away}，咖啡馆投影和官方开球时间完全同步。${worldCupProfiles[char].liveReaction || worldCupProfiles[char].reaction}`
       : (earlyLocationAction?.detail || decorate(def.actionDetails[actionOffset % def.actionDetails.length], char, def, index, phaseContext(tick, `${char}:early-action`)));
     tick = addAction(char, tick, earlyPlan.match ? MATCH_WATCH_TICKS : 28, dailyMood, earlyStatus, earlyDetail, current);
     const earlyDialogue = earlyPlan.match
@@ -1503,7 +1604,7 @@ const memoryNotes = {
     "记得索引页里薄荷糖纸旁边的编号会指向下一站，图书馆动静要先画下来。",
     "记得海湾沙粒排成弯弯路线时，先停下来听半拍，再决定是不是迷路。",
     "记得薄雾里的薄荷水珠和糖罐路线都不一定是线索，但可以先收好。",
-    "记得初夏荷花开时支持巴西；巴西3比0赢球后，可以把三个进球画成三朵花。",
+    "记得初夏荷花开时支持巴西；上海时间6月25日06:00对苏格兰，只在真实开球时看直播。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_2: [
@@ -1525,7 +1626,7 @@ const memoryNotes = {
     "记得有些清晨自己也会被选中短巡，回来补觉前要把手表梗解释清楚。",
     "记得灯塔小册、门铃齿轮和广场公告会把手表解释推到大家面前。",
     "记得音乐厅座位号被换顺序时，先扶正蓝帽子，再确认不是新恶作剧。",
-    "记得自己支持美国；美国2比0赢球并提前晋级后，蓝帽子也可以更有派头。",
+    "记得自己支持美国；美国2比0赢球并提前晋级后，6月26日10:00对土耳其也要按真实时间看。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_3: [
@@ -1547,7 +1648,7 @@ const memoryNotes = {
     "记得胡萝卜广场的小萝卜箭头也能和杯垫小字接上，不只咖啡馆有情报。",
     "记得糖罐底下折过三次的小票值得收进账本，别让奶泡盖住。",
     "记得植物牌背面小方向、贝壳票根和广场纸条可以拼成当天路线。",
-    "记得自己支持比利时；上海时间6月22日03:00对伊朗，闹钟和咖啡机必须同时准时。",
+    "记得自己支持比利时；0比0战平伊朗后，下一场上海时间6月27日11:00对新西兰。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_4: [
@@ -1569,7 +1670,7 @@ const memoryNotes = {
     "记得乔治只会点头时不用急，先把花样本和发带盒收稳再说。",
     "记得星光天文台的路线、气象站纸角和乔治呼吸节奏都要慢慢对齐。",
     "记得对乔治说先呼吸以后，再整理路牌、发带和小票背面的细节。",
-    "记得自己支持法国；3比1战胜塞内加尔后，要在上海时间6月23日05:00看法国对伊拉克。",
+    "记得自己支持法国；3比0战胜伊拉克后，上海时间6月27日03:00要和劳伦斯一起看法国对挪威。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_5: [
@@ -1591,7 +1692,7 @@ const memoryNotes = {
     "记得彩虹湖倒影、咖啡香节目单和门铃短声能让忧郁画面不那么空。",
     "记得清晨短巡到音乐厅时，开场曲可以先接上故事，再回树屋补觉。",
     "记得灯塔门铃、反字贝壳和第一排座位号能连成不需要旁白的一页。",
-    "记得自己支持荷兰；5比1战胜瑞典后，橙色画格可以明亮五次。",
+    "记得自己支持荷兰；5比1战胜瑞典后，上海时间6月26日07:00对突尼斯要留橙色画纸。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_6: [
@@ -1613,7 +1714,7 @@ const memoryNotes = {
     "记得香颂音乐厅前三个音会让误会和事实都需要重新分栏。",
     "记得齿轮里映出旧地图线时，要先扣好餐盒，再判断是不是乔治的误会。",
     "记得工坊第三声卡住时，地上的小齿轮要先捡起，误会可以晚一点处理。",
-    "记得自己支持挪威；4比1战胜伊拉克后，要在上海时间6月23日08:00看挪威对塞内加尔。",
+    "记得自己支持挪威；3比2战胜塞内加尔后，上海时间6月27日03:00会和晓雪一起看挪威对法国。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ],
   rabbit_7: [
@@ -1635,7 +1736,7 @@ const memoryNotes = {
     "记得乔治解释现场、晓雪发带和风向带可以在同一天形成一组照片。",
     "记得面包屑星座和乔治解释现场都适合轻快门，不要把耳朵卷太快。",
     "记得借阅卡铅笔字、山路云影和晓雪发带可以分别用不同焦距记录。",
-    "记得自己支持日本；4比0战胜突尼斯后，把四个进球排成一组轻快照片。",
+    "记得自己支持日本；4比0战胜突尼斯后，上海时间6月26日07:00对瑞典要准时调曝光。",
     "记得这一天会活动到当天实际回家时间附近，再回树屋睡觉。"
   ]
 };
@@ -1720,7 +1821,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 小泽翻到杯垫小字时，会提醒Lino补拍灯塔门铃声传来的方向。
       - Lino清晨拍到雨量杯后，小泽会把时间和杯垫消息排在同一页。
       - 小泽会把比利时赛程写在杯垫上，请支持日本的Lino拍夜间看球照片。
-      - 比利时凌晨03:00开球前，Lino会帮小泽校准投影时间再回树屋休息。
+      - 比利时0比0战平伊朗后，Lino会提醒小泽下一场新西兰对比利时是上海时间6月27日11:00。
     rabbit_4:
       - 小泽推出新品时总邀请晓雪拍照推广。
       - 小泽会给晓雪预留新品照片位和温柔灯光。
@@ -1736,7 +1837,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 晓雪知道劳伦斯误会乔治时需要一点温柔解释。
       - 晓雪尊重劳伦斯照顾大家，也会提醒他别让误会变重。
       - 晓雪晾气象站纸条时，劳伦斯会安静等字迹清楚再判断路线。
-      - 法国05:00与挪威08:00比赛相邻时，晓雪和劳伦斯会轮流守咖啡馆投影。
+      - 法国与挪威上海时间6月27日03:00正面对赛时，晓雪和劳伦斯会共用一张投影桌但各自留队旗。
     rabbit_2:
       - 晓雪会用法语吐槽和浓缩咖啡治住乔治。
       - 乔治调皮时晓雪会先端稳咖啡，再让他解释。
@@ -1753,7 +1854,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - 杰拉德听见门铃声时，劳伦斯会先检查是不是又需要帮忙。
       - 杰拉德凌晨短巡后补觉时，劳伦斯会把加餐先扣好不打扰他。
       - 杰拉德支持荷兰、劳伦斯支持挪威，露营看球时会各自带橙色画纸和北欧围巾。
-      - 荷兰5比1赢球后，劳伦斯会把第五格橙色画纸留给杰拉德。
+      - 荷兰5比1赢球后，劳伦斯会把第五格橙色画纸留给杰拉德，并提醒他6月26日07:00才有下一场直播。
     rabbit_3:
       - 杰拉德给小泽咖啡馆设计了招牌。
       - 杰拉德会从小泽咖啡馆听来的情报里找第二章灵感。
@@ -1787,7 +1888,7 @@ const relationships = limitRelationshipYaml(`relationships:
       - Lino会在小泽咖啡馆安静整理吃瓜照片。
       - Lino会把小泽杯垫、公告牌和节目单拍成安静证据。
       - Lino拍到面包屑星座后，会把照片交给小泽整理成咖啡馆传闻。
-      - 日本4比0赢球后，小泽会给Lino留四块小点心配四张进球照片。
+      - 日本4比0赢球后，小泽会给Lino留四块小点心，也提醒他6月26日07:00对瑞典才开球。
     rabbit_2:
       - Lino拍到过乔治向劳伦斯解释“给我劳”的现场。
       - Lino常用镜头记录乔治解释、晓雪递咖啡和劳伦斯误会的瞬间。

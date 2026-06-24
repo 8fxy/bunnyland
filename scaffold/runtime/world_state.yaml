@@ -1,4 +1,4 @@
-day_id: 2026-06-22
+day_id: 2026-06-25
 weather: 初夏晴间多云
 season: 初夏
 
@@ -21,7 +21,7 @@ world_cup_2026:
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-06-21T03:59:00Z
+  verified_through: 2026-06-24T15:59:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -40,6 +40,30 @@ world_cup_2026:
       match: 厄瓜多尔 0-0 库拉索
     - date: 2026-06-21
       match: 日本 4-0 突尼斯
+    - date: 2026-06-21
+      match: 比利时 0-0 伊朗
+    - date: 2026-06-21
+      match: 西班牙 4-0 沙特
+    - date: 2026-06-21
+      match: 乌拉圭 2-2 佛得角
+    - date: 2026-06-21
+      match: 埃及 3-1 新西兰
+    - date: 2026-06-22
+      match: 阿根廷 2-0 奥地利
+    - date: 2026-06-22
+      match: 法国 3-0 伊拉克
+    - date: 2026-06-22
+      match: 挪威 3-2 塞内加尔
+    - date: 2026-06-22
+      match: 阿尔及利亚 2-1 约旦
+    - date: 2026-06-23
+      match: 葡萄牙 5-0 乌兹别克斯坦
+    - date: 2026-06-23
+      match: 英格兰 0-0 加纳
+    - date: 2026-06-23
+      match: 克罗地亚 1-0 巴拿马
+    - date: 2026-06-23
+      match: 哥伦比亚 1-0 刚果民主共和国
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
@@ -73,6 +97,78 @@ world_cup_2026:
       kickoff: "11:00"
       match: 约旦 vs 阿尔及利亚
       source_time: 2026-06-22 23:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "03:00"
+      match: 瑞士 vs 加拿大
+      source_time: 2026-06-24 15:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "03:00"
+      match: 波黑 vs 卡塔尔
+      source_time: 2026-06-24 15:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "06:00"
+      match: 摩洛哥 vs 海地
+      source_time: 2026-06-24 18:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "06:00"
+      match: 苏格兰 vs 巴西
+      source_time: 2026-06-24 18:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "09:00"
+      match: 南非 vs 韩国
+      source_time: 2026-06-24 21:00 EDT
+    - local_date: 2026-06-25
+      kickoff: "09:00"
+      match: 捷克 vs 墨西哥
+      source_time: 2026-06-24 21:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "04:00"
+      match: 库拉索 vs 科特迪瓦
+      source_time: 2026-06-25 16:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "04:00"
+      match: 厄瓜多尔 vs 德国
+      source_time: 2026-06-25 16:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "07:00"
+      match: 突尼斯 vs 荷兰
+      source_time: 2026-06-25 19:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "07:00"
+      match: 日本 vs 瑞典
+      source_time: 2026-06-25 19:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "10:00"
+      match: 土耳其 vs 美国
+      source_time: 2026-06-25 22:00 EDT
+    - local_date: 2026-06-26
+      kickoff: "10:00"
+      match: 巴拉圭 vs 澳大利亚
+      source_time: 2026-06-25 22:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "03:00"
+      match: 挪威 vs 法国
+      source_time: 2026-06-26 15:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "03:00"
+      match: 塞内加尔 vs 伊拉克
+      source_time: 2026-06-26 15:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "08:00"
+      match: 佛得角 vs 沙特
+      source_time: 2026-06-26 20:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "08:00"
+      match: 乌拉圭 vs 西班牙
+      source_time: 2026-06-26 20:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "11:00"
+      match: 埃及 vs 伊朗
+      source_time: 2026-06-26 23:00 EDT
+    - local_date: 2026-06-27
+      kickoff: "11:00"
+      match: 新西兰 vs 比利时
+      source_time: 2026-06-26 23:00 EDT
   supporters:
     rabbit_1: { team: 巴西, reason: 喜欢鲜艳球衣、自由进攻和像旅行一样展开的比赛。 }
     rabbit_2: { team: 美国, reason: 喜欢主场气氛、快速推进和赢球后很有派头的庆祝。 }
