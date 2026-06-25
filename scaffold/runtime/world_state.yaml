@@ -1,4 +1,4 @@
-day_id: 2026-06-25
+day_id: 2026-06-26
 weather: 初夏晴间多云
 season: 初夏
 
@@ -16,12 +16,12 @@ seasonal_world:
     - 观星
 
 world_cup_2026:
-  status: 小组赛进行中
+  status: 小组赛收官阶段
   tournament_dates: 2026-06-11 至 2026-07-19
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-06-24T15:59:00Z
+  verified_through: 2026-06-25T03:59:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -64,6 +64,23 @@ world_cup_2026:
       match: 克罗地亚 1-0 巴拿马
     - date: 2026-06-23
       match: 哥伦比亚 1-0 刚果民主共和国
+    - date: 2026-06-24
+      match: 瑞士 2-1 加拿大
+      note: 瑞士小组第一，加拿大小组第二，双双晋级。
+    - date: 2026-06-24
+      match: 波黑 3-1 卡塔尔
+    - date: 2026-06-24
+      match: 摩洛哥 4-2 海地
+      note: 摩洛哥小组第二晋级。
+    - date: 2026-06-24
+      match: 巴西 3-0 苏格兰
+      note: 巴西锁定小组第一。
+    - date: 2026-06-24
+      match: 南非 1-0 韩国
+      note: 南非小组第二晋级。
+    - date: 2026-06-24
+      match: 墨西哥 3-0 捷克
+      note: 墨西哥三战全胜且零封。
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
@@ -169,6 +186,30 @@ world_cup_2026:
       kickoff: "11:00"
       match: 新西兰 vs 比利时
       source_time: 2026-06-26 23:00 EDT
+    - local_date: 2026-06-28
+      kickoff: "05:00"
+      match: 巴拿马 vs 英格兰
+      source_time: 2026-06-27 17:00 EDT
+    - local_date: 2026-06-28
+      kickoff: "05:00"
+      match: 克罗地亚 vs 加纳
+      source_time: 2026-06-27 17:00 EDT
+    - local_date: 2026-06-28
+      kickoff: "07:30"
+      match: 哥伦比亚 vs 葡萄牙
+      source_time: 2026-06-27 19:30 EDT
+    - local_date: 2026-06-28
+      kickoff: "07:30"
+      match: 刚果民主共和国 vs 乌兹别克斯坦
+      source_time: 2026-06-27 19:30 EDT
+    - local_date: 2026-06-28
+      kickoff: "10:00"
+      match: 阿尔及利亚 vs 奥地利
+      source_time: 2026-06-27 22:00 EDT
+    - local_date: 2026-06-28
+      kickoff: "10:00"
+      match: 约旦 vs 阿根廷
+      source_time: 2026-06-27 22:00 EDT
   supporters:
     rabbit_1: { team: 巴西, reason: 喜欢鲜艳球衣、自由进攻和像旅行一样展开的比赛。 }
     rabbit_2: { team: 美国, reason: 喜欢主场气氛、快速推进和赢球后很有派头的庆祝。 }
