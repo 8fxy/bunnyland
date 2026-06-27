@@ -1,4 +1,4 @@
-day_id: 2026-06-27
+day_id: 2026-06-28
 weather: 初夏晴间多云
 season: 初夏
 
@@ -16,12 +16,12 @@ seasonal_world:
     - 观星
 
 world_cup_2026:
-  status: 小组赛收官阶段
+  status: 小组赛最后一个比赛日
   tournament_dates: 2026-06-11 至 2026-07-19
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-06-26T03:59:00Z
+  verified_through: 2026-06-27T06:00:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -99,6 +99,22 @@ world_cup_2026:
     - date: 2026-06-25
       match: 巴拉圭 0-0 澳大利亚
       note: 澳大利亚晋级淘汰赛。
+    - date: 2026-06-26
+      match: 法国 4-1 挪威
+      note: 法国小组第一、挪威小组第二晋级；登贝莱上演帽子戏法。
+    - date: 2026-06-26
+      match: 塞内加尔 5-0 伊拉克
+    - date: 2026-06-26
+      match: 西班牙 1-0 乌拉圭
+      note: 西班牙小组第一晋级，乌拉圭出局。
+    - date: 2026-06-26
+      match: 佛得角 0-0 沙特
+      note: 佛得角首次晋级世界杯淘汰赛。
+    - date: 2026-06-26
+      match: 比利时 5-1 新西兰
+      note: 比利时以小组第一晋级。
+    - date: 2026-06-26
+      match: 埃及 1-1 伊朗
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
