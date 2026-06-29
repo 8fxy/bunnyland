@@ -1,4 +1,4 @@
-day_id: 2026-06-29
+day_id: 2026-06-30
 weather: 初夏晴间多云
 season: 初夏
 
@@ -21,7 +21,7 @@ world_cup_2026:
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-06-28T06:00:00Z
+  verified_through: 2026-06-29T14:00:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -133,6 +133,9 @@ world_cup_2026:
     - date: 2026-06-27
       match: 阿根廷 3-1 约旦
       note: 阿根廷三战全胜，以小组第一晋级。
+    - date: 2026-06-28
+      match: 南非 0-1 加拿大
+      note: 加拿大凭补时进球首次晋级世界杯16强，将对阵荷兰与摩洛哥之间的胜者。
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
