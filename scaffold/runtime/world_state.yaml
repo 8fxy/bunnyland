@@ -1,4 +1,4 @@
-day_id: 2026-06-30
+day_id: 2026-07-03
 weather: 初夏晴间多云
 season: 初夏
 
@@ -21,7 +21,7 @@ world_cup_2026:
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-06-29T14:00:00Z
+  verified_through: 2026-07-02T05:00:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -136,6 +136,33 @@ world_cup_2026:
     - date: 2026-06-28
       match: 南非 0-1 加拿大
       note: 加拿大凭补时进球首次晋级世界杯16强，将对阵荷兰与摩洛哥之间的胜者。
+    - date: 2026-06-29
+      match: 巴西 2-1 日本
+      note: 巴西凭终场前进球晋级16强，日本止步32强。
+    - date: 2026-06-29
+      match: 德国 1-1 巴拉圭（点球 3-4）
+      note: 巴拉圭点球淘汰德国。
+    - date: 2026-06-29
+      match: 荷兰 1-1 摩洛哥（点球 2-3）
+      note: 摩洛哥点球晋级，荷兰止步32强。
+    - date: 2026-06-30
+      match: 科特迪瓦 1-2 挪威
+      note: 挪威首次赢得世界杯淘汰赛，将在16强对阵巴西。
+    - date: 2026-06-30
+      match: 法国 3-0 瑞典
+      note: 法国晋级16强，将对阵巴拉圭。
+    - date: 2026-06-30
+      match: 墨西哥 2-0 厄瓜多尔
+      note: 墨西哥晋级16强。
+    - date: 2026-07-01
+      match: 英格兰 2-1 刚果民主共和国
+      note: 英格兰逆转晋级16强。
+    - date: 2026-07-01
+      match: 比利时 3-2 塞内加尔（加时）
+      note: 比利时从两球落后追平并在加时晋级，将在16强对阵美国。
+    - date: 2026-07-01
+      match: 美国 2-0 波黑
+      note: 美国24年来首次赢得世界杯淘汰赛，将在16强对阵比利时。
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
@@ -305,6 +332,30 @@ world_cup_2026:
       kickoff: "08:00"
       match: 美国 vs 波黑
       source_time: 2026-07-01 17:00 PDT
+    - local_date: 2026-07-03
+      kickoff: "03:00"
+      match: 西班牙 vs 奥地利
+      source_time: 2026-07-02 12:00 PDT
+    - local_date: 2026-07-03
+      kickoff: "07:00"
+      match: 葡萄牙 vs 克罗地亚
+      source_time: 2026-07-02 19:00 EDT
+    - local_date: 2026-07-03
+      kickoff: "11:00"
+      match: 瑞士 vs 阿尔及利亚
+      source_time: 2026-07-02 20:00 PDT
+    - local_date: 2026-07-04
+      kickoff: "02:00"
+      match: 澳大利亚 vs 埃及
+      source_time: 2026-07-03 13:00 CDT
+    - local_date: 2026-07-04
+      kickoff: "06:00"
+      match: 阿根廷 vs 佛得角
+      source_time: 2026-07-03 18:00 EDT
+    - local_date: 2026-07-04
+      kickoff: "09:30"
+      match: 哥伦比亚 vs 加纳
+      source_time: 2026-07-03 20:30 CDT
   supporters:
     rabbit_1: { team: 巴西, reason: 喜欢鲜艳球衣、自由进攻和像旅行一样展开的比赛。 }
     rabbit_2: { team: 美国, reason: 喜欢主场气氛、快速推进和赢球后很有派头的庆祝。 }
