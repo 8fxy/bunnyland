@@ -1,4 +1,4 @@
-day_id: 2026-07-08
+day_id: 2026-07-09
 weather: 初夏晴间多云
 season: 初夏
 
@@ -16,12 +16,12 @@ seasonal_world:
     - 观星
 
 world_cup_2026:
-  status: 16强收官日
+  status: 四分之一决赛前夜
   tournament_dates: 2026-06-11 至 2026-07-19
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
   watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-07-07T13:00:00Z
+  verified_through: 2026-07-08T14:00:00Z
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -199,6 +199,12 @@ world_cup_2026:
     - date: 2026-07-06
       match: 美国 1-4 比利时
       note: 比利时晋级8强，将对阵西班牙。
+    - date: 2026-07-07
+      match: 阿根廷 3-2 埃及
+      note: 阿根廷在争议声中晋级8强，将对阵瑞士。
+    - date: 2026-07-07
+      match: 瑞士 点球淘汰 哥伦比亚
+      note: 瑞士点球淘汰哥伦比亚，72年来首次进入世界杯8强。
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
@@ -424,6 +430,22 @@ world_cup_2026:
       kickoff: "04:00"
       match: 瑞士 vs 哥伦比亚
       source_time: 2026-07-07 16:00 EDT
+    - local_date: 2026-07-10
+      kickoff: "04:00"
+      match: 摩洛哥 vs 法国
+      source_time: 2026-07-09 16:00 EDT
+    - local_date: 2026-07-11
+      kickoff: "06:00"
+      match: 西班牙 vs 比利时
+      source_time: 2026-07-10 15:00 PDT
+    - local_date: 2026-07-12
+      kickoff: "05:00"
+      match: 挪威 vs 英格兰
+      source_time: 2026-07-11 17:00 EDT
+    - local_date: 2026-07-12
+      kickoff: "10:00"
+      match: 阿根廷 vs 瑞士
+      source_time: 2026-07-11 21:00 CDT
   supporters:
     rabbit_1: { team: 巴西, reason: 喜欢鲜艳球衣、自由进攻和像旅行一样展开的比赛。 }
     rabbit_2: { team: 美国, reason: 喜欢主场气氛、快速推进和赢球后很有派头的庆祝。 }
