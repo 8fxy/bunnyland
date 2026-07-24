@@ -1,4 +1,4 @@
-day_id: 2026-07-10
+day_id: 2026-07-25
 weather: 初夏晴间多云
 season: 初夏
 
@@ -16,12 +16,20 @@ seasonal_world:
     - 观星
 
 world_cup_2026:
-  status: 四分之一决赛进行中
+  status: 已结束
   tournament_dates: 2026-06-11 至 2026-07-19
   watch_location: mushroom_cafe
   schedule_timezone: Asia/Shanghai
-  watch_party_note: 只有在真实比赛开球前后，蘑菇咖啡馆才会布置直播桌；跨午夜或清晨比赛会由真正支持该队的兔兔定闹钟观看。
-  verified_through: 2026-07-10T04:00:00+08:00
+  watch_party_note: 世界杯已经结束，蘑菇咖啡馆不再安排直播桌；保留看球角作为赛后留言墙和小旗归档处。
+  verified_through: 2026-07-20T12:00:00Z
+  final_summary:
+    champion: 西班牙
+    runner_up: 阿根廷
+    third_place: 英格兰
+    fourth_place: 法国
+    final: 西班牙 1-0 阿根廷（加时）
+    bronze_final: 英格兰 6-4 法国
+    note: 西班牙夺得2026世界杯冠军；兔兔们进入赛后整理、回忆和生活回流阶段。
   confirmed_results:
     - date: 2026-06-19
       match: 巴西 3-0 海地
@@ -208,6 +216,27 @@ world_cup_2026:
     - date: 2026-07-10
       match: 法国 2-0 摩洛哥
       note: 法国在上海时间清晨晋级半决赛，摩洛哥止步8强。
+    - date: 2026-07-10
+      match: 西班牙 2-1 比利时
+      note: 西班牙晋级半决赛，比利时止步8强。
+    - date: 2026-07-11
+      match: 挪威 1-2 英格兰（加时）
+      note: 英格兰晋级半决赛，挪威止步8强。
+    - date: 2026-07-11
+      match: 阿根廷 3-1 瑞士（加时）
+      note: 阿根廷晋级半决赛，瑞士止步8强。
+    - date: 2026-07-14
+      match: 法国 0-2 西班牙
+      note: 西班牙晋级决赛。
+    - date: 2026-07-15
+      match: 英格兰 1-2 阿根廷
+      note: 阿根廷晋级决赛。
+    - date: 2026-07-18
+      match: 法国 4-6 英格兰
+      note: 英格兰获得季军，法国第四。
+    - date: 2026-07-19
+      match: 西班牙 1-0 阿根廷（加时）
+      note: 西班牙夺得2026世界杯冠军。
   fixtures_shanghai:
     - local_date: 2026-06-22
       kickoff: "00:00"
